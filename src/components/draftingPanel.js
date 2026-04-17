@@ -4,7 +4,7 @@
  * Mounts into any container via mountDraftingPanel(containerId)
  */
 
-import { draftDocument, suggestGrounds, summarizeDocument, explainClause } from './aiService.js';
+import { draftDocument, suggestGrounds, summarizeDocument, explainClause } from '../services/aiService.js';
 
 const DOC_TYPES = [
   'Bail Application',

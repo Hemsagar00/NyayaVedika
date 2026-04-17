@@ -14,14 +14,14 @@ _Generate court-ready pleadings in minutes_
 
 ## About
 
-NyayaVedika is an AI-powered legal drafting platform built for Indian advocates. It generates court-ready SLPs, writ petitions, bail applications, revenue appeals, and more — using the Anthropic Claude or Google Gemini API.
+NyayaVedika is an AI-powered legal drafting platform built for Indian advocates. It generates court-ready SLPs, writ petitions, bail applications, revenue appeals, and more — using **NVIDIA Llama 4 Maverick** (free), DeepSeek, Anthropic Claude, or Google Gemini API.
 
 ---
 
 ## Tech Stack
 
 - **Frontend:** HTML5, CSS3, Vanilla JS (Vite 6)
-- **AI:** Anthropic Claude (`claude-sonnet-4-20250514`) or Google Gemini (`gemini-1.5-flash`)
+- **AI:** NVIDIA Llama 4 Maverick (default), DeepSeek, Anthropic Claude, or Google Gemini
 - **Hosting:** Vercel (static deployment)
 - **CI/CD:** GitHub Actions
 
@@ -35,7 +35,7 @@ nyayavedika/
 │   ├── main.js                    # App entry + routing
 │   ├── style.css                  # Design system tokens + page styles
 │   ├── services/
-│   │   └── aiService.js           # AI API handler (Claude / Gemini)
+│   │   └── aiService.js           # AI API handler (NVIDIA / DeepSeek / Claude / Gemini)
 │   └── components/
 │       ├── draftingPanel.js       # AI Drafting UI component
 │       └── aiPanel.css            # Panel styles
@@ -63,8 +63,8 @@ npm install
 # 3. Set up environment variables
 cp .env.example .env.local
 # Edit .env.local and add your API key:
-#   VITE_ANTHROPIC_API_KEY=sk-ant-...
-#   VITE_AI_PROVIDER=anthropic
+#   VITE_AI_PROVIDER=nvidia
+#   VITE_NVIDIA_API_KEY=nvapi-...
 
 # 4. Start dev server
 npm run dev
@@ -90,7 +90,9 @@ Under **Environment secrets**, click **Add secret** for each:
 
 | Secret Name | Value |
 |---|---|
-| `VITE_ANTHROPIC_API_KEY` | Your Claude API key from [console.anthropic.com](https://console.anthropic.com/settings/keys) |
+| `VITE_NVIDIA_API_KEY` | Your NVIDIA API key from [build.nvidia.com](https://build.nvidia.com/) |
+| `VITE_DEEPSEEK_API_KEY` | Your DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com/api_keys) *(optional)* |
+| `VITE_ANTHROPIC_API_KEY` | Your Claude API key from [console.anthropic.com](https://console.anthropic.com/settings/keys) *(optional)* |
 | `VITE_GEMINI_API_KEY` | Your Gemini key from [aistudio.google.com](https://aistudio.google.com/app/apikey) *(optional)* |
 
 ### Step 3 — Add Variables (non-sensitive)
@@ -99,7 +101,7 @@ Under **Environment variables**, click **Add variable**:
 
 | Variable Name | Value |
 |---|---|
-| `VITE_AI_PROVIDER` | `anthropic` *(or `gemini`)* |
+| `VITE_AI_PROVIDER` | `nvidia` *(or `deepseek`, `anthropic`, or `gemini`)* |
 
 ### Step 4 — Push to main
 
@@ -116,9 +118,22 @@ The `.github/workflows/deploy.yml` workflow will:
 If you prefer Vercel's own environment variable system instead of GitHub Actions:
 
 1. Go to your Vercel project → **Settings** → **Environment Variables**
-2. Add the same keys: `VITE_ANTHROPIC_API_KEY`, `VITE_AI_PROVIDER`
+2. Add the same keys: `VITE_NVIDIA_API_KEY`, `VITE_AI_PROVIDER`
 3. Set scope to **Production** (and Preview if needed)
 4. Redeploy
+
+---
+
+## Supported AI Providers
+
+| Provider | Model | Cost | Setup |
+|---|---|---|---|
+| **NVIDIA Llama** (default) | `meta/llama-4-maverick-17b-128e-instruct` | Free tier (1000 req/day) | [Get API Key](https://build.nvidia.com/) |
+| **DeepSeek** | `deepseek-chat` | Very cheap / free tier | [Get API Key](https://platform.deepseek.com/api_keys) |
+| **Anthropic Claude** | `claude-sonnet-4-20250514` | Paid | [Get API Key](https://console.anthropic.com/settings/keys) |
+| **Google Gemini** | `gemini-1.5-flash` | Free tier available | [Get API Key](https://aistudio.google.com/app/apikey) |
+
+Switch providers by setting `VITE_AI_PROVIDER` to `nvidia`, `deepseek`, `anthropic`, or `gemini`.
 
 ---
 

@@ -1,11 +1,21 @@
 /**
  * NyayaVedika — AI Service Layer
- * Handles all API calls to AI models (Anthropic Claude / Google Gemini)
+ * Handles all API calls to AI models (NVIDIA Llama / DeepSeek / Anthropic Claude / Google Gemini)
  * Keys are injected via GitHub Actions environment or Vercel env vars — NEVER hardcoded.
  */
 
 const AI_CONFIG = {
   // Resolved at build time via Vite env injection (VITE_ prefix exposes to browser)
+  nvidia: {
+    apiKey: import.meta.env.VITE_NVIDIA_API_KEY,
+    model: 'meta/llama-4-maverick-17b-128e-instruct',
+    endpoint: 'https://integrate.api.nvidia.com/v1/chat/completions',
+  },
+  deepseek: {
+    apiKey: import.meta.env.VITE_DEEPSEEK_API_KEY,
+    model: 'deepseek-chat',
+    endpoint: 'https://api.deepseek.com/v1/chat/completions',
+  },
   anthropic: {
     apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
     model: 'claude-sonnet-4-20250514',
@@ -19,7 +29,7 @@ const AI_CONFIG = {
 };
 
 // Active provider — switch by changing this or via env var VITE_AI_PROVIDER
-const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'anthropic';
+const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'nvidia';
 
 /**
  * Legal system prompt — sets context for all AI calls
@@ -42,6 +52,79 @@ If asked to draft a document, follow standard Indian court pleading format:
 - Grounds (numbered)
 - Prayer Clause
 - Verification Clause`;
+
+/**
+ * Core AI call — NVIDIA API (OpenAI-compatible, Llama 4 Maverick)
+ */
+async function callNvidia(userMessage, options = {}) {
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const apiKey = AI_CONFIG.nvidia.apiKey;
+
+  if (!apiKey) throw new Error('NVIDIA_API_KEY not configured. Add VITE_NVIDIA_API_KEY to your environment variables.');
+
+  const response = await fetch(AI_CONFIG.nvidia.endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: AI_CONFIG.nvidia.model,
+      max_tokens: maxTokens,
+      temperature: 1.00,
+      top_p: 1.00,
+      frequency_penalty: 0.00,
+      presence_penalty: 0.00,
+      stream: false,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `NVIDIA API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || '';
+}
+
+/**
+ * Core AI call — DeepSeek (OpenAI-compatible API)
+ */
+async function callDeepSeek(userMessage, options = {}) {
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const apiKey = AI_CONFIG.deepseek.apiKey;
+
+  if (!apiKey) throw new Error('DEEPSEEK_API_KEY not configured. Add VITE_DEEPSEEK_API_KEY to your environment variables.');
+
+  const response = await fetch(AI_CONFIG.deepseek.endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: AI_CONFIG.deepseek.model,
+      max_tokens: maxTokens,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `DeepSeek API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || '';
+}
 
 /**
  * Core AI call — Anthropic Claude
@@ -112,7 +195,9 @@ async function callGemini(userMessage, options = {}) {
  */
 export async function askAI(userMessage, options = {}) {
   if (ACTIVE_PROVIDER === 'gemini') return callGemini(userMessage, options);
-  return callAnthropic(userMessage, options);
+  if (ACTIVE_PROVIDER === 'anthropic') return callAnthropic(userMessage, options);
+  if (ACTIVE_PROVIDER === 'deepseek') return callDeepSeek(userMessage, options);
+  return callNvidia(userMessage, options);
 }
 
 /**

@@ -1,4 +1,6 @@
 import './style.css';
+import './components/aiPanel.css';
+import { mountDraftingPanel } from './components/draftingPanel.js';
 
 /* ─── Page renderers ─── */
 function renderHome() {
@@ -9,7 +11,7 @@ function renderHome() {
       <h1 class="hero-title">AI-Powered Drafting<br><span class="gradient-text">for Indian Advocates</span></h1>
       <p class="hero-sub">Generate court-ready pleadings in minutes — SLPs, writs, bail applications, revenue appeals, and more.</p>
       <div class="hero-cta">
-        <a href="#pricing" class="btn btn-primary" id="cta-start">Start with ₹100 free credits</a>
+        <a href="#drafting" class="btn btn-primary" id="cta-start">Try AI Drafting Now</a>
         <a href="#how-it-works" class="btn btn-outline" id="cta-how">See how it works</a>
       </div>
     </div>
@@ -121,7 +123,25 @@ function renderHome() {
     <div class="container">
       <h2>Ready to draft smarter?</h2>
       <p>Join hundreds of advocates already using NyayaVedika to save hours on every filing.</p>
-      <a href="#pricing" class="btn btn-primary btn-lg">Get Started — Free Credits Included</a>
+      <a href="#drafting" class="btn btn-primary btn-lg">Open AI Drafting Tool</a>
+    </div>
+  </section>`;
+}
+
+function renderDrafting() {
+  return `
+  <section class="page-hero" id="drafting-hero">
+    <div class="container">
+      <h1 class="page-hero-title">AI Drafting Assistant</h1>
+      <p class="page-hero-sub">Generate court-ready petitions, analyze documents, and explore legal grounds — powered by AI.</p>
+    </div>
+  </section>
+  <div class="container">
+    <div id="ai-panel-mount"></div>
+  </div>
+  <section class="disclaimer-banner" id="drafting-disclaimer">
+    <div class="container">
+      <p><strong>⚠️ Important:</strong> All drafts must be reviewed and finalized by a qualified advocate before filing. NyayaVedika is a drafting tool, not legal advice.</p>
     </div>
   </section>`;
 }
@@ -338,6 +358,7 @@ function renderSecurity() {
 function renderNav(currentPage) {
   const links = [
     { hash: '', label: 'Home' },
+    { hash: 'drafting', label: '⚡ AI Drafting' },
     { hash: 'how-it-works', label: 'How It Works' },
     { hash: 'for-advocates', label: 'For Advocates' },
     { hash: 'pricing', label: 'Pricing' },
@@ -359,7 +380,7 @@ function renderNav(currentPage) {
           <a href="#${l.hash}" class="nav-link${currentPage === l.hash ? ' active' : ''}" id="nav-${l.hash || 'home'}">${l.label}</a>
         `).join('')}
       </div>
-      <a href="#pricing" class="btn btn-primary btn-sm nav-cta" id="nav-cta">Get Started</a>
+      <a href="#drafting" class="btn btn-primary btn-sm nav-cta" id="nav-cta">Get Started</a>
     </div>
   </nav>`;
 }
@@ -376,9 +397,9 @@ function renderFooter() {
         </div>
         <div class="footer-col">
           <h4>Product</h4>
+          <a href="#drafting">AI Drafting</a>
           <a href="#how-it-works">How It Works</a>
           <a href="#pricing">Pricing</a>
-          <a href="#security">Security</a>
         </div>
         <div class="footer-col">
           <h4>Use Cases</h4>
@@ -404,6 +425,7 @@ function renderFooter() {
 /* ─── Routing ─── */
 const routes = {
   '':              renderHome,
+  'drafting':      renderDrafting,
   'how-it-works':  renderHowItWorks,
   'for-advocates': renderForAdvocates,
   'pricing':       renderPricing,
@@ -420,25 +442,28 @@ function render() {
   const app = document.getElementById('app');
   app.innerHTML = renderNav(page) + routes[page]() + renderFooter();
 
-  // mobile nav toggle
+  // Mount AI panel if on drafting page
+  if (page === 'drafting') {
+    mountDraftingPanel('ai-panel-mount');
+  }
+
+  // Mobile nav toggle
   const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-  if (toggle && links) {
+  const navLinks = document.getElementById('nav-links');
+  if (toggle && navLinks) {
     toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
+      navLinks.classList.toggle('open');
       toggle.classList.toggle('open');
     });
   }
 
-  // close mobile nav on link click
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      links?.classList.remove('open');
+      navLinks?.classList.remove('open');
       toggle?.classList.remove('open');
     });
   });
 
-  // scroll to top on page change
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
