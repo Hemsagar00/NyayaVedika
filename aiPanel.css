@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════════════════
+   NyayaVedika — AI Panel Styles
+   Extends existing design system tokens from style.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Panel Shell ─── */
+.ai-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 60px auto;
+  max-width: 860px;
+}
+
+.ai-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(99,102,241,0.06), transparent);
+}
+
+.ai-panel-icon {
+  font-size: 2rem;
+  color: var(--accent-light);
+  text-shadow: 0 0 16px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.ai-panel-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.ai-panel-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ─── Status Indicator ─── */
+.ai-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.ai-status.status-ready .status-dot { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.ai-status.status-loading .status-dot {
+  background: var(--amber);
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+.ai-status.status-error .status-dot { background: var(--red); }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ─── Tabs ─── */
+.ai-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ai-tabs::-webkit-scrollbar { display: none; }
+
+.ai-tab {
+  padding: 14px 24px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+  font-family: var(--font);
+}
+
+.ai-tab:hover { color: var(--text); }
+.ai-tab.active {
+  color: var(--accent-light);
+  border-bottom-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ─── Tab Content ─── */
+.ai-tab-content {
+  display: none;
+  padding: 28px 32px;
+}
+.ai-tab-content.active { display: block; }
+
+/* ─── Form Elements ─── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.mt-16 { margin-top: 16px; }
+.form-group.mt-20 { margin-top: 20px; }
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.form-select { appearance: none; cursor: pointer; }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* ─── Generate Button ─── */
+.mt-20 { margin-top: 20px; }
+
+.btn-icon { font-size: 0.95rem; }
+
+/* ─── Loading ─── */
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 32px;
+  border-top: 1px solid var(--border);
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ─── Error ─── */
+.ai-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 32px 24px;
+  padding: 14px 18px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: var(--radius-sm);
+  border-top: 1px solid var(--border);
+}
+
+.error-icon { font-size: 1.1rem; flex-shrink: 0; }
+.error-text { font-size: 0.86rem; color: var(--red); line-height: 1.5; }
+
+/* ─── Output ─── */
+.ai-output {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
+}
+
+.output-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.output-actions { display: flex; gap: 8px; }
+
+.output-body {
+  padding: 28px 32px;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--text);
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.output-body::-webkit-scrollbar { width: 6px; }
+.output-body::-webkit-scrollbar-track { background: transparent; }
+.output-body::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .ai-panel-header { padding: 20px; flex-wrap: wrap; }
+  .ai-tab-content { padding: 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .output-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .output-body { padding: 20px; }
+}

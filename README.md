@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![NyayaVedika](https://via.placeholder.com/800x400/0f172a/ffffff?text=NyayaVedika+-+AI+Drafting)
-
 **AI-Powered Drafting for Indian Advocates**  
 _Generate court-ready pleadings in minutes_
 
@@ -16,38 +14,130 @@ _Generate court-ready pleadings in minutes_
 
 ## About
 
-NyayaVedika is an advanced AI-powered platform tailored specifically for Indian advocates. It streamlines the legal drafting process, allowing users to rapidly generate professional, court-ready pleadings, SLPs, writs, bail applications, and revenue appeals.
-
-## Features
-
-- ⚡ **Rapid Generation** - Draft complex legal documents in minutes
-- 🏛️ **Indian Legal Standards** - Formatted accurately for various courts
-- 🔒 **Data Privacy** - Secure and discrete document handling
-- 🧠 **Context-Aware AI** - Intelligent assistance for legal arguments
-
-## Tech Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript (Vite Powered)
-- **Fonts:** Inter, DM Sans (Google Fonts)
-- **Hosting:** Vercel
-
-## Quick Start
-```bash
-npm install
-npm run dev
-```
-
-## Contact
-
-- 📧 **Location:** India
-- 🌐 **Website:** nyayavedika.com
-
-## License
-
-© 2026 NyayaVedika. All Rights Reserved.
+NyayaVedika is an AI-powered legal drafting platform built for Indian advocates. It generates court-ready SLPs, writ petitions, bail applications, revenue appeals, and more — using the Anthropic Claude or Google Gemini API.
 
 ---
 
-<div align="center">
+## Tech Stack
+
+- **Frontend:** HTML5, CSS3, Vanilla JS (Vite 6)
+- **AI:** Anthropic Claude (`claude-sonnet-4-20250514`) or Google Gemini (`gemini-1.5-flash`)
+- **Hosting:** Vercel (static deployment)
+- **CI/CD:** GitHub Actions
+
+---
+
+## Project Structure
+
+```
+nyayavedika/
+├── src/
+│   ├── main.js                    # App entry + routing
+│   ├── style.css                  # Design system tokens + page styles
+│   ├── services/
+│   │   └── aiService.js           # AI API handler (Claude / Gemini)
+│   └── components/
+│       ├── draftingPanel.js       # AI Drafting UI component
+│       └── aiPanel.css            # Panel styles
+├── .env.example                   # Environment variable template
+├── .github/
+│   └── workflows/
+│       └── deploy.yml             # GitHub Actions CI/CD
+├── vercel.json                    # Vercel SPA rewrites
+├── vite.config.js
+└── index.html
+```
+
+---
+
+## Local Setup
+
+```bash
+# 1. Clone
+git clone https://github.com/Hemsagar00/NyayaVedika.git
+cd NyayaVedika
+
+# 2. Install
+npm install
+
+# 3. Set up environment variables
+cp .env.example .env.local
+# Edit .env.local and add your API key:
+#   VITE_ANTHROPIC_API_KEY=sk-ant-...
+#   VITE_AI_PROVIDER=anthropic
+
+# 4. Start dev server
+npm run dev
+# Opens at http://localhost:4001
+```
+
+---
+
+## GitHub Environment Setup (for Deployment)
+
+Since API keys must never be committed to the repo, use **GitHub Environments** to inject them at build time.
+
+### Step 1 — Create the Environment
+
+1. Go to your repo: `https://github.com/Hemsagar00/NyayaVedika`
+2. Click **Settings** → **Environments** → **New environment**
+3. Name it: `NyayaVedika`
+4. Click **Configure environment**
+
+### Step 2 — Add Secrets
+
+Under **Environment secrets**, click **Add secret** for each:
+
+| Secret Name | Value |
+|---|---|
+| `VITE_ANTHROPIC_API_KEY` | Your Claude API key from [console.anthropic.com](https://console.anthropic.com/settings/keys) |
+| `VITE_GEMINI_API_KEY` | Your Gemini key from [aistudio.google.com](https://aistudio.google.com/app/apikey) *(optional)* |
+
+### Step 3 — Add Variables (non-sensitive)
+
+Under **Environment variables**, click **Add variable**:
+
+| Variable Name | Value |
+|---|---|
+| `VITE_AI_PROVIDER` | `anthropic` *(or `gemini`)* |
+
+### Step 4 — Push to main
+
+The `.github/workflows/deploy.yml` workflow will:
+1. Install dependencies
+2. Inject secrets as `VITE_` env vars
+3. Run `vite build` — keys are baked into the dist bundle at build time
+4. Deploy to Vercel (configure Vercel separately or use Vercel's own env system)
+
+---
+
+## Vercel Deployment (Alternative)
+
+If you prefer Vercel's own environment variable system instead of GitHub Actions:
+
+1. Go to your Vercel project → **Settings** → **Environment Variables**
+2. Add the same keys: `VITE_ANTHROPIC_API_KEY`, `VITE_AI_PROVIDER`
+3. Set scope to **Production** (and Preview if needed)
+4. Redeploy
+
+---
+
+## AI Features
+
+| Feature | Description |
+|---|---|
+| **Draft Document** | Generates full petitions — bail, writ, SLP, revenue appeal — with grounds and prayer clause |
+| **Suggest Grounds** | Analyzes facts and suggests strongest legal grounds under Indian law |
+| **Summarize Document** | Extracts key parties, orders, and deadlines from any legal document |
+| **Explain Clause** | Plain-English explanation of any legal clause or section |
+
+---
+
+## Legal Disclaimer
+
+NyayaVedika is an AI drafting tool, **not a law firm**. All outputs must be reviewed and finalized by a qualified advocate before filing. No attorney-client relationship is created by using this platform.
+
+---
+
+© 2026 NyayaVedika. All Rights Reserved.  
 Made with ❤️ for Justice
-</div>
