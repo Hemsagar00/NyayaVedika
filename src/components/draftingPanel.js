@@ -4,7 +4,7 @@
  * Mounts into any container via mountDraftingPanel(containerId)
  */
 
-import { draftDocument, suggestGrounds, summarizeDocument, explainClause } from '../services/aiService.js';
+import { draftDocument, suggestGrounds, summarizeDocument, explainClause, abortActiveRequest } from '../services/aiService.js';
 
 const DOC_TYPES = [
   'Bail Application',
@@ -52,15 +52,15 @@ function getPanelHTML() {
     </span>
   </div>
 
-  <div class="ai-tabs" id="ai-tabs">
-    <button class="ai-tab active" data-tab="draft">Draft Document</button>
-    <button class="ai-tab" data-tab="grounds">Suggest Grounds</button>
-    <button class="ai-tab" data-tab="summarize">Summarize Doc</button>
-    <button class="ai-tab" data-tab="explain">Explain Clause</button>
+  <div class="ai-tabs" role="tablist" aria-label="AI tools" id="ai-tabs">
+    <button class="ai-tab active" data-tab="draft" role="tab" aria-selected="true" aria-controls="tab-draft" id="tab-btn-draft">Draft Document</button>
+    <button class="ai-tab" data-tab="grounds" role="tab" aria-selected="false" aria-controls="tab-grounds" id="tab-btn-grounds">Suggest Grounds</button>
+    <button class="ai-tab" data-tab="summarize" role="tab" aria-selected="false" aria-controls="tab-summarize" id="tab-btn-summarize">Summarize Doc</button>
+    <button class="ai-tab" data-tab="explain" role="tab" aria-selected="false" aria-controls="tab-explain" id="tab-btn-explain">Explain Clause</button>
   </div>
 
   <!-- TAB: Draft Document -->
-  <div class="ai-tab-content active" id="tab-draft">
+  <div class="ai-tab-content active" id="tab-draft" role="tabpanel" aria-labelledby="tab-btn-draft">
     <div class="form-grid">
       <div class="form-group">
         <label class="form-label">Document Type</label>
@@ -99,7 +99,7 @@ function getPanelHTML() {
   </div>
 
   <!-- TAB: Suggest Grounds -->
-  <div class="ai-tab-content" id="tab-grounds">
+  <div class="ai-tab-content" id="tab-grounds" role="tabpanel" aria-labelledby="tab-btn-grounds">
     <div class="form-group">
       <label class="form-label">Document Type</label>
       <select class="form-select" id="grounds-doc-type">
@@ -117,7 +117,7 @@ function getPanelHTML() {
   </div>
 
   <!-- TAB: Summarize -->
-  <div class="ai-tab-content" id="tab-summarize">
+  <div class="ai-tab-content" id="tab-summarize" role="tabpanel" aria-labelledby="tab-btn-summarize">
     <div class="form-group">
       <label class="form-label">Paste Document Text</label>
       <textarea class="form-textarea" id="summary-text" rows="10" placeholder="Paste the text of a judgment, order, deed, or any legal document..."></textarea>
@@ -128,7 +128,7 @@ function getPanelHTML() {
   </div>
 
   <!-- TAB: Explain Clause -->
-  <div class="ai-tab-content" id="tab-explain">
+  <div class="ai-tab-content" id="tab-explain" role="tabpanel" aria-labelledby="tab-btn-explain">
     <div class="form-group">
       <label class="form-label">Paste Clause or Legal Text</label>
       <textarea class="form-textarea" id="clause-text" rows="6" placeholder="Paste a specific clause, section, or legal provision to get a plain-English explanation..."></textarea>
@@ -152,9 +152,10 @@ function getPanelHTML() {
   </div>
 
   <!-- LOADING STATE -->
-  <div class="ai-loading" id="ai-loading" style="display:none">
-    <div class="loading-spinner"></div>
+  <div class="ai-loading" id="ai-loading" style="display:none" role="status" aria-live="polite">
+    <div class="loading-spinner" aria-hidden="true"></div>
     <p class="loading-text" id="loading-text">Generating draft...</p>
+    <button class="btn btn-outline btn-sm" id="btn-cancel">Cancel</button>
   </div>
 
   <!-- ERROR STATE -->
@@ -169,9 +170,13 @@ function attachPanelEvents(container) {
   // Tab switching
   container.querySelectorAll('.ai-tab').forEach(tab => {
     tab.addEventListener('click', () => {
-      container.querySelectorAll('.ai-tab').forEach(t => t.classList.remove('active'));
+      container.querySelectorAll('.ai-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       container.querySelectorAll('.ai-tab-content').forEach(c => c.classList.remove('active'));
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       const tabId = `tab-${tab.dataset.tab}`;
       document.getElementById(tabId)?.classList.add('active');
       hideOutput();
@@ -238,6 +243,13 @@ function attachPanelEvents(container) {
   });
 
   document.getElementById('btn-clear')?.addEventListener('click', hideOutput);
+
+  // Cancel in-flight request
+  document.getElementById('btn-cancel')?.addEventListener('click', () => {
+    abortActiveRequest();
+    hideLoading();
+    showError('Request cancelled.');
+  });
 }
 
 async function runAI(loadingMessage, apiFn) {

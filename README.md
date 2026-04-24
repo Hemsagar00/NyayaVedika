@@ -3,7 +3,7 @@
 <div align="center">
 
 **AI-Powered Drafting for Indian Advocates**  
-_Generate court-ready pleadings in minutes_
+_Generate court-ready pleadings in minutes — free & unlimited_
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-nyayavedika.com-0052cc?style=for-the-badge)](https://nyayavedika.com)
 [![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vercel.com)
@@ -14,7 +14,9 @@ _Generate court-ready pleadings in minutes_
 
 ## About
 
-NyayaVedika is an AI-powered legal drafting platform built for Indian advocates. It generates court-ready SLPs, writ petitions, bail applications, revenue appeals, and more — using **NVIDIA Llama 4 Maverick** (free), DeepSeek, Anthropic Claude, or Google Gemini API.
+NyayaVedika is a free, AI-powered legal drafting platform built for Indian advocates. It generates court-ready SLPs, writ petitions, bail applications, revenue appeals, and more — using **NVIDIA Llama 4 Maverick** (default), DeepSeek, Anthropic Claude, or Google Gemini API.
+
+All features are available to every user with no paywalls, subscriptions, or usage limits.
 
 ---
 
@@ -22,6 +24,7 @@ NyayaVedika is an AI-powered legal drafting platform built for Indian advocates.
 
 - **Frontend:** HTML5, CSS3, Vanilla JS (Vite 6)
 - **AI:** NVIDIA Llama 4 Maverick (default), DeepSeek, Anthropic Claude, or Google Gemini
+- **Legal:** BNS/BNSS/BSA (2023) + IPC/CrPC/CPC (legacy cross-references)
 - **Hosting:** Vercel (static deployment)
 - **CI/CD:** GitHub Actions
 
@@ -141,7 +144,7 @@ Switch providers by setting `VITE_AI_PROVIDER` to `nvidia`, `deepseek`, `anthrop
 
 | Feature | Description |
 |---|---|
-| **Draft Document** | Generates full petitions — bail, writ, SLP, revenue appeal — with grounds and prayer clause |
+| **Draft Document** | Generates full petitions — bail, writ, SLP, revenue appeal — with grounds, synopsis, list of dates, and prayer clause. Cites BNS/BNSS and IPC/CrPC cross-references. |
 | **Suggest Grounds** | Analyzes facts and suggests strongest legal grounds under Indian law |
 | **Summarize Document** | Extracts key parties, orders, and deadlines from any legal document |
 | **Explain Clause** | Plain-English explanation of any legal clause or section |

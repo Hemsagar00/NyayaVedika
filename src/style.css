@@ -346,36 +346,38 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 @media (max-width: 640px) { .segment-list { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════
-   PRICING
+   ACCESSIBILITY
    ═══════════════════════════════════════════════════════════════ */
-.pricing-section { padding: 60px 0 100px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.pricing-card {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 36px 28px;
-  display: flex; flex-direction: column; position: relative;
-  transition: all var(--transition);
+.skip-link {
+  position: absolute; top: -100%; left: 16px; z-index: 200;
+  padding: 12px 24px; background: var(--accent); color: #fff;
+  border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem;
+  transition: top 0.2s;
 }
-.pricing-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-.pricing-card.highlighted {
-  border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow);
-  background: linear-gradient(180deg, rgba(99,102,241,0.06), var(--bg-card));
+.skip-link:focus { top: 12px; }
+
+/* Visible focus ring for keyboard nav */
+*:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
 }
-.popular-badge {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 700;
-  padding: 4px 16px; border-radius: 100px; letter-spacing: 0.04em;
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-.plan-name { font-size: 1.2rem; margin-bottom: 4px; }
-.plan-audience { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
-.plan-price { margin-bottom: 24px; }
-.price-amount { font-size: 2.2rem; font-weight: 800; }
-.price-period { font-size: 0.85rem; color: var(--text-muted); }
-.plan-features { list-style: none; flex: 1; margin-bottom: 28px; }
-.plan-features li { font-size: 0.85rem; color: var(--text-dim); padding: 6px 0; display: flex; gap: 8px; }
-.check { color: var(--green); font-weight: 700; }
-.pricing-note { text-align: center; margin-top: 32px; font-size: 0.82rem; color: var(--text-muted); }
-@media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    SECURITY

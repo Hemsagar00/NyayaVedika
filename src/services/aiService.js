@@ -31,39 +31,59 @@ const AI_CONFIG = {
 // Active provider — switch by changing this or via env var VITE_AI_PROVIDER
 const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'nvidia';
 
+// Abort controller for cancelling in-flight requests
+let activeController = null;
+
+/**
+ * Abort any in-flight AI request
+ */
+export function abortActiveRequest() {
+  if (activeController) {
+    activeController.abort();
+    activeController = null;
+  }
+}
+
 /**
  * Legal system prompt — sets context for all AI calls
  */
-const LEGAL_SYSTEM_PROMPT = `You are NyayaVedika AI, an expert legal drafting assistant for Indian advocates. 
-You are well-versed in:
-- Indian Penal Code (IPC), CrPC, CPC
-- Constitutional law (Articles 226, 32, etc.)
-- Revenue laws of Andhra Pradesh and Telangana
-- High Court and Supreme Court pleading formats
-- Land records, mutations, ROR (Record of Rights)
-- Bail applications, writs, SLPs, civil suits, revenue appeals
+const LEGAL_SYSTEM_PROMPT = `You are NyayaVedika AI, an expert legal drafting assistant for Indian advocates.
 
-Always respond in formal, precise legal English. 
-Structure outputs with proper headings. 
-Include relevant section numbers, article citations, and prayer clauses where applicable.
-If asked to draft a document, follow standard Indian court pleading format:
-- Title (IN THE [COURT NAME])
-- Cause Title (Petitioner vs Respondent)
-- Grounds (numbered)
-- Prayer Clause
-- Verification Clause`;
+CORE EXPERTISE:
+- Bharatiya Nyaya Sanhita (BNS, 2023) — replaces IPC
+- Bharatiya Nagarik Suraksha Sanhita (BNSS, 2023) — replaces CrPC
+- Bharatiya Sakshya Adhiniyam (BSA, 2023) — replaces Indian Evidence Act
+- Indian Penal Code (IPC), CrPC, CPC (for legacy references and pending cases)
+- Constitutional law: Articles 14, 19, 21, 32, 226, 227, 136
+- Revenue laws of Andhra Pradesh (AP Land Revenue Code, APGL Rules) and Telangana (TSLR Act, TS ROR Rules)
+- High Court and Supreme Court pleading formats
+- Land records, mutations, ROR (Record of Rights), Pahani/Adangal
+- Bail applications (regular, anticipatory, default bail u/s 187 BNSS / 167 CrPC)
+- Writ petitions, SLPs, civil suits, revenue appeals, execution petitions
+- Rent Control, Family law, NDPS Act, SC/ST Prevention of Atrocities Act
+
+DRAFTING STANDARDS:
+- Respond in formal, precise legal English
+- Structure outputs with proper headings and numbered paragraphs
+- Cite relevant section numbers, article references, and applicable rules
+- For every draft, include: (1) Title/Caption, (2) Cause Title, (3) Synopsis & List of Dates, (4) Numbered Grounds, (5) Prayer Clause, (6) Verification
+- Follow standard Indian court pleading format per the respective court's rules
+- Where both old (IPC/CrPC) and new (BNS/BNSS) provisions apply, cite both with cross-references
+- Include "Most respectfully showeth" and standard Indian legal preamble where appropriate`;
+
 
 /**
  * Core AI call — NVIDIA API (OpenAI-compatible, Llama 4 Maverick)
  */
 async function callNvidia(userMessage, options = {}) {
-  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048, signal } = options;
   const apiKey = AI_CONFIG.nvidia.apiKey;
 
   if (!apiKey) throw new Error('NVIDIA_API_KEY not configured. Add VITE_NVIDIA_API_KEY to your environment variables.');
 
   const response = await fetch(AI_CONFIG.nvidia.endpoint, {
     method: 'POST',
+    signal,
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`,
@@ -71,10 +91,10 @@ async function callNvidia(userMessage, options = {}) {
     body: JSON.stringify({
       model: AI_CONFIG.nvidia.model,
       max_tokens: maxTokens,
-      temperature: 1.00,
-      top_p: 1.00,
-      frequency_penalty: 0.00,
-      presence_penalty: 0.00,
+      temperature: 0.4,
+      top_p: 0.95,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
       stream: false,
       messages: [
         { role: 'system', content: systemPrompt },
@@ -96,13 +116,14 @@ async function callNvidia(userMessage, options = {}) {
  * Core AI call — DeepSeek (OpenAI-compatible API)
  */
 async function callDeepSeek(userMessage, options = {}) {
-  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048, signal } = options;
   const apiKey = AI_CONFIG.deepseek.apiKey;
 
   if (!apiKey) throw new Error('DEEPSEEK_API_KEY not configured. Add VITE_DEEPSEEK_API_KEY to your environment variables.');
 
   const response = await fetch(AI_CONFIG.deepseek.endpoint, {
     method: 'POST',
+    signal,
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`,
@@ -130,13 +151,14 @@ async function callDeepSeek(userMessage, options = {}) {
  * Core AI call — Anthropic Claude
  */
 async function callAnthropic(userMessage, options = {}) {
-  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048, signal } = options;
   const apiKey = AI_CONFIG.anthropic.apiKey;
 
   if (!apiKey) throw new Error('ANTHROPIC_API_KEY not configured. Check your environment variables.');
 
   const response = await fetch(AI_CONFIG.anthropic.endpoint, {
     method: 'POST',
+    signal,
     headers: {
       'Content-Type': 'application/json',
       'x-api-key': apiKey,
@@ -164,7 +186,7 @@ async function callAnthropic(userMessage, options = {}) {
  * Core AI call — Google Gemini
  */
 async function callGemini(userMessage, options = {}) {
-  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048 } = options;
+  const { systemPrompt = LEGAL_SYSTEM_PROMPT, maxTokens = 2048, signal } = options;
   const apiKey = AI_CONFIG.gemini.apiKey;
 
   if (!apiKey) throw new Error('GEMINI_API_KEY not configured. Check your environment variables.');
@@ -173,6 +195,7 @@ async function callGemini(userMessage, options = {}) {
 
   const response = await fetch(url, {
     method: 'POST',
+    signal,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       system_instruction: { parts: [{ text: systemPrompt }] },
@@ -194,10 +217,24 @@ async function callGemini(userMessage, options = {}) {
  * Unified AI call — routes to active provider
  */
 export async function askAI(userMessage, options = {}) {
-  if (ACTIVE_PROVIDER === 'gemini') return callGemini(userMessage, options);
-  if (ACTIVE_PROVIDER === 'anthropic') return callAnthropic(userMessage, options);
-  if (ACTIVE_PROVIDER === 'deepseek') return callDeepSeek(userMessage, options);
-  return callNvidia(userMessage, options);
+  // Cancel any previous in-flight request
+  abortActiveRequest();
+  activeController = new AbortController();
+  const opts = { ...options, signal: activeController.signal };
+
+  try {
+    let result;
+    if (ACTIVE_PROVIDER === 'gemini') result = await callGemini(userMessage, opts);
+    else if (ACTIVE_PROVIDER === 'anthropic') result = await callAnthropic(userMessage, opts);
+    else if (ACTIVE_PROVIDER === 'deepseek') result = await callDeepSeek(userMessage, opts);
+    else result = await callNvidia(userMessage, opts);
+    activeController = null;
+    return result;
+  } catch (err) {
+    activeController = null;
+    if (err.name === 'AbortError') throw new Error('Request was cancelled.');
+    throw err;
+  }
 }
 
 /**
@@ -219,9 +256,14 @@ ${facts}
 RELIEF SOUGHT:
 ${reliefSought}
 
-Generate a full, court-ready draft with proper format, numbered grounds, and prayer clause.
+Generate a full, court-ready draft with:
+1. Title and Cause Title per the court's format
+2. Synopsis and List of Dates (if applicable)
+3. Numbered grounds with statutory citations (cite both BNS/BNSS and IPC/CrPC where applicable)
+4. Prayer clause with specific reliefs
+5. Verification clause
 `;
-  return askAI(prompt, { maxTokens: 3000 });
+  return askAI(prompt, { maxTokens: 4096 });
 }
 
 export async function explainClause(clauseText) {

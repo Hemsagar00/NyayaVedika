@@ -236,71 +236,7 @@ function renderForAdvocates() {
   </section>`;
 }
 
-function renderPricing() {
-  const plans = [
-    {
-      id: 'starter',
-      name: 'Starter',
-      audience: 'Solo Practitioners',
-      price: '₹499',
-      period: '/month',
-      features: ['5 drafts per month', 'All document types', 'DOCX export', 'Email support', 'Basic templates'],
-      cta: 'Coming Soon',
-      highlight: false
-    },
-    {
-      id: 'chambers',
-      name: 'Chambers',
-      audience: 'Small Teams',
-      price: '₹1,499',
-      period: '/month',
-      features: ['25 drafts per month', 'All document types', 'DOCX + PDF export', 'Priority support', 'Custom templates', 'Team sharing'],
-      cta: 'Early Access',
-      highlight: true
-    },
-    {
-      id: 'firm',
-      name: 'Firm',
-      audience: 'Large Teams',
-      price: 'Custom',
-      period: '',
-      features: ['Unlimited drafts', 'All document types', 'API access', 'Dedicated support', 'Custom integrations', 'Audit trail & compliance', 'On-premise option'],
-      cta: 'Contact Us',
-      highlight: false
-    }
-  ];
 
-  return `
-  <section class="page-hero" id="pricing-hero">
-    <div class="container">
-      <h1 class="page-hero-title">Simple, Transparent Pricing</h1>
-      <p class="page-hero-sub">Start free with ₹100 in credits. Scale as your practice grows.</p>
-    </div>
-  </section>
-
-  <section class="pricing-section" id="pricing-cards">
-    <div class="container">
-      <div class="pricing-grid">
-        ${plans.map(p => `
-          <div class="pricing-card${p.highlight ? ' highlighted' : ''}" id="plan-${p.id}">
-            ${p.highlight ? '<span class="popular-badge">Most Popular</span>' : ''}
-            <h3 class="plan-name">${p.name}</h3>
-            <p class="plan-audience">${p.audience}</p>
-            <div class="plan-price">
-              <span class="price-amount">${p.price}</span>
-              <span class="price-period">${p.period}</span>
-            </div>
-            <ul class="plan-features">
-              ${p.features.map(f => `<li><span class="check">✓</span> ${f}</li>`).join('')}
-            </ul>
-            <button class="btn ${p.highlight ? 'btn-primary' : 'btn-outline'} btn-block" id="plan-cta-${p.id}">${p.cta}</button>
-          </div>
-        `).join('')}
-      </div>
-      <p class="pricing-note">All plans include ₹100 free credits to get started. No credit card required for trial.</p>
-    </div>
-  </section>`;
-}
 
 function renderSecurity() {
   return `
@@ -361,23 +297,22 @@ function renderNav(currentPage) {
     { hash: 'drafting', label: '⚡ AI Drafting' },
     { hash: 'how-it-works', label: 'How It Works' },
     { hash: 'for-advocates', label: 'For Advocates' },
-    { hash: 'pricing', label: 'Pricing' },
     { hash: 'security', label: 'Security & Legal' }
   ];
 
   return `
-  <nav class="nav" id="main-nav">
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#" class="nav-logo" id="nav-logo">
+      <a href="#" class="nav-logo" id="nav-logo" aria-label="NyayaVedika home">
         <span class="nav-logo-mark">◈</span>
         <span class="nav-logo-text">NyayaVedika</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links" id="nav-links">
         ${links.map(l => `
-          <a href="#${l.hash}" class="nav-link${currentPage === l.hash ? ' active' : ''}" id="nav-${l.hash || 'home'}">${l.label}</a>
+          <a href="#${l.hash}" class="nav-link${currentPage === l.hash ? ' active' : ''}${currentPage === l.hash ? '" aria-current="page' : ''}" id="nav-${l.hash || 'home'}">${l.label}</a>
         `).join('')}
       </div>
       <a href="#drafting" class="btn btn-primary btn-sm nav-cta" id="nav-cta">Get Started</a>
@@ -399,7 +334,7 @@ function renderFooter() {
           <h4>Product</h4>
           <a href="#drafting">AI Drafting</a>
           <a href="#how-it-works">How It Works</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#for-advocates">For Advocates</a>
         </div>
         <div class="footer-col">
           <h4>Use Cases</h4>
@@ -428,7 +363,6 @@ const routes = {
   'drafting':      renderDrafting,
   'how-it-works':  renderHowItWorks,
   'for-advocates': renderForAdvocates,
-  'pricing':       renderPricing,
   'security':      renderSecurity
 };
 
@@ -452,8 +386,9 @@ function render() {
   const navLinks = document.getElementById('nav-links');
   if (toggle && navLinks) {
     toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.toggle('open');
       toggle.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
 
