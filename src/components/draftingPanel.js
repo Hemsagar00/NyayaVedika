@@ -8,26 +8,35 @@ import { draftDocument, suggestGrounds, summarizeDocument, explainClause, abortA
 
 const DOC_TYPES = [
   'Bail Application',
+  'Anticipatory Bail Application',
+  'NDPS Bail Application (Section 37)',
+  'Default Bail Application (Section 187 BNSS / 167 CrPC)',
   'Writ Petition (Article 226)',
+  'Writ Petition (Article 32)',
   'Special Leave Petition (SLP)',
   'Revenue Appeal',
   'Civil Suit',
-  'Anticipatory Bail Application',
-  'Quashing Petition',
+  'Criminal Revision Petition',
+  'Quashing Petition (Section 528 BNSS / 482 CrPC)',
   'Execution Petition',
   'Mutation Application',
-  'Rent Control Petition',
+  'Interlocutory Application (IA)',
+  'Contempt Petition',
 ];
 
 const COURTS = [
-  'High Court of Andhra Pradesh',
   'Supreme Court of India',
+  'High Court of Andhra Pradesh',
+  'High Court of Telangana',
+  'Bombay High Court',
+  'Delhi High Court',
   'District & Sessions Court',
   'Civil Judge (Senior Division)',
   'Revenue Divisional Officer (RDO)',
   'Tahsildar Office',
   'First Class Judicial Magistrate',
   'Metropolitan Magistrate Court',
+  'National Consumer Disputes Redressal Commission (NCDRC)',
 ];
 
 export function mountDraftingPanel(containerId) {

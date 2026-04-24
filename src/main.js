@@ -7,11 +7,11 @@ function renderHome() {
   return `
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <span class="hero-badge">For Indian Advocates</span>
-      <h1 class="hero-title">AI-Powered Drafting<br><span class="gradient-text">for Indian Advocates</span></h1>
-      <p class="hero-sub">Generate court-ready pleadings in minutes — SLPs, writs, bail applications, revenue appeals, and more.</p>
+      <span class="hero-badge">Free for All Indian Advocates — No Subscription Required</span>
+      <h1 class="hero-title">AI-Powered Legal Drafting<br><span class="gradient-text">for Supreme Court, High Court & District Courts</span></h1>
+      <p class="hero-sub">An indispensable AI drafting tool for Indian legal professionals. Generate court-ready SLPs, writ petitions, bail applications, NDPS bail, revenue appeals — in minutes, not hours.</p>
       <div class="hero-cta">
-        <a href="#drafting" class="btn btn-primary" id="cta-start">Try AI Drafting Now</a>
+        <a href="#drafting" class="btn btn-primary" id="cta-start">Start Drafting — Free</a>
         <a href="#how-it-works" class="btn btn-outline" id="cta-how">See how it works</a>
       </div>
     </div>
@@ -21,20 +21,20 @@ function renderHome() {
     <div class="container">
       <div class="trust-grid">
         <div class="trust-item">
-          <span class="trust-value">12+</span>
+          <span class="trust-value">15+</span>
           <span class="trust-label">Document Types</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">&lt; 5 min</span>
+          <span class="trust-value">&lt; 3 min</span>
           <span class="trust-label">Average Draft Time</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">500+</span>
-          <span class="trust-label">Advocates Served</span>
+          <span class="trust-value">SC • HC • DC</span>
+          <span class="trust-label">All Court Levels</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">10k+</span>
-          <span class="trust-label">Drafts Generated</span>
+          <span class="trust-value">100%</span>
+          <span class="trust-label">Free — No Paywall</span>
         </div>
       </div>
     </div>
@@ -42,29 +42,29 @@ function renderHome() {
 
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title">Powerful tools for every stage of your case</h2>
-      <p class="section-sub">From first-draft to final filing — NyayaVedika covers the heavy lifting.</p>
+      <h2 class="section-title">Everything an advocate needs — from Supreme Court to Tahsildar</h2>
+      <p class="section-sub">AI-assisted legal research, drafting, and document analysis. Built for the way Indian advocates actually practice.</p>
       <div class="feature-grid">
         <div class="feature-card" id="feat-drafting">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="4" width="28" height="32" rx="3"/><line x1="12" y1="12" x2="28" y2="12"/><line x1="12" y1="18" x2="28" y2="18"/><line x1="12" y1="24" x2="22" y2="24"/><path d="M26 28l4-4-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>Court-Ready Drafting</h3>
-          <p>AI generates SLPs, writs, bail applications, appeals, and civil suits following Indian court formats and statutory requirements.</p>
+          <p>AI generates SLPs for the Supreme Court, writ petitions under Articles 226 & 32, bail applications (including NDPS bail with Section 37 twin conditions), revenue appeals, and civil suits — all in proper court format.</p>
         </div>
         <div class="feature-card" id="feat-research">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="10"/><line x1="25" y1="25" x2="34" y2="34" stroke-linecap="round"/><line x1="14" y1="14" x2="22" y2="14"/><line x1="14" y1="18" x2="22" y2="18"/><line x1="14" y1="22" x2="18" y2="22"/></svg>
           </div>
-          <h3>Legal Research Engine</h3>
-          <p>Search through case law, statutes, and precedents to build a solid foundation for every argument.</p>
+          <h3>AI Legal Research</h3>
+          <p>Suggest strongest legal grounds based on your facts. References BNS, BNSS, BSA (2023 statutes), IPC, CrPC, CPC, and special acts like NDPS, SC/ST Act, and Rent Control.</p>
         </div>
         <div class="feature-card" id="feat-ocr">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="20" height="28" rx="2"/><path d="M28 12h6v22a2 2 0 01-2 2H10"/><circle cx="14" cy="20" r="4"/><line x1="10" y1="28" x2="18" y2="28"/></svg>
           </div>
           <h3>Document Intelligence</h3>
-          <p>Upload scanned files, judgments, and court orders — our OCR extracts and structures the data for your drafts.</p>
+          <p>Summarize Supreme Court & High Court judgments, extract key orders, identify deadlines, and explain complex legal clauses in plain English — instantly.</p>
         </div>
       </div>
     </div>
@@ -121,9 +121,9 @@ function renderHome() {
 
   <section class="cta-bottom" id="cta-bottom">
     <div class="container">
-      <h2>Ready to draft smarter?</h2>
-      <p>Join hundreds of advocates already using NyayaVedika to save hours on every filing.</p>
-      <a href="#drafting" class="btn btn-primary btn-lg">Open AI Drafting Tool</a>
+      <h2>Start drafting like a top-tier chamber — for free</h2>
+      <p>No subscriptions. No paywalls. Just powerful AI drafting for every Indian advocate, from solo practitioners to large firms.</p>
+      <a href="#drafting" class="btn btn-primary btn-lg">Open AI Drafting Tool — Free</a>
     </div>
   </section>`;
 }
@@ -133,7 +133,7 @@ function renderDrafting() {
   <section class="page-hero" id="drafting-hero">
     <div class="container">
       <h1 class="page-hero-title">AI Drafting Assistant</h1>
-      <p class="page-hero-sub">Generate court-ready petitions, analyze documents, and explore legal grounds — powered by AI.</p>
+      <p class="page-hero-sub">Generate court-ready petitions for Supreme Court, High Court & District Courts. Analyze judgments, explore legal grounds, and draft in minutes — free for all advocates.</p>
     </div>
   </section>
   <div class="container">
@@ -148,10 +148,10 @@ function renderDrafting() {
 
 function renderHowItWorks() {
   const steps = [
-    { num: '01', title: 'Upload Your Case Files', desc: 'Drag and drop your FIR copies, previous orders, sale deeds, revenue records, or any supporting documents. Our OCR handles scanned files automatically.', icon: '📄' },
-    { num: '02', title: 'Describe the Relief & Court', desc: 'Tell the AI what you need — bail application before Sessions Court, writ petition under Article 226, SLP before Supreme Court, or a revenue appeal. Specify the forum and the relief sought.', icon: '⚖️' },
-    { num: '03', title: 'AI Drafts Your Petition', desc: 'NyayaVedika generates a structured, statute-compliant draft with proper formatting, relevant citations, and prayer clauses — in under 5 minutes.', icon: '🤖' },
-    { num: '04', title: 'Review, Edit & Download', desc: 'Review the draft in our editor, make any changes, and download as a print-ready DOCX. You retain full control — the AI assists, you decide.', icon: '📥' }
+    { num: '01', title: 'Select Document Type & Court', desc: 'Choose from 15+ document types — SLPs, writ petitions, bail applications (including NDPS bail), revenue appeals, quashing petitions, and more. Select the specific court or authority for proper formatting.', icon: '📋' },
+    { num: '02', title: 'Enter Case Facts & Relief', desc: 'Describe your client\'s situation — FIR details, impugned orders, land records, previous court orders. Specify the relief sought. The AI understands BNS, BNSS, IPC, CrPC, and special acts.', icon: '⚖️' },
+    { num: '03', title: 'AI Generates Court-Ready Draft', desc: 'NyayaVedika generates a structured, statute-compliant draft with proper cause title, synopsis, numbered grounds with citations, prayer clause, and verification — in under 3 minutes.', icon: '🤖' },
+    { num: '04', title: 'Copy, Download & File', desc: 'Copy to clipboard or download as a text file. Review the draft, make any modifications, and file with confidence. The AI drafts — you retain full professional control.', icon: '📥' }
   ];
 
   return `
@@ -194,20 +194,20 @@ function renderForAdvocates() {
     {
       id: 'solo',
       title: 'Solo Practitioners',
-      desc: 'You handle everything — research, drafting, filing, court appearances. NyayaVedika gives you the drafting capacity of a junior without the overhead.',
-      cases: ['Bail applications for District & Sessions Courts', 'Writ petitions under Article 226', 'Revenue appeals (ROR mutations, land disputes)', 'Civil suit drafts (partition, injunctions, specific performance)']
+      desc: 'You handle everything — research, drafting, filing, court appearances. NyayaVedika gives you the drafting capacity of a junior without the overhead. All features free, no subscription.',
+      cases: ['Bail & anticipatory bail for District & Sessions Courts', 'NDPS bail applications with Section 37 twin conditions', 'Writ petitions under Article 226 before High Court', 'Revenue appeals (ROR mutations, land disputes, 1-B proceedings)', 'Default bail under Section 187 BNSS / 167 CrPC', 'Cheque bounce complaints under NI Act Section 138']
     },
     {
       id: 'chambers',
       title: 'Chambers & Associates',
       desc: 'Your chambers handles a steady volume of cases. NyayaVedika lets your team produce consistent, well-structured drafts in a fraction of the time.',
-      cases: ['Standardize brief formats across associates', 'Handle multiple revenue appeals in parallel', 'Quick turnaround on bail and remand applications', 'Build a template library for your practice areas']
+      cases: ['Standardize brief formats across associates', 'Handle multiple criminal revisions in parallel', 'Quick turnaround on bail and remand applications', 'Quashing petitions under Section 528 BNSS / 482 CrPC', 'Interlocutory Applications (IAs) and caveat petitions', 'Consumer disputes before NCDRC and State Commission']
     },
     {
       id: 'firms',
       title: 'Law Firms',
-      desc: 'For firms handling high-volume litigation or establishing legal-tech-forward workflows. NyayaVedika integrates with your document pipeline.',
-      cases: ['SLPs before the Supreme Court', 'Multi-party property and partition suits', 'Batch drafting for similar case types', 'Compliance and audit-ready document trails']
+      desc: 'For firms handling high-volume Supreme Court and High Court litigation. NyayaVedika produces court-ready drafts following SC Rules 2013 and HC Original Side Rules.',
+      cases: ['SLPs before the Supreme Court under Article 136', 'Writ petitions under Article 32 for fundamental rights', 'Multi-party property and partition suits', 'Contempt petitions under Contempt of Courts Act', 'Batch drafting for similar case types across courts', 'SC/ST Act cases and NDPS special bail procedures']
     }
   ];
 
