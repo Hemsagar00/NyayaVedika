@@ -322,3 +322,110 @@ export async function summarizeDocument(documentText) {
     { maxTokens: 1024 }
   );
 }
+
+/**
+ * Ask a Question — conversational legal Q&A
+ */
+export async function askQuestion(question) {
+  return askAI(
+    `A legal professional asks the following question. Provide a thorough, well-structured answer with relevant statutory provisions, case law principles, and practical guidance under Indian law:\n\n${question}`,
+    { maxTokens: 2048 }
+  );
+}
+
+/**
+ * Case Analyzer — comprehensive analysis of pasted case text
+ */
+export async function analyzeCase(caseText) {
+  return askAI(
+    `Analyze the following case material comprehensively. Provide:
+
+1. **Parties Identified** — Petitioner/Plaintiff and Respondent/Defendant
+2. **Court & Jurisdiction** — Which court, bench, and jurisdiction
+3. **Key Facts** — Chronological summary of material facts
+4. **Legal Issues** — Specific questions of law involved
+5. **Applicable Statutes** — Relevant sections of BNS/BNSS/BSA/IPC/CrPC/CPC and special acts
+6. **Key Arguments** — Arguments from both sides
+7. **Orders/Directions** — What the court ordered
+8. **Important Dates & Deadlines** — Filing deadlines, next hearing dates
+9. **Strategic Notes** — Practical observations for the advocate
+
+CASE MATERIAL:
+${caseText}`,
+    { maxTokens: 4096 }
+  );
+}
+
+/**
+ * Find Case Laws — AI suggests relevant precedents
+ */
+export async function findCaseLaws(topic, facts) {
+  const factsSection = facts ? `\n\nFACTS OF THE CASE:\n${facts}` : '';
+  return askAI(
+    `Find and suggest the most relevant Indian case laws, precedents, and landmark judgments on the following legal topic. For each case, provide:
+
+1. Case name and citation
+2. Court (Supreme Court / High Court / Tribunal)
+3. Key legal principle established
+4. How it applies to the given topic/facts
+5. Whether it is still good law or has been overruled
+
+LEGAL TOPIC: ${topic}${factsSection}
+
+Provide at least 8-10 relevant case laws, organized by relevance. Include both Supreme Court and High Court decisions. Cite BNS/BNSS where the old IPC/CrPC provisions have been replaced.`,
+    { maxTokens: 4096 }
+  );
+}
+
+/**
+ * Written Submission / Written Arguments
+ */
+export async function writeSubmission(params) {
+  const { court, caseType, side, facts, arguments: args, reliefSought } = params;
+  return askAI(
+    `Draft comprehensive Written Submissions / Written Arguments for filing before the ${court}.
+
+CASE TYPE: ${caseType}
+APPEARING FOR: ${side}
+
+FACTS:
+${facts}
+
+KEY ARGUMENTS TO DEVELOP:
+${args}
+
+RELIEF SOUGHT:
+${reliefSought}
+
+Draft formal written submissions with:
+1. Preliminary submissions — jurisdiction, maintainability
+2. Factual matrix — chronological narrative
+3. Numbered legal submissions with statutory citations and case law
+4. Distinction of any adverse precedents
+5. Conclusion and prayer
+6. Use proper Indian court format with "Most respectfully submitted"`,
+    { maxTokens: 4096 }
+  );
+}
+
+/**
+ * Legal Update / Digest — AI-generated topic analysis
+ */
+export async function generateLegalUpdate(topic) {
+  return askAI(
+    `Generate a comprehensive legal update / digest on the following topic under Indian law:
+
+TOPIC: ${topic}
+
+Provide:
+1. **Overview** — Current state of the law on this topic
+2. **Key Statutes** — Relevant sections of applicable acts (use BNS/BNSS/BSA for criminal law)
+3. **Landmark Judgments** — Most important Supreme Court and High Court decisions
+4. **Recent Developments** — Any recent amendments, notifications, or notable decisions
+5. **Important Legal Points** — Practical takeaways for advocates
+6. **Practice Tips** — Drafting and strategy suggestions
+
+Write in a professional, digest-style format suitable for a legal professional.`,
+    { maxTokens: 4096 }
+  );
+}

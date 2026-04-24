@@ -248,9 +248,22 @@
 .output-body::-webkit-scrollbar-track { background: transparent; }
 .output-body::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
 
+/* ─── Ask AI Intro ─── */
+.ask-ai-intro {
+  padding: 0 0 16px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.ask-ai-intro p {
+  margin: 0;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
   .ai-panel-header { padding: 20px; flex-wrap: wrap; }
+  .ai-tab { padding: 12px 14px; font-size: 0.75rem; }
   .ai-tab-content { padding: 20px; }
   .form-grid { grid-template-columns: 1fr; }
   .output-header { flex-direction: column; gap: 12px; align-items: flex-start; }

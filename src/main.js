@@ -1,6 +1,7 @@
 import './style.css';
 import './components/aiPanel.css';
 import { mountDraftingPanel } from './components/draftingPanel.js';
+import { generateLegalUpdate } from './services/aiService.js';
 
 /* ─── Page renderers ─── */
 function renderHome() {
@@ -44,27 +45,48 @@ function renderHome() {
     <div class="container">
       <h2 class="section-title">Everything an advocate needs — from Supreme Court to Tahsildar</h2>
       <p class="section-sub">AI-assisted legal research, drafting, and document analysis. Built for the way Indian advocates actually practice.</p>
-      <div class="feature-grid">
+      <div class="feature-grid feature-grid-6">
+        <div class="feature-card" id="feat-ask">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h24v20H18l-6 6v-6H8V8z" stroke-linejoin="round"/><line x1="14" y1="16" x2="26" y2="16"/><line x1="14" y1="21" x2="22" y2="21"/></svg>
+          </div>
+          <h3>Ask a Question</h3>
+          <p>Chat with AI about any legal topic — get detailed answers with relevant statutes, case law, and practical guidance.</p>
+        </div>
         <div class="feature-card" id="feat-drafting">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="4" width="28" height="32" rx="3"/><line x1="12" y1="12" x2="28" y2="12"/><line x1="12" y1="18" x2="28" y2="18"/><line x1="12" y1="24" x2="22" y2="24"/><path d="M26 28l4-4-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Court-Ready Drafting</h3>
-          <p>AI generates SLPs for the Supreme Court, writ petitions under Articles 226 & 32, bail applications (including NDPS bail with Section 37 twin conditions), revenue appeals, and civil suits — all in proper court format.</p>
+          <h3>Draft Documents & Legal Notices</h3>
+          <p>Generate 25+ document types — SLPs, writs, bail, legal notices, written submissions, PIL, consumer complaints — all courts covered.</p>
         </div>
-        <div class="feature-card" id="feat-research">
+        <div class="feature-card" id="feat-caselaws">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="10"/><line x1="25" y1="25" x2="34" y2="34" stroke-linecap="round"/><line x1="14" y1="14" x2="22" y2="14"/><line x1="14" y1="18" x2="22" y2="18"/><line x1="14" y1="22" x2="18" y2="22"/></svg>
           </div>
-          <h3>AI Legal Research</h3>
-          <p>Suggest strongest legal grounds based on your facts. References BNS, BNSS, BSA (2023 statutes), IPC, CrPC, CPC, and special acts like NDPS, SC/ST Act, and Rent Control.</p>
+          <h3>Find Case Laws</h3>
+          <p>Enter your legal issue — AI finds relevant Supreme Court & High Court precedents with citations and legal principles.</p>
         </div>
-        <div class="feature-card" id="feat-ocr">
+        <div class="feature-card" id="feat-analyze">
           <div class="feature-icon">
             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="20" height="28" rx="2"/><path d="M28 12h6v22a2 2 0 01-2 2H10"/><circle cx="14" cy="20" r="4"/><line x1="10" y1="28" x2="18" y2="28"/></svg>
           </div>
-          <h3>Document Intelligence</h3>
-          <p>Summarize Supreme Court & High Court judgments, extract key orders, identify deadlines, and explain complex legal clauses in plain English — instantly.</p>
+          <h3>Analyze Case / Chargesheet</h3>
+          <p>Upload any FIR, chargesheet, judgment, or court order — AI extracts parties, issues, applicable law, and strategic notes.</p>
+        </div>
+        <div class="feature-card" id="feat-submissions">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="4" width="24" height="32" rx="2"/><line x1="14" y1="12" x2="26" y2="12"/><line x1="14" y1="17" x2="26" y2="17"/><line x1="14" y1="22" x2="26" y2="22"/><line x1="14" y1="27" x2="20" y2="27"/><path d="M4 8v28h28" stroke-dasharray="3 3"/></svg>
+          </div>
+          <h3>Write Submissions</h3>
+          <p>AI drafts comprehensive written arguments with statutory citations, case law, and proper Indian court format.</p>
+        </div>
+        <div class="feature-card" id="feat-summarize">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6h28v28H6z" rx="3"/><line x1="12" y1="14" x2="28" y2="14"/><line x1="12" y1="20" x2="24" y2="20"/><line x1="12" y1="26" x2="20" y2="26"/><circle cx="8" cy="14" r="1" fill="currentColor"/><circle cx="8" cy="20" r="1" fill="currentColor"/><circle cx="8" cy="26" r="1" fill="currentColor"/></svg>
+          </div>
+          <h3>Summarize & Explain</h3>
+          <p>Summarize Supreme Court & High Court judgments, extract key orders, and explain complex clauses in plain English.</p>
         </div>
       </div>
     </div>
@@ -290,11 +312,147 @@ function renderSecurity() {
   </section>`;
 }
 
+function renderLegalUpdates() {
+  const popularTopics = [
+    'Section 37 NDPS Act — Twin Conditions for Bail',
+    'Article 226 vs 227 — High Court Powers',
+    'Default Bail under Section 187 BNSS',
+    'Quashing under Section 528 BNSS / 482 CrPC',
+    'Anticipatory Bail under BNS/BNSS',
+    'Consumer Protection Act 2019 — Key Changes',
+    'IBC — CIRP Process and Timelines',
+    'Cheque Bounce — NI Act Section 138 Procedure',
+    'DV Act — Protection Orders and Remedies',
+    'Article 21 — Right to Life and Bail Jurisprudence',
+    'Land Revenue Appeals — AP & Telangana Procedure',
+    'Contempt of Courts Act — Civil vs Criminal Contempt'
+  ];
+
+  return `
+  <section class="page-hero" id="legal-updates-hero">
+    <div class="container">
+      <h1 class="page-hero-title">📰 Legal Updates & Digest</h1>
+      <p class="page-hero-sub">Enter any legal topic — get a comprehensive AI-generated digest with statutes, landmark judgments, recent developments, and practice tips.</p>
+    </div>
+  </section>
+
+  <section class="legal-updates-section" id="legal-updates-content">
+    <div class="container">
+      <div class="legal-updates-input-area">
+        <div class="form-group">
+          <label class="form-label" for="legal-topic-input">Enter Legal Topic</label>
+          <input class="form-input form-input-lg" id="legal-topic-input" placeholder="e.g. Section 37 NDPS Act twin conditions for bail, Article 226 vs 227 differences..." />
+        </div>
+        <button class="btn btn-primary btn-lg" id="btn-generate-update">
+          <span class="btn-icon">🔍</span> Generate Legal Digest
+        </button>
+      </div>
+
+      <div class="popular-topics">
+        <h3>Popular Topics</h3>
+        <div class="topics-grid">
+          ${popularTopics.map(t => `<button class="topic-chip" data-topic="${t}">${t}</button>`).join('')}
+        </div>
+      </div>
+
+      <div class="legal-update-loading" id="update-loading" style="display:none">
+        <div class="loading-spinner"></div>
+        <p>Generating legal digest...</p>
+      </div>
+
+      <div class="legal-update-result" id="update-result" style="display:none">
+        <div class="update-result-header">
+          <h3 id="update-result-title"></h3>
+          <div class="output-actions">
+            <button class="btn btn-outline btn-sm" id="btn-update-copy">Copy</button>
+            <button class="btn btn-outline btn-sm" id="btn-update-download">Download .txt</button>
+          </div>
+        </div>
+        <div class="update-result-body" id="update-result-body"></div>
+      </div>
+
+      <div class="ai-error" id="update-error" style="display:none">
+        <span class="error-icon">⚠️</span>
+        <p class="error-text" id="update-error-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer-banner" id="updates-disclaimer">
+    <div class="container">
+      <p><strong>⚠️ AI-Generated Content:</strong> Legal updates are generated by AI and may not reflect the most recent developments. Always verify with primary sources before relying on this information.</p>
+    </div>
+  </section>`;
+}
+
+function attachLegalUpdatesEvents() {
+  const input = document.getElementById('legal-topic-input');
+  const btn = document.getElementById('btn-generate-update');
+  const loading = document.getElementById('update-loading');
+  const result = document.getElementById('update-result');
+  const resultTitle = document.getElementById('update-result-title');
+  const resultBody = document.getElementById('update-result-body');
+  const error = document.getElementById('update-error');
+  const errorText = document.getElementById('update-error-text');
+
+  async function generateUpdate(topic) {
+    if (!topic) {
+      error.style.display = 'flex';
+      errorText.textContent = 'Please enter a legal topic.';
+      return;
+    }
+    error.style.display = 'none';
+    result.style.display = 'none';
+    loading.style.display = 'flex';
+    try {
+      const output = await generateLegalUpdate(topic);
+      loading.style.display = 'none';
+      resultTitle.textContent = `Legal Digest: ${topic}`;
+      resultBody.textContent = output;
+      result.style.display = 'block';
+    } catch (err) {
+      loading.style.display = 'none';
+      error.style.display = 'flex';
+      errorText.textContent = err.message;
+    }
+  }
+
+  btn?.addEventListener('click', () => generateUpdate(input?.value));
+
+  // Topic chips
+  document.querySelectorAll('.topic-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      input.value = chip.dataset.topic;
+      generateUpdate(chip.dataset.topic);
+    });
+  });
+
+  // Copy & Download
+  document.getElementById('btn-update-copy')?.addEventListener('click', () => {
+    const text = resultBody?.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const b = document.getElementById('btn-update-copy');
+      b.textContent = 'Copied!';
+      setTimeout(() => { b.textContent = 'Copy'; }, 2000);
+    });
+  });
+
+  document.getElementById('btn-update-download')?.addEventListener('click', () => {
+    const text = resultBody?.innerText;
+    const blob = new Blob([text], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `nyayavedika-legal-digest-${Date.now()}.txt`;
+    a.click();
+  });
+}
+
 /* ─── Navigation ─── */
 function renderNav(currentPage) {
   const links = [
     { hash: '', label: 'Home' },
     { hash: 'drafting', label: '⚡ AI Drafting' },
+    { hash: 'legal-updates', label: '📰 Legal Updates' },
     { hash: 'how-it-works', label: 'How It Works' },
     { hash: 'for-advocates', label: 'For Advocates' },
     { hash: 'security', label: 'Security & Legal' }
@@ -333,6 +491,7 @@ function renderFooter() {
         <div class="footer-col">
           <h4>Product</h4>
           <a href="#drafting">AI Drafting</a>
+          <a href="#legal-updates">Legal Updates</a>
           <a href="#how-it-works">How It Works</a>
           <a href="#for-advocates">For Advocates</a>
         </div>
@@ -359,11 +518,12 @@ function renderFooter() {
 
 /* ─── Routing ─── */
 const routes = {
-  '':              renderHome,
-  'drafting':      renderDrafting,
-  'how-it-works':  renderHowItWorks,
-  'for-advocates': renderForAdvocates,
-  'security':      renderSecurity
+  '':               renderHome,
+  'drafting':       renderDrafting,
+  'legal-updates':  renderLegalUpdates,
+  'how-it-works':   renderHowItWorks,
+  'for-advocates':  renderForAdvocates,
+  'security':       renderSecurity
 };
 
 function getPage() {
@@ -379,6 +539,11 @@ function render() {
   // Mount AI panel if on drafting page
   if (page === 'drafting') {
     mountDraftingPanel('ai-panel-mount');
+  }
+
+  // Mount legal updates handler
+  if (page === 'legal-updates') {
+    attachLegalUpdatesEvents();
   }
 
   // Mobile nav toggle

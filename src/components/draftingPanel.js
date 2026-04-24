@@ -1,10 +1,15 @@
 /**
  * NyayaVedika — AI Drafting Panel
  * Drop-in UI component for AI-powered document generation
+ * 7 tabs matching Supreme Today AI feature set
  * Mounts into any container via mountDraftingPanel(containerId)
  */
 
-import { draftDocument, suggestGrounds, summarizeDocument, explainClause, abortActiveRequest } from '../services/aiService.js';
+import {
+  draftDocument, suggestGrounds, summarizeDocument, explainClause,
+  askQuestion, analyzeCase, findCaseLaws, writeSubmission,
+  abortActiveRequest
+} from '../services/aiService.js';
 
 const DOC_TYPES = [
   'Bail Application',
@@ -22,21 +27,70 @@ const DOC_TYPES = [
   'Mutation Application',
   'Interlocutory Application (IA)',
   'Contempt Petition',
+  'Legal Notice (Demand / Eviction / Breach)',
+  'Reply to Legal Notice',
+  'Written Submission / Written Arguments',
+  'PIL (Public Interest Litigation)',
+  'Habeas Corpus Petition',
+  'Consumer Complaint',
+  'Cheque Bounce Complaint (NI Act 138)',
+  'Divorce Petition',
+  'DV Act Application',
+  'Rent Control Application',
 ];
 
 const COURTS = [
+  // Supreme Court
   'Supreme Court of India',
+  // High Courts — all 25
   'High Court of Andhra Pradesh',
   'High Court of Telangana',
+  'Allahabad High Court',
   'Bombay High Court',
+  'Calcutta High Court',
+  'Chhattisgarh High Court',
   'Delhi High Court',
+  'Gauhati High Court',
+  'Gujarat High Court',
+  'Himachal Pradesh High Court',
+  'Jammu & Kashmir High Court',
+  'Jharkhand High Court',
+  'Karnataka High Court',
+  'Kerala High Court',
+  'Madhya Pradesh High Court',
+  'Madras High Court',
+  'Manipur High Court',
+  'Meghalaya High Court',
+  'Nagpur Bench (Bombay HC)',
+  'Orissa High Court',
+  'Patna High Court',
+  'Punjab & Haryana High Court',
+  'Rajasthan High Court',
+  'Sikkim High Court',
+  'Tripura High Court',
+  'Uttarakhand High Court',
+  // District Courts
   'District & Sessions Court',
   'Civil Judge (Senior Division)',
-  'Revenue Divisional Officer (RDO)',
-  'Tahsildar Office',
   'First Class Judicial Magistrate',
   'Metropolitan Magistrate Court',
+  // Revenue Authorities
+  'Revenue Divisional Officer (RDO)',
+  'Tahsildar Office',
+  'Joint Collector',
+  // Tribunals
   'National Consumer Disputes Redressal Commission (NCDRC)',
+  'State Consumer Disputes Redressal Commission',
+  'District Consumer Forum',
+  'National Company Law Tribunal (NCLT)',
+  'National Company Law Appellate Tribunal (NCLAT)',
+  'Income Tax Appellate Tribunal (ITAT)',
+  'Central Administrative Tribunal (CAT)',
+  'National Green Tribunal (NGT)',
+  'Real Estate Regulatory Authority (RERA)',
+  'Debt Recovery Tribunal (DRT)',
+  'SEBI - Securities Appellate Tribunal (SAT)',
+  'Customs Excise & Service Tax Appellate Tribunal (CESTAT)',
 ];
 
 export function mountDraftingPanel(containerId) {
@@ -53,8 +107,8 @@ function getPanelHTML() {
   <div class="ai-panel-header">
     <span class="ai-panel-icon">◈</span>
     <div>
-      <h2 class="ai-panel-title">AI Drafting Assistant</h2>
-      <p class="ai-panel-sub">Generate court-ready documents in minutes</p>
+      <h2 class="ai-panel-title">NyayaVedika AI</h2>
+      <p class="ai-panel-sub">AI-powered legal drafting, research & analysis</p>
     </div>
     <span class="ai-status" id="ai-status-indicator">
       <span class="status-dot"></span> Ready
@@ -62,14 +116,31 @@ function getPanelHTML() {
   </div>
 
   <div class="ai-tabs" role="tablist" aria-label="AI tools" id="ai-tabs">
-    <button class="ai-tab active" data-tab="draft" role="tab" aria-selected="true" aria-controls="tab-draft" id="tab-btn-draft">Draft Document</button>
-    <button class="ai-tab" data-tab="grounds" role="tab" aria-selected="false" aria-controls="tab-grounds" id="tab-btn-grounds">Suggest Grounds</button>
-    <button class="ai-tab" data-tab="summarize" role="tab" aria-selected="false" aria-controls="tab-summarize" id="tab-btn-summarize">Summarize Doc</button>
-    <button class="ai-tab" data-tab="explain" role="tab" aria-selected="false" aria-controls="tab-explain" id="tab-btn-explain">Explain Clause</button>
+    <button class="ai-tab active" data-tab="ask" role="tab" aria-selected="true" aria-controls="tab-ask" id="tab-btn-ask">💬 Ask AI</button>
+    <button class="ai-tab" data-tab="draft" role="tab" aria-selected="false" aria-controls="tab-draft" id="tab-btn-draft">📄 Draft</button>
+    <button class="ai-tab" data-tab="caselaws" role="tab" aria-selected="false" aria-controls="tab-caselaws" id="tab-btn-caselaws">🔍 Case Laws</button>
+    <button class="ai-tab" data-tab="analyze" role="tab" aria-selected="false" aria-controls="tab-analyze" id="tab-btn-analyze">📋 Analyze</button>
+    <button class="ai-tab" data-tab="grounds" role="tab" aria-selected="false" aria-controls="tab-grounds" id="tab-btn-grounds">⚖️ Grounds</button>
+    <button class="ai-tab" data-tab="summarize" role="tab" aria-selected="false" aria-controls="tab-summarize" id="tab-btn-summarize">📑 Summarize</button>
+    <button class="ai-tab" data-tab="explain" role="tab" aria-selected="false" aria-controls="tab-explain" id="tab-btn-explain">💡 Explain</button>
+  </div>
+
+  <!-- TAB: Ask AI -->
+  <div class="ai-tab-content active" id="tab-ask" role="tabpanel" aria-labelledby="tab-btn-ask">
+    <div class="ask-ai-intro">
+      <p>Ask any legal question — get detailed answers with relevant statutes, case law, and practical guidance.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Legal Question</label>
+      <textarea class="form-textarea" id="ask-question" rows="5" placeholder="e.g. What are the twin conditions for bail under Section 37 of NDPS Act? How does Article 21 apply to bail cases?"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block mt-20" id="btn-ask">
+      <span class="btn-icon">💬</span> Ask NyayaVedika AI
+    </button>
   </div>
 
   <!-- TAB: Draft Document -->
-  <div class="ai-tab-content active" id="tab-draft" role="tabpanel" aria-labelledby="tab-btn-draft">
+  <div class="ai-tab-content" id="tab-draft" role="tabpanel" aria-labelledby="tab-btn-draft">
     <div class="form-grid">
       <div class="form-group">
         <label class="form-label">Document Type</label>
@@ -107,6 +178,38 @@ function getPanelHTML() {
     </button>
   </div>
 
+  <!-- TAB: Find Case Laws -->
+  <div class="ai-tab-content" id="tab-caselaws" role="tabpanel" aria-labelledby="tab-btn-caselaws">
+    <div class="ask-ai-intro">
+      <p>Enter a legal topic or issue — AI will find and explain the most relevant Supreme Court & High Court precedents.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Legal Topic / Issue</label>
+      <input class="form-input" id="caselaws-topic" placeholder="e.g. Section 37 NDPS Act twin conditions for bail" />
+    </div>
+    <div class="form-group mt-16">
+      <label class="form-label">Case Facts (optional)</label>
+      <textarea class="form-textarea" id="caselaws-facts" rows="4" placeholder="Add your specific case facts for more relevant results..."></textarea>
+    </div>
+    <button class="btn btn-primary btn-block mt-20" id="btn-caselaws">
+      <span class="btn-icon">🔍</span> Find Relevant Case Laws
+    </button>
+  </div>
+
+  <!-- TAB: Analyze Case -->
+  <div class="ai-tab-content" id="tab-analyze" role="tabpanel" aria-labelledby="tab-btn-analyze">
+    <div class="ask-ai-intro">
+      <p>Paste any case material — chargesheet, judgment, FIR, order — and get a comprehensive AI analysis with parties, issues, applicable law, and strategy.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Paste Case Material</label>
+      <textarea class="form-textarea" id="analyze-text" rows="10" placeholder="Paste the full text of an FIR, chargesheet, judgment, court order, or any case document..."></textarea>
+    </div>
+    <button class="btn btn-primary btn-block mt-20" id="btn-analyze">
+      <span class="btn-icon">📋</span> Analyze Case
+    </button>
+  </div>
+
   <!-- TAB: Suggest Grounds -->
   <div class="ai-tab-content" id="tab-grounds" role="tabpanel" aria-labelledby="tab-btn-grounds">
     <div class="form-group">
@@ -132,7 +235,7 @@ function getPanelHTML() {
       <textarea class="form-textarea" id="summary-text" rows="10" placeholder="Paste the text of a judgment, order, deed, or any legal document..."></textarea>
     </div>
     <button class="btn btn-primary btn-block mt-20" id="btn-summarize">
-      <span class="btn-icon">📋</span> Summarize Document
+      <span class="btn-icon">📑</span> Summarize Document
     </button>
   </div>
 
@@ -193,6 +296,13 @@ function attachPanelEvents(container) {
     });
   });
 
+  // Ask AI
+  document.getElementById('btn-ask')?.addEventListener('click', async () => {
+    const question = document.getElementById('ask-question')?.value;
+    if (!question) { showError('Please enter a legal question.'); return; }
+    await runAI('Analyzing your question...', () => askQuestion(question));
+  });
+
   // Draft Document
   document.getElementById('btn-draft')?.addEventListener('click', async () => {
     const params = {
@@ -208,6 +318,21 @@ function attachPanelEvents(container) {
       return;
     }
     await runAI('Generating draft petition...', () => draftDocument(params));
+  });
+
+  // Find Case Laws
+  document.getElementById('btn-caselaws')?.addEventListener('click', async () => {
+    const topic = document.getElementById('caselaws-topic')?.value;
+    const facts = document.getElementById('caselaws-facts')?.value;
+    if (!topic) { showError('Please enter a legal topic or issue.'); return; }
+    await runAI('Searching for relevant case laws...', () => findCaseLaws(topic, facts));
+  });
+
+  // Analyze Case
+  document.getElementById('btn-analyze')?.addEventListener('click', async () => {
+    const text = document.getElementById('analyze-text')?.value;
+    if (!text) { showError('Please paste case material to analyze.'); return; }
+    await runAI('Analyzing case material...', () => analyzeCase(text));
   });
 
   // Suggest Grounds
