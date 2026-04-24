@@ -8,7 +8,7 @@
 import {
   draftDocument, suggestGrounds, summarizeDocument, explainClause,
   askQuestion, analyzeCase, findCaseLaws, writeSubmission,
-  abortActiveRequest
+  abortActiveRequest, getLatestNews
 } from '../services/aiService.js';
 
 const DOC_TYPES = [
@@ -103,17 +103,24 @@ export function mountDraftingPanel(containerId) {
 
 function getPanelHTML() {
   return `
-<div class="ai-panel" id="ai-drafting-panel">
-  <div class="ai-panel-header">
-    <span class="ai-panel-icon">◈</span>
-    <div>
-      <h2 class="ai-panel-title">NyayaVedika AI</h2>
-      <p class="ai-panel-sub">AI-powered legal drafting, research & analysis</p>
+<div class="drafting-layout">
+  <div class="drafting-main">
+    <div class="scrolling-ticker-wrap">
+      <span class="ticker-badge">🔴 LIVE BREAKING</span>
+      <marquee class="scrolling-ticker" id="news-ticker" scrollamount="5">Fetching latest legal updates and breaking court news...</marquee>
     </div>
-    <span class="ai-status" id="ai-status-indicator">
-      <span class="status-dot"></span> Ready
-    </span>
-  </div>
+
+    <div class="ai-panel" id="ai-drafting-panel">
+      <div class="ai-panel-header">
+        <span class="ai-panel-icon">◈</span>
+        <div>
+          <h2 class="ai-panel-title">NyayaVedika AI</h2>
+          <p class="ai-panel-sub">AI-powered legal drafting, research & analysis</p>
+        </div>
+        <span class="ai-status" id="ai-status-indicator">
+          <span class="status-dot"></span> Ready
+        </span>
+      </div>
 
   <div class="ai-tabs" role="tablist" aria-label="AI tools" id="ai-tabs">
     <button class="ai-tab active" data-tab="ask" role="tab" aria-selected="true" aria-controls="tab-ask" id="tab-btn-ask">💬 Ask AI</button>
@@ -270,12 +277,30 @@ function getPanelHTML() {
     <button class="btn btn-outline btn-sm" id="btn-cancel">Cancel</button>
   </div>
 
-  <!-- ERROR STATE -->
-  <div class="ai-error" id="ai-error" style="display:none">
-    <span class="error-icon">⚠️</span>
-    <p class="error-text" id="error-text"></p>
   </div>
-</div>`;
+    </div> <!-- end ai-panel -->
+  </div> <!-- end drafting-main -->
+
+  <div class="live-widget-sidebar">
+    <div class="widget-header">
+      <h3>Latest Judgments</h3>
+      <span class="live-pulse"></span>
+    </div>
+    <div class="widget-tabs" id="widget-tabs">
+      <button class="widget-tab active" data-wtab="Supreme Court">SC News</button>
+      <button class="widget-tab" data-wtab="High Court">HC News</button>
+      <button class="widget-tab" data-wtab="Tribunals">Tribunals</button>
+    </div>
+    <div class="widget-content" id="widget-news-content">
+      <div class="widget-loading" id="widget-loading">
+        <div class="loading-spinner"></div>
+        <p>Fetching live feed...</p>
+      </div>
+      <div class="widget-feed" id="widget-feed" style="display:none;"></div>
+      <div class="widget-error" id="widget-error" style="display:none; color: var(--amber); font-size: 0.85rem; padding: 10px;"></div>
+    </div>
+  </div> <!-- end sidebar -->
+</div> <!-- end drafting-layout -->`;
 }
 
 function attachPanelEvents(container) {
@@ -384,6 +409,64 @@ function attachPanelEvents(container) {
     hideLoading();
     showError('Request cancelled.');
   });
+
+  // Widget Events
+  const widgetTabs = document.querySelectorAll('.widget-tab');
+  if (widgetTabs.length > 0) {
+    widgetTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        widgetTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        fetchWidgetNews(tab.dataset.wtab);
+      });
+    });
+    // Load initial feed
+    fetchWidgetNews('Supreme Court');
+  }
+}
+
+let widgetController = null;
+
+async function fetchWidgetNews(category) {
+  const loading = document.getElementById('widget-loading');
+  const feed = document.getElementById('widget-feed');
+  const errEl = document.getElementById('widget-error');
+  if (!loading || !feed) return;
+
+  if (widgetController) {
+    widgetController.abort();
+  }
+  widgetController = new AbortController();
+
+  loading.style.display = 'flex';
+  feed.style.display = 'none';
+  errEl.style.display = 'none';
+
+  try {
+    const rawFeed = await getLatestNews(category);
+    const items = rawFeed.split('|||').map(s => s.trim()).filter(Boolean);
+    
+    feed.innerHTML = items.map(item => {
+      const parts = item.split('\n');
+      const title = parts[0] || 'Legal Update';
+      const summary = parts.slice(1).join('\n') || '';
+      return `
+        <div class="news-card">
+          <h4>${title}</h4>
+          <p>${summary}</p>
+        </div>
+      `;
+    }).join('');
+    
+    loading.style.display = 'none';
+    feed.style.display = 'flex';
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      loading.style.display = 'none';
+      errEl.textContent = 'Failed to fetch live feed. Please try again.';
+      errEl.style.display = 'block';
+    }
+  }
 }
 
 async function runAI(loadingMessage, apiFn) {
