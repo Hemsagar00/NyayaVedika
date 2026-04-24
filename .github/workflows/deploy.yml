@@ -5,12 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Environment maps to: Settings > Environments > NyayaVedika
-environment: NyayaVedika
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    # Environment maps to: Settings > Environments > NyayaVedika
+    environment: NyayaVedika
 
     steps:
       - name: Checkout
@@ -28,7 +27,9 @@ jobs:
       - name: Build
         env:
           # These secrets are set in GitHub → Settings → Environments → NyayaVedika
-          VITE_AI_PROVIDER: ${{ vars.VITE_AI_PROVIDER || 'anthropic' }}
+          VITE_AI_PROVIDER: ${{ vars.VITE_AI_PROVIDER || 'nvidia' }}
+          VITE_NVIDIA_API_KEY: ${{ secrets.VITE_NVIDIA_API_KEY }}
+          VITE_DEEPSEEK_API_KEY: ${{ secrets.VITE_DEEPSEEK_API_KEY }}
           VITE_ANTHROPIC_API_KEY: ${{ secrets.VITE_ANTHROPIC_API_KEY }}
           VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
           VITE_APP_ENV: production
