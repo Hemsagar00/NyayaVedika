@@ -7,3 +7,5 @@ Thumbs.db
 .env.local
 .env.production
 .vite/
+
+.vercel
