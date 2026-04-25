@@ -440,10 +440,12 @@ function attachLegalUpdatesEvents() {
   document.getElementById('btn-update-download')?.addEventListener('click', () => {
     const text = resultBody?.innerText;
     const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    a.href = url;
     a.download = `nyayavedika-legal-digest-${Date.now()}.txt`;
     a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 }
 
