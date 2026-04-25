@@ -5,7 +5,7 @@
 **AI-Powered Drafting for Indian Advocates**  
 _Generate court-ready pleadings in minutes — free & unlimited_
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-nyayavedika.com-0052cc?style=for-the-badge)](https://nyayavedika.in)
+[![Live Site](https://img.shields.io/badge/Live%20Site-nyayavedika.in-0052cc?style=for-the-badge)](https://nyayavedika.in)
 [![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vercel.com)
 
 </div>
