@@ -8,8 +8,8 @@
 // --- Provider configurations ---
 const PROVIDERS = {
   lmstudio: {
-    url: 'http://localhost:1234/v1/chat/completions',
-    model: 'local-model',
+    url: 'http://192.168.1.11:1234/v1/chat/completions',
+    model: 'google/gemma-4-e4b',
     getKey: () => import.meta.env.VITE_LMSTUDIO_API_KEY || 'lm-studio',
   },
   nvidia: {
