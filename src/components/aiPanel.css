@@ -307,6 +307,19 @@
   font-size: 0.85rem;
   color: var(--text-dim);
   font-family: var(--font);
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.ticker-track {
+  display: inline-block;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
 .live-widget-sidebar {

@@ -114,7 +114,7 @@ function getPanelHTML() {
   <div class="drafting-main">
     <div class="scrolling-ticker-wrap">
       <span class="ticker-badge">🔴 LIVE BREAKING</span>
-      <marquee class="scrolling-ticker" id="news-ticker" scrollamount="5">Fetching latest legal updates and breaking court news...</marquee>
+      <div class="scrolling-ticker" id="news-ticker"><div class="ticker-track">Fetching latest legal updates and breaking court news...</div></div>
     </div>
 
     <div class="ai-panel" id="ai-drafting-panel">
@@ -277,6 +277,12 @@ function getPanelHTML() {
     <div class="output-body" id="output-body"></div>
   </div>
 
+  <!-- ERROR STATE -->
+  <div class="ai-error" id="ai-error" style="display:none" role="alert">
+    <span class="error-icon">&#x26A0;&#xFE0F;</span>
+    <p class="error-text" id="error-text"></p>
+  </div>
+
   <!-- LOADING STATE -->
   <div class="ai-loading" id="ai-loading" style="display:none" role="status" aria-live="polite">
     <div class="loading-spinner" aria-hidden="true"></div>
@@ -420,7 +426,7 @@ function attachPanelEvents(container) {
   });
 
   // Widget Events
-  const widgetTabs = document.querySelectorAll('.widget-tab');
+  const widgetTabs = container.querySelectorAll('.widget-tab');
   if (widgetTabs.length > 0) {
     widgetTabs.forEach(tab => {
       tab.addEventListener('click', () => {

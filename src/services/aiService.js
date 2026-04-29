@@ -7,6 +7,11 @@
 
 // --- Provider configurations ---
 const PROVIDERS = {
+  lmstudio: {
+    url: 'http://localhost:1234/v1/chat/completions',
+    model: 'local-model',
+    getKey: () => import.meta.env.VITE_LMSTUDIO_API_KEY || 'lm-studio',
+  },
   nvidia: {
     url: 'https://integrate.api.nvidia.com/v1/chat/completions',
     model: 'meta/llama-3.1-70b-instruct',
@@ -32,8 +37,8 @@ const PROVIDERS = {
   },
 };
 
-// Active provider — switch by changing this or via env var VITE_AI_PROVIDER
-const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'nvidia';
+// Active provider — defaults to lmstudio for local dev, nvidia for production
+const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || (import.meta.env.PROD ? 'nvidia' : 'lmstudio');
 
 // Abort controller for cancelling in-flight requests
 let activeController = null;
