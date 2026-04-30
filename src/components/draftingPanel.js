@@ -10,6 +10,13 @@ import {
   askQuestion, analyzeCase, findCaseLaws, writeSubmission,
   abortActiveRequest, getLatestNews
 } from '../services/aiService.js';
+import {
+  getDraftHistory, saveDraftToHistory, deleteDraftFromHistory,
+  getSnippets, saveSnippet, deleteSnippet,
+  getFavorites, toggleFavorite,
+  getChatHistory, saveChatMessage, clearChatHistory,
+} from '../services/storage.js';
+import { exportDocument } from '../services/docxExport.js';
 
 // HTML escape utility to prevent XSS
 function escapeHTML(str) {
@@ -139,18 +146,34 @@ function getPanelHTML() {
     <button class="ai-tab" data-tab="explain" role="tab" aria-selected="false" aria-controls="tab-explain" id="tab-btn-explain">💡 Explain</button>
   </div>
 
-  <!-- TAB: Ask AI -->
+  <!-- Favorites Quick-Access Bar -->
+  <div class="favorites-bar" id="favorites-bar" style="display:none">
+    <span class="favorites-label">⭐ Quick Access:</span>
+    <div class="favorites-list" id="favorites-list"></div>
+  </div>
+
+  <!-- TAB: Ask AI (Chat-style) -->
   <div class="ai-tab-content active" id="tab-ask" role="tabpanel" aria-labelledby="tab-btn-ask">
-    <div class="ask-ai-intro">
-      <p>Ask any legal question — get detailed answers with relevant statutes, case law, and practical guidance.</p>
+    <div class="chat-container" id="chat-container">
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg assistant">
+          <div class="chat-avatar">◈</div>
+          <div class="chat-bubble">
+            <p>Welcome to NyayaVedika AI. Ask me any legal question — I'll provide detailed answers with relevant statutes, case law, and practical guidance under Indian law.</p>
+            <p class="chat-hint">Try: <em>"What are the twin conditions for bail under Section 37 NDPS Act?"</em> or <em>"Explain Article 226 vs 227"</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chat-input" rows="2" placeholder="Ask a legal question..." aria-label="Type your legal question"></textarea>
+        <div class="chat-actions">
+          <button class="btn btn-outline btn-sm" id="btn-chat-clear" title="Clear chat">Clear</button>
+          <button class="btn btn-primary btn-sm" id="btn-chat-send">
+            <span class="btn-icon">💬</span> Send <small>(Ctrl+Enter)</small>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Your Legal Question</label>
-      <textarea class="form-textarea" id="ask-question" rows="5" placeholder="e.g. What are the twin conditions for bail under Section 37 of NDPS Act? How does Article 21 apply to bail cases?"></textarea>
-    </div>
-    <button class="btn btn-primary btn-block mt-20" id="btn-ask">
-      <span class="btn-icon">💬</span> Ask NyayaVedika AI
-    </button>
   </div>
 
   <!-- TAB: Draft Document -->
@@ -270,7 +293,10 @@ function getPanelHTML() {
       <span class="output-title">Generated Output</span>
       <div class="output-actions">
         <button class="btn btn-outline btn-sm" id="btn-copy">Copy</button>
-        <button class="btn btn-outline btn-sm" id="btn-download">Download .txt</button>
+        <button class="btn btn-outline btn-sm" id="btn-download-txt">Save .txt</button>
+        <button class="btn btn-outline btn-sm" id="btn-download-doc">Save .doc</button>
+        <button class="btn btn-outline btn-sm" id="btn-download-docx">Save .docx</button>
+        <button class="btn btn-outline btn-sm" id="btn-save-snippet" title="Save as snippet">☆ Save</button>
         <button class="btn btn-outline btn-sm" id="btn-clear">Clear</button>
       </div>
     </div>
@@ -290,8 +316,34 @@ function getPanelHTML() {
     <button class="btn btn-outline btn-sm" id="btn-cancel">Cancel</button>
   </div>
 
+  <!-- SNIPPETS MODAL -->
+  <div class="snippets-panel" id="snippets-panel" style="display:none">
+    <div class="snippets-header">
+      <h3>📋 Saved Snippets</h3>
+      <button class="btn btn-outline btn-sm" id="btn-snippets-close">✕</button>
+    </div>
+    <div class="snippets-list" id="snippets-list">
+      <p class="snippets-empty">No snippets saved yet. Save generated outputs or frequently used text as snippets for quick reuse.</p>
+    </div>
+  </div>
+
+  <!-- HISTORY PANEL -->
+  <div class="history-panel" id="history-panel" style="display:none">
+    <div class="history-header">
+      <h3>📜 Draft History</h3>
+      <button class="btn btn-outline btn-sm" id="btn-history-close">✕</button>
+    </div>
+    <div class="history-list" id="history-list">
+      <p class="history-empty">No drafts generated yet. Your generated documents will appear here.</p>
+    </div>
+  </div>
+
   </div>
     </div> <!-- end ai-panel -->
+    <div class="panel-side-actions">
+      <button class="btn btn-outline btn-sm" id="btn-show-history" title="Draft History">📜 History</button>
+      <button class="btn btn-outline btn-sm" id="btn-show-snippets" title="Saved Snippets">📋 Snippets</button>
+    </div>
   </div> <!-- end drafting-main -->
 
   <div class="live-widget-sidebar">
@@ -334,12 +386,68 @@ function attachPanelEvents(container) {
     });
   });
 
-  // Ask AI
-  document.getElementById('btn-ask')?.addEventListener('click', async () => {
-    const question = document.getElementById('ask-question')?.value;
-    if (!question) { showError('Please enter a legal question.'); return; }
-    await runAI('Analyzing your question...', () => askQuestion(question));
+  // Chat-style Ask AI
+  function addChatMessage(role, content) {
+    const msgs = document.getElementById('chat-messages');
+    if (!msgs) return;
+    const isUser = role === 'user';
+    const div = document.createElement('div');
+    div.className = `chat-msg ${role}`;
+    div.innerHTML = isUser
+      ? `<div class="chat-bubble user-bubble">${escapeHTML(content)}</div><div class="chat-avatar user-avatar">👤</div>`
+      : `<div class="chat-avatar">◈</div><div class="chat-bubble">${content.replace(/\n/g, '<br>')}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function loadChatHistory() {
+    const msgs = document.getElementById('chat-messages');
+    if (!msgs) return;
+    const history = getChatHistory();
+    msgs.innerHTML = '';
+    if (history.length === 0) {
+      msgs.innerHTML = `<div class="chat-msg assistant">
+        <div class="chat-avatar">◈</div>
+        <div class="chat-bubble">
+          <p>Welcome to NyayaVedika AI. Ask me any legal question — I'll provide detailed answers with relevant statutes, case law, and practical guidance under Indian law.</p>
+          <p class="chat-hint">Try: <em>"What are the twin conditions for bail under Section 37 NDPS Act?"</em> or <em>"Explain Article 226 vs 227"</em></p>
+        </div>
+      </div>`;
+      return;
+    }
+    history.forEach(h => addChatMessage(h.role, h.content));
+  }
+
+  async function sendChatMessage() {
+    const input = document.getElementById('chat-input');
+    const question = input?.value?.trim();
+    if (!question) return;
+    input.value = '';
+    addChatMessage('user', question);
+    saveChatMessage('user', question);
+
+    hideError();
+    showLoading('Analyzing...');
+    try {
+      const result = await askQuestion(question);
+      hideLoading();
+      addChatMessage('assistant', result);
+      saveChatMessage('assistant', result);
+    } catch (err) {
+      hideLoading();
+      showError(err.message);
+    }
+  }
+
+  document.getElementById('btn-chat-send')?.addEventListener('click', sendChatMessage);
+
+  document.getElementById('btn-chat-clear')?.addEventListener('click', () => {
+    clearChatHistory();
+    loadChatHistory();
   });
+
+  // Load chat history on init
+  loadChatHistory();
 
   // Draft Document
   document.getElementById('btn-draft')?.addEventListener('click', async () => {
@@ -355,7 +463,11 @@ function attachPanelEvents(container) {
       showError('Please fill in Document Type, Court, Petitioner, and Facts.');
       return;
     }
-    await runAI('Generating draft petition...', () => draftDocument(params));
+    await runAI('Generating draft petition...', () => draftDocument(params), {
+      title: `${params.docType} — ${params.petitioner}`,
+      type: params.docType,
+      court: params.court,
+    });
   });
 
   // Find Case Laws
@@ -395,9 +507,17 @@ function attachPanelEvents(container) {
     await runAI('Analyzing clause...', () => explainClause(clause));
   });
 
+  // Shared output reference
+  let lastGeneratedContent = '';
+  let lastGeneratedTitle = '';
+
   // Output actions
+  function getOutputContent() {
+    return document.getElementById('output-body')?.innerText || '';
+  }
+
   document.getElementById('btn-copy')?.addEventListener('click', () => {
-    const text = document.getElementById('output-body')?.innerText;
+    const text = getOutputContent();
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById('btn-copy');
       btn.textContent = 'Copied!';
@@ -405,15 +525,28 @@ function attachPanelEvents(container) {
     });
   });
 
-  document.getElementById('btn-download')?.addEventListener('click', () => {
-    const text = document.getElementById('output-body')?.innerText;
-    const blob = new Blob([text], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `nyayavedika-draft-${Date.now()}.txt`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  document.getElementById('btn-download-txt')?.addEventListener('click', () => {
+    exportDocument(getOutputContent(), 'txt', `nyayavedika-draft-${Date.now()}`);
+  });
+
+  document.getElementById('btn-download-doc')?.addEventListener('click', () => {
+    exportDocument(getOutputContent(), 'doc', `nyayavedika-draft-${Date.now()}`);
+  });
+
+  document.getElementById('btn-download-docx')?.addEventListener('click', () => {
+    // .docx uses the same HTML-wrapper approach (Word opens it)
+    exportDocument(getOutputContent(), 'doc', `nyayavedika-draft-${Date.now()}`);
+  });
+
+  document.getElementById('btn-save-snippet')?.addEventListener('click', () => {
+    const content = getOutputContent();
+    if (!content) return;
+    const title = prompt('Snippet title:', lastGeneratedTitle || 'My Snippet');
+    if (!title) return;
+    saveSnippet({ title, content, category: 'Generated' });
+    const btn = document.getElementById('btn-save-snippet');
+    btn.textContent = '✓ Saved';
+    setTimeout(() => { btn.textContent = '☆ Save'; }, 2000);
   });
 
   document.getElementById('btn-clear')?.addEventListener('click', hideOutput);
@@ -423,6 +556,245 @@ function attachPanelEvents(container) {
     abortActiveRequest();
     hideLoading();
     showError('Request cancelled.');
+  });
+
+  // ─── History Panel ───
+  function renderHistory() {
+    const list = document.getElementById('history-list');
+    if (!list) return;
+    const history = getDraftHistory();
+    if (history.length === 0) {
+      list.innerHTML = '<p class="history-empty">No drafts generated yet. Your generated documents will appear here.</p>';
+      return;
+    }
+    list.innerHTML = history.map(d => `
+      <div class="history-item">
+        <div class="history-item-info">
+          <strong>${escapeHTML(d.title)}</strong>
+          <span class="history-meta">${escapeHTML(d.type || 'Draft')} ${d.court ? '· ' + escapeHTML(d.court) : ''}</span>
+          <span class="history-date">${new Date(d.timestamp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+        </div>
+        <div class="history-item-actions">
+          <button class="btn btn-outline btn-sm history-load" data-id="${d.id}">Load</button>
+          <button class="btn btn-outline btn-sm history-delete" data-id="${d.id}" style="color:var(--red);border-color:rgba(239,68,68,0.2)">✕</button>
+        </div>
+      </div>
+    `).join('');
+
+    // Attach load/delete handlers
+    list.querySelectorAll('.history-load').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.id);
+        const draft = getDraftHistory().find(d => d.id === id);
+        if (draft) {
+          lastGeneratedContent = draft.content;
+          lastGeneratedTitle = draft.title;
+          showOutput(draft.content);
+          document.getElementById('history-panel').style.display = 'none';
+        }
+      });
+    });
+    list.querySelectorAll('.history-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.id);
+        deleteDraftFromHistory(id);
+        renderHistory();
+      });
+    });
+  }
+
+  document.getElementById('btn-show-history')?.addEventListener('click', () => {
+    const panel = document.getElementById('history-panel');
+    const isVisible = panel?.style.display === 'block';
+    if (panel) panel.style.display = isVisible ? 'none' : 'block';
+    if (!isVisible) renderHistory();
+    // Hide snippets if open
+    const sp = document.getElementById('snippets-panel');
+    if (sp) sp.style.display = 'none';
+  });
+
+  document.getElementById('btn-history-close')?.addEventListener('click', () => {
+    const panel = document.getElementById('history-panel');
+    if (panel) panel.style.display = 'none';
+  });
+
+  // ─── Snippets Panel ───
+  function renderSnippets() {
+    const list = document.getElementById('snippets-list');
+    if (!list) return;
+    const snippets = getSnippets();
+    if (snippets.length === 0) {
+      list.innerHTML = '<p class="snippets-empty">No snippets saved yet. Save generated outputs or frequently used text as snippets for quick reuse.</p>';
+      return;
+    }
+    list.innerHTML = snippets.map(s => `
+      <div class="snippet-item">
+        <div class="snippet-item-info">
+          <strong>${escapeHTML(s.title)}</strong>
+          <span class="snippet-category">${escapeHTML(s.category)}</span>
+          <span class="snippet-preview">${escapeHTML(s.content.substring(0, 120))}...</span>
+        </div>
+        <div class="snippet-item-actions">
+          <button class="btn btn-outline btn-sm snippet-insert" data-id="${s.id}" title="Insert into current draft tab">Use</button>
+          <button class="btn btn-outline btn-sm snippet-delete" data-id="${s.id}" style="color:var(--red);border-color:rgba(239,68,68,0.2)">✕</button>
+        </div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('.snippet-insert').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.id);
+        const snippet = getSnippets().find(s => s.id === id);
+        if (snippet) {
+          lastGeneratedContent = snippet.content;
+          lastGeneratedTitle = snippet.title;
+          showOutput(snippet.content);
+          document.getElementById('snippets-panel').style.display = 'none';
+        }
+      });
+    });
+    list.querySelectorAll('.snippet-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.id);
+        deleteSnippet(id);
+        renderSnippets();
+      });
+    });
+  }
+
+  document.getElementById('btn-show-snippets')?.addEventListener('click', () => {
+    const panel = document.getElementById('snippets-panel');
+    const isVisible = panel?.style.display === 'block';
+    if (panel) panel.style.display = isVisible ? 'none' : 'block';
+    if (!isVisible) renderSnippets();
+    // Hide history if open
+    const hp = document.getElementById('history-panel');
+    if (hp) hp.style.display = 'none';
+  });
+
+  document.getElementById('btn-snippets-close')?.addEventListener('click', () => {
+    const panel = document.getElementById('snippets-panel');
+    if (panel) panel.style.display = 'none';
+  });
+
+  // ─── Favorites Bar ───
+  function renderFavorites() {
+    const bar = document.getElementById('favorites-bar');
+    const list = document.getElementById('favorites-list');
+    if (!bar || !list) return;
+    const favs = getFavorites();
+    if (favs.length === 0) {
+      bar.style.display = 'none';
+      return;
+    }
+    bar.style.display = 'flex';
+    list.innerHTML = favs.map(f => `
+      <button class="fav-chip" data-doctype="${escapeHTML(f)}">⭐ ${escapeHTML(f)}</button>
+    `).join('');
+
+    list.querySelectorAll('.fav-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.ai-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.ai-tab-content').forEach(c => c.classList.remove('active'));
+        const draftTab = document.getElementById('tab-btn-draft');
+        if (draftTab) {
+          draftTab.classList.add('active');
+          draftTab.setAttribute('aria-selected', 'true');
+        }
+        const tabContent = document.getElementById('tab-draft');
+        if (tabContent) tabContent.classList.add('active');
+        const docTypeSelect = document.getElementById('doc-type');
+        if (docTypeSelect) docTypeSelect.value = chip.dataset.doctype;
+      });
+    });
+  }
+
+  renderFavorites();
+
+  // Add star buttons to doc type options for favoriting
+  function addFavToggleToDocTypes() {
+    const draftTab = document.getElementById('tab-draft');
+    if (!draftTab) return;
+    // Add a "☆ Favorite this" hint next to the doc type select
+    const docTypeSelect = document.getElementById('doc-type');
+    if (!docTypeSelect) return;
+
+    docTypeSelect.addEventListener('change', () => {
+      const val = docTypeSelect.value;
+      if (!val) return;
+      const favs = getFavorites();
+      const btn = document.getElementById('btn-fav-toggle');
+      if (btn) {
+        btn.textContent = favs.includes(val) ? '★ Unfavorite' : '☆ Favorite';
+      }
+    });
+
+    // Add favorite toggle button
+    const formGrid = draftTab.querySelector('.form-grid');
+    if (formGrid && !document.getElementById('btn-fav-toggle')) {
+      const favBtn = document.createElement('button');
+      favBtn.id = 'btn-fav-toggle';
+      favBtn.className = 'btn btn-outline btn-sm';
+      favBtn.style.cssText = 'margin-top:24px;';
+      favBtn.textContent = '☆ Favorite this type';
+      favBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const val = document.getElementById('doc-type')?.value;
+        if (!val) return;
+        const favs = toggleFavorite(val);
+        favBtn.textContent = favs.includes(val) ? '★ Unfavorite' : '☆ Favorite';
+        renderFavorites();
+      });
+      formGrid.after(favBtn);
+    }
+  }
+
+  setTimeout(addFavToggleToDocTypes, 100);
+
+  // ─── Keyboard Shortcuts ───
+  document.addEventListener('keydown', (e) => {
+    // Ctrl+Enter: Send chat message / Submit active tab
+    if (e.ctrlKey && e.key === 'Enter') {
+      const activeTab = document.querySelector('.ai-tab.active');
+      if (activeTab?.dataset.tab === 'ask') {
+        sendChatMessage();
+      } else if (activeTab?.dataset.tab === 'draft') {
+        document.getElementById('btn-draft')?.click();
+      } else if (activeTab?.dataset.tab === 'caselaws') {
+        document.getElementById('btn-caselaws')?.click();
+      } else if (activeTab?.dataset.tab === 'analyze') {
+        document.getElementById('btn-analyze')?.click();
+      } else if (activeTab?.dataset.tab === 'grounds') {
+        document.getElementById('btn-grounds')?.click();
+      } else if (activeTab?.dataset.tab === 'summarize') {
+        document.getElementById('btn-summarize')?.click();
+      } else if (activeTab?.dataset.tab === 'explain') {
+        document.getElementById('btn-explain')?.click();
+      }
+    }
+
+    // Ctrl+H: Open history
+    if (e.ctrlKey && e.key === 'h') {
+      e.preventDefault();
+      document.getElementById('btn-show-history')?.click();
+    }
+
+    // Ctrl+S: Save snippet from output
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+      document.getElementById('btn-save-snippet')?.click();
+    }
+
+    // Escape: Close panels
+    if (e.key === 'Escape') {
+      const hp = document.getElementById('history-panel');
+      const sp = document.getElementById('snippets-panel');
+      if (hp?.style.display === 'block') hp.style.display = 'none';
+      if (sp?.style.display === 'block') sp.style.display = 'none';
+    }
   });
 
   // Widget Events
@@ -512,7 +884,7 @@ async function fetchWidgetNews(category) {
   }
 }
 
-async function runAI(loadingMessage, apiFn) {
+async function runAI(loadingMessage, apiFn, draftMeta = null) {
   hideError();
   hideOutput();
   showLoading(loadingMessage);
@@ -520,6 +892,17 @@ async function runAI(loadingMessage, apiFn) {
     const result = await apiFn();
     hideLoading();
     showOutput(result);
+    lastGeneratedContent = result;
+    lastGeneratedTitle = draftMeta?.title || 'Generated Draft';
+    // Save to history
+    if (result) {
+      saveDraftToHistory({
+        title: draftMeta?.title || 'AI Generated Draft',
+        type: draftMeta?.type || '',
+        court: draftMeta?.court || '',
+        content: result,
+      });
+    }
   } catch (err) {
     hideLoading();
     showError(err.message);

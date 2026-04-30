@@ -2,6 +2,7 @@ import './style.css';
 import './components/aiPanel.css';
 import { mountDraftingPanel } from './components/draftingPanel.js';
 import { generateLegalUpdate } from './services/aiService.js';
+import { getTheme, setTheme, toggleTheme } from './services/storage.js';
 
 /* ─── Page renderers ─── */
 function renderHome() {
@@ -475,6 +476,10 @@ function renderNav(currentPage) {
           <a href="#${l.hash}" class="nav-link${currentPage === l.hash ? ' active' : ''}${currentPage === l.hash ? '" aria-current="page' : ''}" id="nav-${l.hash || 'home'}">${l.label}</a>
         `).join('')}
       </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light theme">
+        <span class="theme-icon-dark">🌙</span>
+        <span class="theme-icon-light">☀️</span>
+      </button>
       <a href="#drafting" class="btn btn-primary btn-sm nav-cta" id="nav-cta">Get Started</a>
     </div>
   </nav>`;
@@ -569,6 +574,13 @@ function render() {
   setupRevealObserver();
   setupCardTracking();
 
+  // Re-bind theme toggle after re-render
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const newTheme = toggleTheme();
+    updateThemeIcon(newTheme);
+  });
+  updateThemeIcon(getTheme());
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -594,6 +606,25 @@ function setupNav() {
   });
 }
 
+/* ─── Theme ─── */
+function initTheme() {
+  setTheme(getTheme());
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const newTheme = toggleTheme();
+    updateThemeIcon(newTheme);
+  });
+}
+
+function updateThemeIcon(theme) {
+  const dark = document.querySelector('.theme-icon-dark');
+  const light = document.querySelector('.theme-icon-light');
+  if (!dark || !light) return;
+  dark.style.display = theme === 'dark' ? 'none' : 'inline';
+  light.style.display = theme === 'dark' ? 'inline' : 'none';
+}
+
 window.addEventListener('hashchange', render);
 setupNav();
+initTheme();
 render();
+updateThemeIcon(getTheme());
