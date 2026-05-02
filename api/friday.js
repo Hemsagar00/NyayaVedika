@@ -51,7 +51,7 @@ export default async function handler(req, res) {
   const safeDocType = sanitizeInput(docType || 'query', 100);
 
   // Ollama API URL — fallback to the permanent Cloudflare Tunnel
-  const OLLAMA_URL = process.env.OLLAMA_API_URL || 'https://camp-matches-harris-ministry.trycloudflare.com';
+  const OLLAMA_URL = process.env.OLLAMA_API_URL || 'https://bomb-wear-orbit-tough.trycloudflare.com';
   const MODEL = process.env.OLLAMA_MODEL || 'gemma4:e4b';
 
   try {
