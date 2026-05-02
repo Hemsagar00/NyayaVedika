@@ -31,6 +31,11 @@ const PROVIDERS = {
     url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
     getKey: () => import.meta.env.VITE_GEMINI_API_KEY,
   },
+  ollama: {
+    url: 'http://localhost:11434/v1/chat/completions',
+    model: 'gemma4:latest',
+    getKey: () => 'ollama-local',
+  },
   friday: {
     url: '/api/friday',
     getKey: () => 'friday-bridge',
