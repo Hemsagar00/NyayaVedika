@@ -1,4 +1,4 @@
-// api/friday.js — Vercel Serverless Function
+// functions/api/friday.js — Cloudflare Pages Function
 // Direct Ollama API bridge for NyayaVedika
 // Proxies requests to the local Ollama instance via public tunnel
 
@@ -23,27 +23,55 @@ function sanitizeInput(str, maxLength = 10000) {
   return str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').slice(0, maxLength);
 }
 
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+function corsHeaders() {
+  return {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
 
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+function jsonResponse(data, status = 200) {
+  const headers = { ...corsHeaders(), 'Content-Type': 'application/json' };
+  return new Response(JSON.stringify(data), { status, headers });
+}
 
-  const clientIP = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 'unknown';
+export async function onRequest(context) {
+  const { request } = context;
+  const headers = corsHeaders();
+
+  // Handle CORS preflight
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers });
+  }
+
+  if (request.method !== 'POST') {
+    return jsonResponse({ error: 'Method not allowed' }, 405);
+  }
+
+  const clientIP = request.headers.get('cf-connecting-ip') ||
+                   request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+                   'unknown';
+
   if (isRateLimited(clientIP)) {
-    return res.status(429).json({ error: 'Too many requests. Please wait a moment and try again.' });
+    return jsonResponse({ error: 'Too many requests. Please wait a moment and try again.' }, 429);
   }
 
-  if (!req.body || typeof req.body !== 'object') {
-    return res.status(400).json({ error: 'Invalid request body.' });
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return jsonResponse({ error: 'Invalid request body.' }, 400);
   }
 
-  const { message, caseId, docType } = req.body;
+  if (!body || typeof body !== 'object') {
+    return jsonResponse({ error: 'Invalid request body.' }, 400);
+  }
+
+  const { message, caseId, docType } = body;
 
   if (!message || typeof message !== 'string' || message.trim().length === 0) {
-    return res.status(400).json({ error: 'Message is required and must be a non-empty string.' });
+    return jsonResponse({ error: 'Message is required and must be a non-empty string.' }, 400);
   }
 
   const safeMessage = sanitizeInput(message, 15000);
@@ -51,13 +79,13 @@ export default async function handler(req, res) {
   const safeDocType = sanitizeInput(docType || 'query', 100);
 
   // Ollama API URL — fallback to the permanent Cloudflare Tunnel
-  const OLLAMA_URL = process.env.OLLAMA_API_URL || 'https://api.nagalawchambers.com';
-  const MODEL = process.env.OLLAMA_MODEL || 'gemma4:e4b';
+  const OLLAMA_URL = 'https://api.nagalawchambers.com';
+  const MODEL = 'gemma4:e4b';
 
   try {
     new URL(OLLAMA_URL);
   } catch {
-    return res.status(500).json({ error: 'Invalid Ollama API URL configuration.' });
+    return jsonResponse({ error: 'Invalid Ollama API URL configuration.' }, 500);
   }
 
   // System prompt for Indian Legal AI (NyayaVedika)
@@ -95,18 +123,18 @@ Respond with precise, legally accurate information. Cite relevant sections and p
     if (!response.ok) {
       const errText = await response.text().catch(() => '');
       console.error(`Ollama error: ${response.status} ${errText}`);
-      return res.status(502).json({ error: 'AI model service returned an error.' });
+      return jsonResponse({ error: 'AI model service returned an error.' }, 502);
     }
 
     const data = await response.json();
     const result = data.choices?.[0]?.message?.content || '';
 
-    return res.status(200).json({ result });
+    return jsonResponse({ result }, 200);
   } catch (error) {
     if (error.name === 'AbortError') {
-      return res.status(504).json({ error: 'AI model timeout — request took too long. Please try again.' });
+      return jsonResponse({ error: 'AI model timeout — request took too long. Please try again.' }, 504);
     }
     console.error('Ollama connection error:', error.message);
-    return res.status(502).json({ error: 'AI model connection failed. The server may be offline.' });
+    return jsonResponse({ error: 'AI model connection failed. The server may be offline.' }, 502);
   }
 }

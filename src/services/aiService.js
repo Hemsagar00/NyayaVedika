@@ -43,7 +43,7 @@ const PROVIDERS = {
 };
 
 // Active provider — defaults to lmstudio for local dev, nvidia for production
-const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || (import.meta.env.PROD ? 'nvidia' : 'lmstudio');
+const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'friday';
 
 // Abort controller for cancelling in-flight requests
 let activeController = null;
