@@ -2,7 +2,7 @@
 // Vercel Serverless Function — handles NyayaVedika contact form submissions
 // Forwards to AgentMail inbox: nyayavedika@agentmail.to
 
-const AGENTMAIL_KEY = 'am_us_193c23b33811c37248bed1b7c02a3995edc03536e49c4f58afa666802a274693';
+const AGENTMAIL_KEY = 'am_us_ac1e7da581c2ee2cd244713092ccc20dfd7070826bbe1aa0e858eb193abcef76';
 const AGENTMAIL_URL = 'https://api.agentmail.to';
 const INBOX_ID = 'nyayavedika@agentmail.to';
 
