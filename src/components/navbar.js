@@ -20,19 +20,17 @@ export function mountNavbar(container) {
         top: 0;
         z-index: 110;
         width: 100%;
-        background: rgba(255, 255, 255, 0.55);
+        background: rgba(5, 5, 5, 0.82);
         backdrop-filter: blur(18px) saturate(2);
         -webkit-backdrop-filter: blur(18px) saturate(2);
-        border-bottom: 1px solid rgba(212, 168, 83, 0.14);
+        border-bottom: 1px solid rgba(217, 119, 87, 0.14);
         transition: background 0.4s ease;
-        font-family: var(--font, 'Inter', system-ui, sans-serif);
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
       }
 
-      /* On dark-themed pages the navbar stays light; if the page uses data-theme
-         we can adapt, but by default this is the light frosted-glass navbar. */
-      [data-theme="dark"] .nv-nav {
-        background: rgba(26, 26, 46, 0.62);
-        border-bottom: 1px solid rgba(212, 168, 83, 0.12);
+      [data-theme="light"] .nv-nav {
+        background: rgba(255, 255, 255, 0.55);
+        border-bottom: 1px solid rgba(217, 119, 87, 0.12);
       }
 
       .nv-nav-inner {
@@ -53,14 +51,14 @@ export function mountNavbar(container) {
         font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
         font-size: 1.45rem;
         font-weight: 700;
-        color: #1a1a2e;
+        color: #f0ede8;
         text-decoration: none;
         letter-spacing: -0.01em;
         flex-shrink: 0;
         transition: color 0.3s;
       }
-      [data-theme="dark"] .nv-logo {
-        color: #fafafa;
+      [data-theme="light"] .nv-logo {
+        color: #1a1a2e;
       }
 
       .nv-logo-dot {
@@ -68,12 +66,12 @@ export function mountNavbar(container) {
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #d4a853;
+        background: #D97757;
         margin-left: 1px;
         vertical-align: middle;
         position: relative;
         top: -10px;
-        box-shadow: 0 0 8px rgba(212, 168, 83, 0.5);
+        box-shadow: 0 0 8px rgba(217, 119, 87, 0.5);
       }
 
       /* ── Nav links ── */
@@ -90,22 +88,22 @@ export function mountNavbar(container) {
         border-radius: 8px;
         font-size: 0.88rem;
         font-weight: 500;
-        color: #444;
+        color: #8c8984;
         text-decoration: none;
         transition: all 0.25s ease;
         white-space: nowrap;
       }
-      [data-theme="dark"] .nv-link {
-        color: #b0b0c0;
+      [data-theme="light"] .nv-link {
+        color: #444;
       }
 
       .nv-link:hover {
-        color: #1a1a2e;
-        background: rgba(212, 168, 83, 0.10);
+        color: #f0ede8;
+        background: rgba(217, 119, 87, 0.10);
       }
-      [data-theme="dark"] .nv-link:hover {
-        color: #fafafa;
-        background: rgba(212, 168, 83, 0.12);
+      [data-theme="light"] .nv-link:hover {
+        color: #1a1a2e;
+        background: rgba(217, 119, 87, 0.12);
       }
 
       /* ── CTA Gradient Button ── */
@@ -116,18 +114,18 @@ export function mountNavbar(container) {
         gap: 6px;
         padding: 10px 24px;
         border-radius: 10px;
-        font-family: var(--font, 'Inter', system-ui, sans-serif);
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: 0.85rem;
         font-weight: 600;
-        color: #fff;
+        color: #000;
         text-decoration: none;
         white-space: nowrap;
         cursor: pointer;
         border: none;
-        background: linear-gradient(135deg, #1a1a2e 0%, #4a3f6b 40%, #d4a853 100%);
+        background: linear-gradient(135deg, #D97757 0%, #E0886A 50%, #D97757 100%);
         background-size: 200% 200%;
         background-position: 0% 0%;
-        box-shadow: 0 2px 16px rgba(212, 168, 83, 0.20);
+        box-shadow: 0 2px 16px rgba(217, 119, 87, 0.20);
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
@@ -139,7 +137,7 @@ export function mountNavbar(container) {
         inset: 0;
         background: linear-gradient(135deg,
           transparent 35%,
-          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.2) 50%,
           transparent 65%);
         transform: translateX(-100%);
         transition: transform 0.7s ease;
@@ -147,7 +145,7 @@ export function mountNavbar(container) {
 
       .nv-cta:hover {
         background-position: 100% 100%;
-        box-shadow: 0 4px 28px rgba(212, 168, 83, 0.35);
+        box-shadow: 0 4px 28px rgba(217, 119, 87, 0.40);
         transform: translateY(-1px);
       }
       .nv-cta:hover::after {
@@ -175,11 +173,11 @@ export function mountNavbar(container) {
         width: 100%;
         height: 2px;
         border-radius: 2px;
-        background: #1a1a2e;
+        background: #f0ede8;
         transition: all 0.3s ease;
       }
-      [data-theme="dark"] .nv-hamburger span {
-        background: #fafafa;
+      [data-theme="light"] .nv-hamburger span {
+        background: #1a1a2e;
       }
 
       .nv-hamburger.open span:nth-child(1) {
@@ -200,22 +198,22 @@ export function mountNavbar(container) {
         top: 68px;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(5, 5, 5, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(212, 168, 83, 0.15);
+        border-bottom: 1px solid rgba(217, 119, 87, 0.15);
         padding: 20px 28px 28px;
         flex-direction: column;
         gap: 8px;
         z-index: 109;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
         transform: translateY(-8px);
         opacity: 0;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      [data-theme="dark"] .nv-mobile-menu {
-        background: rgba(26, 26, 46, 0.94);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      [data-theme="light"] .nv-mobile-menu {
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
       }
 
       .nv-mobile-menu.active {

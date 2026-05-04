@@ -83,7 +83,7 @@ export function mountFooter(container) {
       <div>
         <h4>Tools</h4>
         <ul>
-          <li><a href="#nv-drafting">Legal Drafting</a></li>
+          <li><a href="#drafting">Legal Drafting</a></li>
           <li><a href="#nv-judgments">Judgments Feed</a></li>
           <li><a href="#">Case Analysis</a></li>
           <li><a href="#">Legal Research</a></li>

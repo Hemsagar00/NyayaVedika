@@ -23,12 +23,12 @@ export function mountHero(container) {
         text-align: center;
         padding: 120px 28px 80px;
         overflow: hidden;
-        background: linear-gradient(175deg, #fafafa 0%, #f0f0f5 40%, #eaeaf0 100%);
-        font-family: var(--font, 'Inter', system-ui, sans-serif);
+        background: transparent;
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
       }
 
-      [data-theme="dark"] .nv-hero {
-        background: linear-gradient(175deg, #1a1a2e 0%, #151528 40%, #111122 100%);
+      [data-theme="light"] .nv-hero {
+        background: linear-gradient(175deg, #fafafa 0%, #f0f0f5 40%, #eaeaf0 100%);
       }
 
       /* ── Ambient gradient overlays ── */
@@ -37,9 +37,9 @@ export function mountHero(container) {
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(ellipse 55% 50% at 50% 35%, rgba(212, 168, 83, 0.08), transparent 70%),
-          radial-gradient(ellipse 35% 30% at 75% 60%, rgba(212, 168, 83, 0.04), transparent 70%),
-          radial-gradient(ellipse 30% 35% at 20% 45%, rgba(26, 26, 46, 0.05), transparent 70%);
+          radial-gradient(ellipse 55% 50% at 50% 35%, rgba(217, 119, 87, 0.08), transparent 70%),
+          radial-gradient(ellipse 35% 30% at 75% 60%, rgba(217, 119, 87, 0.04), transparent 70%),
+          radial-gradient(ellipse 30% 35% at 20% 45%, rgba(217, 119, 87, 0.03), transparent 70%);
         pointer-events: none;
         z-index: 0;
       }
@@ -59,15 +59,15 @@ export function mountHero(container) {
         font-weight: 700;
         line-height: 1.10;
         letter-spacing: -0.025em;
-        color: #1a1a2e;
+        color: #f0ede8;
         margin: 0 0 24px;
         opacity: 0;
         transform: translateY(32px);
         transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                     transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      [data-theme="dark"] .nv-hero-headline {
-        color: #fafafa;
+      [data-theme="light"] .nv-hero-headline {
+        color: #1a1a2e;
       }
 
       .nv-hero-headline.revealed {
@@ -75,9 +75,9 @@ export function mountHero(container) {
         transform: translateY(0);
       }
 
-      /* Gold accent for "Speaks Law" */
+      /* Terracotta accent for "Speaks Law" */
       .nv-hero-headline .nv-gold {
-        background: linear-gradient(135deg, #d4a853 0%, #e0c472 40%, #c9a040 100%);
+        background: linear-gradient(135deg, #D97757 0%, #ff9f6b 40%, #D97757 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -86,7 +86,7 @@ export function mountHero(container) {
       /* ── Subheadline ── */
       .nv-hero-sub {
         font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-        color: #555;
+        color: #8c8984;
         line-height: 1.75;
         max-width: 600px;
         margin: 0 auto 44px;
@@ -95,8 +95,8 @@ export function mountHero(container) {
         transition: opacity 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1),
                     transform 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      [data-theme="dark"] .nv-hero-sub {
-        color: #b0b0c0;
+      [data-theme="light"] .nv-hero-sub {
+        color: #555;
       }
 
       .nv-hero-sub.revealed {
@@ -129,18 +129,18 @@ export function mountHero(container) {
         gap: 8px;
         padding: 16px 36px;
         border-radius: 12px;
-        font-family: var(--font, 'Inter', system-ui, sans-serif);
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: 1rem;
         font-weight: 600;
-        color: #fff;
+        color: #000;
         text-decoration: none;
         white-space: nowrap;
         cursor: pointer;
         border: none;
-        background: linear-gradient(135deg, #1a1a2e 0%, #4a3f6b 40%, #d4a853 100%);
+        background: linear-gradient(135deg, #D97757 0%, #E0886A 50%, #D97757 100%);
         background-size: 200% 200%;
         background-position: 0% 0%;
-        box-shadow: 0 4px 24px rgba(212, 168, 83, 0.22);
+        box-shadow: 0 4px 24px rgba(217, 119, 87, 0.22);
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
@@ -160,7 +160,7 @@ export function mountHero(container) {
 
       .nv-btn-primary:hover {
         background-position: 100% 100%;
-        box-shadow: 0 6px 36px rgba(212, 168, 83, 0.40);
+        box-shadow: 0 6px 36px rgba(217, 119, 87, 0.40);
         transform: translateY(-2px);
       }
       .nv-btn-primary:hover::after {
@@ -175,26 +175,26 @@ export function mountHero(container) {
         gap: 8px;
         padding: 16px 36px;
         border-radius: 12px;
-        font-family: var(--font, 'Inter', system-ui, sans-serif);
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: 1rem;
         font-weight: 600;
-        color: #1a1a2e;
+        color: #f0ede8;
         background: transparent;
-        border: 1.5px solid rgba(26, 26, 46, 0.25);
+        border: 1.5px solid rgba(240, 237, 232, 0.25);
         text-decoration: none;
         white-space: nowrap;
         cursor: pointer;
         transition: all 0.35s ease;
       }
-      [data-theme="dark"] .nv-btn-outline {
-        color: #fafafa;
-        border-color: rgba(250, 250, 250, 0.20);
+      [data-theme="light"] .nv-btn-outline {
+        color: #1a1a2e;
+        border-color: rgba(26, 26, 46, 0.25);
       }
 
       .nv-btn-outline:hover {
-        border-color: #d4a853;
-        color: #d4a853;
-        background: rgba(212, 168, 83, 0.06);
+        border-color: #D97757;
+        color: #D97757;
+        background: rgba(217, 119, 87, 0.06);
       }
 
       /* ── Floating SVG Shapes ── */
@@ -300,53 +300,53 @@ export function mountHero(container) {
     <div class="nv-shapes" aria-hidden="true">
       <!-- Shape 1: Abstract scales beam (top-left) -->
       <svg class="nv-shape nv-shape--1" width="72" height="88" viewBox="0 0 72 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M36 4L4 84h64L36 4z" stroke="#1a1a2e" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="36" y1="30" x2="36" y2="84" stroke="#1a1a2e" stroke-width="1.8"/>
-        <line x1="18" y1="52" x2="54" y2="52" stroke="#d4a853" stroke-width="1.4" opacity="0.6"/>
-        <circle cx="36" cy="18" r="3" fill="#d4a853" opacity="0.7"/>
+        <path d="M36 4L4 84h64L36 4z" stroke="#f0ede8" stroke-width="1.8" stroke-linejoin="round"/>
+        <line x1="36" y1="30" x2="36" y2="84" stroke="#f0ede8" stroke-width="1.8"/>
+        <line x1="18" y1="52" x2="54" y2="52" stroke="#D97757" stroke-width="1.4" opacity="0.6"/>
+        <circle cx="36" cy="18" r="3" fill="#D97757" opacity="0.7"/>
       </svg>
 
       <!-- Shape 2: Circle-ring motif (bottom-left) -->
       <svg class="nv-shape nv-shape--2" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="28" cy="28" r="26" stroke="#1a1a2e" stroke-width="1.5"/>
-        <circle cx="28" cy="28" r="14" stroke="#d4a853" stroke-width="1.2" opacity="0.55"/>
-        <circle cx="28" cy="28" r="5" fill="#d4a853" opacity="0.35"/>
-        <line x1="28" y1="6" x2="28" y2="18" stroke="#1a1a2e" stroke-width="0.8" opacity="0.4"/>
-        <line x1="28" y1="38" x2="28" y2="50" stroke="#1a1a2e" stroke-width="0.8" opacity="0.4"/>
-        <line x1="6" y1="28" x2="18" y2="28" stroke="#1a1a2e" stroke-width="0.8" opacity="0.4"/>
-        <line x1="38" y1="28" x2="50" y2="28" stroke="#1a1a2e" stroke-width="0.8" opacity="0.4"/>
+        <circle cx="28" cy="28" r="26" stroke="#f0ede8" stroke-width="1.5"/>
+        <circle cx="28" cy="28" r="14" stroke="#D97757" stroke-width="1.2" opacity="0.55"/>
+        <circle cx="28" cy="28" r="5" fill="#D97757" opacity="0.35"/>
+        <line x1="28" y1="6" x2="28" y2="18" stroke="#f0ede8" stroke-width="0.8" opacity="0.4"/>
+        <line x1="28" y1="38" x2="28" y2="50" stroke="#f0ede8" stroke-width="0.8" opacity="0.4"/>
+        <line x1="6" y1="28" x2="18" y2="28" stroke="#f0ede8" stroke-width="0.8" opacity="0.4"/>
+        <line x1="38" y1="28" x2="50" y2="28" stroke="#f0ede8" stroke-width="0.8" opacity="0.4"/>
       </svg>
 
       <!-- Shape 3: Diamond / gavel-head motif (top-right) -->
       <svg class="nv-shape nv-shape--3" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="20" width="44" height="16" rx="3" stroke="#1a1a2e" stroke-width="1.6"/>
-        <rect x="24" y="36" width="16" height="22" rx="2" stroke="#1a1a2e" stroke-width="1.4"/>
-        <line x1="18" y1="44" x2="12" y2="50" stroke="#d4a853" stroke-width="1.3" opacity="0.5"/>
-        <line x1="46" y1="44" x2="52" y2="50" stroke="#d4a853" stroke-width="1.3" opacity="0.5"/>
-        <path d="M32 10l-6 10h12l-6-10z" stroke="#d4a853" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <rect x="10" y="20" width="44" height="16" rx="3" stroke="#f0ede8" stroke-width="1.6"/>
+        <rect x="24" y="36" width="16" height="22" rx="2" stroke="#f0ede8" stroke-width="1.4"/>
+        <line x1="18" y1="44" x2="12" y2="50" stroke="#D97757" stroke-width="1.3" opacity="0.5"/>
+        <line x1="46" y1="44" x2="52" y2="50" stroke="#D97757" stroke-width="1.3" opacity="0.5"/>
+        <path d="M32 10l-6 10h12l-6-10z" stroke="#D97757" stroke-width="1.2" fill="none" opacity="0.6"/>
       </svg>
 
       <!-- Shape 4: Pillar / column silhouette (bottom-right) -->
       <svg class="nv-shape nv-shape--4" width="44" height="80" viewBox="0 0 44 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="4" width="32" height="8" rx="2" stroke="#1a1a2e" stroke-width="1.5"/>
-        <rect x="10" y="12" width="24" height="60" rx="1" stroke="#1a1a2e" stroke-width="1.2"/>
-        <rect x="6" y="68" width="32" height="8" rx="2" stroke="#1a1a2e" stroke-width="1.5"/>
-        <line x1="22" y1="20" x2="22" y2="44" stroke="#d4a853" stroke-width="1.0" opacity="0.5" stroke-dasharray="4 4"/>
-        <line x1="14" y1="30" x2="30" y2="30" stroke="#d4a853" stroke-width="0.8" opacity="0.35"/>
+        <rect x="6" y="4" width="32" height="8" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+        <rect x="10" y="12" width="24" height="60" rx="1" stroke="#f0ede8" stroke-width="1.2"/>
+        <rect x="6" y="68" width="32" height="8" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+        <line x1="22" y1="20" x2="22" y2="44" stroke="#D97757" stroke-width="1.0" opacity="0.5" stroke-dasharray="4 4"/>
+        <line x1="14" y1="30" x2="30" y2="30" stroke="#D97757" stroke-width="0.8" opacity="0.35"/>
       </svg>
 
       <!-- Shape 5: Intersecting arcs (center, subtle) -->
       <svg class="nv-shape nv-shape--5" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M60 20a40 40 0 10-40 40" stroke="#d4a853" stroke-width="1.2" opacity="0.5" fill="none"/>
-        <path d="M20 20a40 40 0 1140 40" stroke="#1a1a2e" stroke-width="1.2" opacity="0.35" fill="none"/>
-        <circle cx="40" cy="40" r="4" stroke="#d4a853" stroke-width="1.0" opacity="0.45" fill="none"/>
+        <path d="M60 20a40 40 0 10-40 40" stroke="#D97757" stroke-width="1.2" opacity="0.5" fill="none"/>
+        <path d="M20 20a40 40 0 1140 40" stroke="#f0ede8" stroke-width="1.2" opacity="0.35" fill="none"/>
+        <circle cx="40" cy="40" r="4" stroke="#D97757" stroke-width="1.0" opacity="0.45" fill="none"/>
       </svg>
 
       <!-- Shape 6: Tiny plus / cross (bottom-center, legal motif) -->
       <svg class="nv-shape nv-shape--6" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="16" y1="4" x2="16" y2="28" stroke="#1a1a2e" stroke-width="1.3" opacity="0.5"/>
-        <line x1="4" y1="16" x2="28" y2="16" stroke="#d4a853" stroke-width="1.1" opacity="0.45"/>
-        <circle cx="16" cy="16" r="3" fill="#d4a853" opacity="0.3"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#f0ede8" stroke-width="1.3" opacity="0.5"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#D97757" stroke-width="1.1" opacity="0.45"/>
+        <circle cx="16" cy="16" r="3" fill="#D97757" opacity="0.3"/>
       </svg>
     </div>
   `;

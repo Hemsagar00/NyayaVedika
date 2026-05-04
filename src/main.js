@@ -19,32 +19,33 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ─── 3D Card Tilt on mouse move ─── */
+let tiltRAF = null;
 document.addEventListener('mousemove', (e) => {
-  const cards = document.querySelectorAll('.card-3d, .feature-card, .judgment-card, .news-card');
-  cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / (rect.width / 2);
-    const dy = (e.clientY - cy) / (rect.height / 2);
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 1.5) {
-      const tiltX = dy * -8;
-      const tiltY = dx * 8;
-      card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
-      card.style.boxShadow = `0 20px 50px rgba(217,119,87,0.15), ${-tiltY}px ${-tiltX}px 30px rgba(0,0,0,0.3)`;
-      card.style.borderColor = 'var(--color-accent)';
-    }
+  if (tiltRAF) return;
+  tiltRAF = requestAnimationFrame(() => {
+    tiltRAF = null;
+    const cards = document.querySelectorAll('.card-3d, .feature-card, .judgment-card, .news-card');
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 1.5) {
+        const tiltX = dy * -8;
+        const tiltY = dx * 8;
+        card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-2px)`;
+        card.style.boxShadow = `0 20px 50px rgba(217,119,87,0.15), ${-tiltY}px ${-tiltX}px 30px rgba(0,0,0,0.3)`;
+        card.style.borderColor = 'var(--color-accent)';
+      } else {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        card.style.borderColor = '';
+      }
+    });
   });
 }, { passive: true });
-
-document.addEventListener('mouseleave', () => {
-  document.querySelectorAll('.card-3d, .feature-card, .judgment-card, .news-card').forEach(card => {
-    card.style.transform = '';
-    card.style.boxShadow = '';
-    card.style.borderColor = '';
-  });
-});
 
 /* ─── Drafting page ─── */
 function renderDrafting() {
@@ -173,6 +174,7 @@ function render() {
 
     if (page === 'drafting') mountDraftingPanel('ai-panel-mount');
     if (page === 'legal-updates') setTimeout(attachLegalUpdatesEvents, 50);
+    setupScrollReveal();
   } else {
     renderHome();
   }
