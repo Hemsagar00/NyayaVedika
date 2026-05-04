@@ -8,6 +8,7 @@ import { mountFooter } from './components/footer.js';
 import { mountDraftingPanel } from './components/draftingPanel.js';
 import { generateLegalUpdate } from './services/aiService.js';
 import { getTheme, setTheme, toggleTheme } from './services/storage.js';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 /* ─── Drafting page ─── */
 function renderDrafting() {
@@ -145,4 +146,5 @@ function render() {
 /* ─── Init ─── */
 window.addEventListener('hashchange', render);
 setTheme(getTheme());
+injectSpeedInsights();
 render();
