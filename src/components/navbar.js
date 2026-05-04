@@ -270,9 +270,8 @@ export function mountNavbar(container) {
   /* ── Build HTML ── */
   const links = [
     { label: 'Drafting', href: '#drafting' },
-    { label: 'Research', href: '#research' },
-    { label: 'Law Updates', href: '#law-updates' },
-    { label: 'About', href: '#about' },
+    { label: 'Legal Updates', href: '#legal-updates' },
+    { label: 'Judgments', href: '#judgments' },
   ];
 
   const html = `

@@ -130,7 +130,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.08;
+  opacity: 0.35;
+  transition: opacity 1.2s ease;
+}
+
+[data-reduced-motion="true"] #nv-3d-canvas {
+  opacity: 0.12;
 }
 
 #app {
@@ -144,6 +149,44 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ─── 3D Card Tilt Effect ─── */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.1s ease-out;
+}
+.card-3d:hover {
+  transform: translateZ(10px);
+}
+
+/* ─── Parallax layers ─── */
+.parallax-slow {
+  transform: translateY(calc(var(--scroll-offset, 0px) * 0.1));
+}
+.parallax-mid {
+  transform: translateY(calc(var(--scroll-offset, 0px) * 0.2));
+}
+.parallax-fast {
+  transform: translateY(calc(var(--scroll-offset, 0px) * 0.35));
+}
+
+/* ─── Floating animation for cards on scroll reveal ─── */
+[data-reveal].revealed .feature-card,
+[data-reveal].revealed .judgment-card {
+  animation: cardFloatIn 0.8s var(--ease-out) forwards;
+}
+
+@keyframes cardFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96) rotateX(5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0);
+  }
 }
 
 /* ─── Form inputs (dark) ─── */
