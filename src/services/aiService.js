@@ -1,8 +1,7 @@
 /**
  * NyayaVedika — AI Service Layer
- * Handles all API calls to AI models (NVIDIA Llama / DeepSeek / Anthropic Claude / Google Gemini)
- * Falls back to Friday Bridge if FRIDAY_GATEWAY is configured.
- * Keys are injected via Vercel environment variables (VITE_ prefix for client-side).
+ * Primary: Friday Bridge → LM Studio (local GPU, zero cost)
+ * Fallback: NVIDIA Llama 4 Maverick (when LM Studio is down)
  */
 
 // --- Provider configurations ---
@@ -14,7 +13,7 @@ const PROVIDERS = {
   },
   nvidia: {
     url: 'https://integrate.api.nvidia.com/v1/chat/completions',
-    model: 'meta/llama-3.1-70b-instruct',
+    model: 'meta/llama-4-maverick-17b-128e-instruct',
     getKey: () => import.meta.env.VITE_NVIDIA_API_KEY,
   },
   deepseek: {
@@ -31,19 +30,14 @@ const PROVIDERS = {
     url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
     getKey: () => import.meta.env.VITE_GEMINI_API_KEY,
   },
-  ollama: {
-    url: 'http://localhost:11434/v1/chat/completions',
-    model: 'gemma4:latest',
-    getKey: () => 'ollama-local',
-  },
   friday: {
     url: '/api/friday',
     getKey: () => 'friday-bridge',
   },
 };
 
-// Active provider — defaults to lmstudio for local dev, nvidia for production
-const ACTIVE_PROVIDER = import.meta.env.VITE_AI_PROVIDER || 'friday';
+// Fallback chain: try Friday first, then NVIDIA
+const FALLBACK_CHAIN = ['friday', 'nvidia'];
 
 // Abort controller for cancelling in-flight requests
 let activeController = null;
@@ -85,115 +79,131 @@ COURTS COVERED: Supreme Court of India, all 25 High Courts, District & Sessions 
 
 Always provide accurate, well-structured legal content. Cite relevant provisions and precedents. Never fabricate case law.`;
 
-// ─── Core API Caller ───
+// ─── Core API Caller (with fallback) ───
 async function askAI(userMessage, options = {}) {
   const { maxTokens = 4096, temperature = 0.4 } = options;
-  const provider = PROVIDERS[ACTIVE_PROVIDER];
-
-  if (!provider) throw new Error(`Unknown AI provider: ${ACTIVE_PROVIDER}`);
-
-  const apiKey = provider.getKey();
-  if (!apiKey && ACTIVE_PROVIDER !== 'friday') {
-    throw new Error(`API key not configured. Please set VITE_${ACTIVE_PROVIDER.toUpperCase()}_API_KEY in your Vercel environment variables.`);
-  }
 
   // Cancel any in-flight request
   abortActiveRequest();
   activeController = new AbortController();
 
-  try {
-    // Friday Bridge — serverless proxy
-    if (ACTIVE_PROVIDER === 'friday') {
-      const res = await fetch('/api/friday', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage, maxTokens }),
-        signal: activeController.signal,
-      });
-      if (!res.ok) throw new Error(`Friday Bridge Error: ${res.status}`);
-      const data = await res.json();
-      return data.result;
+  let lastError = null;
+
+  // Try providers in fallback order
+  for (const providerName of FALLBACK_CHAIN) {
+    const provider = PROVIDERS[providerName];
+    if (!provider) continue;
+
+    const apiKey = provider.getKey();
+    if (!apiKey && providerName !== 'friday') {
+      lastError = new Error(`${providerName}: no API key configured`);
+      continue;
     }
 
-    // Anthropic has a different API shape
-    if (ACTIVE_PROVIDER === 'anthropic') {
-      const res = await fetch(provider.url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
-        },
-        body: JSON.stringify({
-          model: provider.model,
-          max_tokens: maxTokens,
-          system: LEGAL_SYSTEM_PROMPT,
-          messages: [{ role: 'user', content: userMessage }],
-        }),
-        signal: activeController.signal,
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error?.message || `Anthropic Error: ${res.status}`);
-      }
-      const data = await res.json();
-      return data.content?.[0]?.text || '';
+    try {
+      const result = await callProvider(providerName, provider, apiKey, userMessage, maxTokens, temperature);
+      return result;
+    } catch (err) {
+      console.warn(`[NyayaVedika] ${providerName} failed:`, err.message);
+      lastError = err;
+      // Reset abort controller for next attempt
+      activeController = new AbortController();
     }
+  }
 
-    // Gemini has its own shape
-    if (ACTIVE_PROVIDER === 'gemini') {
-      const url = `${provider.url}?key=${apiKey}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: LEGAL_SYSTEM_PROMPT }] },
-          contents: [{ parts: [{ text: userMessage }] }],
-          generationConfig: {
-            maxOutputTokens: maxTokens,
-            temperature: temperature,
-          },
-        }),
-        signal: activeController.signal,
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error?.message || `Gemini Error: ${res.status}`);
-      }
-      const data = await res.json();
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    }
+  throw new Error(`All AI providers failed. Last error: ${lastError?.message || 'unknown'}`);
+}
 
-    // OpenAI-compatible (NVIDIA, DeepSeek)
+async function callProvider(providerName, provider, apiKey, userMessage, maxTokens, temperature) {
+  // Friday Bridge — serverless proxy
+  if (providerName === 'friday') {
+    const res = await fetch('/api/friday', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage, maxTokens }),
+      signal: activeController.signal,
+    });
+    if (!res.ok) throw new Error(`Friday Bridge Error: ${res.status}`);
+    const data = await res.json();
+    return data.result;
+  }
+
+  // Anthropic has a different API shape
+  if (providerName === 'anthropic') {
     const res = await fetch(provider.url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
         model: provider.model,
-        messages: [
-          { role: 'system', content: LEGAL_SYSTEM_PROMPT },
-          { role: 'user', content: userMessage },
-        ],
         max_tokens: maxTokens,
-        temperature: temperature,
-        stream: false,
+        system: LEGAL_SYSTEM_PROMPT,
+        messages: [{ role: 'user', content: userMessage }],
       }),
       signal: activeController.signal,
     });
-
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || `API Error: ${res.status}`);
+      throw new Error(err.error?.message || `Anthropic Error: ${res.status}`);
     }
     const data = await res.json();
-    return data.choices?.[0]?.message?.content || '';
-  } finally {
-    activeController = null;
+    return data.content?.[0]?.text || '';
   }
+
+  // Gemini has its own shape
+  if (providerName === 'gemini') {
+    const url = `${provider.url}?key=${apiKey}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: LEGAL_SYSTEM_PROMPT }] },
+        contents: [{ parts: [{ text: userMessage }] }],
+        generationConfig: {
+          maxOutputTokens: maxTokens,
+          temperature: temperature,
+        },
+      }),
+      signal: activeController.signal,
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `Gemini Error: ${res.status}`);
+    }
+    const data = await res.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  }
+
+  // OpenAI-compatible (NVIDIA, DeepSeek, LM Studio)
+  const res = await fetch(provider.url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: provider.model,
+      messages: [
+        { role: 'system', content: LEGAL_SYSTEM_PROMPT },
+        { role: 'user', content: userMessage },
+      ],
+      max_tokens: maxTokens,
+      temperature: temperature,
+      stream: false,
+    }),
+    signal: activeController.signal,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error?.message || `${providerName} Error: ${res.status}`);
+  }
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content || '';
 }
 
 // ─── Exported Functions ───
