@@ -1,4 +1,5 @@
 import './styles/global.css';
+import { mountThreeBackground } from './components/three-bg.js';
 import { mountNavbar } from './components/navbar.js';
 import { mountHero } from './components/hero.js';
 import { mountFeatures } from './components/features.js';
@@ -8,6 +9,9 @@ import { mountFooter } from './components/footer.js';
 import { mountDraftingPanel } from './components/draftingPanel.js';
 import { generateLegalUpdate } from './services/aiService.js';
 import { getTheme, setTheme, toggleTheme } from './services/storage.js';
+
+/* ─── Init 3D ─── */
+mountThreeBackground();
 
 /* ─── Drafting page ─── */
 function renderDrafting() {
