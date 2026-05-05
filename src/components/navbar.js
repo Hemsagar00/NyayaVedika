@@ -23,14 +23,14 @@ export function mountNavbar(container) {
         background: rgba(5, 5, 5, 0.82);
         backdrop-filter: blur(18px) saturate(2);
         -webkit-backdrop-filter: blur(18px) saturate(2);
-        border-bottom: 1px solid rgba(217, 119, 87, 0.14);
+        border-bottom: 1px solid rgba(191, 155, 48, 0.14);
         transition: background 0.4s ease;
         font-family: var(--font-body, 'Inter', system-ui, sans-serif);
       }
 
       [data-theme="light"] .nv-nav {
         background: rgba(255, 255, 255, 0.55);
-        border-bottom: 1px solid rgba(217, 119, 87, 0.12);
+        border-bottom: 1px solid rgba(191, 155, 48, 0.12);
       }
 
       .nv-nav-inner {
@@ -66,12 +66,12 @@ export function mountNavbar(container) {
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #D97757;
+        background: #bf9b30;
         margin-left: 1px;
         vertical-align: middle;
         position: relative;
         top: -10px;
-        box-shadow: 0 0 8px rgba(217, 119, 87, 0.5);
+        box-shadow: 0 0 8px rgba(191, 155, 48, 0.5);
       }
 
       /* ── Nav links ── */
@@ -99,11 +99,11 @@ export function mountNavbar(container) {
 
       .nv-link:hover {
         color: #f0ede8;
-        background: rgba(217, 119, 87, 0.10);
+        background: rgba(191, 155, 48, 0.10);
       }
       [data-theme="light"] .nv-link:hover {
         color: #1a1a2e;
-        background: rgba(217, 119, 87, 0.12);
+        background: rgba(191, 155, 48, 0.12);
       }
 
       /* ── CTA Gradient Button ── */
@@ -122,10 +122,10 @@ export function mountNavbar(container) {
         white-space: nowrap;
         cursor: pointer;
         border: none;
-        background: linear-gradient(135deg, #D97757 0%, #E0886A 50%, #D97757 100%);
+        background: linear-gradient(135deg, #bf9b30 0%, #d4af37 50%, #bf9b30 100%);
         background-size: 200% 200%;
         background-position: 0% 0%;
-        box-shadow: 0 2px 16px rgba(217, 119, 87, 0.20);
+        box-shadow: 0 2px 16px rgba(191, 155, 48, 0.20);
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
@@ -145,7 +145,7 @@ export function mountNavbar(container) {
 
       .nv-cta:hover {
         background-position: 100% 100%;
-        box-shadow: 0 4px 28px rgba(217, 119, 87, 0.40);
+        box-shadow: 0 4px 28px rgba(191, 155, 48, 0.40);
         transform: translateY(-1px);
       }
       .nv-cta:hover::after {
@@ -201,7 +201,7 @@ export function mountNavbar(container) {
         background: rgba(5, 5, 5, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(217, 119, 87, 0.15);
+        border-bottom: 1px solid rgba(191, 155, 48, 0.15);
         padding: 20px 28px 28px;
         flex-direction: column;
         gap: 8px;

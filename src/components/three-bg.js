@@ -263,7 +263,7 @@ export function mountThreeBackground() {
     ctx.fillStyle = 'rgba(0,0,0,0)';
     ctx.fillRect(0, 0, 512, 64);
     ctx.font = '22px "Times New Roman", serif';
-    ctx.fillStyle = 'rgba(217,119,87,0.85)';
+    ctx.fillStyle = 'rgba(191, 155, 48,0.85)';
     ctx.textAlign = 'center';
     ctx.fillText(text, 256, 40);
 
