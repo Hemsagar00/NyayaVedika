@@ -79,7 +79,7 @@ export async function onRequest(context) {
   const safeDocType = sanitizeInput(docType || 'query', 100);
 
   // Ollama API URL — fallback to the permanent Cloudflare Tunnel
-  const OLLAMA_URL = 'https://api.nagalawchambers.com';
+  const OLLAMA_URL = env.OLLAMA_TUNNEL_URL || env.OLLAMA_BASE_URL || env.OLLAMA_API_URL || 'http://localhost:11434';
   const MODEL = 'gemma4:e4b';
 
   try {
