@@ -1,39 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NyayaVedika
+
+**AI-powered Indian Legal Q&A & Drafting Assistant** — fine-tuned for Indian law, revenue procedures, and Andhra Pradesh-specific regulations.
+
+## Overview
+
+NyayaVedika combines a locally-hosted large language model (Gemma-4 fine-tuned on Indian legal corpus) with a modern web interface to deliver:
+
+- Legal question answering in plain language
+- Automated document drafting (petitions, notices, applications)
+- Revenue-specific guidance (Adangal, Pahani, EC, NOC)
+- Tailored for farmers, property buyers, and government job applicants
+
+## Architecture
+
+| Component | Technology |
+|---|---|
+| Web UI | Next.js 16 + React 19 + Tailwind CSS |
+| AI Engine | llama.cpp + Gemma-4 4B (fine-tuned) |
+| Styling | Tailwind CSS + shadcn/ui |
+| Analytics | Vercel Speed Insights |
+| Icons | Lucide React |
+
+## Integrations
+
+- **Telegram Bot**: `@nagalawchambers_bot` — live chat interface for clients
+- **Local LLM**: llama.cpp inference on AMD RX 6700 XT (12GB)
+- **Cloud Fallback**: ollama-cloud (deepseek-v4-pro, kimi-k2.6)
+
+## Live Site
+
+🔗 [https://nyayavedika.in](https://nyayavedika.in)
+
+## Project
+
+- **Repo**: `Hemsagar00/NyayaVedika`
+- **Branch**: `master`
+- **Maintained by**: HemSagar Kasi (FRIDAY stack)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and configure as needed.
 
-## Learn More
+## Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-<!-- deploy trigger: 8e92243 v2 rebuild: Next.js 16 + search + drafting + dark gold theme -->
+Private — All rights reserved.
