@@ -1,65 +1,84 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { EB_Garamond, IBM_Plex_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
-const inter = Inter({
+const garamond = EB_Garamond({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-display-loaded",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
 });
 
-const playfair = Playfair_Display({
+const plex = IBM_Plex_Serif({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-serif-loaded",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const jet = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono-loaded",
+  display: "swap",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nyayavedika.in"),
   title: {
-    default: "NyayaVedika — AI Indian Legal Search \u0026 High-Fidelity Drafting Suite",
+    default: "NyayaVedika — case law search and structured drafting for the Anantapur Bar",
     template: "%s | NyayaVedika",
   },
-  description: "NyayaVedika is the premier legal-tech workspace for Indian advocates. AI-powered case law search, structured judgment analysis, and 5-step legal drafting — purpose-built for elite litigation chambers.",
-  keywords: ["Indian Legal Tech", "Legal Drafting", "Case Law Search", "Ratio Decidendi", "Supreme Court Judgments", "AI Legal Research"],
-  authors: [{ name: "NyayaVedika Cognitive Systems", url: "https://nyayavedika.in" }],
-  creator: "NyayaVedika Team",
-  publisher: "NyayaVedika Cognitive Systems",
+  description:
+    "A working advocate's tool for case law, ratio decidendi, and first-draft petitions. Built and used by Adv. S. Nagendra Naik, Anantapur Bar.",
+  keywords: [
+    "Indian case law",
+    "ratio decidendi",
+    "Anantapur advocate",
+    "Anticipatory bail",
+    "Revenue AP",
+    "Adangal Pahani",
+    "Legal drafting AP",
+    "Telugu legal",
+  ],
+  authors: [{ name: "Adv. S. Nagendra Naik", url: "https://nagalawchambers.com" }],
+  creator: "Adv. S. Nagendra Naik",
+  publisher: "Naga Law Chambers",
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://nyayavedika.in",
     siteName: "NyayaVedika",
-    title: "NyayaVedika — AI Indian Legal Intelligence",
-    description: "AI-powered case law search, structured judgment analysis, and high-fidelity legal drafting for Indian advocates.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "NyayaVedika — AI Legal Intelligence" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "NyayaVedika — AI Indian Legal Intelligence",
-    description: "AI-powered case law search, structured judgment analysis, and high-fidelity legal drafting.",
-    images: ["/og-image.png"],
-    creator: "@nyayavedika",
+    title: "NyayaVedika — case law and drafting, used in chamber",
+    description:
+      "What Adv. S. Nagendra Naik uses to research, draft, and file from Anantapur.",
   },
   robots: { index: true, follow: true },
   icons: {
     icon: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">
-        <Navbar />
-        <div className="pt-16">
+    <html
+      lang="en"
+      className={`${garamond.variable} ${plex.variable} ${jet.variable}`}
+    >
+      <body className="min-h-screen antialiased">
+        <div className="relative z-10">
+          <Navbar />
           {children}
+          <Footer />
         </div>
-        <Footer />
       </body>
     </html>
   );

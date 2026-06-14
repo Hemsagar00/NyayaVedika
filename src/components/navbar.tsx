@@ -1,124 +1,66 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Search, ScrollText, User, LogOut, Menu, X, Scale } from "lucide-react";
-import AuthModal from "./auth-modal";
 
-const navLinks = [
-  { href: "/search/", label: "Search", icon: Search },
-  { href: "/drafting/", label: "Drafting", icon: ScrollText },
-];
-
-export default function Navbar() {
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
+export function Navbar() {
   return (
-    <>
-      <motion.header
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-[rgba(9,13,22,0.85)] backdrop-blur-xl border-b border-[rgba(212,175,55,0.1)]"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-[rgba(212,175,55,0.1)] border border-[rgba(212,175,55,0.2)] flex items-center justify-center group-hover:border-[rgba(212,175,55,0.4)] transition-colors">
-              <Scale className="w-4 h-4 text-gold" />
-            </div>
-            <span className="font-semibold text-[#F1F5F9] text-lg font-display-legal">
-              Nyaya
-              <span className="text-gold">Vedika</span>
+    <header className="relative border-b border-[var(--color-ink)] bg-[var(--color-paper)]">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 no-underline">
+          <div className="w-9 h-9 border-2 border-[var(--color-chakra-red)] flex items-center justify-center -rotate-3">
+            <span className="font-display font-bold text-[var(--color-chakra-red)] text-lg leading-none">
+              न्य
             </span>
-          </Link>
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-[1.15rem] font-semibold tracking-tight text-[var(--color-ink)]">
+              NyayaVedika
+            </span>
+            <span className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--color-pencil)] mt-0.5">
+              Anantapur · est. 2026
+            </span>
+          </div>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
-                    isActive
-                      ? "text-gold bg-[rgba(212,175,55,0.1)]"
-                      : "text-[#94A3B8] hover:text-[#F1F5F9] hover:bg-[rgba(212,175,55,0.06)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-
-            <button
-              onClick={() => setIsAuthOpen(true)}
-              className="ml-2 px-4 py-2 text-sm font-medium border border-[rgba(212,175,55,0.25)] text-gold rounded-lg hover:border-[rgba(212,175,55,0.5)] hover:bg-[rgba(212,175,55,0.06)] transition-all"
-            >
-              Sign In
-            </button>
-          </nav>
-
-          <button
-            className="md:hidden w-9 h-9 rounded-lg bg-[rgba(212,175,55,0.06)] border border-[rgba(212,175,55,0.15)] flex items-center justify-center text-[#94A3B8] hover:text-[#F1F5F9]"
-            onClick={() => setMobileOpen(!mobileOpen)}
+        <nav className="hidden md:flex items-center gap-6">
+          <Link
+            href="/search"
+            className="font-serif text-[0.9rem] text-[var(--color-ink-faded)] no-underline hover:text-[var(--color-chakra-red)] transition-colors"
           >
-            {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
-        </div>
+            Search
+          </Link>
+          <Link
+            href="/drafting"
+            className="font-serif text-[0.9rem] text-[var(--color-ink-faded)] no-underline hover:text-[var(--color-chakra-red)] transition-colors"
+          >
+            Drafting
+          </Link>
+          <Link
+            href="/practice"
+            className="font-serif text-[0.9rem] text-[var(--color-ink-faded)] no-underline hover:text-[var(--color-chakra-red)] transition-colors"
+          >
+            Practice
+          </Link>
+          <a
+            href="https://t.me/nagalawchambers_bot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-paper"
+            style={{ padding: "0.5rem 0.9rem", fontSize: "0.72rem" }}
+          >
+            Ask on Telegram
+          </a>
+        </nav>
 
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="md:hidden bg-[rgba(9,13,22,0.95)] backdrop-blur-xl border-b border-[rgba(212,175,55,0.1)] mx-4 rounded-lg overflow-hidden"
-            >
-              <div className="p-3 flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`px-3 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors ${
-                      pathname === link.href
-                        ? "text-gold bg-[rgba(212,175,55,0.1)]"
-                        : "text-[#94A3B8] hover:text-[#F1F5F9]"
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <link.icon className="w-4 h-4" />
-                    {link.label}
-                  </Link>
-                ))}
-                <button
-                  onClick={() => { setMobileOpen(false); setIsAuthOpen(true); }}
-                  className="mt-2 px-3 py-2.5 text-sm font-medium border border-[rgba(212,175,55,0.25)] text-gold rounded-lg"
-                >
-                  <User className="w-4 h-4 inline mr-2" />
-                  Sign In
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
-
-      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-    </>
+        <button
+          aria-label="Menu"
+          className="md:hidden font-mono text-xs uppercase tracking-widest text-[var(--color-ink)] px-3 py-2 border border-[var(--color-ink)]"
+        >
+          Menu
+        </button>
+      </div>
+      {/* hand-drawn double rule under navbar */}
+      <div className="max-w-5xl mx-auto px-5 sm:px-8">
+        <div className="border-t border-[var(--color-ink)]" style={{ borderTopWidth: "2px" }} />
+      </div>
+    </header>
   );
 }

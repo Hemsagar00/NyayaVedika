@@ -1,183 +1,457 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+/* ============================================================
+   NYAYAVEDIKA — stamp paper / court order aesthetic
+   Drenched palette: warm cream paper, legal-ink red, judge's blue
+   ============================================================ */
+
 @theme {
-  --color-obsidian: #090D16;
-  --color-surface: #0F172A;
-  --color-surface-hover: #1E293B;
-  --color-gold: #D4AF37;
-  --color-gold-dim: rgba(212, 175, 55, 0.7);
-  --color-gold-glow: rgba(212, 175, 55, 0.15);
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-border-gold: rgba(212, 175, 55, 0.15);
-  --color-navy-heading: #061b31;
-  --color-stripe-purple: #533afd;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Playfair Display', 'Georgia', serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --radius-lg: 0.75rem;
-  --radius-md: 0.5rem;
+  /* Paper & ink */
+  --color-paper:        #F4EFE3;   /* stamp paper cream */
+  --color-paper-edge:   #E8DFC8;   /* edge of a stack of stamp paper */
+  --color-paper-shade:  #EFE6D2;   /* shadowed paper */
+  --color-paper-fold:   #D9CDB1;   /* creased paper */
+  --color-ink:          #1A1814;   /* typewriter dried ink */
+  --color-ink-faded:    #4A453C;   /* ink 1 day old */
+  --color-pencil:       #8A8578;   /* sub-text pencil */
+  --color-rubber:       #B5AE9D;   /* rubber stamp pad dry spot */
+
+  /* Legal colors */
+  --color-chakra-red:   #B83227;   /* court seal / wax / Indian red */
+  --color-chakra-deep:  #8C2018;   /* red ink dried */
+  --color-chakra-faded: #D4817A;   /* red stamp fading */
+  --color-judge-blue:   #1F3A5F;   /* "REGISTERED" / "URGENT" stamp */
+  --color-judge-cyan:   #2A5078;   /* typewriter ribbon blue */
+
+  /* Functional */
+  --color-amber:        #B8842A;   /* filed stamp */
+  --color-amber-faded:  #D4A85A;
+  --color-ruled:        #C9BEA3;   /* ruled paper lines */
+
+  --font-display: 'EB Garamond', 'Times New Roman', serif;
+  --font-serif:   'IBM Plex Serif', Georgia, serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
 }
+
+/* ============================================================
+   Base — paper texture
+   ============================================================ */
 
 @layer base {
   html { scroll-behavior: smooth; }
 
   body {
-    background-color: var(--color-obsidian);
-    color: var(--color-text-primary);
-    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    font-feature-settings: "kern", "liga", "onum";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+  }
+
+  /* paper grain — physical, not AI noise */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      /* fine horizontal fiber lines (paper grain) */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 3px,
+        rgba(140, 120, 80, 0.025) 3px,
+        rgba(140, 120, 80, 0.025) 4px
+      ),
+      /* subtle blotches */
+      radial-gradient(circle at 20% 30%, rgba(140, 100, 60, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(140, 100, 60, 0.05) 0%, transparent 35%),
+      radial-gradient(circle at 50% 90%, rgba(120, 80, 50, 0.03) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    text-wrap: balance;
   }
 
-  code, pre { font-family: var(--font-mono); }
-}
-
-@layer utilities {
-  .font-display-legal {
-    font-family: var(--font-display);
+  code, pre, .mono {
+    font-family: var(--font-mono);
   }
-
-  .text-gold {
-    color: #D4AF37;
-  }
-
-  .text-gold-dim {
-    color: rgba(212, 175, 55, 0.7);
-  }
-
-  .border-gold {
-    border-color: rgba(212, 175, 55, 0.25);
-  }
-
-  /* Liquid Glass */
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.01);
-    background-blend-mode: luminosity;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-  .liquid-glass::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(
-      180deg,
-      rgba(255,255,255,0.45) 0%,
-      rgba(255,255,255,0.15) 20%,
-      rgba(255,255,255,0) 40%,
-      rgba(255,255,255,0) 60%,
-      rgba(255,255,255,0.15) 80%,
-      rgba(255,255,255,0.45) 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* Noise Overlay */
-  .noise-overlay {
-    position: relative;
-  }
-  .noise-overlay::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.4;
-    mix-blend-mode: soft-light;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    background-size: 240px 240px;
-  }
-
-  /* 3D Card Hover */
-  .card-3d {
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
-    transform-style: preserve-3d;
-  }
-  .card-3d:hover {
-    transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-6px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 40px rgba(201, 169, 98, 0.12);
-  }
-
-  /* Glass Card Base */
-  .glass-card {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    border-radius: 0.75rem;
-  }
-
-  /* Gold Gradient Text */
-  .gold-gradient-text {
-    background: linear-gradient(135deg, #D4AF37 0%, #F0D878 50%, #C9A84C 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Gold Glow Background */
-  .bg-gold-glow {
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
-  }
-
-  /* Section Colors */
-  .text-section-blue { color: #60A5FA; }
-  .text-section-emerald { color: #34D399; }
-  .text-section-rose { color: #F87171; }
-
-  /* Shimmer */
-  .shimmer-gold {
-    background: linear-gradient(90deg, #D4AF37 0%, #F0D878 50%, #D4AF37 100%);
-    background-size: 200% 100%;
-    animation: shimmer-gold 3s linear infinite;
-  }
-
-  @keyframes shimmer-gold {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  /* Marquee */
-  @keyframes marquee-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* Smooth reveal */
-  .reveal-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@layer base {
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #0F172A; }
-  ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.25); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.5); }
 
   ::selection {
-    background: rgba(212, 175, 55, 0.25);
-    color: #F1F5F9;
+    background: var(--color-chakra-red);
+    color: var(--color-paper);
+  }
+
+  a { color: var(--color-judge-blue); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--color-chakra-red); }
+}
+
+/* ============================================================
+   Stamp paper frame — the page sits on a stamp paper sheet
+   ============================================================ */
+
+.stamp-paper {
+  position: relative;
+  background: var(--color-paper);
+  border: 1px solid var(--color-chakra-deep);
+  /* the classic stamp paper double red border */
+  box-shadow:
+    inset 0 0 0 6px var(--color-paper),
+    inset 0 0 0 7px var(--color-chakra-deep),
+    inset 0 0 0 13px var(--color-paper),
+    inset 0 0 0 14px var(--color-chakra-deep);
+}
+
+.stamp-paper::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed var(--color-rubber);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Hand-drawn red underline — like a real lawyer's red pen
+   ============================================================ */
+
+.red-underline {
+  background-image:
+    linear-gradient(to right,
+      var(--color-chakra-red) 0%,
+      var(--color-chakra-red) 100%);
+  background-position: 0 100%;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+}
+
+.red-underline-sketch {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'><path d='M2,5 Q20,2 40,4 T80,3 Q100,5 120,2 T160,4 Q180,3 198,5' fill='none' stroke='%23B83227' stroke-width='1.6' stroke-linecap='round'/></svg>");
+  background-position: 0 100%;
+  background-size: 100% 0.4em;
+  background-repeat: no-repeat;
+  padding-bottom: 4px;
+}
+
+/* ============================================================
+   Rubber stamp — slightly rotated, ink-imperfect
+   ============================================================ */
+
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-chakra-red);
+  border: 2px solid var(--color-chakra-red);
+  padding: 4px 10px 3px;
+  transform: rotate(-2.5deg);
+  position: relative;
+  background:
+    /* ink imperfection — broken coverage */
+    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-chakra-red) 0.6px, var(--color-chakra-red) 1px, transparent 1.1px),
+    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-chakra-red) 0.5px, var(--color-chakra-red) 0.9px, transparent 1px),
+    radial-gradient(circle at 50% 30%, transparent 0.3px, var(--color-chakra-red) 0.4px, var(--color-chakra-red) 0.7px, transparent 0.8px);
+  background-size: 7px 7px;
+  /* slightly broken border — like a real rubber stamp */
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
+
+.stamp-blue {
+  color: var(--color-judge-blue);
+  border-color: var(--color-judge-blue);
+  background:
+    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-judge-blue) 0.6px, var(--color-judge-blue) 1px, transparent 1.1px),
+    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-judge-blue) 0.5px, var(--color-judge-blue) 0.9px, transparent 1px);
+  background-size: 7px 7px;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+}
+
+.stamp-amber {
+  color: var(--color-amber);
+  border-color: var(--color-amber);
+  background:
+    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-amber) 0.6px, var(--color-amber) 1px, transparent 1.1px),
+    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-amber) 0.5px, var(--color-amber) 0.9px, transparent 1px);
+  background-size: 7px 7px;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
+}
+
+/* ============================================================
+   Court order layout — single column, ruled lines
+   ============================================================ */
+
+.ruled-paper {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--color-ruled) 31px,
+      var(--color-ruled) 32px
+    );
+  background-position: 0 1.5rem;
+  background-size: 100% 2rem;
+}
+
+.proceeding {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 2rem;
+  color: var(--color-ink);
+}
+
+.proceeding p {
+  margin: 0 0 1.2rem 0;
+  text-indent: 2.5em;
+}
+
+.proceeding p:first-of-type {
+  text-indent: 0;
+}
+
+/* ============================================================
+   Typewriter input — the search field
+   ============================================================ */
+
+.typewriter-input {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: none;
+  border-bottom: 1px solid var(--color-ink);
+  width: 100%;
+  padding: 0.6rem 0;
+  outline: none;
+  caret-color: var(--color-chakra-red);
+}
+
+.typewriter-input::placeholder {
+  color: var(--color-pencil);
+  font-style: italic;
+}
+
+.typewriter-input:focus {
+  border-bottom-color: var(--color-chakra-red);
+  border-bottom-width: 2px;
+  padding-bottom: calc(0.6rem - 1px);
+}
+
+/* blinking caret on hover (subtle) */
+.typewriter-input:focus::after {
+  content: '_';
+  display: inline;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ============================================================
+   Citations — formal Indian legal citation style
+   ============================================================ */
+
+.citation {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  border-left: 3px double var(--color-chakra-deep);
+  padding: 0.6rem 0 0.6rem 1rem;
+  margin: 0.5rem 0;
+  background: var(--color-paper-shade);
+}
+
+.citation-source {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-faded);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.citation-italic {
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+.citation-ref {
+  font-family: var(--font-mono);
+  color: var(--color-judge-blue);
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   Section numbers — small numerals in the margin, no "01/02/03"
+   eyebrow kicks
+   ============================================================ */
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-faded);
+  letter-spacing: 0.05em;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--color-ink);
+  margin: 4rem 0;
+  position: relative;
+}
+
+.section-divider::after {
+  content: '§';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  background: var(--color-paper);
+  padding: 0 0.6rem;
+  color: var(--color-ink-faded);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   Form filings — physical, button-like, not glass
+   ============================================================ */
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-ink:hover {
+  background: var(--color-chakra-red);
+  border-color: var(--color-chakra-red);
+  color: var(--color-paper);
+}
+
+.btn-paper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink);
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-paper:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* ============================================================
+   Parties block — Indian court order style
+   ============================================================ */
+
+.parties {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.parties .vs {
+  display: block;
+  text-align: center;
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--color-ink-faded);
+  margin: 0.6rem 0;
+}
+
+/* ============================================================
+   Footnote markers — superscript numerals, not links
+   ============================================================ */
+
+.fn {
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  vertical-align: super;
+  color: var(--color-chakra-red);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Marginalia — small print on the side, like real legal margin notes
+   ============================================================ */
+
+.marginalia {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-ink-faded);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.margin-note {
+  position: absolute;
+  left: -7rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-chakra-red);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

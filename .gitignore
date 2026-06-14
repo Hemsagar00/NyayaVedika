@@ -3,3 +3,7 @@ node_modules/
 out/
 dist/
 *.log
+.vercel
+tsconfig.tsbuildinfo
+.env.local
+.env

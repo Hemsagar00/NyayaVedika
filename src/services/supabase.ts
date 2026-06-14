@@ -29,10 +29,57 @@ function createStub() {
   };
 }
 
-export const supabase: any = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : createStub();
+type SupabaseClient = ReturnType<typeof createClient>;
+type StubClient = ReturnType<typeof createStub>;
 
-export async function searchJudgments(query: string, court: string) { try { const { data, error } = await supabase.from("judgments").select("*").textSearch("content", query); return { data: data || [], error }; } catch { return { data: [], error: null }; } }
-export async function getProfile(userId: string) { try { const { data, error } = await supabase.from("profiles").select("*").eq("id", userId).single(); return { data, error }; } catch { return { data: null, error: null }; } }
-export async function saveDraft(draft: Record<string, any>) { try { const { data, error } = await supabase.from("drafts").insert([draft]).select(); return { data, error }; } catch { return { data: null, error: null }; } }
-export async function getDrafts(userId: string) { try { const { data, error } = await supabase.from("drafts").select("*").eq("user_id", userId).order("created_at", { ascending: false }); return { data: data || [], error }; } catch { return { data: [], error: null }; } }
-export async function deleteDraft(id: string) { try { const { error } = await supabase.from("drafts").delete().eq("id", id); return { error }; } catch { return { error: null }; } }
+export const supabase: SupabaseClient | StubClient =
+  supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : createStub();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const db = () => (supabase as any).from.bind(supabase);
+
+export async function searchJudgments(query: string, _court: string) {
+  void _court;
+  try {
+    const { data, error } = await db()("judgments").select("*").textSearch("content", query);
+    return { data: data || [], error };
+  } catch {
+    return { data: [], error: null };
+  }
+}
+
+export async function getProfile(userId: string) {
+  try {
+    const { data, error } = await db()("profiles").select("*").eq("id", userId).single();
+    return { data, error };
+  } catch {
+    return { data: null, error: null };
+  }
+}
+
+export async function saveDraft(draft: Record<string, unknown>) {
+  try {
+    const { data, error } = await db()("drafts").insert([draft]).select();
+    return { data, error };
+  } catch {
+    return { data: null, error: null };
+  }
+}
+
+export async function getDrafts(userId: string) {
+  try {
+    const { data, error } = await db()("drafts").select("*").eq("user_id", userId).order("created_at", { ascending: false });
+    return { data: data || [], error };
+  } catch {
+    return { data: [], error: null };
+  }
+}
+
+export async function deleteDraft(id: string) {
+  try {
+    const { error } = await db()("drafts").delete().eq("id", id);
+    return { error };
+  } catch {
+    return { error: null };
+  }
+}
