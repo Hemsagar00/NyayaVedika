@@ -1,45 +1,79 @@
-export const dynamic = "force-static";
 import { NextResponse } from "next/server";
+import { researchDesk, normalizeKanoonDocs } from "@/lib/research";
 
+export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const KANOON_API_KEY = process.env.INDIANKANOON_API_KEY || "";
 
 function sanitize(text: string) {
   if (!text || typeof text !== "string") return "";
-  let c = text.replace(/[\u0000-\u001F\u007F]/g, "");
-  const sqlPatterns = /\b(DROP|DELETE|INSERT|UPDATE|ALTER|EXEC|EXECUTE|UNION|SELECT\s+\*|--|;--|\bOR\b\s+1\s*=\s*1)/gi;
-  c = c.replace(sqlPatterns, "").replace(/<[^\u003e]*>/g, "").replace(/[`$;]/g, "");
-  return c.slice(0, 200);
+  return text.replace(/[\u0000-\u001F\u007F]/g, "").replace(/<[^>]*>/g, "").slice(0, 400);
 }
+
+const headers = {
+  "X-Content-Type-Options": "nosniff",
+  "Cache-Control": "no-store",
+};
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const query = sanitize(searchParams.get("q") || "");
-    const court = sanitize(searchParams.get("court") || "All");
-    if (!query) return NextResponse.json({ results: [], total: 0, query: "", source: "indian-kanoon" }, { status: 200 });
-
-    if (!KANOON_API_KEY) {
-      return NextResponse.json({
-        results: [
-          { title: "Demo: " + query, court: court === "All" ? "Supreme Court of India" : court, date: "2024-01-01", bench: "3-Judge", excerpt: "[Demo mode — configure INDIANKANOON_API_KEY]", id: "demo-1" }
-        ], total: 1, query, source: "indian-kanoon"
-      }, { headers: {
-        "X-Content-Type-Options": "nosniff", "Cache-Control": "no-store, no-cache, must-revalidate, private",
-        "Access-Control-Allow-Origin": "*", "X-Request-Served-By": "NyayaVedika-Kanoon-Gateway",
-      }});
+    const court = sanitize(searchParams.get("court") || "All") || "All";
+    if (!query) {
+      return NextResponse.json(
+        { results: [], total: 0, query: "", summary: "", source: "chamber-desk" },
+        { headers }
+      );
     }
 
-    const res = await fetch(`https://api.indiankanoon.org/search/?formInput=${encodeURIComponent(query)}${court !== "All" ? "\u0026court=" + encodeURIComponent(court) : ""}`, {
-      method: "GET", headers: { "Authorization": `Token ${KANOON_API_KEY}`, "Accept": "application/json" },
-    });
-    const data = await res.json();
-    return NextResponse.json({ results: data.docs || [], total: data.found || 0, query, source: "indian-kanoon" }, { headers: {
-      "X-Content-Type-Options": "nosniff", "Cache-Control": "no-store", "Access-Control-Allow-Origin": "*",
-      "X-Request-Served-By": "NyayaVedika-Kanoon-Gateway",
-    }});
+    const desk = researchDesk(query, court);
+
+    if (KANOON_API_KEY) {
+      try {
+        const courtQ = court !== "All" ? ` court: ${court}` : "";
+        const res = await fetch(
+          `https://api.indiankanoon.org/search/?formInput=${encodeURIComponent(query + courtQ)}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Token ${KANOON_API_KEY}`,
+              Accept: "application/json",
+            },
+          }
+        );
+        if (res.ok) {
+          const data = (await res.json()) as { docs?: unknown[]; found?: number };
+          const remote = normalizeKanoonDocs(data.docs || [], query);
+          const merged = [...remote, ...desk.hits].slice(0, 12);
+          return NextResponse.json(
+            {
+              results: merged,
+              total: merged.length,
+              query,
+              summary: desk.summary,
+              source: remote.length ? "mixed" : "chamber-desk",
+            },
+            { headers }
+          );
+        }
+      } catch {
+        /* fall through to desk */
+      }
+    }
+
+    return NextResponse.json(
+      {
+        results: desk.hits,
+        total: desk.hits.length,
+        query,
+        summary: desk.summary,
+        source: "chamber-desk",
+      },
+      { headers }
+    );
   } catch {
-    return NextResponse.json({ error: "Internal server error" }, { status: 500, headers: { "X-Request-Served-By": "NyayaVedika-Kanoon-Gateway" } });
+    return NextResponse.json({ error: "Search failed. Try again." }, { status: 500, headers });
   }
 }

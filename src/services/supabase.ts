@@ -35,8 +35,24 @@ type StubClient = ReturnType<typeof createStub>;
 export const supabase: SupabaseClient | StubClient =
   supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : createStub();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const db = () => (supabase as any).from.bind(supabase);
+type TableClient = {
+  from: (table: string) => {
+    select: (cols: string) => {
+      textSearch: (col: string, q: string) => Promise<{ data: unknown[] | null; error: unknown }>;
+      eq: (col: string, val: string) => {
+        single: () => Promise<{ data: unknown; error: unknown }>;
+        order: (
+          col: string,
+          opts: { ascending: boolean }
+        ) => Promise<{ data: unknown[] | null; error: unknown }>;
+      };
+    };
+    insert: (rows: unknown[]) => { select: () => Promise<{ data: unknown; error: unknown }> };
+    delete: () => { eq: (col: string, val: string) => Promise<{ error: unknown }> };
+  };
+};
+
+const db = () => (supabase as unknown as TableClient).from.bind(supabase as unknown as TableClient);
 
 export async function searchJudgments(query: string, _court: string) {
   void _court;

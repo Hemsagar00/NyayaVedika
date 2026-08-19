@@ -1,29 +1,31 @@
+export const metadata = { title: "Terms" };
+
 export default function TermsPage() {
   return (
-    <div className="px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-2xl">
-        <p className="section-label mb-2">Legal</p>
-        <h1 className="font-display text-3xl font-semibold text-[var(--color-text)]">
-          Terms of use
-        </h1>
-        <div className="mt-8 space-y-4 font-serif text-[var(--color-text-muted)] leading-relaxed">
+    <main id="main" className="min-h-[100dvh] pt-10 pb-24">
+      <article className="wrap max-w-2xl">
+        <h1 className="text-[2.3rem] font-semibold tracking-tight">Terms of use</h1>
+        <p className="mt-3 text-[var(--fg-muted)]">Last updated 19 August 2026.</p>
+        <div className="mt-10 space-y-6 text-[1.02rem] leading-relaxed text-[var(--fg-muted)]">
           <p>
-            NyayaVedika provides research assistance and first-draft templates.
-            It is not a substitute for independent legal judgment or primary
-            source verification.
+            NyayaVedika is a first-draft aid for advocates. It is not a law firm, not a court, and
+            not legal advice to a member of the public.
           </p>
           <p>
-            All citations and drafts must be checked against official reports
-            (SCC, AIR, Indian Kanoon, e-Courts, or the court record) before any
-            filing. The operator accepts no liability for reliance on demo or
-            AI-generated content without verification.
+            Every citation must be read in full before it is used in a pleading. Holdings on this
+            desk are summaries of reported Supreme Court cases and named statutes. They can be
+            incomplete. They can be wrongly applied to new facts.
           </p>
           <p>
-            Use of the site constitutes acceptance of these terms. The tool is
-            intended for advocates and clerks engaged in Indian legal practice.
+            Drafts are starting text. Counsel remains responsible for parties, facts, limitation,
+            court fee, territorial jurisdiction, and the form the registry accepts.
+          </p>
+          <p>
+            Use of the Telegram bot is subject to the same limits. For a paid consultation, attend
+            chambers at Naga Law Chambers, Anantapur, during working hours.
           </p>
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }

@@ -1,15 +1,15 @@
 # NyayaVedika
 
-**AI-powered Indian Legal Q&A & Drafting Assistant** — fine-tuned for Indian law, revenue procedures, and Andhra Pradesh-specific regulations.
+**Chamber desk for the Anantapur Bar.** Search reported Indian case law, read the ratio, and produce a first-draft pleading.
+
+The site works without API keys. A local desk of Supreme Court holdings and named statutes answers search. Structured templates produce drafts. When `INDIANKANOON_API_KEY`, `NVIDIA_API_KEY`, or `DEEPSEEK_API_KEY` are set, those services are used first.
 
 ## Overview
 
-NyayaVedika combines a locally-hosted large language model (Gemma-4 fine-tuned on Indian legal corpus) with a modern web interface to deliver:
-
-- Legal question answering in plain language
-- Automated document drafting (petitions, notices, applications)
-- Revenue-specific guidance (Adangal, Pahani, EC, NOC)
-- Tailored for farmers, property buyers, and government job applicants
+- Case-law search with the ratio already pulled
+- First drafts for bail, partition, mutation, Section 80 notice, consumer complaints, and written statements
+- Practice areas wired to live search and draft
+- Telegram bot at [@nagalawchambers_bot](https://t.me/nagalawchambers_bot)
 
 ## Architecture
 
@@ -30,6 +30,8 @@ NyayaVedika combines a locally-hosted large language model (Gemma-4 fine-tuned o
 ## Live Site
 
 🔗 [https://nyayavedika.in](https://nyayavedika.in)
+
+Deploy as a **server** app (Vercel / `next start`). Do not use `output: 'export'`. Search and drafting need the `/api/*` routes.
 
 ## Project
 

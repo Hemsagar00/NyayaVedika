@@ -1,81 +1,70 @@
 import type { Metadata } from "next";
-import { EB_Garamond, IBM_Plex_Serif, JetBrains_Mono } from "next/font/google";
+import { Outfit, Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const garamond = EB_Garamond({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-display-loaded",
+  variable: "--font-outfit",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+});
+
+const source = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-source",
+  display: "swap",
   style: ["normal", "italic"],
 });
 
-const plex = IBM_Plex_Serif({
+const ibm = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-serif-loaded",
+  variable: "--font-ibm",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const jet = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono-loaded",
-  display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nyayavedika.in"),
   title: {
-    default: "NyayaVedika — Case Law Search & Structured Drafting for Advocates",
+    default: "NyayaVedika | Case law and first drafts for the Anantapur Bar",
     template: "%s | NyayaVedika",
   },
   description:
-    "State the issue. Get ranked citations with verbatim ratio decidendi. Generate registry-ready first drafts. Built for Indian advocates — Anantapur Bar and beyond.",
+    "A working advocate's desk for Indian case law, ratio decidendi, and first-draft pleadings. Built for chamber use at Naga Law Chambers, Anantapur.",
   keywords: [
     "Indian case law",
-    "ratio decidendi",
-    "Anticipatory bail",
-    "Revenue AP",
-    "Adangal Pahani",
-    "Legal drafting",
-    "CrPC 438",
-    "Hindu Succession",
     "Anantapur advocate",
+    "anticipatory bail",
+    "Adangal",
+    "Pahani",
+    "legal drafting Andhra Pradesh",
+    "ratio decidendi",
   ],
-  authors: [{ name: "NyayaVedika", url: "https://nyayavedika.in" }],
+  authors: [{ name: "Adv. S. Nagendra Naik", url: "https://nagalawchambers.com" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://nyayavedika.in",
     siteName: "NyayaVedika",
-    title: "NyayaVedika — Case Law & Drafting for the Bar",
+    title: "NyayaVedika | Find the ratio. File the first draft.",
     description:
-      "Case law search with verbatim ratios + structured first drafts for Indian pleadings.",
+      "Case law with the ratio already pulled, and a first draft in the format the registry accepts.",
   },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${garamond.variable} ${plex.variable} ${jet.variable}`}
-    >
-      <body className="min-h-screen antialiased">
-        <div className="relative z-10 flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={`${outfit.variable} ${source.variable} ${ibm.variable}`}>
+      <body className="min-h-[100dvh] antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

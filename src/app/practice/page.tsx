@@ -1,80 +1,50 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { PRACTICE_AREAS } from "@/lib/corpus";
 
-const AREAS = [
-  {
-    term: "Revenue and land",
-    def: "Adangal, Pahani, EC, NOC, mutation, and the AP Revenue Code. Most chamber work in Anantapur sits here.",
-    acts: "AP Revenue Code · Indian Stamp Act · Registration Act",
-  },
-  {
-    term: "Bail and criminal",
-    def: "Anticipatory bail (§438 CrPC), regular bail, quashing under §482 CrPC, 498A, and routine criminal trial work.",
-    acts: "CrPC 1973 · BNS 2023 · NDPS Act 1985",
-  },
-  {
-    term: "Family and partition",
-    def: "Hindu Succession Act 1956, partition suits, succession certificates, maintenance under §125 CrPC.",
-    acts: "Hindu Succession Act · Hindu Marriage Act · Special Marriage Act",
-  },
-  {
-    term: "Civil and contract",
-    def: "Money recovery, written statements, summary suits under Order XXXVII, §80 CPC notices, injunctions.",
-    acts: "CPC 1908 · Indian Contract Act · Specific Relief Act",
-  },
-  {
-    term: "Consumer forums",
-    def: "District, State, and NCDRC complaints; deficiency in service and product; unfair trade practice.",
-    acts: "Consumer Protection Act 2019",
-  },
-  {
-    term: "Service matters",
-    def: "Government employment, compassionate appointment, service disputes before the Tribunal and High Court.",
-    acts: "AP State & Subordinate Service Rules · Administrative Tribunals Act",
-  },
-];
+export const metadata = {
+  title: "Practice",
+};
 
 export default function PracticePage() {
   return (
-    <div className="px-4 py-10 sm:px-6">
-      <div className="mx-auto max-w-4xl">
-        <p className="section-label mb-2">Practice areas</p>
-        <h1 className="font-display text-3xl font-semibold text-[var(--color-text)] sm:text-4xl">
-          Where the tool is tuned
+    <main id="main" className="min-h-[100dvh] pt-10 pb-24">
+      <div className="wrap">
+        <p className="text-[0.8rem] text-[var(--fg-muted)]">Anantapur chamber</p>
+        <h1 className="mt-2 max-w-[12ch] text-[2.4rem] font-semibold tracking-tight md:text-[3.2rem]">
+          Practice areas.
         </h1>
-        <p className="mt-3 max-w-2xl font-serif text-[var(--color-text-muted)]">
-          NyayaVedika is optimised for the work that actually reaches an
-          Anantapur chamber desk — revenue, bail, partition, and routine civil.
+        <p className="mt-4 max-w-[46ch] text-[var(--fg-muted)]">
+          The files that actually come in. Each area opens a live search on this desk.
         </p>
 
-        <div className="mt-10 space-y-4">
-          {AREAS.map((a) => (
-            <article key={a.term} className="glass rounded-lg p-5 sm:p-6">
-              <h2 className="font-display text-xl font-semibold text-[var(--color-text)]">
-                {a.term}
-              </h2>
-              <p className="mt-2 font-serif text-sm leading-relaxed text-[var(--color-text-muted)]">
-                {a.def}
-              </p>
-              <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-wider text-[var(--color-cyan)]">
-                {a.acts}
-              </p>
+        <div className="mt-12 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+          {PRACTICE_AREAS.map((a) => (
+            <article key={a.id} className="grid gap-4 py-8 md:grid-cols-12 md:items-start">
+              <h2 className="text-[1.45rem] font-semibold md:col-span-4">{a.title}</h2>
+              <div className="md:col-span-5">
+                <p className="leading-relaxed text-[var(--fg-muted)]">{a.body}</p>
+                <p className="mt-3 font-mono text-[0.72rem] text-[var(--fg-muted)]">{a.acts}</p>
+              </div>
+              <div className="flex flex-wrap gap-3 md:col-span-3 md:justify-end">
+                <Link
+                  href={`/search/?q=${encodeURIComponent(a.query)}`}
+                  className="btn btn-primary no-underline"
+                  style={{ padding: "0.55rem 0.9rem" }}
+                >
+                  Search
+                </Link>
+                <Link
+                  href={`/drafting/?type=${a.draft}`}
+                  className="btn btn-ghost no-underline"
+                  style={{ padding: "0.55rem 0.9rem" }}
+                >
+                  Draft
+                </Link>
+              </div>
             </article>
           ))}
         </div>
-
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link href="/search" className="btn-cyan">
-            Search case law
-            <ArrowRight size={14} />
-          </Link>
-          <Link href="/drafting" className="btn-ghost">
-            Open drafting
-          </Link>
-        </div>
       </div>
-    </div>
+    </main>
   );
 }

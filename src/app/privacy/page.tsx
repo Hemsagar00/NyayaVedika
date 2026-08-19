@@ -1,30 +1,31 @@
+export const metadata = { title: "Privacy" };
+
 export default function PrivacyPage() {
   return (
-    <div className="px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-2xl">
-        <p className="section-label mb-2">Legal</p>
-        <h1 className="font-display text-3xl font-semibold text-[var(--color-text)]">
-          Privacy
-        </h1>
-        <div className="mt-8 space-y-4 font-serif text-[var(--color-text-muted)] leading-relaxed">
+    <main id="main" className="min-h-[100dvh] pt-10 pb-24">
+      <article className="wrap max-w-2xl">
+        <h1 className="text-[2.3rem] font-semibold tracking-tight">Privacy</h1>
+        <p className="mt-3 text-[var(--fg-muted)]">Last updated 19 August 2026.</p>
+        <div className="mt-10 space-y-6 text-[1.02rem] leading-relaxed text-[var(--fg-muted)]">
           <p>
-            NyayaVedika is a professional tool for advocates. Queries entered
-            for search or drafting are processed to return results and drafts.
+            NyayaVedika is a chamber tool of Naga Law Chambers, Anantapur. Queries you type on this
+            site are used only to return case law and a first draft.
           </p>
           <p>
-            We do not sell personal data. Session data may be used to improve
-            the tool. For the Telegram bot, the privacy policy of Telegram
-            applies in addition to this page.
+            If an API key is configured, a query may be sent to Indian Kanoon or to a drafting
+            model. Those providers then process the text under their own terms. Do not paste
+            privileged client papers, Aadhaar numbers, or medical records into the public form.
           </p>
           <p>
-            Contact the chamber via{" "}
-            <a href="https://nagalawchambers.com" className="text-[var(--color-cyan)]">
-              nagalawchambers.com
-            </a>{" "}
-            for data-related requests.
+            We do not sell data. We do not run advertising trackers. Server logs may keep an IP
+            address for a short period for rate limiting.
+          </p>
+          <p>
+            For a deletion request write to Naga Law Chambers, Door No. 12-3-218, Subash Road,
+            Anantapur 515001, or use the Telegram bot.
           </p>
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }
