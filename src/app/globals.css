@@ -1,453 +1,297 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 /* ============================================================
-   NYAYAVEDIKA — stamp paper / court order aesthetic
-   Drenched palette: warm cream paper, legal-ink red, judge's blue
+   KIWI DESIGN SYSTEM — NyayaVedika
+   Primary dark #050508 · Accent cyan #00E5FF
+   Glassmorphism · Scanlines · HUD-pulse · Stark dark UI
    ============================================================ */
 
 @theme {
-  /* Paper & ink */
-  --color-paper:        #F4EFE3;   /* stamp paper cream */
-  --color-paper-edge:   #E8DFC8;   /* edge of a stack of stamp paper */
-  --color-paper-shade:  #EFE6D2;   /* shadowed paper */
-  --color-paper-fold:   #D9CDB1;   /* creased paper */
-  --color-ink:          #1A1814;   /* typewriter dried ink */
-  --color-ink-faded:    #4A453C;   /* ink 1 day old */
-  --color-pencil:       #8A8578;   /* sub-text pencil */
-  --color-rubber:       #B5AE9D;   /* rubber stamp pad dry spot */
-
-  /* Legal colors */
-  --color-chakra-red:   #B83227;   /* court seal / wax / Indian red */
-  --color-chakra-deep:  #8C2018;   /* red ink dried */
-  --color-chakra-faded: #D4817A;   /* red stamp fading */
-  --color-judge-blue:   #1F3A5F;   /* "REGISTERED" / "URGENT" stamp */
-  --color-judge-cyan:   #2A5078;   /* typewriter ribbon blue */
-
-  /* Functional */
-  --color-amber:        #B8842A;   /* filed stamp */
-  --color-amber-faded:  #D4A85A;
-  --color-ruled:        #C9BEA3;   /* ruled paper lines */
+  --color-bg:           #050508;
+  --color-surface:      #0a0a0f;
+  --color-surface-2:    #0f0f16;
+  --color-border:       rgba(0, 229, 255, 0.12);
+  --color-border-strong:rgba(0, 229, 255, 0.28);
+  --color-cyan:         #00E5FF;
+  --color-cyan-dim:     rgba(0, 229, 255, 0.65);
+  --color-cyan-glow:    rgba(0, 229, 255, 0.15);
+  --color-text:         #E8F4F8;
+  --color-text-muted:   #8A9BA8;
+  --color-text-faint:   #5A6A78;
+  --color-danger:       #FF4D6A;
+  --color-success:      #00E5A0;
+  --color-amber:        #FFB020;
 
   --font-display: 'EB Garamond', 'Times New Roman', serif;
   --font-serif:   'IBM Plex Serif', Georgia, serif;
-  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+  --font-sans:    ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
-/* ============================================================
-   Base — paper texture
-   ============================================================ */
-
 @layer base {
-  html { scroll-behavior: smooth; }
-
-  body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
-    font-family: var(--font-serif);
-    font-feature-settings: "kern", "liga", "onum";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
-  /* paper grain — physical, not AI noise */
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
+    z-index: 50;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    opacity: 0.4;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 40vh;
+    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.06) 0%, transparent 70%);
+    pointer-events: none;
     z-index: 0;
-    background-image:
-      /* fine horizontal fiber lines (paper grain) */
-      repeating-linear-gradient(
-        0deg,
-        transparent 0,
-        transparent 3px,
-        rgba(140, 120, 80, 0.025) 3px,
-        rgba(140, 120, 80, 0.025) 4px
-      ),
-      /* subtle blotches */
-      radial-gradient(circle at 20% 30%, rgba(140, 100, 60, 0.04) 0%, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(140, 100, 60, 0.05) 0%, transparent 35%),
-      radial-gradient(circle at 50% 90%, rgba(120, 80, 50, 0.03) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 600;
-    color: var(--color-ink);
+    color: var(--color-text);
     text-wrap: balance;
   }
 
-  code, pre, .mono {
-    font-family: var(--font-mono);
-  }
-
   ::selection {
-    background: var(--color-chakra-red);
-    color: var(--color-paper);
+    background: rgba(0, 229, 255, 0.25);
+    color: #fff;
   }
 
-  a { color: var(--color-judge-blue); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a:hover { color: var(--color-chakra-red); }
+  a {
+    color: var(--color-cyan);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  a:hover {
+    color: #7AFFFF;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 2px;
+  }
 }
 
-/* ============================================================
-   Stamp paper frame — the page sits on a stamp paper sheet
-   ============================================================ */
+.glass {
+  background: rgba(10, 10, 16, 0.72);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid var(--color-border);
+}
 
-.stamp-paper {
+.glass-strong {
+  background: rgba(12, 14, 22, 0.85);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid var(--color-border-strong);
+}
+
+.hud-panel {
   position: relative;
-  background: var(--color-paper);
-  border: 1px solid var(--color-chakra-deep);
-  /* the classic stamp paper double red border */
-  box-shadow:
-    inset 0 0 0 6px var(--color-paper),
-    inset 0 0 0 7px var(--color-chakra-deep),
-    inset 0 0 0 13px var(--color-paper),
-    inset 0 0 0 14px var(--color-chakra-deep);
+  background: linear-gradient(160deg, rgba(8, 12, 18, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-.stamp-paper::before {
+.hud-panel::before {
   content: '';
   position: absolute;
-  inset: 18px;
-  border: 1px dashed var(--color-rubber);
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 229, 255, 0.03) 50%, transparent 100%);
   pointer-events: none;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--color-cyan);
+  opacity: 0.7;
+}
+.hud-corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+.hud-corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+.hud-corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+.hud-corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+.cyan-glow {
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), 0 0 40px rgba(0, 229, 255, 0.05);
+}
+
+.pulse-cyan {
+  animation: pulse-cyan 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 8px rgba(0, 229, 255, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 16px rgba(0, 229, 255, 0.45); }
+}
+
+.scanline-bar {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-cyan), transparent);
   opacity: 0.4;
 }
 
-/* ============================================================
-   Hand-drawn red underline — like a real lawyer's red pen
-   ============================================================ */
-
-.red-underline {
-  background-image:
-    linear-gradient(to right,
-      var(--color-chakra-red) 0%,
-      var(--color-chakra-red) 100%);
-  background-position: 0 100%;
-  background-size: 100% 2px;
-  background-repeat: no-repeat;
-  padding-bottom: 2px;
-}
-
-.red-underline-sketch {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'><path d='M2,5 Q20,2 40,4 T80,3 Q100,5 120,2 T160,4 Q180,3 198,5' fill='none' stroke='%23B83227' stroke-width='1.6' stroke-linecap='round'/></svg>");
-  background-position: 0 100%;
-  background-size: 100% 0.4em;
-  background-repeat: no-repeat;
-  padding-bottom: 4px;
-}
-
-/* ============================================================
-   Rubber stamp — slightly rotated, ink-imperfect
-   ============================================================ */
-
-.stamp {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-chakra-red);
-  border: 2px solid var(--color-chakra-red);
-  padding: 4px 10px 3px;
-  transform: rotate(-2.5deg);
-  position: relative;
-  background:
-    /* ink imperfection — broken coverage */
-    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-chakra-red) 0.6px, var(--color-chakra-red) 1px, transparent 1.1px),
-    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-chakra-red) 0.5px, var(--color-chakra-red) 0.9px, transparent 1px),
-    radial-gradient(circle at 50% 30%, transparent 0.3px, var(--color-chakra-red) 0.4px, var(--color-chakra-red) 0.7px, transparent 0.8px);
-  background-size: 7px 7px;
-  /* slightly broken border — like a real rubber stamp */
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-  mask-size: 100% 100%;
-  -webkit-mask-size: 100% 100%;
-}
-
-.stamp-blue {
-  color: var(--color-judge-blue);
-  border-color: var(--color-judge-blue);
-  background:
-    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-judge-blue) 0.6px, var(--color-judge-blue) 1px, transparent 1.1px),
-    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-judge-blue) 0.5px, var(--color-judge-blue) 0.9px, transparent 1px);
-  background-size: 7px 7px;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-}
-
-.stamp-amber {
-  color: var(--color-amber);
-  border-color: var(--color-amber);
-  background:
-    radial-gradient(circle at 30% 40%, transparent 0.5px, var(--color-amber) 0.6px, var(--color-amber) 1px, transparent 1.1px),
-    radial-gradient(circle at 70% 60%, transparent 0.4px, var(--color-amber) 0.5px, var(--color-amber) 0.9px, transparent 1px);
-  background-size: 7px 7px;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect x='2' y='2' width='196' height='56' fill='none' stroke='black' stroke-width='4' stroke-dasharray='240 2 60 1 80 3'/></svg>");
-}
-
-/* ============================================================
-   Court order layout — single column, ruled lines
-   ============================================================ */
-
-.ruled-paper {
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 31px,
-      var(--color-ruled) 31px,
-      var(--color-ruled) 32px
-    );
-  background-position: 0 1.5rem;
-  background-size: 100% 2rem;
-}
-
-.proceeding {
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  line-height: 2rem;
-  color: var(--color-ink);
-}
-
-.proceeding p {
-  margin: 0 0 1.2rem 0;
-  text-indent: 2.5em;
-}
-
-.proceeding p:first-of-type {
-  text-indent: 0;
-}
-
-/* ============================================================
-   Typewriter input — the search field
-   ============================================================ */
-
-.typewriter-input {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--color-ink);
-  background: var(--color-paper);
-  border: none;
-  border-bottom: 1px solid var(--color-ink);
-  width: 100%;
-  padding: 0.6rem 0;
-  outline: none;
-  caret-color: var(--color-chakra-red);
-}
-
-.typewriter-input::placeholder {
-  color: var(--color-pencil);
-  font-style: italic;
-}
-
-.typewriter-input:focus {
-  border-bottom-color: var(--color-chakra-red);
-  border-bottom-width: 2px;
-  padding-bottom: calc(0.6rem - 1px);
-}
-
-/* blinking caret on hover (subtle) */
-.typewriter-input:focus::after {
-  content: '_';
-  display: inline;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-/* ============================================================
-   Citations — formal Indian legal citation style
-   ============================================================ */
-
-.citation {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  color: var(--color-ink);
-  border-left: 3px double var(--color-chakra-deep);
-  padding: 0.6rem 0 0.6rem 1rem;
-  margin: 0.5rem 0;
-  background: var(--color-paper-shade);
-}
-
-.citation-source {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-ink-faded);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.3rem;
-}
-
-.citation-italic {
-  font-style: italic;
-  color: var(--color-ink);
-}
-
-.citation-ref {
-  font-family: var(--font-mono);
-  color: var(--color-judge-blue);
-  font-size: 0.85rem;
-}
-
-/* ============================================================
-   Section numbers — small numerals in the margin, no "01/02/03"
-   eyebrow kicks
-   ============================================================ */
-
-.section-number {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-ink-faded);
-  letter-spacing: 0.05em;
-}
-
-.section-divider {
-  border: none;
-  border-top: 1px solid var(--color-ink);
-  margin: 4rem 0;
-  position: relative;
-}
-
-.section-divider::after {
-  content: '§';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -55%);
-  background: var(--color-paper);
-  padding: 0 0.6rem;
-  color: var(--color-ink-faded);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-}
-
-/* ============================================================
-   Form filings — physical, button-like, not glass
-   ============================================================ */
-
-.btn-ink {
+.btn-cyan {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-paper);
-  background: var(--color-ink);
-  border: 1px solid var(--color-ink);
-  padding: 0.7rem 1.3rem;
+  color: #050508;
+  background: var(--color-cyan);
+  border: 1px solid var(--color-cyan);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
   text-decoration: none;
 }
-
-.btn-ink:hover {
-  background: var(--color-chakra-red);
-  border-color: var(--color-chakra-red);
-  color: var(--color-paper);
+.btn-cyan:hover {
+  background: #7AFFFF;
+  border-color: #7AFFFF;
+  color: #050508;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.35);
+}
+.btn-cyan:active {
+  transform: scale(0.97);
 }
 
-.btn-paper {
+.btn-ghost {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-ink);
-  background: var(--color-paper);
-  border: 1px solid var(--color-ink);
-  padding: 0.7rem 1.3rem;
+  color: var(--color-cyan);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
   text-decoration: none;
 }
-
-.btn-paper:hover {
-  background: var(--color-ink);
-  color: var(--color-paper);
+.btn-ghost:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.12);
+}
+.btn-ghost:active {
+  transform: scale(0.97);
 }
 
-/* ============================================================
-   Parties block — Indian court order style
-   ============================================================ */
-
-.parties {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--color-ink);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.parties .vs {
-  display: block;
-  text-align: center;
-  font-style: normal;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  color: var(--color-ink-faded);
-  margin: 0.6rem 0;
-}
-
-/* ============================================================
-   Footnote markers — superscript numerals, not links
-   ============================================================ */
-
-.fn {
-  font-family: var(--font-mono);
-  font-size: 0.7em;
-  vertical-align: super;
-  color: var(--color-chakra-red);
-  cursor: pointer;
-  font-weight: 600;
-}
-
-/* ============================================================
-   Marginalia — small print on the side, like real legal margin notes
-   ============================================================ */
-
-.marginalia {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-ink-faded);
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-}
-
-.margin-note {
-  position: absolute;
-  left: -7rem;
+.section-label {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--color-chakra-red);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  color: var(--color-cyan);
+  opacity: 0.85;
 }
 
-/* ============================================================
-   Reduced motion
-   ============================================================ */
+.ratio-box {
+  border-left: 3px solid var(--color-cyan);
+  background: rgba(0, 229, 255, 0.04);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+.input-kiwi {
+  width: 100%;
+  background: rgba(5, 5, 8, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  padding: 0.9rem 1.1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+.input-kiwi:focus {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
+}
+.input-kiwi::placeholder {
+  color: var(--color-text-faint);
+}
+
+textarea.input-kiwi {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  background: rgba(0, 229, 255, 0.04);
+}
+.chip-cyan {
+  border-color: rgba(0, 229, 255, 0.35);
+  color: var(--color-cyan);
+  background: rgba(0, 229, 255, 0.08);
+}
+.chip-amber {
+  border-color: rgba(255, 176, 32, 0.4);
+  color: var(--color-amber);
+  background: rgba(255, 176, 32, 0.08);
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
