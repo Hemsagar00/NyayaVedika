@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  output: 'export',
-  distDir: 'out',
+  reactStrictMode: true,
+  // Removed forced static export so /api/* routes work on Vercel.
   images: { unoptimized: true },
   poweredByHeader: false,
   compress: true,
