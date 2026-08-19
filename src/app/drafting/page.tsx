@@ -1,206 +1,229 @@
 "use client";
 
 import { useState } from "react";
+import { FileText, Loader2, Copy, Check } from "lucide-react";
 
 const DOC_TYPES = [
-  { id: "bail", label: "Anticipatory Bail (438 CrPC)", court: "Sessions Court" },
-  { id: "partition", label: "Partition Suit", court: "District Court" },
-  { id: "consumer", label: "Consumer Complaint", court: "District Forum" },
-  { id: "mutation", label: "Revenue Mutation", court: "Tahsildar" },
-  { id: "notice", label: "Notice u/s 80 CPC", court: "Pre-suit" },
-  { id: "ws", label: "Written Statement", court: "District Court" },
+  { value: "anticipatory-bail", label: "Anticipatory Bail (§438 CrPC)", court: "Sessions Court" },
+  { value: "partition-suit", label: "Partition Suit (Hindu Succession)", court: "District Court" },
+  { value: "consumer-complaint", label: "Consumer Complaint", court: "District Consumer Forum" },
+  { value: "mutation", label: "Revenue Mutation / Legal Heir", court: "Tahsildar" },
+  { value: "notice-80-cpc", label: "Notice u/s 80 CPC", court: "Pre-suit" },
+  { value: "written-statement", label: "Written Statement", court: "District Court" },
 ];
 
+const SAMPLE_DRAFT = `IN THE COURT OF THE SESSIONS JUDGE AT ANANTAPUR
+
+Criminal Miscellaneous Petition No. ______ of 2026
+
+Between:
+
+[Petitioner Name]
+S/o / D/o [Father's Name],
+Aged about __ years,
+R/o [Full Address]
+… Petitioner
+
+And
+
+The State of Andhra Pradesh
+Rep. by the Station House Officer,
+[Police Station], Anantapur District
+… Respondent
+
+PETITION UNDER SECTION 438 OF THE CODE OF CRIMINAL PROCEDURE, 1973
+FOR GRANT OF ANTICIPATORY BAIL
+
+The Petitioner above named most respectfully submits as under:
+
+1. That the Petitioner is a law-abiding citizen and has deep roots in society.
+2. That the Petitioner apprehends arrest in Crime No. ______ of ______ registered at [Police Station] for alleged offences under Sections ______ IPC / relevant Act.
+3. That the allegations in the FIR are omnibus and mechanical in nature. No specific overt act is attributed to the Petitioner.
+4. That in light of the principles laid down in Arnesh Kumar v. State of Bihar, (2014) 8 SCC 273, the Investigating Officer is bound to record reasons before effecting arrest.
+5. That the Petitioner undertakes to abide by all conditions that this Hon'ble Court may impose and shall cooperate with the investigation.
+6. That the Petitioner has no criminal antecedents (or state any).
+
+PRAYER
+
+It is therefore most respectfully prayed that this Hon'ble Court may be pleased to:
+
+(a) Grant anticipatory bail to the Petitioner in the event of arrest in the aforesaid crime;
+(b) Direct the Investigating Officer to release the Petitioner on bail in the event of arrest on such terms and conditions as this Hon'ble Court deems fit;
+(c) Pass any other order as this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.
+
+Place: Anantapur
+Date: ______
+
+                                                    … Petitioner
+                                                    Through Counsel
+
+[Advocate Name]
+Advocate, Anantapur Bar
+`;
+
 export default function DraftingPage() {
-  const [doc, setDoc] = useState(DOC_TYPES[0]);
+  const [docType, setDocType] = useState(DOC_TYPES[0].value);
   const [petitioner, setPetitioner] = useState("");
-  const [respondent, setRespondent] = useState("");
   const [facts, setFacts] = useState("");
-  const [generated, setGenerated] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  async function generate() {
+    setLoading(true);
+    setDraft("");
+    await new Promise((r) => setTimeout(r, 900));
+    let text = SAMPLE_DRAFT;
+    if (petitioner.trim()) {
+      text = text.replace("[Petitioner Name]", petitioner.trim());
+    }
+    if (facts.trim()) {
+      text = text.replace(
+        "That the allegations in the FIR are omnibus and mechanical in nature. No specific overt act is attributed to the Petitioner.",
+        facts.trim()
+      );
+    }
+    setDraft(text);
+    setLoading(false);
+  }
+
+  async function copyDraft() {
+    if (!draft) return;
+    await navigator.clipboard.writeText(draft);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  const selected = DOC_TYPES.find((d) => d.value === docType);
 
   return (
-    <main className="relative min-h-[calc(100vh-4rem)]">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8 py-12">
-        <div className="flex items-center justify-between mb-6">
-          <p className="section-number">&mdash; Document Drafting &mdash;</p>
-          <div className="stamp">In Chamber Use</div>
+    <div className="px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-8">
+          <p className="section-label mb-2">Document drafting</p>
+          <h1 className="font-display text-3xl font-semibold text-[var(--color-text)] sm:text-4xl">
+            First draft, registry-ready.
+          </h1>
+          <p className="mt-2 max-w-xl font-serif text-[var(--color-text-muted)]">
+            Select the pleading type, fill the essentials, and receive a
+            structured draft in the format used by local courts.
+          </p>
         </div>
 
-        <h1 className="font-display text-[2.5rem] sm:text-[3rem] font-semibold text-[var(--color-ink)] mb-2 leading-tight">
-          <span className="red-underline-sketch">File a pleading.</span>
-        </h1>
-        <p className="font-serif text-[1.05rem] text-[var(--color-ink-faded)] mb-8 max-w-2xl italic">
-          Choose the document. Fill in the parties and the facts. The
-          first draft of the pleading is produced, in the format the
-          registry accepts.
-        </p>
-
-        <hr className="border-t border-[var(--color-ink)] mb-8" />
-
-        {!generated ? (
-          <div className="space-y-8">
-            <section>
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--color-ink-faded)] mb-3">
-                §1. Document type
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {DOC_TYPES.map((d) => (
-                  <button
-                    key={d.id}
-                    onClick={() => setDoc(d)}
-                    className={`text-left p-4 border ${
-                      doc.id === d.id
-                        ? "border-[var(--color-chakra-red)] border-2 bg-[var(--color-paper-shade)]"
-                        : "border-[var(--color-ink-faded)]"
-                    } hover:border-[var(--color-chakra-red)] transition-colors`}
-                  >
-                    <p className="font-display text-[1.05rem] font-semibold text-[var(--color-ink)] mb-1">
-                      {d.label}
-                    </p>
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.1em] text-[var(--color-pencil)]">
-                      For: {d.court}
-                    </p>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--color-ink-faded)] mb-3">
-                §2. Parties
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-pencil)] block mb-1">
-                    Petitioner / Applicant
-                  </label>
-                  <input
-                    type="text"
-                    value={petitioner}
-                    onChange={(e) => setPetitioner(e.target.value)}
-                    placeholder="Name, age, address"
-                    className="typewriter-input"
-                  />
-                </div>
-                <div>
-                  <label className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-pencil)] block mb-1">
-                    Respondent / Opposite Party
-                  </label>
-                  <input
-                    type="text"
-                    value={respondent}
-                    onChange={(e) => setRespondent(e.target.value)}
-                    placeholder="Name, address"
-                    className="typewriter-input"
-                  />
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--color-ink-faded)] mb-3">
-                §3. Brief facts
-              </p>
-              <textarea
-                value={facts}
-                onChange={(e) => setFacts(e.target.value)}
-                placeholder="State the facts as you would explain them to a senior. Plain English, Telugu, or both."
-                rows={8}
-                className="typewriter-input"
-                style={{ border: "1px solid var(--color-ink)", padding: "0.8rem", minHeight: "180px" }}
-              />
-            </section>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setGenerated(true)}
-                className="btn-ink"
+        <div className="grid gap-8 lg:grid-cols-[340px_1fr]">
+          <div className="space-y-5">
+            <div className="hud-panel p-5">
+              <label className="mb-1.5 block font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--color-text-faint)]">
+                Document type
+              </label>
+              <select
+                value={docType}
+                onChange={(e) => setDocType(e.target.value)}
+                className="input-kiwi appearance-none"
               >
-                Generate first draft
+                {DOC_TYPES.map((d) => (
+                  <option key={d.value} value={d.value}>
+                    {d.label}
+                  </option>
+                ))}
+              </select>
+              {selected && (
+                <p className="mt-2 font-mono text-[0.65rem] text-[var(--color-cyan)]">
+                  Court: {selected.court}
+                </p>
+              )}
+            </div>
+
+            <div className="hud-panel p-5 space-y-4">
+              <div>
+                <label className="mb-1.5 block font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--color-text-faint)]">
+                  Petitioner / Applicant
+                </label>
+                <input
+                  value={petitioner}
+                  onChange={(e) => setPetitioner(e.target.value)}
+                  placeholder="Full name"
+                  className="input-kiwi"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--color-text-faint)]">
+                  Key facts / grounds
+                </label>
+                <textarea
+                  value={facts}
+                  onChange={(e) => setFacts(e.target.value)}
+                  placeholder="Brief facts supporting the application…"
+                  className="input-kiwi min-h-[140px]"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={generate}
+                disabled={loading}
+                className="btn-cyan w-full justify-center"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 size={15} className="animate-spin" />
+                    Drafting…
+                  </>
+                ) : (
+                  <>
+                    <FileText size={15} />
+                    Generate draft
+                  </>
+                )}
               </button>
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-pencil)]">
-                You will edit the draft. The structure is fixed.
+              <p className="text-center font-mono text-[0.6rem] text-[var(--color-text-faint)]">
+                Demo mode · Always review before filing
               </p>
             </div>
           </div>
-        ) : (
-          <article className="border-2 border-[var(--color-ink)] bg-[var(--color-paper-shade)] p-8 sm:p-12 proceeding ruled-paper">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--color-pencil)] text-center mb-1">
-              IN THE COURT OF THE {doc.court.toUpperCase()}
-            </p>
-            <p className="font-mono text-[0.7rem] text-[var(--color-judge-blue)] text-center mb-6">
-              [DRAFT — TO BE TYPED AND FILED]
-            </p>
 
-            <div className="parties mb-6 text-center">
-              <p>
-                {petitioner || "[Petitioner Name]"}
-                <br />
-                <span className="font-mono not-italic text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-pencil)]">
-                  &hellip; Petitioner
-                </span>
-              </p>
-              <p className="vs">— Versus —</p>
-              <p>
-                {respondent || "[Respondent Name]"}
-                <br />
-                <span className="font-mono not-italic text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-pencil)]">
-                  &hellip; Respondent
-                </span>
-              </p>
-            </div>
-
-            <p className="font-display font-semibold text-center text-[1.15rem] mb-6 underline underline-offset-4">
-              {doc.label.toUpperCase()}
-            </p>
-
-            <p>
-              The Petitioner above-named most respectfully submits as
-              under:
-            </p>
-            <p>
-              1. That the Petitioner is a resident of [address], and is
-              filing the present {doc.label.toLowerCase()} before this
-              Hon&rsquo;ble Court for the reasons set out hereunder.
-            </p>
-            <p>
-              2. That the facts giving rise to the present matter are
-              that {facts || "[brief facts to be inserted by counsel]"}.
-            </p>
-            <p>
-              3. That the cause of action arose on [date], and this
-              Hon&rsquo;ble Court has the territorial and pecuniary
-              jurisdiction to try the present matter.
-            </p>
-            <p>
-              4. That the Petitioner has not filed any other petition
-              on the same cause before any other Court, and is not
-              guilty of suppression of material facts.
-            </p>
-            <p>
-              It is, therefore, most respectfully prayed that this
-              Hon&rsquo;ble Court may be pleased to:
-            </p>
-            <p className="pl-8">
-              (a) Allow the present {doc.label.toLowerCase()};
-              <br />
-              (b) Grant such other and further reliefs as the nature
-              and circumstances of the case may require.
-            </p>
-            <p className="text-right mt-6 font-display italic">
-              &mdash; Petitioner
-              <br />
-              Through Counsel
-            </p>
-
-            <div className="mt-8 text-center">
-              <div className="stamp" style={{ display: "inline-block" }}>
-                Draft · Not for Filing
+          <div className="min-h-[420px]">
+            {draft ? (
+              <div className="hud-panel flex h-full flex-col">
+                <div className="flex items-center justify-between border-b border-[var(--color-border)] px-4 py-3">
+                  <span className="section-label">Draft output</span>
+                  <button
+                    type="button"
+                    onClick={copyDraft}
+                    className="btn-ghost !py-1.5 !px-3 !text-[0.65rem]"
+                  >
+                    {copied ? (
+                      <>
+                        <Check size={13} /> Copied
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} /> Copy
+                      </>
+                    )}
+                  </button>
+                </div>
+                <pre className="flex-1 overflow-auto whitespace-pre-wrap p-5 font-mono text-[0.8rem] leading-relaxed text-[var(--color-text-muted)]">
+                  {draft}
+                </pre>
               </div>
-            </div>
-          </article>
-        )}
+            ) : (
+              <div className="glass flex h-full min-h-[420px] flex-col items-center justify-center rounded-lg p-8 text-center">
+                <FileText
+                  size={32}
+                  className="mb-4 text-[var(--color-cyan)] opacity-40"
+                />
+                <p className="font-serif text-[var(--color-text-muted)]">
+                  Fill the form and generate a structured first draft.
+                </p>
+                <p className="mt-2 max-w-xs font-mono text-[0.65rem] text-[var(--color-text-faint)]">
+                  Output is a working template. Insert cause title, dates, and
+                  verify every citation before presentation.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
