@@ -30,37 +30,34 @@ const jet = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nyayavedika.in"),
   title: {
-    default: "NyayaVedika — case law search and structured drafting for the Anantapur Bar",
+    default: "NyayaVedika — Case Law Search & Structured Drafting for Advocates",
     template: "%s | NyayaVedika",
   },
   description:
-    "A working advocate's tool for case law, ratio decidendi, and first-draft petitions. Built and used by Adv. S. Nagendra Naik, Anantapur Bar.",
+    "State the issue. Get ranked citations with verbatim ratio decidendi. Generate registry-ready first drafts. Built for Indian advocates — Anantapur Bar and beyond.",
   keywords: [
     "Indian case law",
     "ratio decidendi",
-    "Anantapur advocate",
     "Anticipatory bail",
     "Revenue AP",
     "Adangal Pahani",
-    "Legal drafting AP",
-    "Telugu legal",
+    "Legal drafting",
+    "CrPC 438",
+    "Hindu Succession",
+    "Anantapur advocate",
   ],
-  authors: [{ name: "Adv. S. Nagendra Naik", url: "https://nagalawchambers.com" }],
-  creator: "Adv. S. Nagendra Naik",
-  publisher: "Naga Law Chambers",
+  authors: [{ name: "NyayaVedika", url: "https://nyayavedika.in" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://nyayavedika.in",
     siteName: "NyayaVedika",
-    title: "NyayaVedika — case law and drafting, used in chamber",
+    title: "NyayaVedika — Case Law & Drafting for the Bar",
     description:
-      "What Adv. S. Nagendra Naik uses to research, draft, and file from Anantapur.",
+      "Case law search with verbatim ratios + structured first drafts for Indian pleadings.",
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
@@ -74,9 +71,9 @@ export default function RootLayout({
       className={`${garamond.variable} ${plex.variable} ${jet.variable}`}
     >
       <body className="min-h-screen antialiased">
-        <div className="relative z-10">
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>
