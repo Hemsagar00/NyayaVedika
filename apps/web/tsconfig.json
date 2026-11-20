@@ -1,0 +1,14 @@
+{
+  "extends": "@nyayavedik/config/typescript/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@nyayavedik/ui/*": ["../../packages/ui/src/*"],
+      "@nyayavedik/db/*": ["../../packages/db/src/*"],
+      "@nyayavedik/config/*": ["../../packages/config/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
