@@ -1,9 +1,11 @@
+'use client'
+
 import * as React from 'react'
 import { ChevronDown, Globe, Check } from 'lucide-react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { cn } from '../lib/utils'
 import { Button } from './button'
-import { INDIAN_LANGUAGES, type IndianLanguageCode } from '../lib/utils'
+import { INDIAN_LANGUAGES } from '../lib/utils'
 
 interface LanguageSelectorProps {
   value: string
@@ -11,7 +13,7 @@ interface LanguageSelectorProps {
   variant?: 'dropdown' | 'bottom-sheet' | 'inline' | 'compact'
   showFlags?: boolean
   showNativeNames?: boolean
-  availableLanguages?: IndianLanguageCode[]
+  availableLanguages?: string[]
   className?: string
 }
 
@@ -34,7 +36,7 @@ export const LanguageSelector = React.forwardRef<HTMLDivElement, LanguageSelecto
     ...props
   }, ref) => {
     const filteredOptions = availableLanguages
-      ? languageOptions.filter((opt) => availableLanguages.includes(opt.value as IndianLanguageCode))
+      ? languageOptions.filter((opt) => availableLanguages.includes(opt.value))
       : languageOptions
 
     const selectedOption = filteredOptions.find((opt) => opt.value === value) || filteredOptions[0]

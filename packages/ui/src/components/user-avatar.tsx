@@ -1,6 +1,7 @@
+'use client'
+
 import * as React from 'react'
 import { cn, getInitials } from '../lib/utils'
-import { Button } from './button'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
 
@@ -47,38 +48,11 @@ export const UserAvatar = React.forwardRef<HTMLDivElement, UserAvatarProps>(
   }, ref) => {
     const initials = user.name ? getInitials(user.name) : user.email.slice(0, 2).toUpperCase()
 
-    const avatarContent = variant === 'image' && user.avatarUrl ? (
-      <AvatarPrimitive.Image src={user.avatarUrl} alt={user.name || user.email} className="rounded-full" />
-    ) : (
-      <AvatarPrimitive.Fallback className={cn('rounded-full bg-accent-light text-accent flex items-center justify-center font-medium', sizeClasses[size])}>
-        {initials}
-      </AvatarPrimitive.Fallback>
-    )
-
-    const menuContent = showMenu && menuItems.length > 0 ? (
-      <DropdownMenuPrimitive.Portal>
-        <DropdownMenuPrimitive.Content className="min-w-[180px]">
-          <DropdownMenuPrimitive.Label className="font-medium">{user.name || user.email}</DropdownMenuPrimitive.Label>
-          <DropdownMenuPrimitive.Separator />
-          {menuItems.map((item, index) => (
-            <DropdownMenuPrimitive.Item
-              key={index}
-              onSelect={item.onClick}
-              className={cn('flex items-center gap-2', item.destructive && 'text-danger')}
-            >
-              {item.icon}
-              {item.label}
-            </DropdownMenuPrimitive.Item>
-          ))}
-        </DropdownMenuPrimitive.Content>
-      </DropdownMenuPrimitive.Portal>
-    ) : null
-
-    return (
-      <div ref={ref} className={cn('relative inline-flex', className)} {...props}>
-        <AvatarPrimitive.Root className={cn(sizeClasses[size])}>
-          <AvatarPrimitive.Image src={user.avatarUrl} alt={user.name || user.email} className="rounded-full" />
-          <AvatarPrimitive.Fallback className={cn('rounded-full bg-accent-light text-accent flex items-center justify-center font-medium', sizeClasses[size])}>
+    const avatarNode = (
+      <div className="relative inline-flex">
+        <AvatarPrimitive.Root className={cn('inline-flex overflow-hidden rounded-full', sizeClasses[size])}>
+          <AvatarPrimitive.Image src={user.avatarUrl} alt={user.name || user.email} className="h-full w-full object-cover rounded-full" />
+          <AvatarPrimitive.Fallback className={cn('rounded-full bg-accent-light text-accent flex items-center justify-center font-medium w-full h-full', sizeClasses[size])}>
             {initials}
           </AvatarPrimitive.Fallback>
         </AvatarPrimitive.Root>
@@ -95,7 +69,51 @@ export const UserAvatar = React.forwardRef<HTMLDivElement, UserAvatarProps>(
             {user.subscriptionTier.charAt(0).toUpperCase() + user.subscriptionTier.slice(1)}
           </span>
         )}
-        {menuContent}
+      </div>
+    )
+
+    if (showMenu && menuItems.length > 0) {
+      return (
+        <div ref={ref} className={cn('relative inline-flex', className)} {...props}>
+          <DropdownMenuPrimitive.Root>
+            <DropdownMenuPrimitive.Trigger asChild>
+              <button type="button" className="rounded-full focus:outline-none focus:ring-2 focus:ring-focus-ring">
+                {avatarNode}
+              </button>
+            </DropdownMenuPrimitive.Trigger>
+            <DropdownMenuPrimitive.Portal>
+              <DropdownMenuPrimitive.Content
+                align="end"
+                sideOffset={8}
+                className="z-50 min-w-[180px] rounded-lg border border-border bg-surface p-1 shadow-lg"
+              >
+                <DropdownMenuPrimitive.Label className="px-2 py-1.5 text-sm font-medium text-text-primary">
+                  {user.name || user.email}
+                </DropdownMenuPrimitive.Label>
+                <DropdownMenuPrimitive.Separator className="my-1 h-px bg-border" />
+                {menuItems.map((item, index) => (
+                  <DropdownMenuPrimitive.Item
+                    key={index}
+                    onSelect={item.onClick}
+                    className={cn(
+                      'flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none hover:bg-accent-light',
+                      item.destructive ? 'text-danger' : 'text-text-primary'
+                    )}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </DropdownMenuPrimitive.Item>
+                ))}
+              </DropdownMenuPrimitive.Content>
+            </DropdownMenuPrimitive.Portal>
+          </DropdownMenuPrimitive.Root>
+        </div>
+      )
+    }
+
+    return (
+      <div ref={ref} className={cn('relative inline-flex', className)} {...props}>
+        {avatarNode}
       </div>
     )
   }

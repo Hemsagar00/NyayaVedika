@@ -1,8 +1,11 @@
+'use client'
+
 import * as React from 'react'
 import { Search, X, Filter, Loader2 } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { Button } from './button'
 import { Input } from './input'
+import { Badge } from './badge'
 
 export interface FilterChip {
   label: string
@@ -236,5 +239,3 @@ export const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
   }
 )
 SearchBar.displayName = 'SearchBar'
-
-export { SearchBar }

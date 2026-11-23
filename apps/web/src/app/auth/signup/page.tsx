@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Scale, Mail, Lock, User, Eye, EyeOff, AlertCircle, CheckCircle, Shield } from 'lucide-react'
@@ -11,7 +11,7 @@ import { Card } from '@nyayavedik/ui/components/card'
 import { toast } from '@nyayavedik/ui/components/toast'
 import { useAuth } from '@/hooks/use-auth'
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { signUp, signInWithOAuth } = useAuth()
@@ -276,5 +276,13 @@ export default function SignupPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <SignupForm />
+    </Suspense>
   )
 }

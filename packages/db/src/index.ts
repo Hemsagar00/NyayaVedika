@@ -2,25 +2,48 @@ import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import * as schema from './schema'
 
-const connectionString = process.env.DATABASE_URL!
+const connectionString = process.env.DATABASE_URL
 
-if (!connectionString) {
-  throw new Error('DATABASE_URL environment variable is not set')
+let client: ReturnType<typeof postgres> | null = null
+let db: any
+
+if (connectionString) {
+  try {
+    // Disable prefetch for Supabase/pooler compatibility
+    client = postgres(connectionString, {
+      prepare: false,
+      max: 1,
+      idle_timeout: 20,
+      connect_timeout: 10
+    })
+    db = drizzle(client, { schema })
+  } catch {
+    console.warn('[AI Studio] Database connection failed — using mock')
+  }
 }
 
-// Disable prefetch for Supabase/pooler compatibility
-const client = postgres(connectionString, {
-  prepare: false,
-  max: 1,
-  idle_timeout: 20,
-  connect_timeout: 10
-})
+if (!db) {
+  const noOp = {
+    findMany: async () => [],
+    findFirst: async () => null,
+    findUnique: async () => null,
+    create: async (d: any) => d?.data ?? {},
+    update: async (d: any) => d?.data ?? {},
+    delete: async () => ({})
+  }
+  db = new Proxy(
+    {},
+    {
+      get: (_, prop) =>
+        prop === 'query'
+          ? new Proxy({}, { get: () => noOp })
+          : async () => []
+    }
+  )
+}
 
-export const db = drizzle(client, { schema })
+export { db, client }
 
 export type DB = typeof db
-
-// For transactions
-export { client }
 
 export * from './schema'

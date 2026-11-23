@@ -264,6 +264,7 @@ export default function SettingsPage() {
                         <input
                           type="checkbox"
                           checked={false}
+                          readOnly
                           disabled={!emailNotifications}
                           className="h-4 w-4 accent-accent"
                         />

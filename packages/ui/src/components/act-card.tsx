@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { BookOpen, Bookmark, Download, Globe, ChevronRight } from 'lucide-react'
 import { cn } from '../lib/utils'
@@ -30,7 +32,7 @@ interface ActCardProps {
   className?: string
 }
 
-export const ActCard = React.forwardRef<HTMLDivElement, ActCardProps>(
+export const ActCard = React.forwardRef<HTMLElement, ActCardProps>(
   ({
     act,
     variant = 'bare-act',
@@ -42,14 +44,16 @@ export const ActCard = React.forwardRef<HTMLDivElement, ActCardProps>(
     className,
     ...props
   }, ref) => {
-    const jurisdictionLabels = {
+    const jurisdictionKey = variant === 'constitution' ? 'constitution' : act.jurisdiction
+
+    const jurisdictionLabels: Record<'central' | 'state' | 'subordinate' | 'constitution', string> = {
       central: 'Central Act',
       state: act.state ? `State Act (${act.state})` : 'State Act',
       subordinate: 'Subordinate Legislation',
       constitution: 'Constitution'
     }
 
-    const jurisdictionColors = {
+    const jurisdictionColors: Record<'central' | 'state' | 'subordinate' | 'constitution', 'primary' | 'success' | 'warning'> = {
       central: 'primary',
       state: 'success',
       subordinate: 'warning',
@@ -69,8 +73,8 @@ export const ActCard = React.forwardRef<HTMLDivElement, ActCardProps>(
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-2">
-              <Badge variant={jurisdictionColors[variant]} size="sm">
-                {jurisdictionLabels[variant]}
+              <Badge variant={jurisdictionColors[jurisdictionKey]} size="sm">
+                {jurisdictionLabels[jurisdictionKey]}
               </Badge>
               {act.year && (
                 <span className="text-xs text-text-muted">{act.year}</span>

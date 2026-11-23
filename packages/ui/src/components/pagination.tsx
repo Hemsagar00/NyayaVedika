@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { ChevronRight, Home } from 'lucide-react'
 import { cn } from '../lib/utils'
@@ -8,6 +10,7 @@ export interface BreadcrumbItem {
   href?: string
   onClick?: () => void
   current?: boolean
+  disabled?: boolean
 }
 
 interface BreadcrumbProps {
@@ -18,9 +21,9 @@ interface BreadcrumbProps {
   className?: string
 }
 
-export const Breadcrumb = React.forwardRef<HTMLNavElement, BreadcrumbProps>(
+export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
   ({ items, variant = 'default', maxItems = 5, separator = <ChevronRight className="h-4 w-4 text-text-muted" />, className, ...props }, ref) => {
-    const displayItems = variant === 'truncated' && items.length > maxItems
+    const displayItems: BreadcrumbItem[] = variant === 'truncated' && items.length > maxItems
       ? [items[0], { label: '...', disabled: true }, ...items.slice(-maxItems + 1)]
       : items
 
@@ -30,7 +33,15 @@ export const Breadcrumb = React.forwardRef<HTMLNavElement, BreadcrumbProps>(
           {displayItems.map((item, index) => (
             <li key={item.label} className="flex items-center gap-1.5" aria-current={item.current ? 'page' : undefined}>
               {index > 0 && <span aria-hidden="true">{separator}</span>}
-              {item.href || item.onClick ? (
+              {item.href && !item.current ? (
+                <a
+                  href={item.href}
+                  onClick={item.onClick}
+                  className="text-sm font-medium transition-colors text-text-secondary hover:text-text-primary"
+                >
+                  {item.label}
+                </a>
+              ) : item.onClick ? (
                 <button
                   type="button"
                   onClick={item.onClick}
@@ -65,7 +76,7 @@ interface PaginationProps {
   className?: string
 }
 
-export const Pagination = React.forwardRef<HTMLNavElement, PaginationProps>(
+export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
   ({ currentPage, totalPages, onPageChange, variant = 'numbers', showTotal, totalItems, className, ...props }, ref) => {
     if (totalPages <= 1) return null
 

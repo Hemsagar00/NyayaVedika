@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { Suspense, useState, useCallback } from 'react'
 import { Search, Filter, ChevronDown, BookOpen, Scale, Gavel, Bookmark, Download, Globe } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -98,7 +98,7 @@ const mockActs = Array.from({ length: 20 }, (_, i) => ({
   ][i],
   year: [2023, 2023, 2023, 1950, 1872, 1882, 1963, 1963, 2013, 2016, 2017, 1961, 2019, 1996, 2005, 1988, 2015, 2012, 2000, 1986][i],
   number: ['45', '46', '47', '', '9', '4', '47', '36', '18', '31', '12', '43', '35', '26', '22', '49', '2', '32', '21', '29'][i],
-  jurisdiction: i < 3 ? 'central' : i < 10 ? 'central' : i < 15 ? 'state' : 'subordinate',
+  jurisdiction: (i < 3 ? 'central' : i < 10 ? 'central' : i < 15 ? 'state' : 'subordinate') as 'central' | 'state' | 'subordinate',
   state: i >= 10 && i < 15 ? 'Maharashtra' : i >= 15 ? 'Delhi' : undefined,
   language: 'en',
   availableLanguages: ['en', 'hi', 'gu', 'mr', 'ta', 'te'],
@@ -110,7 +110,7 @@ const mockActs = Array.from({ length: 20 }, (_, i) => ({
   downloaded: i % 5 === 0
 }))
 
-export default function BareActsLibraryPage() {
+function BareActsLibraryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
@@ -352,10 +352,18 @@ export default function BareActsLibraryPage() {
                   totalItems={filteredActs.length}
                 />
               </>
-            }
+            )}
           </main>
         </div>
       </div>
     </div>
+  )
+}
+
+export default function BareActsLibraryPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <BareActsLibraryContent />
+    </Suspense>
   )
 }

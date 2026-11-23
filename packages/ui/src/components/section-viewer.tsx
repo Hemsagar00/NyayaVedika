@@ -1,5 +1,7 @@
+'use client'
+
 import * as React from 'react'
-import { Search, Bookmark, ChevronDown, ChevronUp, Minus, Plus, FontSize, Globe } from 'lucide-react'
+import { Search, Bookmark, ChevronDown, ChevronUp, Minus, Plus, Type, Globe } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { Button } from './button'
 import { Input } from './input'
@@ -67,7 +69,7 @@ export const SectionViewer = React.forwardRef<HTMLDivElement, SectionViewerProps
       setExpandedSections(newExpanded)
     }
 
-    const renderSection = (section: Section, depth = 0): React.ReactElement => {
+    const renderSection = (section: Section, depth = 0): React.ReactElement | null => {
       const isExpanded = expandedSections.has(section.number)
       const hasSubSections = section.subSections && section.subSections.length > 0
       const matchesSearch = !localSearchQuery ||
@@ -181,7 +183,7 @@ export const SectionViewer = React.forwardRef<HTMLDivElement, SectionViewerProps
           </div>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <FontSize className="h-4 w-4 text-text-muted" aria-hidden="true" />
+              <Type className="h-4 w-4 text-text-muted" aria-hidden="true" />
               <select
                 value={fontSize}
                 onChange={(e) => { /* font size handled by parent */ }}

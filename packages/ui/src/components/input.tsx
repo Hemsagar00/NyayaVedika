@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { cn } from '../lib/utils'
@@ -5,7 +7,7 @@ import { cn } from '../lib/utils'
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string
   error?: string
-  hint?: string
+  hint?: React.ReactNode
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
 }
@@ -50,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {rightIcon && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted">
               {rightIcon}
             </div>
           )}
@@ -61,9 +63,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {hint && !error && (
-          <p id={hintId} className="mt-1.5 text-sm text-text-muted">
+          <div id={hintId} className="mt-1.5 text-sm text-text-muted">
             {hint}
-          </p>
+          </div>
         )}
       </div>
     )

@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { ChevronRight, ChevronDown, Search, X } from 'lucide-react'
 import { cn } from '../lib/utils'
@@ -16,6 +18,7 @@ export interface CategoryNode {
 interface CategoryTreeProps {
   nodes: CategoryNode[]
   variant?: 'expandable' | 'searchable' | 'multi-select' | 'flat'
+  searchable?: boolean
   selectedIds?: string[]
   onSelect?: (ids: string[]) => void
   onExpand?: (id: string) => void
@@ -30,7 +33,7 @@ const renderNode = (
   props: CategoryTreeProps,
   getNodeById: (id: string) => CategoryNode | undefined
 ) => {
-  const { nodes, variant, selectedIds = [], onSelect, onExpand, searchQuery } = props
+  const { variant, selectedIds = [], onSelect, onExpand, searchQuery } = props
   const isExpanded = node.expanded || false
   const isSelected = selectedIds.includes(node.id)
   const hasChildren = node.children && node.children.length > 0
@@ -110,7 +113,7 @@ const renderNode = (
 }
 
 export const CategoryTree = React.forwardRef<HTMLDivElement, CategoryTreeProps>(
-  ({ nodes, variant = 'expandable', selectedIds = [], onSelect, onExpand, searchQuery, onSearch, className, ...props }, ref) => {
+  ({ nodes, variant = 'expandable', searchable = false, selectedIds = [], onSelect, onExpand, searchQuery, onSearch, className, ...props }, ref) => {
     const [localSearchQuery, setLocalSearchQuery] = React.useState(searchQuery || '')
 
     const handleSearchChange = (value: string) => {
@@ -120,7 +123,7 @@ export const CategoryTree = React.forwardRef<HTMLDivElement, CategoryTreeProps>(
 
     return (
       <div ref={ref} className={cn('space-y-1', className)} {...props}>
-        {variant === 'searchable' && (
+        {(variant === 'searchable' || searchable) && (
           <div className="relative mb-3">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted" aria-hidden="true" />
             <input
@@ -134,7 +137,7 @@ export const CategoryTree = React.forwardRef<HTMLDivElement, CategoryTreeProps>(
           </div>
         )}
         <div className="space-y-1 max-h-[400px] overflow-auto scrollbar-thin">
-          {nodes.map((node) => renderNode(node, 0, { ...props, selectedIds, onSelect, onExpand, searchQuery: localSearchQuery }, (id) =>
+          {nodes.map((node) => renderNode(node, 0, { ...props, nodes, variant, selectedIds, onSelect, onExpand, searchQuery: localSearchQuery }, (id) =>
             nodes.find((n) => n.id === id)
           ))}
         </div>

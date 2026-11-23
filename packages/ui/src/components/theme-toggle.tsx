@@ -1,5 +1,7 @@
+'use client'
+
 import * as React from 'react'
-import { Sun, Moon, Monitor } from 'lucide-react'
+import { Sun, Moon, Monitor, ChevronDown, Check } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { Button } from './button'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -76,7 +78,6 @@ export const ThemeToggle = React.forwardRef<HTMLButtonElement, ThemeToggleProps>
               {theme === 'light' && <Sun className="h-5 w-5" />}
               {theme === 'dark' && <Moon className="h-5 w-5" />}
               {theme === 'system' && <Monitor className="h-5 w-5" />}
-              {variant === 'with-label' && <span className="hidden sm:inline">{theme}</span>}
               <ChevronDown className="h-4 w-4" />
             </Button>
           </DropdownMenuPrimitive.Trigger>

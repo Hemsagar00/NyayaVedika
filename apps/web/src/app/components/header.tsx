@@ -1,8 +1,9 @@
 'use client'
 
+import * as React from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Menu, X, Scale, BookOpen, Gavel, Bot, Settings, User, LogIn, LogOut, Menu as MenuIcon } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { Menu, X, Scale, BookOpen, Gavel, Bot, Settings, User, LogIn, LogOut } from 'lucide-react'
 import { cn } from '@nyayavedik/ui/lib/utils'
 import { Button } from '@nyayavedik/ui/components/button'
 import { LanguageSelector } from '@nyayavedik/ui/components/language-selector'
@@ -21,9 +22,9 @@ const navigation = [
 
 export function Header() {
   const pathname = usePathname()
+  const router = useRouter()
   const { user, signOut } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-  const [userMenuOpen, setUserMenuOpen] = React.useState(false)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -82,8 +83,8 @@ export function Header() {
               variant="subscription-badge"
               showMenu
               menuItems={[
-                { label: 'Profile', onClick: () => { /* navigate to profile */ }, icon: <User className="h-4 w-4" /> },
-                { label: 'Settings', onClick: () => { /* navigate to settings */ }, icon: <Settings className="h-4 w-4" /> },
+                { label: 'Profile', onClick: () => router.push('/profile'), icon: <User className="h-4 w-4" /> },
+                { label: 'Settings', onClick: () => router.push('/settings'), icon: <Settings className="h-4 w-4" /> },
                 { label: 'Sign out', onClick: () => signOut(), icon: <LogOut className="h-4 w-4" />, destructive: true }
               ]}
             />

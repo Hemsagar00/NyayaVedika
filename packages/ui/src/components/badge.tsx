@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '../lib/utils'
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'neutral'
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral'
   size?: 'sm' | 'md'
   removable?: boolean
   onRemove?: () => void
@@ -12,6 +12,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   ({ className, variant = 'primary', size = 'md', removable, onRemove, children, ...props }, ref) => {
     const variantClasses = {
       primary: 'bg-accent-light text-accent',
+      secondary: 'bg-surface text-text-secondary border border-border',
       success: 'bg-success-light text-success',
       warning: 'bg-warning-light text-warning',
       danger: 'bg-danger-light text-danger',

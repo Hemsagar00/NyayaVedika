@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import { Search, Bookmark, Download, Globe, FontSize, ChevronLeft, ChevronRight, Share2, Print, Copy, Scale } from 'lucide-react'
+import { useState, useCallback, useEffect } from 'react'
+import { Search, Bookmark, Download, Globe, Type, ChevronLeft, ChevronRight, Share2, Printer, Copy, Scale } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { cn } from '@nyayavedik/ui/lib/utils'
@@ -51,12 +51,13 @@ export default function BareActViewerPage() {
   const [bookmarked, setBookmarked] = useState(false)
 
   // Simulate loading
-  useState(() => {
-    setTimeout(() => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setAct(mockAct)
       setLoading(false)
     }, 500)
-  })
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleBookmark = useCallback(() => {
     setBookmarked(!bookmarked)
@@ -96,7 +97,7 @@ export default function BareActViewerPage() {
         </div>
       </div>
     )
-  )
+  }
 
   if (!act) {
     return (
@@ -138,7 +139,7 @@ export default function BareActViewerPage() {
               availableLanguages={act.availableLanguages}
             />
             <div className="flex items-center gap-2">
-              <FontSize className="h-4 w-4 text-text-muted" aria-hidden="true" />
+              <Type className="h-4 w-4 text-text-muted" aria-hidden="true" />
               <select
                 value={fontSize}
                 onChange={(e) => setFontSize(e.target.value as 'sm' | 'base' | 'lg' | 'xl')}
@@ -164,7 +165,7 @@ export default function BareActViewerPage() {
               <span className="hidden sm:inline">Share</span>
             </Button>
             <Button variant="ghost" size="sm" onClick={handlePrint}>
-              <Print className="h-5 w-5" aria-hidden="true" />
+              <Printer className="h-5 w-5" aria-hidden="true" />
               <span className="hidden sm:inline">Print</span>
             </Button>
           </div>
@@ -197,7 +198,7 @@ export default function BareActViewerPage() {
             <div className="flex gap-2">
               <input
                 type="text"
-                value={window.location.href}
+                value={typeof window !== 'undefined' ? window.location.href : ''}
                 readOnly
                 className="flex-1 rounded-lg border border-border-input bg-background px-3 py-2 text-sm text-text-primary"
               />

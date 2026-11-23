@@ -1,20 +1,39 @@
 'use client'
 
-import { Toaster as Sonner } from 'sonner'
+import * as React from 'react'
+import { Toast, subscribeToToasts, type ToastProps } from '@nyayavedik/ui/components/toast'
+
+type ActiveToast = ToastProps & { id: string }
 
 export function Toaster() {
+  const [toasts, setToasts] = React.useState<ActiveToast[]>([])
+
+  React.useEffect(() => {
+    return subscribeToToasts((nextToast) => {
+      setToasts((prev) => [...prev, nextToast])
+    })
+  }, [])
+
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((item) => item.id !== id))
+  }
+
   return (
-    <Sonner
-      theme="system"
-      className="toaster group"
-      toastOptions={{
-        classNames: {
-          toast: 'group toast group-[.toaster]:bg-surface group-[.toaster]:border group-[.toaster]:border-border group-[.toaster]:text-text-primary group-[.toaster]:shadow-lg',
-          description: 'group-[.toast]:text-text-secondary',
-          actionButton: 'group-[.toast]:bg-accent group-[.toast]:text-on-accent',
-          cancelButton: 'group-[.toast]:bg-surface group-[.toast]:text-text-primary group-[.toast]:border group-[.toast]:border-border'
-        }
-      }}
-    />
+    <Toast.Provider swipeDirection="right">
+      {toasts.map((item) => (
+        <Toast.Root
+          key={item.id}
+          variant={item.variant}
+          description={item.description}
+          duration={item.duration ?? 4000}
+          onOpenChange={(open) => {
+            if (!open) removeToast(item.id)
+          }}
+        >
+          {item.title}
+        </Toast.Root>
+      ))}
+      <Toast.Viewport className="fixed bottom-4 right-4 z-[600] flex max-w-sm flex-col gap-2 outline-none" />
+    </Toast.Provider>
   )
 }

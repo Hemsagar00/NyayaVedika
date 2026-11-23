@@ -1,9 +1,12 @@
+'use client'
+
 import * as React from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react'
 import { cn } from '../lib/utils'
 
-interface ToastProps {
+export interface ToastProps {
+  id?: string
   variant?: 'success' | 'error' | 'warning' | 'info'
   title: string
   description?: string
@@ -20,8 +23,11 @@ const ToastViewport = ToastPrimitive.Viewport
 
 const ToastRoot = React.forwardRef<
   React.ElementRef<typeof ToastPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root> & { variant?: ToastProps['variant'] }
->(({ className, variant = 'info', ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root> & {
+    variant?: ToastProps['variant']
+    description?: React.ReactNode
+  }
+>(({ className, variant = 'info', description, children, ...props }, ref) => {
   const variantStyles = {
     success: 'border-success bg-success-light',
     error: 'border-danger bg-danger-light',
@@ -53,11 +59,13 @@ const ToastRoot = React.forwardRef<
       <div className="flex-shrink-0 mt-0.5">{icons[variant]}</div>
       <div className="flex-1 min-w-0">
         <ToastPrimitive.Title className="font-semibold text-text-primary">
-          {props.children}
+          {children}
         </ToastPrimitive.Title>
-        <ToastPrimitive.Description className="mt-1 text-sm text-text-secondary">
-          {props.description}
-        </ToastPrimitive.Description>
+        {description && (
+          <ToastPrimitive.Description className="mt-1 text-sm text-text-secondary">
+            {description}
+          </ToastPrimitive.Description>
+        )}
       </div>
       <ToastPrimitive.Close className={cn(
         'flex-shrink-0 rounded-md p-1 text-text-muted',
@@ -98,23 +106,33 @@ export const Toast = Object.assign(ToastRoot, {
   Close: ToastClose
 })
 
-export function toast(props: ToastProps) {
-  // This would be used with a toast library like sonner or react-hot-toast
-  // For now, it's a placeholder for the API
-  console.log('Toast:', props)
+type ToastListener = (toast: ToastProps & { id: string }) => void
+const listeners = new Set<ToastListener>()
+
+export function subscribeToToasts(listener: ToastListener) {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
+function emitToast(props: ToastProps) {
+  const payload = { ...props, id: props.id || `${Date.now()}-${Math.random().toString(36).slice(2)}` }
+  listeners.forEach((listener) => listener(payload))
+  return payload
 }
 
 type ToastType = 'success' | 'error' | 'warning' | 'info'
 
-const createToast = (variant: ToastType) => (title: string, options?: Omit<ToastProps, 'title' | 'variant'>) => ({
-  variant,
-  title,
-  ...options
-})
+const createToast = (variant: ToastType) => (title: string, options?: Omit<ToastProps, 'title' | 'variant'>) =>
+  emitToast({ variant, title, ...options })
 
-toast.success = createToast('success')
-toast.error = createToast('error')
-toast.warning = createToast('warning')
-toast.info = createToast('info')
-
-export { toast }
+export const toast = Object.assign(
+  (props: ToastProps) => emitToast(props),
+  {
+    success: createToast('success'),
+    error: createToast('error'),
+    warning: createToast('warning'),
+    info: createToast('info')
+  }
+)

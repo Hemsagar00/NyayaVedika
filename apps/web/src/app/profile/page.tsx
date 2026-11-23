@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Bookmark, History, Download, User, Settings, Scale, BookOpen, Gavel, Bot, FileText, LogOut, Edit2 } from 'lucide-react'
+import { Bookmark, History, Download, User, Settings, Scale, BookOpen, Gavel, Bot, FileText, LogOut, Edit2, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { cn } from '@nyayavedik/ui/lib/utils'

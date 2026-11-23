@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000 -H 0.0.0.0",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
@@ -15,9 +15,9 @@
     "react-dom": "^18.3.0",
     "@supabase/supabase-js": "^2.43.0",
     "@supabase/ssr": "^0.3.0",
-    "@nyayavedik/ui": "workspace:*",
-    "@nyayavedik/db": "workspace:*",
-    "@nyayavedik/config": "workspace:*",
+    "@nyayavedik/ui": "*",
+    "@nyayavedik/db": "*",
+    "@nyayavedik/config": "*",
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.3.0",
     "lucide-react": "^0.487.0",
@@ -48,7 +48,6 @@
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.0",
-    "prettier": "^3.3.0",
-    "@nyayavedik/config": "*"
+    "prettier": "^3.3.0"
   }
 }

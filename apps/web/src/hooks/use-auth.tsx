@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { User, Session } from '@supabase/supabase-js'
 import { createBrowserClient } from '@supabase/ssr'
 
@@ -23,21 +23,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+  const supabase = useMemo(() => {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    if (!url || !anonKey) return null
+    try {
+      return createBrowserClient(url, anonKey)
+    } catch {
+      return null
+    }
+  }, [])
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
+    if (!supabase) {
+      setLoading(false)
+      return
+    }
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      setSession(nextSession)
+      setUser(nextSession?.user ?? null)
       setLoading(false)
     })
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-      setUser(session?.user ?? null)
+    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
+      setSession(currentSession)
+      setUser(currentSession?.user ?? null)
+      setLoading(false)
+    }).catch(() => {
       setLoading(false)
     })
 
@@ -45,6 +58,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [supabase])
 
   const signUp = async (email: string, password: string, options?: { data?: Record<string, unknown> }) => {
+    if (!supabase) {
+      return { error: new Error('Authentication backend is not configured in this preview environment.') }
+    }
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -57,11 +73,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signIn = async (email: string, password: string) => {
+    if (!supabase) {
+      return { error: new Error('Authentication backend is not configured in this preview environment.') }
+    }
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     return { error: error ? new Error(error.message) : null }
   }
 
   const signInWithOAuth = async (provider: 'google' | 'github') => {
+    if (!supabase) {
+      return { error: new Error('OAuth backend is not configured in this preview environment.') }
+    }
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: { redirectTo: `${window.location.origin}/auth/callback` }
@@ -70,15 +92,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signOut = async () => {
+    if (!supabase) {
+      setUser(null)
+      setSession(null)
+      return
+    }
     await supabase.auth.signOut()
   }
 
   const updatePassword = async (password: string) => {
+    if (!supabase) {
+      return { error: new Error('Authentication backend is not configured in this preview environment.') }
+    }
     const { error } = await supabase.auth.updateUser({ password })
     return { error: error ? new Error(error.message) : null }
   }
 
   const refreshSession = async () => {
+    if (!supabase) return
     await supabase.auth.refreshSession()
   }
 

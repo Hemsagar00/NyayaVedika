@@ -13,7 +13,6 @@ import {
   primaryKey,
   check
 } from 'drizzle-orm/pg-core'
-import { createId } from '@paralleldrive/cuid2'
 
 // Enums
 export const subscriptionTierEnum = pgEnum('subscription_tier', ['free', 'pro', 'enterprise'])
