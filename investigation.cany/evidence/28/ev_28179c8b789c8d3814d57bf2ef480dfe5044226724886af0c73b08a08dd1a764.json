@@ -1,0 +1,512 @@
+{
+  "id": "ev_28179c8b789c8d3814d57bf2ef480dfe5044226724886af0c73b08a08dd1a764",
+  "subject": {
+    "kind": "website",
+    "name": "https://supremetoday.ai/legal-judgements"
+  },
+  "operation": "web_site_capture",
+  "params": {
+    "include_html": false,
+    "max_height": 12000,
+    "noise_pass": true,
+    "visitor_view": false,
+    "widths": [
+      1440,
+      768,
+      390
+    ]
+  },
+  "result": {
+    "counts": {
+      "forms": 1,
+      "headings": 120,
+      "images": 300,
+      "links": 400,
+      "outline": 352
+    },
+    "design": {
+      "backgrounds": [
+        {
+          "count": 76,
+          "value": "#ffffff"
+        },
+        {
+          "count": 33,
+          "value": "#e8ebef"
+        },
+        {
+          "count": 19,
+          "value": "#059669"
+        },
+        {
+          "count": 5,
+          "value": "#731818"
+        },
+        {
+          "count": 4,
+          "value": "#fffafa"
+        },
+        {
+          "count": 3,
+          "value": "#f7e5e7"
+        },
+        {
+          "count": 2,
+          "value": "#454545"
+        },
+        {
+          "count": 1,
+          "value": "#f3e6e6"
+        },
+        {
+          "count": 1,
+          "value": "#fff0f1"
+        },
+        {
+          "count": 1,
+          "value": "#151922"
+        },
+        {
+          "count": 1,
+          "value": "#fff1f2"
+        },
+        {
+          "count": 1,
+          "value": "#b91c1c"
+        },
+        {
+          "count": 1,
+          "value": "#000000"
+        }
+      ],
+      "css_variables": {},
+      "font_faces": [
+        {
+          "family": "K11",
+          "status": "unloaded",
+          "style": "normal",
+          "weight": "normal"
+        },
+        {
+          "family": "Gloock",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Gloock",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        }
+      ],
+      "font_sizes": [
+        {
+          "count": 104,
+          "value": "12px"
+        },
+        {
+          "count": 88,
+          "value": "14px"
+        },
+        {
+          "count": 82,
+          "value": "13px"
+        },
+        {
+          "count": 11,
+          "value": "20px"
+        },
+        {
+          "count": 4,
+          "value": "31.68px"
+        },
+        {
+          "count": 2,
+          "value": "57.6px"
+        },
+        {
+          "count": 1,
+          "value": "0px"
+        },
+        {
+          "count": 1,
+          "value": "24px"
+        }
+      ],
+      "font_weights": [
+        {
+          "count": 109,
+          "value": "400"
+        },
+        {
+          "count": 86,
+          "value": "700"
+        },
+        {
+          "count": 55,
+          "value": "800"
+        },
+        {
+          "count": 35,
+          "value": "500"
+        },
+        {
+          "count": 4,
+          "value": "650"
+        },
+        {
+          "count": 3,
+          "value": "300"
+        },
+        {
+          "count": 1,
+          "value": "600"
+        }
+      ],
+      "fonts": [
+        {
+          "count": 252,
+          "value": "Inter, Arial, sans-serif"
+        },
+        {
+          "count": 40,
+          "value": "Gloock, Georgia, serif"
+        },
+        {
+          "count": 1,
+          "value": "arial"
+        }
+      ],
+      "max_widths": [
+        {
+          "count": 20,
+          "value": "280px"
+        },
+        {
+          "count": 5,
+          "value": "1440px"
+        },
+        {
+          "count": 4,
+          "value": "1170px"
+        },
+        {
+          "count": 1,
+          "value": "1040px"
+        },
+        {
+          "count": 1,
+          "value": "660px"
+        }
+      ],
+      "radii": [
+        {
+          "count": 52,
+          "value": "10px"
+        },
+        {
+          "count": 46,
+          "value": "6px"
+        },
+        {
+          "count": 22,
+          "value": "50%"
+        },
+        {
+          "count": 21,
+          "value": "8px"
+        },
+        {
+          "count": 18,
+          "value": "2px"
+        },
+        {
+          "count": 4,
+          "value": "999px"
+        },
+        {
+          "count": 3,
+          "value": "12px"
+        },
+        {
+          "count": 1,
+          "value": "12px 0px 0px 12px"
+        },
+        {
+          "count": 1,
+          "value": "11px 0px 0px 11px"
+        },
+        {
+          "count": 1,
+          "value": "3px"
+        }
+      ],
+      "shadows": [
+        {
+          "count": 20,
+          "value": "rgba(15, 23, 42, 0.08) 0px 2px 5px 0px"
+        },
+        {
+          "count": 3,
+          "value": "rgba(15, 23, 42, 0.08) 0px 3px 12px 0px"
+        },
+        {
+          "count": 1,
+          "value": "rgba(0, 0, 0, 0.2) 0px 3px 12px 0px"
+        },
+        {
+          "count": 1,
+          "value": "rgba(0, 0, 0, 0.5) 0px -6px 10px 5px"
+        },
+        {
+          "count": 1,
+          "value": "rgba(50, 50, 93, 0.25) 0px 6px 5px -1px, rgba(0, 0, 0, 0.2) 0px 4px 3px -1px"
+        }
+      ],
+      "spacing": [
+        {
+          "count": 170,
+          "value": "8px"
+        },
+        {
+          "count": 113,
+          "value": "12px"
+        },
+        {
+          "count": 85,
+          "value": "5px"
+        },
+        {
+          "count": 82,
+          "value": "10px"
+        },
+        {
+          "count": 66,
+          "value": "7px"
+        },
+        {
+          "count": 55,
+          "value": "18px"
+        },
+        {
+          "count": 47,
+          "value": "16px"
+        },
+        {
+          "count": 31,
+          "value": "6px"
+        },
+        {
+          "count": 27,
+          "value": "24px"
+        },
+        {
+          "count": 25,
+          "value": "14px"
+        },
+        {
+          "count": 22,
+          "value": "9px"
+        },
+        {
+          "count": 15,
+          "value": "15px"
+        },
+        {
+          "count": 9,
+          "value": "36px"
+        },
+        {
+          "count": 6,
+          "value": "2px"
+        },
+        {
+          "count": 6,
+          "value": "3px"
+        },
+        {
+          "count": 4,
+          "value": "50px"
+        },
+        {
+          "count": 3,
+          "value": "16.4062px"
+        },
+        {
+          "count": 3,
+          "value": "44px"
+        },
+        {
+          "count": 3,
+          "value": "20px"
+        },
+        {
+          "count": 2,
+          "value": "7.6px"
+        },
+        {
+          "count": 2,
+          "value": "42px"
+        },
+        {
+          "count": 2,
+          "value": "11px"
+        },
+        {
+          "count": 2,
+          "value": "-1px"
+        },
+        {
+          "count": 1,
+          "value": "28px"
+        }
+      ],
+      "text_colors": [
+        {
+          "count": 80,
+          "value": "#731818"
+        },
+        {
+          "count": 66,
+          "value": "#8a93a2"
+        },
+        {
+          "count": 42,
+          "value": "#000000"
+        },
+        {
+          "count": 39,
+          "value": "#ffffff"
+        },
+        {
+          "count": 21,
+          "value": "#334155"
+        },
+        {
+          "count": 20,
+          "value": "#991b1b"
+        },
+        {
+          "count": 14,
+          "value": "#6f7a8c"
+        },
+        {
+          "count": 3,
+          "value": "#252a31"
+        },
+        {
+          "count": 3,
+          "value": "#9f1724"
+        },
+        {
+          "count": 1,
+          "value": "#666666"
+        },
+        {
+          "count": 1,
+          "value": "#f41527"
+        },
+        {
+          "count": 1,
+          "value": "#111827"
+        },
+        {
+          "count": 1,
+          "value": "#64748b"
+        },
+        {
+          "count": 1,
+          "value": "#0d6efd"
+        }
+      ]
+    },
+    "files": [
+      "README.md",
+      "capture.json"
+    ],
+    "html_bytes": 0,
+    "output_directory": "D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\legal-judgements",
+    "screenshots": [
+      {
+        "css_width": 1440,
+        "cut": false,
+        "file": "screenshot-1440.png",
+        "height": 6010,
+        "noise_file": "noise-1440.png",
+        "noise_tiles": 80,
+        "sha256": "2ff0af52c6407d0c6fd059a1407a9a1ce670fd38ac2be07a0659767127e307ba",
+        "width": 1440
+      },
+      {
+        "css_width": 768,
+        "cut": false,
+        "file": "screenshot-768.png",
+        "height": 7584,
+        "noise_file": "noise-768.png",
+        "noise_tiles": 636,
+        "sha256": "3cbb12bac33ccca7ace008bceed8ad268e7cdb0c2bbcb0b76f8299c5664b6b60",
+        "width": 768
+      },
+      {
+        "css_width": 390,
+        "cut": false,
+        "file": "screenshot-390.png",
+        "height": 10437,
+        "noise_file": "noise-390.png",
+        "noise_tiles": 840,
+        "sha256": "e599bc9693a72493fd0fe43caa22b07464c224f3725b87ca3b99f98d4ac1385e",
+        "width": 390
+      }
+    ],
+    "title": "Supreme Court, High Courts and Tribunals - Latest Judgements | Supreme Today AI",
+    "url": "https://supremetoday.ai/legal-judgements"
+  },
+  "summary": "Captured https://supremetoday.ai/legal-judgements: 3 screenshot(s), 352 outline items, 120 headings, 300 images, 400 links, 1 forms → D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\legal-judgements.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "one_state",
+      "message": "One state of the page: menus, dialogs and content behind interactions are not opened."
+    },
+    {
+      "code": "cross_origin_css",
+      "message": "CSS custom properties and breakpoints from cross-origin stylesheets can't be read."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 3,
+    "total": 3
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://supremetoday.ai/legal-judgements"
+    },
+    {
+      "kind": "path",
+      "value": "D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\legal-judgements"
+    }
+  ],
+  "links": []
+}

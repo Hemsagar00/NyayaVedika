@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Nyaya Vedika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #222222;
+            --success: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        header h1 span {
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .plan-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .plan-price {
+            margin-bottom: 24px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .x-icon {
+            color: #666;
+        }
+
+        .cta-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .cta-btn.primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            padding: 20px;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Simple, Transparent <span>Pricing</span></h1>
+            <p>Choose the plan that fits your practice. Upgrade or downgrade anytime.</p>
+        </header>
+
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Free</div>
+                <div class="plan-description">Perfect for trying out Nyaya Vedika</div>
+                <div class="plan-price">
+                    <span class="price">₹0</span>
+                    <span class="price-period">/ forever</span>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> 5 AI queries per day</li>
+                    <li><span class="check-icon">✓</span> Basic legal research</li>
+                    <li><span class="x-icon">✗</span> Document summarization</li>
+                    <li><span class="x-icon">✗</span> PDF uploads</li>
+                    <li><span class="x-icon">✗</span> Priority support</li>
+                </ul>
+                <button class="cta-btn secondary" onclick="handleSelect('free')">Get Started</button>
+            </div>
+
+            <!-- Basic Plan -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">Basic</div>
+                <div class="plan-description">For active legal professionals</div>
+                <div class="plan-price">
+                    <span class="price">₹299</span>
+                    <span class="price-period">/ month</span>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> 50 AI queries per day</li>
+                    <li><span class="check-icon">✓</span> Advanced legal research</li>
+                    <li><span class="check-icon">✓</span> Document summarization</li>
+                    <li><span class="check-icon">✓</span> 20 PDF uploads/month</li>
+                    <li><span class="x-icon">✗</span> Priority support</li>
+                </ul>
+                <button class="cta-btn primary" onclick="handleSelect('basic')">Subscribe Now</button>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Professional</div>
+                <div class="plan-description">For high-volume practices</div>
+                <div class="plan-price">
+                    <span class="price">₹999</span>
+                    <span class="price-period">/ month</span>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> Unlimited AI queries</li>
+                    <li><span class="check-icon">✓</span> Advanced legal research</li>
+                    <li><span class="check-icon">✓</span> Document summarization</li>
+                    <li><span class="check-icon">✓</span> 100 PDF uploads/month</li>
+                    <li><span class="check-icon">✓</span> Priority support</li>
+                </ul>
+                <button class="cta-btn primary" onclick="handleSelect('professional')">Subscribe Now</button>
+            </div>
+        </div>
+
+        <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel anytime?</div>
+                <div class="faq-answer">Yes, you can cancel your subscription at any time. You'll continue to have
+                    access until the end of your billing period.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept all major credit/debit cards, UPI, and net banking through Razorpay.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure?</div>
+                <div class="faq-answer">Absolutely. All data is encrypted and stored securely. We never share your
+                    information with third parties.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://eosrmuihgcinncaytxae.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvc3JtdWloZ2Npbm5jYXl0eGFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYzMTQ0MjgsImV4cCI6MjA1MTg5MDQyOH0.VqMCwgp6Jx8S9R9R-znIftNjUrtYA9R61jjgpZ0dYlU';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function handleSelect(plan) {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+
+            if (!session) {
+                // Not logged in, redirect to login
+                window.location.href = 'login.html?redirect=pricing&plan=' + plan;
+                return;
+            }
+
+            if (plan === 'free') {
+                // Already free, go to dashboard
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // For paid plans, we'd integrate Razorpay here
+            // For now, show coming soon message
+            alert('Payment integration coming soon! You will be able to subscribe via Razorpay.');
+        }
+    </script>
+
+</body>
+
+</html>

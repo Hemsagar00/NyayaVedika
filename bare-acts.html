@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bare Acts & New Criminal Codes Browser | NyayaVedika</title>
+  <meta name="description" content="Explore Indian Bare Acts with dual mapping: Bharatiya Nyaya Sanhita (BNS) to IPC, BNSS to CrPC, and BSA to Indian Evidence Act.">
+  <link rel="stylesheet" href="nyayavedika.css">
+  <style>
+    .act-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .act-card:hover, .act-card.active {
+      border-color: var(--gold);
+      background: var(--surface-alt);
+    }
+    .section-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: transform 0.15s;
+    }
+    .section-row:hover {
+      border-color: var(--border-input);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="header-top">
+    <div>
+      <span class="badge badge-gold">NEW CRIMINAL CODES</span>
+      <span>BNS, BNSS, BSA in force across all Indian courts from 1st July 2024</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="diary.html" style="color:var(--gold); font-weight:600;">📅 Cause List Diary</a>
+      <button class="btn btn-ghost" style="padding:2px 8px; font-size:0.8rem;" onclick="toggleTheme()">🌓 Theme</button>
+      <a href="login.html" class="nav-link" style="padding:2px 6px;">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header-main">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <div class="brand-emblem">⚖️</div>
+        <div class="brand-text">
+          <h1>NyayaVedika</h1>
+          <p>न्यायवेदिका • Forum of Justice</p>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="legal-judgements.html" class="nav-link">Judgments</a>
+        <a href="legal-tools.html" class="nav-link">AI Legal Tools</a>
+        <a href="diary.html" class="nav-link">Advocate Diary</a>
+        <a href="bare-acts.html" class="nav-link active">Bare Acts (BNS)</a>
+        <a href="dashboard.html" class="nav-link">Workspace</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Workspace</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section style="background:var(--surface); border-bottom:1px solid var(--border); padding:36px 24px;">
+    <div style="max-width:var(--container-max); margin:0 auto;">
+      <span class="badge badge-gold">STATUTORY REPOSITORY</span>
+      <h2 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; margin-top:4px;">
+        Bare Acts & Comparative Sanhita Mapper
+      </h2>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-top:4px;">
+        Instant cross-referencing between Bharatiya Sanhitas and repealed colonial codes with judicial precedents.
+      </p>
+
+      <!-- Act Chooser Cards -->
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:24px;">
+        <div id="card-BNS" class="act-card active" onclick="selectAct('BNS')">
+          <span class="badge badge-gold">PENAL CODE</span>
+          <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-top:6px;">Bharatiya Nyaya Sanhita, 2023 (BNS)</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Replaces Indian Penal Code, 1860 (358 Sections)</p>
+        </div>
+
+        <div id="card-BNSS" class="act-card" onclick="selectAct('BNSS')">
+          <span class="badge badge-court">PROCEDURE</span>
+          <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-top:6px;">Bharatiya Nagarik Suraksha Sanhita, 2023</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Replaces Code of Criminal Procedure, 1973 (531 Sections)</p>
+        </div>
+
+        <div id="card-BSA" class="act-card" onclick="selectAct('BSA')">
+          <span class="badge badge-court">EVIDENCE</span>
+          <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-top:6px;">Bharatiya Sakshya Adhiniyam, 2023</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Replaces Indian Evidence Act, 1872 (170 Sections)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sections Browser -->
+  <main class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h3 id="currentActTitle" style="font-family:var(--font-serif); font-size:1.3rem;">Bharatiya Nyaya Sanhita, 2023 (BNS)</h3>
+        <p id="currentActSub" style="font-size:0.85rem; color:var(--text-muted);">Showing mapped provisions with IPC counterparts</p>
+      </div>
+      <div>
+        <input type="text" id="sectionSearchInput" placeholder="Search section number or keyword..." style="padding:8px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface); font-size:0.85rem; width:260px;" onkeyup="filterSections()">
+      </div>
+    </div>
+
+    <!-- Section Cards List -->
+    <div id="sectionsList">
+      <!-- Populated by JavaScript -->
+    </div>
+  </main>
+
+  <script src="legal-data.js"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('nyayavedika_theme', next);
+    }
+    if (localStorage.getItem('nyayavedika_theme')) {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('nyayavedika_theme'));
+    }
+
+    let activeCode = 'BNS';
+
+    function selectAct(code) {
+      activeCode = code;
+      document.querySelectorAll('.act-card').forEach(c => c.classList.remove('active'));
+      document.getElementById(`card-${code}`).classList.add('active');
+
+      const act = LEGAL_DATA.bareActs.find(a => a.code === code);
+      if (act) {
+        document.getElementById('currentActTitle').innerText = act.name;
+        document.getElementById('currentActSub').innerText = `Replaces ${act.replaces} • ${act.sectionsCount} Sections`;
+        renderSections(act.keySections);
+      }
+    }
+
+    function renderSections(sections) {
+      const list = document.getElementById('sectionsList');
+      list.innerHTML = '';
+
+      sections.forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'section-row';
+        div.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="badge badge-gold" style="font-size:0.85rem;">${s.section}</span>
+              <h4 style="font-family:var(--font-serif); font-size:1.1rem; color:var(--text);">${s.title}</h4>
+            </div>
+            <span class="badge badge-court" style="font-family:var(--font-mono); font-size:0.8rem;">Mapped: ${s.map}</span>
+          </div>
+          <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:12px;">${s.desc}</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:8px;">
+            <span style="font-size:0.75rem; color:var(--text-subtle);">Official Gazette Text • Republic of India</span>
+            <a href="legal-judgements.html?q=${encodeURIComponent(s.section + ' ' + s.map)}" class="btn btn-ghost" style="padding:4px 8px; font-size:0.78rem;">Find Judgments Citing This Provision →</a>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function filterSections() {
+      const q = document.getElementById('sectionSearchInput').value.toLowerCase();
+      const act = LEGAL_DATA.bareActs.find(a => a.code === activeCode);
+      if (!act) return;
+      const filtered = act.keySections.filter(s => 
+        s.section.toLowerCase().includes(q) ||
+        s.title.toLowerCase().includes(q) ||
+        s.map.toLowerCase().includes(q) ||
+        s.desc.toLowerCase().includes(q)
+      );
+      renderSections(filtered);
+    }
+
+    // Initialize with BNS
+    selectAct('BNS');
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "states": [
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-1.png",
+      "index": 0,
+      "kind": "menu",
+      "label": "Show app download link",
+      "sha256": "d4dc2bfe9d01a7bed46e349e645972a26e35879312fb6e291fa4f84eaf46633b"
+    },
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-2.png",
+      "index": 1,
+      "kind": "menu",
+      "label": "Open navigation menu",
+      "sha256": "2e56df72071ad59fe86c8dd4f167c2222e8e1e0518785e722440ac86a3d06c4b"
+    },
+    {
+      "changed": [
+        "section opened"
+      ],
+      "file": "state-3.png",
+      "index": 2,
+      "kind": "section",
+      "label": "Resources",
+      "sha256": "60dd02d2a5f908b9f602282a89a954ed1923293b597611d12c6b7e111519419a"
+    },
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-4.png",
+      "index": 3,
+      "kind": "menu",
+      "label": "More",
+      "sha256": "a25e2cdd277d6eeb903bb2dd1efcfe0ebfaaec0250cb1d97e2c89b0aa96d5937"
+    }
+  ],
+  "url": "https://supremetoday.ai/",
+  "width": 390
+}

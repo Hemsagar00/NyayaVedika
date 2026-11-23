@@ -10,8 +10,9 @@ dist/
 build/
 *.tsbuildinfo
 
-# Environment
+# Environment & Secrets (Crucial: never commit real env files)
 .env
+.env*.local
 .env.local
 .env.development.local
 .env.test.local
@@ -39,22 +40,13 @@ pnpm-debug.log*
 coverage/
 .nyc_output/
 
-# Turbo
+# Turbo & Vercel
 .turbo/
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-
-# Drizzle
-.drizzle/
-
-# Supabase
-.supabase/
-
-# Misc
-*.pem
 .vercel
 .netlify
+
+# TypeScript & DB
+*.tsbuildinfo
+.drizzle/
+.supabase/
+*.pem

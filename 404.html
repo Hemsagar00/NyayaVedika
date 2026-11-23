@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>404 - Page Not Found | Nyaya Vedika</title>
+	<link rel="icon" type="image/png" href="favicon.png">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		body {
+			background-color: #4a7c7c;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.background-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: clamp(200px, 40vw, 500px);
+			font-weight: 700;
+			color: rgba(74, 124, 124, 0.3);
+			letter-spacing: 0.05em;
+			user-select: none;
+			z-index: 1;
+		}
+
+		.container {
+			position: relative;
+			z-index: 2;
+			text-align: center;
+			padding: 20px;
+		}
+
+		.icon {
+			color: white;
+			font-size: 32px;
+			margin-bottom: 24px;
+		}
+
+		.icon svg {
+			width: 32px;
+			height: 32px;
+			fill: white;
+		}
+
+		h1 {
+			color: white;
+			font-size: clamp(32px, 6vw, 48px);
+			font-weight: 500;
+			margin-bottom: 16px;
+		}
+
+		.description {
+			color: rgba(255, 255, 255, 0.85);
+			font-size: clamp(14px, 2vw, 16px);
+			line-height: 1.6;
+			margin-bottom: 32px;
+			max-width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.btn {
+			display: inline-block;
+			background-color: white;
+			color: #333;
+			padding: 12px 28px;
+			border-radius: 25px;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			border: 2px solid white;
+		}
+
+		.btn:hover {
+			background-color: transparent;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="background-text">404</div>
+
+	<div class="container">
+		<div class="icon">
+			<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M12 2L12 8M12 16L12 22M2 12L8 12M16 12L22 12M4.93 4.93L9.17 9.17M14.83 14.83L19.07 19.07M4.93 19.07L9.17 14.83M14.83 9.17L19.07 4.93"
+					stroke="white" stroke-width="2" stroke-linecap="round" fill="none" />
+			</svg>
+		</div>
+		<h1>Page not found.</h1>
+		<p class="description">This page does not exist, please head back home and try again.</p>
+		<a href="/" class="btn">Back to homepage</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NyayaVedika | Indian Legal Intelligence, Judgments & Advocate Diary</title>
+  <meta name="description" content="AI-powered legal platform for Indian advocates, law students, and citizens. Search Supreme Court and High Court judgments, bare acts, and manage your daily court case diary.">
+  <link rel="stylesheet" href="nyayavedika.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="header-top">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span class="badge badge-gold">LIVE</span>
+      <span>Supreme Court Constitution Bench & High Court judgments updated hourly.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="diary.html" style="font-weight:600; color:var(--gold); display:flex; align-items:center; gap:6px;">
+        <span>📅 Today's Court Diary</span>
+      </a>
+      <span style="color:var(--border);">|</span>
+      <button id="themeToggle" class="btn btn-ghost" style="padding:2px 8px; font-size:0.8rem;" onclick="toggleTheme()">🌓 Theme</button>
+      <a href="login.html" class="nav-link" style="padding:2px 6px;">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header-main">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <div class="brand-emblem">⚖️</div>
+        <div class="brand-text">
+          <h1>NyayaVedika</h1>
+          <p>न्यायवेदिका • Forum of Justice</p>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="legal-judgements.html" class="nav-link">Judgments</a>
+        <a href="legal-tools.html" class="nav-link">AI Legal Tools</a>
+        <a href="diary.html" class="nav-link">Advocate Diary</a>
+        <a href="bare-acts.html" class="nav-link">Bare Acts (BNS)</a>
+        <a href="dashboard.html" class="nav-link">Workspace</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Start Research</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Legal News Categories Sub-Nav (Modernized from Supreme Today) -->
+  <div class="category-bar">
+    <div class="category-container" id="categoryTabs">
+      <div class="category-tab active" onclick="filterNews('all', this)">All News</div>
+      <div class="category-tab" onclick="filterNews('supreme_court', this)">Supreme Court News</div>
+      <div class="category-tab" onclick="filterNews('high_court', this)">High Court News</div>
+      <div class="category-tab" onclick="filterNews('banking', this)">Banking & Insolvency (IBC)</div>
+      <div class="category-tab" onclick="filterNews('corporate', this)">Corporate & Commercial</div>
+      <div class="category-tab" onclick="filterNews('taxation', this)">Taxation Laws</div>
+      <div class="category-tab" onclick="filterNews('tribunals', this)">Tribunal Orders (NCLAT/NGT)</div>
+    </div>
+  </div>
+
+  <!-- Hero Section with Universal Search -->
+  <section style="background:linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); padding:64px 24px 48px; border-bottom:1px solid var(--border); text-align:center;">
+    <div style="max-width:860px; margin:0 auto;">
+      <span class="badge badge-gold" style="margin-bottom:16px;">CONSTITUTIONAL BENCH & HIGH COURTS</span>
+      <h2 style="font-family:var(--font-serif); font-size:2.8rem; font-weight:700; color:var(--text); line-height:1.2; margin-bottom:16px;">
+        India's Open Legal Intelligence & Case Forum
+      </h2>
+      <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:32px;">
+        Instant precedent search by citation, AI ratio decidendi extraction, cross-mapped bare acts (BNS & IPC), and an integrated advocate cause-list diary.
+      </p>
+
+      <!-- Search Box -->
+      <div class="search-hero">
+        <div class="search-input-wrap">
+          <span style="font-size:1.2rem; color:var(--gold); margin-right:4px;">🔍</span>
+          <input type="text" id="mainSearch" class="search-input" placeholder="Search by citation (e.g. 2026 INSC 142, (2026) 2 SCC 104), party name, or act..." onkeyup="handleSearchInput(event)">
+          <button class="btn btn-gold" onclick="executeSearch()">Search Judgments</button>
+        </div>
+        <div id="searchSuggestions" style="display:none; position:absolute; top:105%; left:0; right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); box-shadow:var(--shadow-pop); z-index:50; text-align:left; max-height:280px; overflow-y:auto;">
+        </div>
+      </div>
+
+      <!-- Quick Citation Filters -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-top:20px; flex-wrap:wrap;">
+        <span style="font-size:0.82rem; color:var(--text-subtle); align-self:center;">Trending Searches:</span>
+        <a href="legal-judgements.html?q=13B+Hindu+Marriage+Act" class="badge badge-court">§ 13B Mutual Consent</a>
+        <a href="legal-judgements.html?q=NDPS+Section+50" class="badge badge-court">NDPS Section 50 Search</a>
+        <a href="legal-judgements.html?q=IBC+Resolution+Plan" class="badge badge-court">IBC Creditor Priority</a>
+        <a href="bare-acts.html?code=BNS" class="badge badge-gold">BNS Section 103 (Murder)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cause List Banner (CourtDiary integration) -->
+  <section style="background:var(--surface-alt); border-bottom:1px solid var(--border); padding:16px 24px;">
+    <div style="max-width:var(--container-max); margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:1.5rem;">📋</span>
+        <div>
+          <strong style="font-size:0.95rem; color:var(--text);">Advocate Daily Board (Court Diary)</strong>
+          <p style="font-size:0.8rem; color:var(--text-muted);">Manage tomorrow's court listings, item numbers, client contacts, and hearing steps.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <a href="diary.html" class="btn btn-outline" style="background:var(--surface);">Open Daily Cause List</a>
+        <a href="diary.html#add" class="btn btn-primary">+ Add New Case</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid: Legal News & Trending Precedents -->
+  <main class="container">
+
+    <!-- Section Header -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:24px;">
+      <div>
+        <span class="badge badge-gold">DAILY DISPATCH</span>
+        <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--text); margin-top:4px;">
+          Latest Court News & Key Decisions
+        </h3>
+      </div>
+      <a href="legal-judgements.html" class="btn btn-outline">View All Judgments →</a>
+    </div>
+
+    <!-- News Cards Grid -->
+    <div class="grid-3" id="newsGrid">
+      <!-- Injected by JavaScript from legal-data.js -->
+    </div>
+
+    <!-- AI Legal Tools Showcase Section (Clone from /legal-tools) -->
+    <section style="margin-top:64px; padding-top:48px; border-top:1px solid var(--border);">
+      <div style="text-align:center; max-width:700px; margin:0 auto 40px;">
+        <span class="badge badge-gold">AI-POWERED CO-COUNSEL</span>
+        <h3 style="font-family:var(--font-serif); font-size:2rem; font-weight:700; margin-top:8px;">
+          Core Legal Work, Made Simpler with AI
+        </h3>
+        <p style="color:var(--text-muted); font-size:1rem; margin-top:8px;">
+          Trained on Indian statutes, high court citations, and procedural rules to assist advocates with research, summarization, and drafting.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:12px;">📄</div>
+          <h4 class="card-title">1-Page Judgment Summarizer</h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
+            Condenses 200+ page Supreme Court judgments into ratio decidendi, key factual disputes, held principles, and cited authorities.
+          </p>
+          <a href="legal-tools.html#summarizer" class="btn btn-outline" style="width:100%;">Try Summarizer →</a>
+        </div>
+
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:12px;">⚖️</div>
+          <h4 class="card-title">AI Legal Research Assistant</h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
+            Ask complex questions on Indian law and receive cited arguments supported by Supreme Court and High Court precedents.
+          </p>
+          <a href="legal-tools.html#research" class="btn btn-outline" style="width:100%;">Start Legal Query →</a>
+        </div>
+
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:12px;">✍️</div>
+          <h4 class="card-title">Drafting & Notice Generator</h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
+            Draft Section 138 NI Act notices, bail petitions, commercial suits, and arbitration claims with jurisdiction-specific clauses.
+          </p>
+          <a href="legal-tools.html#drafting" class="btn btn-outline" style="width:100%;">Create Draft →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bare Acts Banner -->
+    <section style="margin-top:64px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; box-shadow:var(--shadow-card);">
+      <div style="max-width:680px;">
+        <span class="badge badge-gold">NEW CRIMINAL CODES READY</span>
+        <h3 style="font-family:var(--font-serif); font-size:1.6rem; font-weight:700; margin-top:8px;">
+          Instant Cross-Mapping: BNS ↔ IPC, BNSS ↔ CrPC, BSA ↔ Evidence Act
+        </h3>
+        <p style="color:var(--text-muted); font-size:0.92rem; margin-top:8px;">
+          Seamlessly navigate between old penal provisions and newly enacted Bharatiya Sanhita codes with historical amendment notes and precedent links.
+        </p>
+      </div>
+      <a href="bare-acts.html" class="btn btn-gold" style="padding:12px 24px; font-weight:600;">Explore Bare Acts Library →</a>
+    </section>
+
+  </main>
+
+  <!-- Interactive Judgment Reader Modal (Screen S04) -->
+  <div id="judgmentModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span id="modalCourtBadge" class="badge badge-gold">Supreme Court</span>
+          <h3 id="modalTitle" style="font-family:var(--font-serif); font-size:1.25rem; margin-top:4px; color:var(--text);">Case Title</h3>
+          <p id="modalCitation" style="font-size:0.82rem; font-family:var(--font-mono); color:var(--gold);">Citation</p>
+        </div>
+        <button class="btn btn-ghost" onclick="closeJudgmentModal()" style="font-size:1.2rem;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            <strong>Bench:</strong> <span id="modalBench">-</span> | <strong>Date:</strong> <span id="modalDate">-</span>
+          </div>
+          <button class="btn btn-outline" style="font-size:0.8rem; padding:4px 10px;" onclick="copyCitation()">📋 Copy Citation</button>
+        </div>
+
+        <div class="ratio-box">
+          <div class="ratio-title">RATIO DECIDENDI (CORE HOLDING)</div>
+          <p id="modalRatio">Ratio text...</p>
+        </div>
+
+        <div style="margin:20px 0;">
+          <h4 style="font-family:var(--font-serif); font-size:0.95rem; text-transform:uppercase; color:var(--text-subtle); margin-bottom:8px;">Statutory Provisions Considered</h4>
+          <div id="modalActs" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h4 style="font-family:var(--font-serif); font-size:1rem; margin-bottom:12px;">Full Text of Judgment</h4>
+          <div id="modalFullText" style="white-space:pre-line; line-height:1.8; font-size:0.95rem; color:var(--text);">
+            Judgment text...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="brand" style="margin-bottom:12px;">
+          <div class="brand-emblem">⚖️</div>
+          <div class="brand-text">
+            <h1>NyayaVedika</h1>
+            <p>न्यायवेदिका • Forum of Justice</p>
+          </div>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted); max-width:320px; line-height:1.6;">
+          Democratizing access to Indian legal intelligence, Supreme Court precedents, and advocate practice tools. Designed with constitutional dignity and open standards.
+        </p>
+      </div>
+
+      <div>
+        <h5 style="font-family:var(--font-serif); font-size:0.95rem; margin-bottom:16px; color:var(--text);">Judicial Database</h5>
+        <ul style="list-style:none; font-size:0.88rem; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+          <li><a href="legal-judgements.html?court=SC">Supreme Court of India</a></li>
+          <li><a href="legal-judgements.html?court=DELHI_HC">Delhi High Court</a></li>
+          <li><a href="legal-judgements.html?court=BOMBAY_HC">Bombay High Court</a></li>
+          <li><a href="bare-acts.html">Bharatiya Nyaya Sanhita (BNS)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 style="font-family:var(--font-serif); font-size:0.95rem; margin-bottom:16px; color:var(--text);">Advocate Workspace</h5>
+        <ul style="list-style:none; font-size:0.88rem; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+          <li><a href="diary.html">Digital Cause List</a></li>
+          <li><a href="legal-tools.html#summarizer">1-Page Judgment Summarizer</a></li>
+          <li><a href="legal-tools.html#drafting">Legal Drafting Suite</a></li>
+          <li><a href="dashboard.html">Cloud Practice Binder</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 style="font-family:var(--font-serif); font-size:0.95rem; margin-bottom:16px; color:var(--text);">Legal Compliance</h5>
+        <p style="font-size:0.8rem; color:var(--text-subtle); line-height:1.5;">
+          NyayaVedika is an educational and legal research information platform. As per Bar Council of India rules, this website does not solicit work or advertise legal representation.
+        </p>
+      </div>
+    </div>
+    <div style="max-width:var(--container-max); margin:32px auto 0; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-subtle);">
+      <div>© 2026 NyayaVedika. All rights reserved. Free & Open Access to Law.</div>
+      <div>Hosted on Vercel Edge • Protected by Cloudflare</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="legal-data.js"></script>
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('nyayavedika_theme', next);
+    }
+
+    if (localStorage.getItem('nyayavedika_theme')) {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('nyayavedika_theme'));
+    }
+
+    // Render News Grid
+    function renderNews(category = 'all') {
+      const grid = document.getElementById('newsGrid');
+      grid.innerHTML = '';
+      const items = category === 'all' 
+        ? LEGAL_DATA.news 
+        : LEGAL_DATA.news.filter(n => n.category === category);
+
+      items.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span class="badge badge-court">${item.category.replace('_', ' ').toUpperCase()}</span>
+            <span style="font-size:0.75rem; color:var(--text-subtle);">${item.date}</span>
+          </div>
+          <h4 class="card-title" style="font-size:1.05rem; line-height:1.4;">${item.title}</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">${item.summary}</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:12px; font-size:0.8rem;">
+            <span style="font-family:var(--font-mono); color:var(--gold); font-weight:600;">${item.citation}</span>
+            <button class="btn btn-ghost" style="padding:4px 8px; font-size:0.78rem;" onclick="openCaseModal('${item.citation}')">Read Case →</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterNews(cat, tabEl) {
+      document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      tabEl.classList.add('active');
+      renderNews(cat);
+    }
+
+    // Search Bar Handling
+    function handleSearchInput(e) {
+      const val = e.target.value.toLowerCase().trim();
+      const sugBox = document.getElementById('searchSuggestions');
+      if (val.length < 2) {
+        sugBox.style.display = 'none';
+        return;
+      }
+
+      const matches = LEGAL_DATA.judgments.filter(j => 
+        j.title.toLowerCase().includes(val) || 
+        j.citation.toLowerCase().includes(val) || 
+        j.neutralCitation.toLowerCase().includes(val)
+      );
+
+      if (matches.length > 0) {
+        sugBox.innerHTML = matches.map(m => `
+          <div style="padding:10px 16px; border-bottom:1px solid var(--border); cursor:pointer;" onclick="selectJudgment('${m.id}')">
+            <div style="font-weight:600; font-size:0.9rem; color:var(--text);">${m.title}</div>
+            <div style="font-size:0.75rem; color:var(--gold); font-family:var(--font-mono);">${m.citation} • ${m.court}</div>
+          </div>
+        `).join('');
+        sugBox.style.display = 'block';
+      } else {
+        sugBox.style.display = 'none';
+      }
+    }
+
+    function executeSearch() {
+      const q = document.getElementById('mainSearch').value.trim();
+      if (q) {
+        window.location.href = `legal-judgements.html?q=${encodeURIComponent(q)}`;
+      }
+    }
+
+    function selectJudgment(id) {
+      document.getElementById('searchSuggestions').style.display = 'none';
+      const judg = LEGAL_DATA.judgments.find(j => j.id === id);
+      if (judg) showJudgmentModal(judg);
+    }
+
+    function openCaseModal(cit) {
+      const judg = LEGAL_DATA.judgments.find(j => j.citation === cit || j.neutralCitation === cit) || LEGAL_DATA.judgments[0];
+      showJudgmentModal(judg);
+    }
+
+    function showJudgmentModal(j) {
+      document.getElementById('modalTitle').innerText = j.title;
+      document.getElementById('modalCitation').innerText = `${j.citation} | Neutral: ${j.neutralCitation}`;
+      document.getElementById('modalBench').innerText = j.bench.join(', ');
+      document.getElementById('modalDate').innerText = j.date;
+      document.getElementById('modalRatio').innerText = j.ratio;
+      document.getElementById('modalCourtBadge').innerText = j.court;
+      document.getElementById('modalFullText').innerText = j.fullText;
+
+      const actsEl = document.getElementById('modalActs');
+      actsEl.innerHTML = j.keyActs.map(a => `<span class="badge badge-gold">${a}</span>`).join('');
+
+      document.getElementById('judgmentModal').classList.add('active');
+    }
+
+    function closeJudgmentModal() {
+      document.getElementById('judgmentModal').classList.remove('active');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.id === 'judgmentModal') closeJudgmentModal();
+    }
+
+    function copyCitation() {
+      const cit = document.getElementById('modalCitation').innerText;
+      navigator.clipboard.writeText(cit).then(() => {
+        alert('Citation copied to clipboard!');
+      });
+    }
+
+    // Initialize
+    renderNews();
+  </script>
+</body>
+</html>

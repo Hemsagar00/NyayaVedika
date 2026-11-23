@@ -1,0 +1,67 @@
+{
+  "id": "ev_1a52e1bbd5c5caff0bf3bd7aa66634713f7ab0f4476fc2487a04d3ce954224be",
+  "subject": {
+    "kind": "website",
+    "name": "https://supremetoday.ai/legal-tools"
+  },
+  "operation": "web_site_open",
+  "params": {
+    "height": 900,
+    "url": "https://supremetoday.ai/legal-tools",
+    "width": 1440
+  },
+  "result": {
+    "browser": "Chrome/157.0.8103.79",
+    "facts": {
+      "elements": 743,
+      "forms": 1,
+      "height": 9139,
+      "images": 83,
+      "lang": "en",
+      "links": 102,
+      "ready": "complete",
+      "title": "Supreme Today AI | AI Legal Research & Drafting Tools",
+      "url": "https://supremetoday.ai/legal-tools",
+      "width": 1425
+    },
+    "health": {
+      "errors": [
+        {
+          "kind": "log",
+          "text": "Access to fetch at 'https://s3.ap-southeast-1.wasabisys.com/static-images/landscape-banner.png' from origin 'https://supremetoday.ai' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "url": "https://supremetoday.ai/"
+        }
+      ],
+      "failed_requests": []
+    },
+    "title": "Supreme Today AI | AI Legal Research & Drafting Tools",
+    "url": "https://supremetoday.ai/legal-tools"
+  },
+  "summary": "Opened https://supremetoday.ai/legal-tools: \"Supreme Today AI | AI Legal Research & Drafting Tools\". While loading: 1 error(s), 0 failed request(s).",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "private_profile",
+      "message": "A fresh private browser: pages behind a login show their signed-out state."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://supremetoday.ai/legal-tools"
+    }
+  ],
+  "links": []
+}

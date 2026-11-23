@@ -1,0 +1,6527 @@
+{
+  "a11y": {
+    "images_without_alt": 0,
+    "landmarks": {
+      "complementary": 2,
+      "contentinfo": 1,
+      "main": 1,
+      "navigation": 3
+    },
+    "lang": "en",
+    "unnamed_controls": 0,
+    "unnamed_examples": []
+  },
+  "assets": {
+    "background_images": [],
+    "fonts": [],
+    "images": [
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/Icon-512.png",
+        "w": 512
+      },
+      {
+        "alt": "Supreme Today AI - Enhance the power of Artificial Intelligence for your Legal Research and Drafting",
+        "h": 40,
+        "src": "https://cdn.supremetoday.ai/static/img/new_logo.svg",
+        "w": 270
+      },
+      {
+        "alt": "Google Translate",
+        "h": 16,
+        "src": "https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png",
+        "w": 42
+      },
+      {
+        "alt": "",
+        "h": 24,
+        "src": "https://cdn.supremetoday.ai/static/img/light-mode.svg",
+        "w": 24
+      },
+      {
+        "alt": "",
+        "h": 24,
+        "src": "https://cdn.supremetoday.ai/static/img/dark-mode.svg",
+        "w": 24
+      },
+      {
+        "alt": "Supreme Today AI",
+        "h": 40,
+        "src": "https://cdn.supremetoday.ai/static/img/new_logo.svg",
+        "w": 270
+      },
+      {
+        "alt": "Download on the App Store",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/App_Store_Badge.svg",
+        "w": 169
+      },
+      {
+        "alt": "Get it on Google Play",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/Google_Play_Store.svg",
+        "w": 170
+      },
+      {
+        "alt": "WhatsApp",
+        "h": 17,
+        "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+        "w": 18
+      },
+      {
+        "alt": "Telegram",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/image-telegram.svg",
+        "w": 30
+      },
+      {
+        "alt": "Instagram",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/instagram-color.svg",
+        "w": 800
+      },
+      {
+        "alt": "X",
+        "h": 16,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_x.svg",
+        "w": 16
+      },
+      {
+        "alt": "YouTube",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg",
+        "w": 800
+      },
+      {
+        "alt": "Facebook",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg",
+        "w": 800
+      },
+      {
+        "alt": "LinkedIn",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg",
+        "w": 800
+      },
+      {
+        "alt": "Share",
+        "h": 23,
+        "src": "https://cdn.supremetoday.ai/static/img/icn_share.svg",
+        "w": 23
+      },
+      {
+        "alt": "Toggle",
+        "h": 25,
+        "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+        "w": 25
+      },
+      {
+        "alt": "Toggle",
+        "h": 25,
+        "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+        "w": 25
+      },
+      {
+        "alt": "Toggle",
+        "h": 25,
+        "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+        "w": 25
+      },
+      {
+        "alt": "Toggle",
+        "h": 25,
+        "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+        "w": 25
+      },
+      {
+        "alt": "Toggle",
+        "h": 25,
+        "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+        "w": 25
+      },
+      {
+        "alt": "login-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/login.png",
+        "w": 868
+      },
+      {
+        "alt": "sign-up-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/sign-up.png",
+        "w": 868
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/WqrqF_G8aYg/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "quick-search-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/quick-search.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/Q84vklg1eTc/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "search-option-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/search-option.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/ONMhkAhh3aU/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "advanced-search-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/advanced-search.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/F34jr8QPrc4/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "quick-search-citation-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/quick-search-citation.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/y43nzlVnw6g/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "case-binder-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/case-binder.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/vbQjj5vkF74/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "home-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/dashboard.png",
+        "w": 868
+      },
+      {
+        "alt": "chat-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/chat.png",
+        "w": 867
+      },
+      {
+        "alt": "editor-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/editor.png",
+        "w": 868
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/WqrqF_G8aYg/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "quick-search-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/quick-search.png",
+        "w": 1522
+      },
+      {
+        "alt": "ai-search-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/ai-paragraph.png",
+        "w": 868
+      },
+      {
+        "alt": "ai-search-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/ai-sentence.png",
+        "w": 868
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/vbQjj5vkF74/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "home-page-introduction-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/home-page-introduction.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/e4pZfRGcxxo/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "preferences-settings-and-theme-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/preferences-settings-and-theme.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/KnKCRR61IyI/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "bookmarks-and-search-history-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/bookmarks-and-search-history.png",
+        "w": 1522
+      },
+      {
+        "alt": "theme-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/theme.png",
+        "w": 868
+      },
+      {
+        "alt": "user-search-logs-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/user-search-logs.png",
+        "w": 868
+      },
+      {
+        "alt": "user-bookmarks-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/user-bookmarks.png",
+        "w": 868
+      },
+      {
+        "alt": "search-result-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/dashboard.png",
+        "w": 868
+      },
+      {
+        "alt": "user-document-log-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/user-document-log.png",
+        "w": 868
+      },
+      {
+        "alt": "user-document-log-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/user-notification.png",
+        "w": 868
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/XDDw1ZtIRtU/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "data-coverage-explorer-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/data-coverage-explorer.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/7ueKxyDEJPs/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "commentary-and-short-commentary-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/commentary-and-short-commentary.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/AfsIwhvKxqc/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "circular-and-notification-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/circular-and-notification.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/M3P6bWlPVTY/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "bare-act-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/bare-act.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/vKurdBjk1nM/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "home-page-introduction-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/judicial-analysis.png",
+        "w": 1522
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/CDicFHfffys/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "judgment-view-with-ai-assistant-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/judgment-view-with-ai-assistant.png",
+        "w": 1522
+      },
+      {
+        "alt": "cited-result-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/cited-by.png",
+        "w": 868
+      },
+      {
+        "alt": "cited-result-help",
+        "h": 310,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/case-law.png",
+        "w": 876
+      },
+      {
+        "alt": "detail-view-result-help",
+        "h": 302,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/detail-view.png",
+        "w": 868
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/gC_QH-rc6LM/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "ask-a-question-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/ask-a-question.png",
+        "w": 1522
+      },
+      {
+        "alt": "Chat Tutorial Playlist on desktop and mobile",
+        "h": 896,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/chat-tutorial-playlist.png",
+        "w": 2048
+      },
+      {
+        "alt": "Chat history date filter on desktop and mobile",
+        "h": 896,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/chat-filter-by-date.png",
+        "w": 2048
+      },
+      {
+        "alt": "Chat Feedback option on desktop and mobile",
+        "h": 897,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/chat-feedback.png",
+        "w": 2048
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/5gcwX9zc1mc/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "write-a-draft-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/write-a-draft.png",
+        "w": 1522
+      },
+      {
+        "alt": "Add Case Law option in a generated draft on desktop and mobile",
+        "h": 897,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/include-case-law-in-draft.png",
+        "w": 2048
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/4u7MMx2HkrE/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "upload-to-analysis-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/upload-to-analysis.png",
+        "w": 1522
+      },
+      {
+        "alt": "File upload and processing requirements for research, drafting, and document analysis",
+        "h": 2304,
+        "src": "https://cdn.supremetoday.ai/static/img/upload_file_limitation.webp",
+        "w": 4096
+      },
+      {
+        "alt": "Upload to Analyze a Case for large PDF processing on desktop and mobile",
+        "h": 896,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/large-pdf-processing.png",
+        "w": 2048
+      },
+      {
+        "alt": "OCR and translation controls for an uploaded document on desktop and mobile",
+        "h": 896,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/ocr-and-translation.png",
+        "w": 2048
+      },
+      {
+        "alt": "",
+        "h": 360,
+        "src": "https://img.youtube.com/vi/nUWQ2DF8ofw/hqdefault.jpg",
+        "w": 480
+      },
+      {
+        "alt": "write-using-the-editor-help",
+        "h": 546,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/write-using-the-editor.png",
+        "w": 1522
+      },
+      {
+        "alt": "Speech-to-text language and microphone controls on desktop and mobile",
+        "h": 896,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual/speech-to-text-any-language.png",
+        "w": 2048
+      },
+      {
+        "alt": "Supreme Today AI",
+        "h": 40,
+        "src": "https://cdn.supremetoday.ai/static/img/logo-black.svg",
+        "w": 270
+      },
+      {
+        "alt": "",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-youtube.svg",
+        "w": 30
+      },
+      {
+        "alt": "",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-youtube-light.svg",
+        "w": 30
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual-black.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/user-manual-white.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/brochure-black.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/brochure-white.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/presentation-overview-black.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/presentation-overview-white.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/login-guide-black.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 512,
+        "src": "https://cdn.supremetoday.ai/static/img/login-guide-white.png",
+        "w": 512
+      },
+      {
+        "alt": "",
+        "h": 17,
+        "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+        "w": 18
+      },
+      {
+        "alt": "",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/image-telegram.svg",
+        "w": 30
+      },
+      {
+        "alt": "",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/instagram-color.svg",
+        "w": 800
+      },
+      {
+        "alt": "",
+        "h": 16,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_x.svg",
+        "w": 16
+      },
+      {
+        "alt": "",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg",
+        "w": 800
+      },
+      {
+        "alt": "",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg",
+        "w": 800
+      },
+      {
+        "alt": "",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg",
+        "w": 800
+      },
+      {
+        "alt": "QR code to download the Supreme Today AI app",
+        "h": 500,
+        "src": "https://cdn.supremetoday.ai/static/img/qr.png",
+        "w": 500
+      },
+      {
+        "alt": "Get it on Google Play",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/Google_Play_Store.svg",
+        "w": 170
+      },
+      {
+        "alt": "Download on the App Store",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/App_Store_Badge.svg",
+        "w": 169
+      },
+      {
+        "alt": "Supreme Today AI premium features preview",
+        "h": 1012,
+        "src": "https://supremetoday-s3.b-cdn.net/supreme-today-ad/home-portrait-ad.gif",
+        "w": 810
+      },
+      {
+        "alt": "logo-black",
+        "h": 40,
+        "src": "https://cdn.supremetoday.ai/static/img/logo-black.svg",
+        "w": 270
+      },
+      {
+        "alt": "qr",
+        "h": 500,
+        "src": "https://cdn.supremetoday.ai/static/img/qr.png",
+        "w": 500
+      },
+      {
+        "alt": "App_Store_Badge",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/App_Store_Badge.svg",
+        "w": 169
+      },
+      {
+        "alt": "Google_Play_Store",
+        "h": 50,
+        "src": "https://cdn.supremetoday.ai/static/img/Google_Play_Store.svg",
+        "w": 170
+      },
+      {
+        "alt": "WhatsApp",
+        "h": 17,
+        "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+        "w": 18
+      },
+      {
+        "alt": "Telegram",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/image-telegram.svg",
+        "w": 30
+      },
+      {
+        "alt": "Instagram Icon",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/instagram-color.svg",
+        "w": 800
+      },
+      {
+        "alt": "X",
+        "h": 16,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_x.svg",
+        "w": 16
+      },
+      {
+        "alt": "YouTube",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg",
+        "w": 800
+      },
+      {
+        "alt": "Facebook",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg",
+        "w": 800
+      },
+      {
+        "alt": "LinkedIn",
+        "h": 800,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg",
+        "w": 800
+      },
+      {
+        "alt": "Email",
+        "h": 18,
+        "src": "https://cdn.supremetoday.ai/static/img/email-icon.svg",
+        "w": 22
+      },
+      {
+        "alt": "Phone",
+        "h": 300,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_phone_call.svg",
+        "w": 300
+      },
+      {
+        "alt": "Location",
+        "h": 24,
+        "src": "https://cdn.supremetoday.ai/static/img/icon_location.svg",
+        "w": 24
+      },
+      {
+        "alt": "India flag",
+        "h": 18,
+        "src": "https://cdn.supremetoday.ai/static/img/flag.svg",
+        "w": 33
+      },
+      {
+        "alt": "Facebook Icon",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-facebook.svg",
+        "w": 30
+      },
+      {
+        "alt": "Twitter Icon",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-twitter.svg",
+        "w": 30
+      },
+      {
+        "alt": "Instagram Icon",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-instagram.svg",
+        "w": 30
+      },
+      {
+        "alt": "YouTube Icon",
+        "h": 30,
+        "src": "https://cdn.supremetoday.ai/static/img/icon-youtube.svg",
+        "w": 30
+      },
+      {
+        "alt": "whatsapp-icon",
+        "h": 17,
+        "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+        "w": 18
+      },
+      {
+        "alt": "",
+        "h": 24,
+        "src": "https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg",
+        "w": 24
+      },
+      {
+        "alt": "",
+        "h": 22,
+        "src": "https://cdn.supremetoday.ai/static/img/top-zoom-in-icon.svg",
+        "w": 22
+      },
+      {
+        "alt": "",
+        "h": 22,
+        "src": "https://cdn.supremetoday.ai/static/img/top-zoom-out-icon.svg",
+        "w": 22
+      },
+      {
+        "alt": "",
+        "h": 0,
+        "src": "",
+        "w": 0
+      }
+    ],
+    "inline_scripts": 7,
+    "requests": [
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://cdn.supremetoday.ai/static/js/jquery.min.js"
+      },
+      {
+        "bytes": 0,
+        "type": "link",
+        "url": "https://cdn.supremetoday.ai/static/css/bootstrap.min.css"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://cdn.supremetoday.ai/static/js/bootstrap.bundle.min.js"
+      },
+      {
+        "bytes": 0,
+        "type": "link",
+        "url": "https://cdn.supremetoday.ai/static/css/custom_seo.css"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://cdn.supremetoday.ai/static/js/seo_functions.js"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.googletagmanager.com/gtag/js"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://translate.google.com/translate_a/element.js"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/Icon-512.png"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.clarity.ms/tag/tpms02e0xe"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://supremetoday.ai/static/js/mobile_app_prompt.js"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/light-mode.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/new_logo.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/dark-mode.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/App_Store_Badge.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.google-analytics.com/analytics.js"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/Google_Play_Store.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/phone-icon.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/image-telegram.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/instagram-color.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_x.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "link",
+        "url": "https://cdn.supremetoday.ai/static/css/user-manual.css"
+      },
+      {
+        "bytes": 0,
+        "type": "link",
+        "url": "https://cdn.supremetoday.ai/static/css/user-manual-lightbox.css"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icn_share.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/login.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/sign-up.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/WqrqF_G8aYg/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/quick-search.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/Q84vklg1eTc/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/search-option.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/ONMhkAhh3aU/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/advanced-search.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/F34jr8QPrc4/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/quick-search-citation.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/y43nzlVnw6g/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/case-binder.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/vbQjj5vkF74/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/dashboard.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/chat.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/editor.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/ai-paragraph.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/ai-sentence.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/home-page-introduction.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/e4pZfRGcxxo/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/preferences-settings-and-theme.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/KnKCRR61IyI/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/bookmarks-and-search-history.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/theme.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/user-search-logs.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/user-bookmarks.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/user-document-log.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/user-notification.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/XDDw1ZtIRtU/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/data-coverage-explorer.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/7ueKxyDEJPs/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/commentary-and-short-commentary.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/AfsIwhvKxqc/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/circular-and-notification.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/M3P6bWlPVTY/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/bare-act.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/vKurdBjk1nM/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/judicial-analysis.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/CDicFHfffys/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/judgment-view-with-ai-assistant.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/cited-by.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/case-law.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/detail-view.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/gC_QH-rc6LM/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/ask-a-question.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/chat-tutorial-playlist.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/chat-filter-by-date.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/chat-feedback.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/5gcwX9zc1mc/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/write-a-draft.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/include-case-law-in-draft.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/4u7MMx2HkrE/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/upload-to-analysis.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/large-pdf-processing.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/ocr-and-translation.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://img.youtube.com/vi/nUWQ2DF8ofw/hqdefault.jpg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/write-using-the-editor.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/logo-black.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon-youtube.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon-youtube-light.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual/speech-to-text-any-language.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual-black.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/user-manual-white.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/brochure-black.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/brochure-white.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/presentation-overview-black.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/presentation-overview-white.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/login-guide-black.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/login-guide-white.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon-facebook.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://supremetoday-s3.b-cdn.net/supreme-today-ad/home-portrait-ad.gif"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://cdn.supremetoday.ai/static/js/footer-script.js"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon-twitter.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon-instagram.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://supremetoday.ai/static/js/search-suggestion-dismiss.js"
+      },
+      {
+        "bytes": 0,
+        "type": "link",
+        "url": "https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.jbBVqqVyQY0.L.B1.O/am=AAAAMA/d=0/rs=AN8SPfp1tC1Nb91BKvrrohWL0UFBcEj9Bg/m=el_main_css"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.en_GB.tBj0SnIkdbs.O/am=AAAAMA/d=1/ed=1/rs=AN8SPfrirUat7eA2zVL3VmdCAXOM4LVvoA/m=el_main"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://supremetoday.ai/static/img/arrow-up-new.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/top-zoom-in-icon.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/top-zoom-out-icon.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://scripts.clarity.ms/0.8.77/clarity.js"
+      },
+      {
+        "bytes": 0,
+        "type": "fetch",
+        "url": "https://firebase.googleapis.com/v1alpha/projects/-/apps/1:731639752600:web:5ade401efa3213cc092ded/webConfig"
+      },
+      {
+        "bytes": 0,
+        "type": "xmlhttprequest",
+        "url": "https://l.clarity.ms/collect"
+      },
+      {
+        "bytes": 0,
+        "type": "script",
+        "url": "https://www.googletagmanager.com/gtag/js"
+      },
+      {
+        "bytes": 0,
+        "type": "xmlhttprequest",
+        "url": "https://l.clarity.ms/collect"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/logo-black.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/qr.png"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/email-icon.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_phone_call.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_location.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/flag.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/upload_file_limitation.webp"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/image-telegram.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/instagram-color.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_x.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg"
+      },
+      {
+        "bytes": 0,
+        "type": "img",
+        "url": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg"
+      }
+    ],
+    "scripts": [
+      "https://www.googletagmanager.com/gtag/js?id=G-T2JK4ZSXLT&cx=c&gtm=4e6bh1",
+      "https://scripts.clarity.ms/0.8.77/clarity.js",
+      "https://www.google-analytics.com/analytics.js",
+      "https://www.clarity.ms/tag/tpms02e0xe",
+      "https://cdn.supremetoday.ai/static/js/jquery.min.js",
+      "https://cdn.supremetoday.ai/static/js/bootstrap.bundle.min.js",
+      "https://cdn.supremetoday.ai/static/js/seo_functions.js",
+      "https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js",
+      "https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js",
+      "https://www.googletagmanager.com/gtag/js?id=UA-155309977-1",
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
+      "https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.en_GB.tBj0SnIkdbs.O/am=AAAAMA/d=1/ed=1/rs=AN8SPfrirUat7eA2zVL3VmdCAXOM4LVvoA/m=el_main",
+      "https://supremetoday.ai/static/js/mobile_app_prompt.js?v=11.43",
+      "https://cdn.supremetoday.ai/static/js/footer-script.js?v=11.41",
+      "https://supremetoday.ai/static/js/search-suggestion-dismiss.js?v=1"
+    ],
+    "stylesheets": [
+      "https://cdn.supremetoday.ai/static/css/bootstrap.min.css",
+      "https://cdn.supremetoday.ai/static/css/custom_seo.css?v=11.41",
+      "https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.jbBVqqVyQY0.L.B1.O/am=AAAAMA/d=0/rs=AN8SPfp1tC1Nb91BKvrrohWL0UFBcEj9Bg/m=el_main_css",
+      "https://cdn.supremetoday.ai/static/css/user-manual.css?v=11.41",
+      "https://cdn.supremetoday.ai/static/css/user-manual-lightbox.css?v=11.41"
+    ]
+  },
+  "breakpoints": [
+    {
+      "count": 1,
+      "px": 767,
+      "query": "max-width 767px"
+    },
+    {
+      "count": 1,
+      "px": 768,
+      "query": "min-width 768px"
+    },
+    {
+      "count": 1,
+      "px": 1200,
+      "query": "min-width 1200px"
+    }
+  ],
+  "design": {
+    "backgrounds": [
+      {
+        "count": 12,
+        "value": "#ffffff"
+      },
+      {
+        "count": 6,
+        "value": "#731818"
+      },
+      {
+        "count": 2,
+        "value": "#000000"
+      },
+      {
+        "count": 1,
+        "value": "#f3e6e6"
+      },
+      {
+        "count": 1,
+        "value": "#8a1416"
+      },
+      {
+        "count": 1,
+        "value": "#454545"
+      }
+    ],
+    "css_variables": {},
+    "font_faces": [
+      {
+        "family": "K11",
+        "status": "unloaded",
+        "style": "normal",
+        "weight": "normal"
+      },
+      {
+        "family": "Gloock",
+        "status": "loaded",
+        "style": "normal",
+        "weight": "400"
+      },
+      {
+        "family": "Inter",
+        "status": "loaded",
+        "style": "normal",
+        "weight": "400"
+      },
+      {
+        "family": "Gloock",
+        "status": "loaded",
+        "style": "normal",
+        "weight": "400"
+      },
+      {
+        "family": "Inter",
+        "status": "loaded",
+        "style": "normal",
+        "weight": "400"
+      }
+    ],
+    "font_sizes": [
+      {
+        "count": 44,
+        "value": "14px"
+      },
+      {
+        "count": 31,
+        "value": "13.5px"
+      },
+      {
+        "count": 27,
+        "value": "16.64px"
+      },
+      {
+        "count": 7,
+        "value": "16px"
+      },
+      {
+        "count": 7,
+        "value": "18.24px"
+      },
+      {
+        "count": 5,
+        "value": "24px"
+      },
+      {
+        "count": 1,
+        "value": "0px"
+      },
+      {
+        "count": 1,
+        "value": "18px"
+      },
+      {
+        "count": 1,
+        "value": "12px"
+      }
+    ],
+    "font_weights": [
+      {
+        "count": 84,
+        "value": "400"
+      },
+      {
+        "count": 24,
+        "value": "500"
+      },
+      {
+        "count": 7,
+        "value": "600"
+      },
+      {
+        "count": 6,
+        "value": "700"
+      },
+      {
+        "count": 3,
+        "value": "300"
+      }
+    ],
+    "fonts": [
+      {
+        "count": 111,
+        "value": "Inter, Arial, sans-serif"
+      },
+      {
+        "count": 12,
+        "value": "Gloock, Georgia, serif"
+      },
+      {
+        "count": 1,
+        "value": "arial"
+      }
+    ],
+    "max_widths": [
+      {
+        "count": 5,
+        "value": "1170px"
+      },
+      {
+        "count": 1,
+        "value": "745px"
+      }
+    ],
+    "radii": [
+      {
+        "count": 38,
+        "value": "8px"
+      },
+      {
+        "count": 6,
+        "value": "12px"
+      },
+      {
+        "count": 5,
+        "value": "10px"
+      },
+      {
+        "count": 5,
+        "value": "6px"
+      },
+      {
+        "count": 2,
+        "value": "50%"
+      },
+      {
+        "count": 1,
+        "value": "12px 0px 0px 12px"
+      },
+      {
+        "count": 1,
+        "value": "11px 0px 0px 11px"
+      },
+      {
+        "count": 1,
+        "value": "3px"
+      },
+      {
+        "count": 1,
+        "value": "14px"
+      }
+    ],
+    "shadows": [
+      {
+        "count": 1,
+        "value": "rgba(0, 0, 0, 0.2) 0px 3px 12px 0px"
+      },
+      {
+        "count": 1,
+        "value": "rgba(0, 0, 0, 0.5) 0px -6px 10px 5px"
+      },
+      {
+        "count": 1,
+        "value": "rgba(50, 50, 93, 0.25) 0px 6px 5px -1px, rgba(0, 0, 0, 0.2) 0px 4px 3px -1px"
+      }
+    ],
+    "spacing": [
+      {
+        "count": 92,
+        "value": "8px"
+      },
+      {
+        "count": 86,
+        "value": "5px"
+      },
+      {
+        "count": 49,
+        "value": "6px"
+      },
+      {
+        "count": 46,
+        "value": "10px"
+      },
+      {
+        "count": 35,
+        "value": "12px"
+      },
+      {
+        "count": 35,
+        "value": "16px"
+      },
+      {
+        "count": 23,
+        "value": "2px"
+      },
+      {
+        "count": 22,
+        "value": "1px"
+      },
+      {
+        "count": 20,
+        "value": "4px"
+      },
+      {
+        "count": 15,
+        "value": "15px"
+      },
+      {
+        "count": 7,
+        "value": "24px"
+      },
+      {
+        "count": 6,
+        "value": "32px"
+      },
+      {
+        "count": 4,
+        "value": "50px"
+      },
+      {
+        "count": 3,
+        "value": "20px"
+      },
+      {
+        "count": 2,
+        "value": "18px"
+      },
+      {
+        "count": 2,
+        "value": "-1px"
+      },
+      {
+        "count": 1,
+        "value": "28px"
+      },
+      {
+        "count": 1,
+        "value": "30px"
+      }
+    ],
+    "text_colors": [
+      {
+        "count": 39,
+        "value": "#ffffff"
+      },
+      {
+        "count": 36,
+        "value": "#212121"
+      },
+      {
+        "count": 30,
+        "value": "#000000"
+      },
+      {
+        "count": 11,
+        "value": "#8a1416"
+      },
+      {
+        "count": 6,
+        "value": "#0d6efd"
+      },
+      {
+        "count": 1,
+        "value": "#666666"
+      },
+      {
+        "count": 1,
+        "value": "#731818"
+      }
+    ]
+  },
+  "forms": [
+    {
+      "action": "//translate.googleapis.com/translate_voting?client=te",
+      "fields": [
+        {
+          "label": "",
+          "name": "sl",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "",
+          "name": "tl",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "",
+          "name": "query",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "",
+          "name": "gtrans",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        },
+        {
+          "label": "",
+          "name": "vote",
+          "placeholder": "",
+          "required": false,
+          "tag": "input",
+          "type": "text"
+        }
+      ],
+      "method": "post"
+    }
+  ],
+  "headings": [
+    {
+      "level": 2,
+      "text": "Supreme Today AI"
+    },
+    {
+      "level": 2,
+      "text": "Introduction"
+    },
+    {
+      "level": 2,
+      "text": "1. Accessing the Application"
+    },
+    {
+      "level": 2,
+      "text": "2. Sign Up/ Log In"
+    },
+    {
+      "level": 3,
+      "text": "2.1 Creating an Account"
+    },
+    {
+      "level": 3,
+      "text": "2.2 Verifying Your Mobile Number"
+    },
+    {
+      "level": 3,
+      "text": "2.3 Logging In"
+    },
+    {
+      "level": 3,
+      "text": "2.4 Forgot Password:"
+    },
+    {
+      "level": 3,
+      "text": "2.5 Security and Privacy"
+    },
+    {
+      "level": 3,
+      "text": "2.6 Troubleshooting"
+    },
+    {
+      "level": 3,
+      "text": "2.7 Support and Contact Information"
+    },
+    {
+      "level": 2,
+      "text": "Quick Search – How to do"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Quick Search (All / Citation / Party Name)"
+    },
+    {
+      "level": 3,
+      "text": "Method 1: All Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Home Page"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Use Example"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: AI Searching"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Open Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Method 2: Citation Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Select Citation"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Enter Citation"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Open Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Method 3: Party Name Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Select Party Name"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Enter Party Name"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Open Judgment"
+    },
+    {
+      "level": 2,
+      "text": "Search Option"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Smart Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Keyword Search (Exact Word)"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Synonym Search (Similar Words)"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: AI Sentence Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: AI Paragraph Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 6: Open the Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Step 7: Navigate to Paragraph"
+    },
+    {
+      "level": 3,
+      "text": "Step 8: Use AI Assistant"
+    },
+    {
+      "level": 3,
+      "text": "Step 9: View Related Cases"
+    },
+    {
+      "level": 3,
+      "text": "Step 10: Open Related Judgment"
+    },
+    {
+      "level": 2,
+      "text": "Advanced Search"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Advanced Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: See Example"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Open Advanced Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Enter Search Details"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Run Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: Sort Results"
+    },
+    {
+      "level": 3,
+      "text": "Step 6: Apply Filters"
+    },
+    {
+      "level": 3,
+      "text": "Step 7: Use Preference Toggle"
+    },
+    {
+      "level": 3,
+      "text": "Step 8: View Results"
+    },
+    {
+      "level": 3,
+      "text": "Step 9: Open Judgment"
+    },
+    {
+      "level": 2,
+      "text": "QUICK SEARCH CITATION - HOW TO DO"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Search Judgment by Citation"
+    },
+    {
+      "level": 3,
+      "text": "Method 1: Quick Citation Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Home Page"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: View Search Options"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Select Citation"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Enter Citation"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: Select Suggestion"
+    },
+    {
+      "level": 3,
+      "text": "Method 2: Advanced Citation Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Advanced Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Enter Citation Details"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Run Search"
+    },
+    {
+      "level": 2,
+      "text": "CASE BINDER"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Create Case Binder from Bookmarks"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Search Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Add Bookmark"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Open Bookmark History"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Create Case Binder"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: Arrange Cases"
+    },
+    {
+      "level": 3,
+      "text": "Step 6: Select Page Format"
+    },
+    {
+      "level": 3,
+      "text": "Step 7: Open Case Binder"
+    },
+    {
+      "level": 3,
+      "text": "Step 8: Format the Binder"
+    },
+    {
+      "level": 3,
+      "text": "Step 9: Download PDF"
+    },
+    {
+      "level": 2,
+      "text": "How to Begin - Quick Navigation Bar"
+    },
+    {
+      "level": 3,
+      "text": "1.1 Home/ Dashboard"
+    },
+    {
+      "level": 3,
+      "text": "3.2 Chat"
+    },
+    {
+      "level": 3,
+      "text": "3.3 Editor"
+    },
+    {
+      "level": 2,
+      "text": "Quick Search"
+    },
+    {
+      "level": 3,
+      "text": "Quick Search Basics"
+    },
+    {
+      "level": 2,
+      "text": "AI-Powered Legal Search: Smarter, Faster, and More Precise Research"
+    },
+    {
+      "level": 2,
+      "text": "AI Synonyms Search:"
+    },
+    {
+      "level": 3,
+      "text": "AI Search (Conceptual Search)"
+    },
+    {
+      "level": 3,
+      "text": "By Paragraph or Summary:"
+    },
+    {
+      "level": 3,
+      "text": "By Sentence:"
+    },
+    {
+      "level": 2,
+      "text": "3. Settings & History"
+    },
+    {
+      "level": 2,
+      "text": "HOME PAGE - INTRODUCTION"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Home Page (Supreme Today AI)"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Home Page"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Enter Search Query"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Click Search"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Select Content Type"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: Sort Results"
+    },
+    {
+      "level": 3,
+      "text": "Step 6: Open Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Step 7: Use Judgment Helper Tools"
+    },
+    {
+      "level": 3,
+      "text": "Step 8: Scroll Through Judgment"
+    },
+    {
+      "level": 3,
+      "text": "Step 9: Use AI Assistant"
+    },
+    {
+      "level": 2,
+      "text": "PREFERENCES - SETTINGS & THEME"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Quick Settings & Profile Menu"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Open Quick Options"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Open Profile Menu"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Profile Menu Options"
+    },
+    {
+      "level": 2,
+      "text": "BOOKMARKS & SEARCH HISTORY"
+    },
+    {
+      "level": 2,
+      "text": "Step-by-Step Guide: Bookmarks & Search History"
+    },
+    {
+      "level": 3,
+      "text": "Step 1: Add Bookmark"
+    },
+    {
+      "level": 3,
+      "text": "Step 2: Open History"
+    },
+    {
+      "level": 3,
+      "text": "Step 3: Open Bookmarks"
+    },
+    {
+      "level": 3,
+      "text": "Step 4: Manage Bookmarks"
+    },
+    {
+      "level": 3,
+      "text": "Step 5: Check Search History"
+    },
+    {
+      "level": 3,
+      "text": "Step 6: Manage Search History"
+    },
+    {
+      "level": 2,
+      "text": "Change Theme / Settings"
+    },
+    {
+      "level": 2,
+      "text": "Change Theme:"
+    },
+    {
+      "level": 2,
+      "text": "Font Style:"
+    },
+    {
+      "level": 2,
+      "text": "Night Mode:"
+    },
+    {
+      "level": 2,
+      "text": "PDF Paper Size and Font Size Settings:"
+    },
+    {
+      "level": 2,
+      "text": "User Search History"
+    },
+    {
+      "level": 2,
+      "text": "Search History:"
+    },
+    {
+      "level": 2,
+      "text": "User Bookmarks History"
+    },
+    {
+      "level": 2,
+      "text": "View Bookmarks:"
+    },
+    {
+      "level": 2,
+      "text": "Bookmarks & Folders:"
+    }
+  ],
+  "health": {
+    "errors": [],
+    "failed_requests": []
+  },
+  "lang": "en",
+  "layouts": [
+    {
+      "blocks": [
+        {
+          "background": "#ffffff",
+          "h": 66,
+          "pad": [
+            8,
+            0,
+            8,
+            0
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 1425,
+          "y": 0
+        },
+        {
+          "h": 45,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 909,
+          "y": 11
+        },
+        {
+          "background": "#731818",
+          "column": {
+            "max_w": 1170,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 1170,
+            "x": 128
+          },
+          "h": 125,
+          "pad": [
+            20,
+            0,
+            20,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 1425,
+          "y": 66
+        },
+        {
+          "column": {
+            "max_w": 1170,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 1170,
+            "x": 128
+          },
+          "h": 2198,
+          "heading": "Supreme Today AI",
+          "pad": [
+            10,
+            0,
+            10,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 1425,
+          "y": 191
+        },
+        {
+          "background": "#ffffff",
+          "h": 770,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 380,
+          "y": 578
+        },
+        {
+          "gap": 4,
+          "h": 768,
+          "pad": [
+            8,
+            8,
+            12,
+            8
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 378,
+          "y": 579
+        },
+        {
+          "h": 34,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 587
+        },
+        {
+          "h": 266,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 631
+        },
+        {
+          "h": 294,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 907
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 1211
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 1374
+        },
+        {
+          "h": 209,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 347,
+          "y": 1536
+        },
+        {
+          "h": 2107,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 2,
+          "tag": "main",
+          "w": 742,
+          "y": 272
+        },
+        {
+          "h": 74,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 742,
+          "y": 272
+        },
+        {
+          "h": 1996,
+          "heading": "Introduction",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 742,
+          "y": 364
+        },
+        {
+          "h": 29,
+          "pad": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 728,
+          "y": 2152
+        },
+        {
+          "background": "#731818",
+          "column": {
+            "max_w": 1170,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 1170,
+            "x": 128
+          },
+          "h": 287,
+          "pad": [
+            50,
+            0,
+            50,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 1425,
+          "y": 2389
+        },
+        {
+          "background": "#000000",
+          "column": {
+            "max_w": 1170,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 1170,
+            "x": 128
+          },
+          "h": 403,
+          "pad": [
+            50,
+            0,
+            50,
+            0
+          ],
+          "per_row": 4,
+          "tag": "footer",
+          "w": 1425,
+          "y": 2676
+        },
+        {
+          "background": "#454545",
+          "column": {
+            "max_w": 1170,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 1170,
+            "x": 128
+          },
+          "h": 32,
+          "pad": [
+            6,
+            0,
+            6,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 1425,
+          "y": 3079
+        }
+      ],
+      "page_h": 3111,
+      "page_w": 1425,
+      "type": {
+        "body": 18,
+        "h1": 0,
+        "h2": 24,
+        "h3": 18
+      },
+      "width": 1440
+    },
+    {
+      "blocks": [
+        {
+          "background": "#ffffff",
+          "h": 94,
+          "pad": [
+            8,
+            0,
+            8,
+            0
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 753,
+          "y": 0
+        },
+        {
+          "background": "#ffffff",
+          "h": 900,
+          "pad": [
+            12,
+            18,
+            0,
+            18
+          ],
+          "per_row": 2,
+          "tag": "aside",
+          "w": 235,
+          "y": 987
+        },
+        {
+          "gap": 6,
+          "h": 235,
+          "pad": [
+            14,
+            0,
+            10,
+            0
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 199,
+          "y": 1038
+        },
+        {
+          "background": "#731818",
+          "column": {
+            "max_w": 720,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 720,
+            "x": 17
+          },
+          "h": 125,
+          "pad": [
+            20,
+            0,
+            20,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 753,
+          "y": 94
+        },
+        {
+          "column": {
+            "max_w": 720,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 720,
+            "x": 17
+          },
+          "h": 3381,
+          "heading": "Supreme Today AI",
+          "pad": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 753,
+          "y": 219
+        },
+        {
+          "background": "#ffffff",
+          "h": 1181,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 696,
+          "y": 291
+        },
+        {
+          "gap": 4,
+          "h": 1179,
+          "pad": [
+            8,
+            8,
+            12,
+            8
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 694,
+          "y": 292
+        },
+        {
+          "h": 34,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 300
+        },
+        {
+          "h": 266,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 344
+        },
+        {
+          "h": 294,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 620
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 924
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 1086
+        },
+        {
+          "h": 209,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 678,
+          "y": 1249
+        },
+        {
+          "h": 2103,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 2,
+          "tag": "main",
+          "w": 696,
+          "y": 1496
+        },
+        {
+          "h": 74,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 696,
+          "y": 1496
+        },
+        {
+          "h": 1993,
+          "heading": "Introduction",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 696,
+          "y": 1588
+        },
+        {
+          "h": 29,
+          "pad": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 682,
+          "y": 3372
+        },
+        {
+          "background": "#731818",
+          "column": {
+            "max_w": 720,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 720,
+            "x": 17
+          },
+          "h": 592,
+          "pad": [
+            50,
+            0,
+            50,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 753,
+          "y": 3600
+        },
+        {
+          "background": "#000000",
+          "column": {
+            "max_w": 720,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 720,
+            "x": 17
+          },
+          "h": 1080,
+          "pad": [
+            50,
+            0,
+            50,
+            0
+          ],
+          "per_row": 1,
+          "tag": "footer",
+          "w": 753,
+          "y": 4191
+        },
+        {
+          "background": "#454545",
+          "column": {
+            "max_w": 720,
+            "pad": [
+              12,
+              12
+            ],
+            "w": 720,
+            "x": 17
+          },
+          "h": 32,
+          "pad": [
+            6,
+            0,
+            6,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 753,
+          "y": 5271
+        }
+      ],
+      "page_h": 5303,
+      "page_w": 753,
+      "type": {
+        "body": 12,
+        "h1": 0,
+        "h2": 24,
+        "h3": 18
+      },
+      "width": 768
+    },
+    {
+      "blocks": [
+        {
+          "background": "#ffffff",
+          "column": {
+            "max_w": 200,
+            "pad": [
+              0,
+              0
+            ],
+            "w": 145,
+            "x": 12
+          },
+          "h": 86,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 2,
+          "tag": "nav",
+          "w": 390,
+          "y": 0
+        },
+        {
+          "background": "#ffffff",
+          "h": 900,
+          "pad": [
+            12,
+            18,
+            0,
+            18
+          ],
+          "per_row": 2,
+          "tag": "aside",
+          "w": 235,
+          "y": 490
+        },
+        {
+          "gap": 6,
+          "h": 235,
+          "pad": [
+            14,
+            0,
+            10,
+            0
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 199,
+          "y": 541
+        },
+        {
+          "background": "#731818",
+          "column": {
+            "max_w": 745,
+            "pad": [
+              0,
+              0
+            ],
+            "w": 366,
+            "x": 12
+          },
+          "h": 155,
+          "pad": [
+            20,
+            0,
+            20,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 390,
+          "y": 86
+        },
+        {
+          "h": 3814,
+          "heading": "Supreme Today AI",
+          "pad": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 390,
+          "y": 241
+        },
+        {
+          "background": "#ffffff",
+          "h": 1181,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 366,
+          "y": 352
+        },
+        {
+          "gap": 4,
+          "h": 1179,
+          "pad": [
+            8,
+            8,
+            12,
+            8
+          ],
+          "per_row": 1,
+          "tag": "nav",
+          "w": 364,
+          "y": 353
+        },
+        {
+          "h": 34,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 361
+        },
+        {
+          "h": 266,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 405
+        },
+        {
+          "h": 294,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 680
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 984
+        },
+        {
+          "h": 153,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 1147
+        },
+        {
+          "h": 209,
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 348,
+          "y": 1310
+        },
+        {
+          "h": 2497,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "per_row": 2,
+          "tag": "main",
+          "w": 366,
+          "y": 1556
+        },
+        {
+          "h": 74,
+          "heading": "Supreme Today AI",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 366,
+          "y": 1556
+        },
+        {
+          "h": 2387,
+          "heading": "Introduction",
+          "pad": [
+            0,
+            0,
+            8,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 366,
+          "y": 1649
+        },
+        {
+          "h": 57,
+          "pad": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "per_row": 1,
+          "tag": "aside",
+          "w": 352,
+          "y": 3747
+        },
+        {
+          "background": "#731818",
+          "h": 334,
+          "pad": [
+            14,
+            0,
+            14,
+            0
+          ],
+          "per_row": 2,
+          "tag": "section",
+          "w": 390,
+          "y": 4055
+        },
+        {
+          "background": "#000000",
+          "h": 811,
+          "pad": [
+            8,
+            0,
+            8,
+            0
+          ],
+          "per_row": 3,
+          "tag": "footer",
+          "w": 390,
+          "y": 4389
+        },
+        {
+          "background": "#454545",
+          "h": 52,
+          "pad": [
+            6,
+            0,
+            6,
+            0
+          ],
+          "per_row": 1,
+          "tag": "section",
+          "w": 390,
+          "y": 5200
+        }
+      ],
+      "page_h": 5251,
+      "page_w": 390,
+      "type": {
+        "body": 12,
+        "h1": 0,
+        "h2": 24,
+        "h3": 18
+      },
+      "width": 390
+    }
+  ],
+  "links": [
+    {
+      "href": "https://web.supremetoday.ai/",
+      "text": "Open the Web App Open Supreme Today AI"
+    },
+    {
+      "href": "https://supremetoday.ai/",
+      "text": ""
+    },
+    {
+      "href": "https://web.supremetoday.ai/",
+      "text": "Sign In"
+    },
+    {
+      "href": "https://translate.google.com/",
+      "text": "Translate"
+    },
+    {
+      "href": "https://supremetoday.ai/",
+      "text": "Home"
+    },
+    {
+      "href": "https://supremetoday.ai/legal-tools",
+      "text": "Legal Tools"
+    },
+    {
+      "href": "https://supremetoday.ai/legal-judgements",
+      "text": "Latest Judgements"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#",
+      "text": "Resources"
+    },
+    {
+      "href": "https://supremetoday.ai/about",
+      "text": "About Us"
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": "Tutorials"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual",
+      "text": "User Manual"
+    },
+    {
+      "href": "https://supremetoday.ai/brochure",
+      "text": "Brochure"
+    },
+    {
+      "href": "https://supremetoday.ai/presentation",
+      "text": "Presentation"
+    },
+    {
+      "href": "https://supremetoday.ai/how-to-login",
+      "text": "How to Login"
+    },
+    {
+      "href": "https://supremetoday.ai/coverage",
+      "text": "Coverage"
+    },
+    {
+      "href": "https://supremetoday.ai/subscription",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://supremetoday.ai/contact-us",
+      "text": "Contact"
+    },
+    {
+      "href": "https://supremetoday.ai/",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/",
+      "text": "Home"
+    },
+    {
+      "href": "https://supremetoday.ai/legal-tools",
+      "text": "Legal Tools"
+    },
+    {
+      "href": "https://supremetoday.ai/legal-judgements",
+      "text": "Latest Judgements"
+    },
+    {
+      "href": "https://supremetoday.ai/about",
+      "text": "About Us"
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": "Tutorials"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual",
+      "text": "User Manual"
+    },
+    {
+      "href": "https://supremetoday.ai/brochure",
+      "text": "Brochure"
+    },
+    {
+      "href": "https://supremetoday.ai/presentation",
+      "text": "Presentation"
+    },
+    {
+      "href": "https://supremetoday.ai/how-to-login",
+      "text": "How to Login"
+    },
+    {
+      "href": "https://supremetoday.ai/coverage",
+      "text": "Coverage"
+    },
+    {
+      "href": "https://supremetoday.ai/subscription",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://apps.apple.com/in/app/lawcanvas/id1495198688",
+      "text": ""
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "text": ""
+    },
+    {
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "text": ""
+    },
+    {
+      "href": "https://t.me/+0aVYORulp_UwNjI9",
+      "text": ""
+    },
+    {
+      "href": "https://www.instagram.com/supremetoday.ai/",
+      "text": ""
+    },
+    {
+      "href": "https://x.com/SupremeTodayAI",
+      "text": ""
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": ""
+    },
+    {
+      "href": "https://www.facebook.com/profile.php?id=61574411406140",
+      "text": ""
+    },
+    {
+      "href": "https://in.linkedin.com/in/supremetodayai",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#overview",
+      "text": "1. Login Supreme Today AI"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#quick-search-how-to-do",
+      "text": "2. Traditional Search & Legal Research"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#quick-search-how-to-do",
+      "text": "Quick Search"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#search-option",
+      "text": "Search Option"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#advanced-search",
+      "text": "Advanced Search"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#quick-search-citation",
+      "text": "Quick Search Citation"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#case-binder",
+      "text": "Case Binder"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#home-page-how-to-begin",
+      "text": "How To Begin - Quick Navigation Bar"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#home-page-search",
+      "text": "Search"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#home-page-ai-search",
+      "text": "AI Search"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#3-settings-history",
+      "text": "3. Settings & History"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#home-page-introduction",
+      "text": "Home Page - Introduction"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#preferences-settings-theme",
+      "text": "Preferences - Settings & Theme"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#bookmarks-search-history",
+      "text": "Bookmarks & Search History"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#theme-setting",
+      "text": "Theme / Settings"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#search-history",
+      "text": "Search History"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#user-history-for-bookmarks",
+      "text": "User History For Bookmarks"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#search-result",
+      "text": "Search Result"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#document-logs",
+      "text": "Document Logs"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#notifications",
+      "text": "Notifications"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#data-coverage-explorer-how",
+      "text": "4. Data & Insights"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#data-coverage-explorer-how",
+      "text": "Legal Data Coverage Explorer"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#commentary-short-comm",
+      "text": "Commentary & Short Commentary"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#circular-notification",
+      "text": "Circular & Notification"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#bare-act",
+      "text": "Bare Act"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#judicial-analysis-understanding-case-influence-legal-strength",
+      "text": "5. Deep Legal Insights"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#judicial-analysis-understanding-case-influence-legal-strength",
+      "text": "Judicial Analysis"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#judgment-view-with-ai-assistance",
+      "text": "Judgment View - With AI Assistance"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#cited-case-laws",
+      "text": "Cited / Case Laws"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#record-detail-view",
+      "text": "Detail View"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#6-ai-chat",
+      "text": "6. AI Chat"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#6-ai-chat",
+      "text": "Ask A Question"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#write-a-draft",
+      "text": "Write A Draft"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#upload-to-analysis",
+      "text": "Upload To Analysis"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#write-using-the-editor",
+      "text": "Write Using The Editor"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#ai-legal-research-assistant",
+      "text": "AI Legal Research Assistant"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#ai-writing-assistant",
+      "text": "AI Writing Assistant"
+    },
+    {
+      "href": "https://www.supremetoday.ai/",
+      "text": "www.supremetoday.ai"
+    },
+    {
+      "href": "https://apps.apple.com/in/app/supreme-today-ai/id1495198688",
+      "text": "Apple App Store"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "text": "Google Play Store."
+    },
+    {
+      "href": "mailto:info@supremetoday.ai",
+      "text": "info@supremetoday.ai"
+    },
+    {
+      "href": "tel:011-47094841",
+      "text": "011-47094841"
+    },
+    {
+      "href": "https://web.supremetoday.ai/",
+      "text": "Login to Supreme Today AI"
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/brochure",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/presentation",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/how-to-login",
+      "text": ""
+    },
+    {
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "text": ""
+    },
+    {
+      "href": "https://t.me/+0aVYORulp_UwNjI9",
+      "text": ""
+    },
+    {
+      "href": "https://www.instagram.com/supremetoday.ai/",
+      "text": ""
+    },
+    {
+      "href": "https://x.com/SupremeTodayAI",
+      "text": ""
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": ""
+    },
+    {
+      "href": "https://www.facebook.com/profile.php?id=61574411406140",
+      "text": ""
+    },
+    {
+      "href": "https://in.linkedin.com/in/supremetodayai",
+      "text": ""
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "text": ""
+    },
+    {
+      "href": "https://apps.apple.com/in/app/lawcanvas/id1495198688",
+      "text": ""
+    },
+    {
+      "href": "https://apps.apple.com/in/app/lawcanvas/id1495198688",
+      "text": ""
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "text": ""
+    },
+    {
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "text": "Join us on WhatsApp"
+    },
+    {
+      "href": "https://t.me/+0aVYORulp_UwNjI9",
+      "text": "Join us on Telegram"
+    },
+    {
+      "href": "https://www.instagram.com/supremetoday.ai/",
+      "text": "Follow us on Instagram"
+    },
+    {
+      "href": "https://x.com/SupremeTodayAI",
+      "text": "Follow us on X"
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": "Subscribe on YouTube"
+    },
+    {
+      "href": "https://www.facebook.com/profile.php?id=61574411406140",
+      "text": "Follow us on Facebook"
+    },
+    {
+      "href": "https://in.linkedin.com/in/supremetodayai",
+      "text": "Follow us on LinkedIn"
+    },
+    {
+      "href": "https://supremetoday.ai/",
+      "text": "Home"
+    },
+    {
+      "href": "https://supremetoday.ai/coverage",
+      "text": "Legal Data Coverage"
+    },
+    {
+      "href": "https://supremetoday.ai/subscription",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://web.supremetoday.ai/",
+      "text": "Subscribe"
+    },
+    {
+      "href": "https://supremetoday.ai/contact-us",
+      "text": "Contact Us"
+    },
+    {
+      "href": "https://supremetoday.ai/about",
+      "text": "About Us"
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": "Tutorials"
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual",
+      "text": "User Manual"
+    },
+    {
+      "href": "https://supremetoday.ai/brochure",
+      "text": "Brochure"
+    },
+    {
+      "href": "https://supremetoday.ai/presentation",
+      "text": "Presentation"
+    },
+    {
+      "href": "https://supremetoday.ai/how-to-login",
+      "text": "How to Login"
+    },
+    {
+      "href": "https://supremetoday.ai/subscription",
+      "text": "Packages"
+    },
+    {
+      "href": "https://supremetoday.ai/refund",
+      "text": "Refund & Subscription Cancellation"
+    },
+    {
+      "href": "https://supremetoday.ai/privacy-policy",
+      "text": "Privacy Policy"
+    },
+    {
+      "href": "https://supremetoday.ai/editorial-policy",
+      "text": "Editorial Policy"
+    },
+    {
+      "href": "https://supremetoday.ai/corrections",
+      "text": "Corrections"
+    },
+    {
+      "href": "https://supremetoday.ai/terms",
+      "text": "Terms & Conditions"
+    },
+    {
+      "href": "https://supremetoday.ai/case_removal",
+      "text": "Case Link Removal Request"
+    },
+    {
+      "href": "mailto:info@supremetoday.ai",
+      "text": "info@supremetoday.ai"
+    },
+    {
+      "href": "tel:011-47094841",
+      "text": "011-47094841"
+    },
+    {
+      "href": "https://supremetoday.ai/case_removal",
+      "text": "Case Link Removal Request"
+    },
+    {
+      "href": "https://www.facebook.com/profile.php?id=61574411406140",
+      "text": ""
+    },
+    {
+      "href": "https://x.com/SupremeTodayAI",
+      "text": ""
+    },
+    {
+      "href": "https://www.instagram.com/supremetoday.ai/",
+      "text": ""
+    },
+    {
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "text": ""
+    },
+    {
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "text": ""
+    },
+    {
+      "href": "https://supremetoday.ai/user-manual#",
+      "text": "Back to top"
+    }
+  ],
+  "meta": {
+    "description": "Access the Supreme Today AI User Manual: step-by-step guidance for legal research, drafting, search, case analysis, chat assistant, editor, bookmarks, and notifications.",
+    "icons": [
+      "https://cdn.supremetoday.ai/static/img/favicon.ico",
+      "https://cdn.supremetoday.ai/static/img/favicon.ico",
+      "https://cdn.supremetoday.ai/static/img/favicon.ico"
+    ],
+    "og_image": "",
+    "og_title": "",
+    "theme_color": ""
+  },
+  "outline": [
+    {
+      "box": {
+        "h": 44,
+        "w": 46,
+        "x": 1378,
+        "y": 977
+      },
+      "class": "st-mobile-app-prompt__toggle",
+      "color": "#000000",
+      "depth": 4,
+      "font": "14px 400",
+      "id": "stMobileAppOpen",
+      "tag": "button"
+    },
+    {
+      "alt": "",
+      "box": {
+        "h": 34,
+        "w": 34,
+        "x": 1384,
+        "y": 982
+      },
+      "color": "#000000",
+      "depth": 5,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/Icon-512.png",
+      "tag": "img"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 66,
+        "w": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "class": "navbar navbar-expand-lg sticky-top st-site-header",
+      "color": "#ffffff",
+      "depth": 3,
+      "display": "flex",
+      "flex": "row",
+      "font": "14px 400",
+      "tag": "nav"
+    },
+    {
+      "box": {
+        "h": 50,
+        "w": 250,
+        "x": 12,
+        "y": 8
+      },
+      "class": "navbar-brand",
+      "color": "#000000",
+      "depth": 6,
+      "font": "20px 400",
+      "href": "https://supremetoday.ai/",
+      "tag": "a"
+    },
+    {
+      "alt": "Supreme Today AI - Enhance the power of Artificial Intelligence for your Legal Research and Drafting",
+      "box": {
+        "h": 40,
+        "w": 250,
+        "x": 12,
+        "y": 13
+      },
+      "class": "img-fluid header-app-logo",
+      "color": "#000000",
+      "depth": 7,
+      "font": "20px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/new_logo.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 35,
+        "w": 68,
+        "x": 1171,
+        "y": 15
+      },
+      "class": "navbar-nav st-header-account-actions",
+      "color": "#000000",
+      "depth": 6,
+      "display": "flex",
+      "flex": "row",
+      "font": "14px 400",
+      "tag": "ul"
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 35,
+        "w": 68,
+        "x": 1171,
+        "y": 15
+      },
+      "class": "nav-link",
+      "color": "#ffffff",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://web.supremetoday.ai/",
+      "tag": "a",
+      "text": "Sign In"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 32,
+        "w": 130,
+        "x": 1247,
+        "y": 17
+      },
+      "class": "goog-te-combo",
+      "color": "#171717",
+      "depth": 9,
+      "font": "13px 400",
+      "name": "",
+      "placeholder": "",
+      "tag": "select",
+      "text": "Select Language Bengali Gujarati Hindi Kannada Malay Malayalam Marathi Punjabi (Gurmukhi) Tamil Telugu Urdu",
+      "type": "select-one"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 28,
+        "x": 1385,
+        "y": 19
+      },
+      "class": "mode st-header-theme-toggle",
+      "color": "#000000",
+      "depth": 6,
+      "font": "14px 400",
+      "id": "theme-toggle",
+      "tag": "button"
+    },
+    {
+      "alt": "",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1387,
+        "y": 21
+      },
+      "class": "d-none-img",
+      "color": "#000000",
+      "depth": 7,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/light-mode.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 45,
+        "w": 909,
+        "x": 262,
+        "y": 11
+      },
+      "class": "st-header-navigation",
+      "color": "#000000",
+      "depth": 5,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "nav"
+    },
+    {
+      "box": {
+        "h": 41,
+        "w": 909,
+        "x": 270,
+        "y": 15
+      },
+      "class": "navbar-nav mt-1 ms-2",
+      "color": "#000000",
+      "depth": 6,
+      "display": "flex",
+      "flex": "row",
+      "font": "14px 400",
+      "tag": "ul"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 60,
+        "x": 513,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/",
+      "tag": "a",
+      "text": "Home"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 98,
+        "x": 573,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/legal-tools",
+      "tag": "a",
+      "text": "Legal Tools"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 152,
+        "x": 672,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/legal-judgements",
+      "tag": "a",
+      "text": "Latest Judgements"
+    },
+    {
+      "background": "#f3e6e6",
+      "box": {
+        "h": 31,
+        "w": 110,
+        "x": 824,
+        "y": 20
+      },
+      "class": "nav-link dropdown-toggle active",
+      "color": "#731818",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/user-manual#",
+      "id": "resourcesDropdown",
+      "role": "button",
+      "tag": "a",
+      "text": "Resources"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 86,
+        "x": 934,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/coverage",
+      "tag": "a",
+      "text": "Coverage"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 68,
+        "x": 1020,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/subscription",
+      "tag": "a",
+      "text": "Pricing"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 35,
+        "w": 75,
+        "x": 1088,
+        "y": 17
+      },
+      "class": "nav-link",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 500",
+      "href": "https://supremetoday.ai/contact-us",
+      "tag": "a",
+      "text": "Contact"
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 125,
+        "w": 1425,
+        "x": 0,
+        "y": 66
+      },
+      "class": "header-bg pricing",
+      "color": "#ffffff",
+      "depth": 2,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 31,
+        "w": 745,
+        "x": 340,
+        "y": 86
+      },
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "24px 700",
+      "tag": "h4",
+      "text": "User Manual"
+    },
+    {
+      "box": {
+        "h": 30,
+        "w": 745,
+        "x": 340,
+        "y": 125
+      },
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "18px 400",
+      "tag": "p",
+      "text": "Using Information & Analytics to Shape a More Just World"
+    },
+    {
+      "box": {
+        "h": 2198,
+        "w": 1425,
+        "x": 0,
+        "y": 191
+      },
+      "class": "user-manual",
+      "color": "#000000",
+      "depth": 2,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 39,
+        "w": 110,
+        "x": 839,
+        "y": 217
+      },
+      "class": "d-flex align-items-center justify-content-center btn px-3 me-2 me-sm-4 gap-2",
+      "color": "#000000",
+      "depth": 7,
+      "font": "16px 400",
+      "href": "",
+      "id": "shareButton",
+      "tag": "a",
+      "text": "Share"
+    },
+    {
+      "alt": "Share",
+      "box": {
+        "h": 23,
+        "w": 23,
+        "x": 856,
+        "y": 225
+      },
+      "class": "webview-dialog-icon",
+      "color": "#000000",
+      "depth": 8,
+      "font": "16px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icn_share.svg",
+      "tag": "img"
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 39,
+        "w": 144,
+        "x": 974,
+        "y": 217
+      },
+      "class": "btn btn-light read-more-theme px-3 me-2 me-sm-4",
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "14px 500",
+      "href": "",
+      "id": "pdf-generate",
+      "tag": "a",
+      "text": "Download PDF"
+    },
+    {
+      "background": "#000000",
+      "box": {
+        "h": 39,
+        "w": 144,
+        "x": 1142,
+        "y": 217
+      },
+      "class": "btn btn-light read-more-theme read-more-theme-black px-3",
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "14px 500",
+      "href": "",
+      "id": "release-note-generate",
+      "tag": "a",
+      "text": "What's New?"
+    },
+    {
+      "background": "#ffffff",
+      "box": {
+        "h": 770,
+        "w": 380,
+        "x": 140,
+        "y": 657
+      },
+      "class": "manual-sidebar",
+      "color": "#000000",
+      "depth": 5,
+      "display": "flex",
+      "flex": "column",
+      "font": "14px 400",
+      "tag": "aside"
+    },
+    {
+      "box": {
+        "h": 768,
+        "w": 378,
+        "x": 141,
+        "y": 658
+      },
+      "class": "manual-nav",
+      "color": "#000000",
+      "depth": 6,
+      "display": "flex",
+      "flex": "column",
+      "font": "14px 400",
+      "id": "manual-nav",
+      "tag": "nav"
+    },
+    {
+      "box": {
+        "h": 34,
+        "w": 347,
+        "x": 149,
+        "y": 666
+      },
+      "class": "outline-group active",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 667
+      },
+      "class": "manual-nav-link level-0 active",
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#overview",
+      "tag": "a",
+      "text": "1. Login Supreme Today AI"
+    },
+    {
+      "box": {
+        "h": 266,
+        "w": 347,
+        "x": 149,
+        "y": 710
+      },
+      "class": "outline-group",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 20,
+        "x": 151,
+        "y": 717
+      },
+      "class": "outline-caret",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "tag": "button"
+    },
+    {
+      "alt": "Toggle",
+      "box": {
+        "h": 12,
+        "w": 12,
+        "x": 155,
+        "y": 721
+      },
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 711
+      },
+      "class": "manual-nav-link level-0",
+      "color": "#212121",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#quick-search-how-to-do",
+      "tag": "a",
+      "text": "2. Traditional Search & Legal Research"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 748
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#quick-search-how-to-do",
+      "tag": "a",
+      "text": "Quick Search"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 776
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#search-option",
+      "tag": "a",
+      "text": "Search Option"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 804
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#advanced-search",
+      "tag": "a",
+      "text": "Advanced Search"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 833
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#quick-search-citation",
+      "tag": "a",
+      "text": "Quick Search Citation"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 861
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#case-binder",
+      "tag": "a",
+      "text": "Case Binder"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 889
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#home-page-how-to-begin",
+      "tag": "a",
+      "text": "How To Begin - Quick Navigation Bar"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 917
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#home-page-search",
+      "tag": "a",
+      "text": "Search"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 946
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#home-page-ai-search",
+      "tag": "a",
+      "text": "AI Search"
+    },
+    {
+      "box": {
+        "h": 294,
+        "w": 347,
+        "x": 149,
+        "y": 986
+      },
+      "class": "outline-group",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 20,
+        "x": 151,
+        "y": 993
+      },
+      "class": "outline-caret",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "tag": "button"
+    },
+    {
+      "alt": "Toggle",
+      "box": {
+        "h": 12,
+        "w": 12,
+        "x": 155,
+        "y": 997
+      },
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 987
+      },
+      "class": "manual-nav-link level-0",
+      "color": "#212121",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#3-settings-history",
+      "tag": "a",
+      "text": "3. Settings & History"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1024
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#home-page-introduction",
+      "tag": "a",
+      "text": "Home Page - Introduction"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1052
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#preferences-settings-theme",
+      "tag": "a",
+      "text": "Preferences - Settings & Theme"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1080
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#bookmarks-search-history",
+      "tag": "a",
+      "text": "Bookmarks & Search History"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1108
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#theme-setting",
+      "tag": "a",
+      "text": "Theme / Settings"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1137
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#search-history",
+      "tag": "a",
+      "text": "Search History"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1165
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#user-history-for-bookmarks",
+      "tag": "a",
+      "text": "User History For Bookmarks"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1193
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#search-result",
+      "tag": "a",
+      "text": "Search Result"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1221
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#document-logs",
+      "tag": "a",
+      "text": "Document Logs"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1250
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#notifications",
+      "tag": "a",
+      "text": "Notifications"
+    },
+    {
+      "box": {
+        "h": 153,
+        "w": 347,
+        "x": 149,
+        "y": 1290
+      },
+      "class": "outline-group",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 20,
+        "x": 151,
+        "y": 1297
+      },
+      "class": "outline-caret",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "tag": "button"
+    },
+    {
+      "alt": "Toggle",
+      "box": {
+        "h": 12,
+        "w": 12,
+        "x": 155,
+        "y": 1301
+      },
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 1291
+      },
+      "class": "manual-nav-link level-0",
+      "color": "#212121",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#data-coverage-explorer-how",
+      "tag": "a",
+      "text": "4. Data & Insights"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1328
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#data-coverage-explorer-how",
+      "tag": "a",
+      "text": "Legal Data Coverage Explorer"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1356
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#commentary-short-comm",
+      "tag": "a",
+      "text": "Commentary & Short Commentary"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1384
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#circular-notification",
+      "tag": "a",
+      "text": "Circular & Notification"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1412
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#bare-act",
+      "tag": "a",
+      "text": "Bare Act"
+    },
+    {
+      "box": {
+        "h": 153,
+        "w": 347,
+        "x": 149,
+        "y": 1453
+      },
+      "class": "outline-group",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 20,
+        "x": 151,
+        "y": 1460
+      },
+      "class": "outline-caret",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "tag": "button"
+    },
+    {
+      "alt": "Toggle",
+      "box": {
+        "h": 12,
+        "w": 12,
+        "x": 155,
+        "y": 1464
+      },
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 1454
+      },
+      "class": "manual-nav-link level-0",
+      "color": "#212121",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#judicial-analysis-understanding-case-influence-legal-strength",
+      "tag": "a",
+      "text": "5. Deep Legal Insights"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1491
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#judicial-analysis-understanding-case-influence-legal-strength",
+      "tag": "a",
+      "text": "Judicial Analysis"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1519
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#judgment-view-with-ai-assistance",
+      "tag": "a",
+      "text": "Judgment View - With AI Assistance"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1547
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#cited-case-laws",
+      "tag": "a",
+      "text": "Cited / Case Laws"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1575
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#record-detail-view",
+      "tag": "a",
+      "text": "Detail View"
+    },
+    {
+      "box": {
+        "h": 209,
+        "w": 347,
+        "x": 149,
+        "y": 1615
+      },
+      "class": "outline-group",
+      "color": "#000000",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 20,
+        "x": 151,
+        "y": 1622
+      },
+      "class": "outline-caret",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "tag": "button"
+    },
+    {
+      "alt": "Toggle",
+      "box": {
+        "h": 12,
+        "w": 12,
+        "x": 155,
+        "y": 1626
+      },
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://supremetoday.ai/static/img/arrow-up-new.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 32,
+        "w": 319,
+        "x": 175,
+        "y": 1617
+      },
+      "class": "manual-nav-link level-0",
+      "color": "#212121",
+      "depth": 9,
+      "font": "16px 600",
+      "href": "https://supremetoday.ai/user-manual#6-ai-chat",
+      "tag": "a",
+      "text": "6. AI Chat"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1653
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#6-ai-chat",
+      "tag": "a",
+      "text": "Ask A Question"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1682
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#write-a-draft",
+      "tag": "a",
+      "text": "Write A Draft"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1710
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#upload-to-analysis",
+      "tag": "a",
+      "text": "Upload To Analysis"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1738
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#write-using-the-editor",
+      "tag": "a",
+      "text": "Write Using The Editor"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1766
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#ai-legal-research-assistant",
+      "tag": "a",
+      "text": "AI Legal Research Assistant"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 315,
+        "x": 181,
+        "y": 1795
+      },
+      "class": "manual-nav-link level-1",
+      "color": "#212121",
+      "depth": 9,
+      "font": "13.5px 400",
+      "href": "https://supremetoday.ai/user-manual#ai-writing-assistant",
+      "tag": "a",
+      "text": "AI Writing Assistant"
+    },
+    {
+      "box": {
+        "h": 2107,
+        "w": 742,
+        "x": 544,
+        "y": 272
+      },
+      "class": "manual-content",
+      "color": "#000000",
+      "depth": 5,
+      "display": "block",
+      "font": "14px 400",
+      "id": "manual-content",
+      "tag": "main"
+    },
+    {
+      "box": {
+        "h": 74,
+        "w": 742,
+        "x": 544,
+        "y": 272
+      },
+      "class": "doc-section",
+      "color": "#000000",
+      "depth": 6,
+      "display": "block",
+      "font": "14px 400",
+      "id": "manual-app-name",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 31,
+        "w": 742,
+        "x": 544,
+        "y": 272
+      },
+      "color": "#8a1416",
+      "depth": 7,
+      "font": "24px 500",
+      "tag": "h2",
+      "text": "Supreme Today AI"
+    },
+    {
+      "box": {
+        "h": 1996,
+        "w": 742,
+        "x": 544,
+        "y": 364
+      },
+      "class": "doc-section",
+      "color": "#000000",
+      "depth": 6,
+      "display": "block",
+      "font": "14px 400",
+      "id": "overview",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 31,
+        "w": 742,
+        "x": 544,
+        "y": 364
+      },
+      "color": "#8a1416",
+      "depth": 7,
+      "font": "24px 500",
+      "tag": "h2",
+      "text": "Introduction"
+    },
+    {
+      "box": {
+        "h": 114,
+        "w": 722,
+        "x": 564,
+        "y": 405
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Welcome to Supreme Today AI, where the power of Artificial Intelligence enhances your Legal Research and Drafting. This user manual will guide you through the process of signing up and logging in to t"
+    },
+    {
+      "box": {
+        "h": 31,
+        "w": 742,
+        "x": 544,
+        "y": 530
+      },
+      "color": "#8a1416",
+      "depth": 7,
+      "font": "24px 500",
+      "tag": "h2",
+      "text": "1. Accessing the Application"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 571
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Visit www.supremetoday.ai on your web browser"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 177,
+        "x": 604,
+        "y": 575
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "16.64px 400",
+      "href": "https://www.supremetoday.ai/",
+      "tag": "a",
+      "text": "www.supremetoday.ai"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 609
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Or, download the mobile app from the Apple App Store or Google Play Store."
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 137,
+        "x": 873,
+        "y": 613
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "16.64px 400",
+      "href": "https://apps.apple.com/in/app/supreme-today-ai/id1495198688",
+      "tag": "a",
+      "text": "Apple App Store"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 150,
+        "x": 1032,
+        "y": 613
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "16.64px 400",
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "tag": "a",
+      "text": "Google Play Store."
+    },
+    {
+      "box": {
+        "h": 31,
+        "w": 742,
+        "x": 544,
+        "y": 648
+      },
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "24px 500",
+      "tag": "h2",
+      "text": "2. Sign Up/ Log In"
+    },
+    {
+      "alt": "login-help",
+      "box": {
+        "h": 258,
+        "w": 742,
+        "x": 544,
+        "y": 689
+      },
+      "class": "img-fluid d-block mx-auto manual-image-preview",
+      "color": "#000000",
+      "depth": 9,
+      "font": "14px 400",
+      "role": "button",
+      "src": "https://cdn.supremetoday.ai/static/img/user-manual/login.png",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 963
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.1 Creating an Account"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 995
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Visit the SupremeToday.ai application or website."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1034
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Tap on \"Sign Up\" and fill in your details like name, email, and password."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1072
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Review and accept the Terms of Service and Privacy Policy."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1111
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Tap \"Sign Up\" to complete the process."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1150
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Congratulations! Your SupremeToday.ai account is now ready."
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 1194
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.2 Verifying Your Mobile Number"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1226
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "After signing up, check your mobile for a verification OTP from SupremeToday.ai."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1265
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Enter OTP to verify your mobile and access your account."
+    },
+    {
+      "alt": "sign-up-help",
+      "box": {
+        "h": 258,
+        "w": 742,
+        "x": 544,
+        "y": 1313
+      },
+      "class": "img-fluid d-block mx-auto manual-image-preview",
+      "color": "#000000",
+      "depth": 10,
+      "font": "14px 400",
+      "role": "button",
+      "src": "https://cdn.supremetoday.ai/static/img/user-manual/sign-up.png",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 1601
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.3 Logging In"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1633
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Open the application or visit the website."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1672
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Enter your email, phone number, or password to log in."
+    },
+    {
+      "box": {
+        "h": 57,
+        "w": 722,
+        "x": 564,
+        "y": 1710
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "While logging in from multiple devices, an OTP (One-Time Password) will be sent for additional security."
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 1783
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.4 Forgot Password:"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1815
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "If you forget your password, tap on \"Reset Password\" on the login screen."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1854
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Enter your email and follow the instructions sent to reset your password."
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 1898
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.5 Security and Privacy"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1930
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "We take your security seriously. Your personal information is encrypted for protection."
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 1969
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Review our Privacy Policy for more details on data security."
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 2013
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.6 Troubleshooting"
+    },
+    {
+      "box": {
+        "h": 57,
+        "w": 722,
+        "x": 564,
+        "y": 2045
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "If you encounter any issues, refer to our troubleshooting guide on the website or contact our support team for assistance."
+    },
+    {
+      "box": {
+        "h": 24,
+        "w": 734,
+        "x": 552,
+        "y": 2118
+      },
+      "class": "subheading",
+      "color": "#8a1416",
+      "depth": 8,
+      "font": "18.24px 500",
+      "tag": "h3",
+      "text": "2.7 Support and Contact Information"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 728,
+        "x": 558,
+        "y": 2152
+      },
+      "class": "tip-box",
+      "color": "#000000",
+      "depth": 8,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "aside"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 714,
+        "x": 572,
+        "y": 2152
+      },
+      "color": "#000000",
+      "depth": 9,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "For further assistance, reach out to our support team:"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 2190
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Email: info@supremetoday.ai"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 180,
+        "x": 617,
+        "y": 2194
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "16.64px 400",
+      "href": "mailto:info@supremetoday.ai",
+      "tag": "a",
+      "text": "info@supremetoday.ai"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 2229
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Phone: 011-47094841"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 114,
+        "x": 624,
+        "y": 2233
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "16.64px 400",
+      "href": "tel:011-47094841",
+      "tag": "a",
+      "text": "011-47094841"
+    },
+    {
+      "box": {
+        "h": 29,
+        "w": 722,
+        "x": 564,
+        "y": 2268
+      },
+      "color": "#000000",
+      "depth": 8,
+      "font": "16.64px 400",
+      "tag": "p",
+      "text": "Visit our website for FAQs and additional contact options."
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 287,
+        "w": 1425,
+        "x": 0,
+        "y": 2389
+      },
+      "class": "theme-bg scan-me st-footer-scan",
+      "color": "#ffffff",
+      "depth": 2,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "alt": "logo-black",
+      "box": {
+        "h": 40,
+        "w": 270,
+        "x": 140,
+        "y": 2439
+      },
+      "class": "img-fluid mb-3 st-footer-brand-logo",
+      "color": "#000000",
+      "depth": 6,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/logo-black.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 69,
+        "w": 366,
+        "x": 140,
+        "y": 2495
+      },
+      "color": "#ffffff",
+      "depth": 6,
+      "font": "14px 400",
+      "tag": "p",
+      "text": "An indispensable Tool for Legal Professionals, Endorsed by Various High Court and Judicial Officers"
+    },
+    {
+      "box": {
+        "h": 46,
+        "w": 366,
+        "x": 140,
+        "y": 2580
+      },
+      "class": "mb-0",
+      "color": "#ffffff",
+      "depth": 6,
+      "font": "14px 400",
+      "tag": "p",
+      "text": "Please visit our Training & Support Center or Contact Us for assistance"
+    },
+    {
+      "alt": "qr",
+      "box": {
+        "h": 100,
+        "w": 100,
+        "x": 663,
+        "y": 2479
+      },
+      "class": "img-fluid mx-auto d-block",
+      "color": "#000000",
+      "depth": 8,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/qr.png",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 46,
+        "w": 366,
+        "x": 920,
+        "y": 2439
+      },
+      "color": "#ffffff",
+      "depth": 6,
+      "font": "14px 400",
+      "tag": "p",
+      "text": "India’s Legal research and Law Firm App, Download now!"
+    },
+    {
+      "box": {
+        "h": 50,
+        "w": 169,
+        "x": 920,
+        "y": 2501
+      },
+      "color": "#0d6efd",
+      "depth": 7,
+      "font": "14px 400",
+      "href": "https://apps.apple.com/in/app/lawcanvas/id1495198688",
+      "tag": "a"
+    },
+    {
+      "alt": "App_Store_Badge",
+      "box": {
+        "h": 50,
+        "w": 169,
+        "x": 920,
+        "y": 2501
+      },
+      "class": "img-fluid mx-auto d-block",
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/App_Store_Badge.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 50,
+        "w": 170,
+        "x": 1113,
+        "y": 2501
+      },
+      "color": "#0d6efd",
+      "depth": 7,
+      "font": "14px 400",
+      "href": "https://play.google.com/store/apps/details?id=com.law.lawcanvas",
+      "tag": "a"
+    },
+    {
+      "alt": "Google_Play_Store",
+      "box": {
+        "h": 50,
+        "w": 170,
+        "x": 1113,
+        "y": 2501
+      },
+      "class": "img-fluid mx-auto d-block",
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/Google_Play_Store.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 23,
+        "w": 366,
+        "x": 920,
+        "y": 2567
+      },
+      "class": "mb-2",
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "14px 400",
+      "tag": "p",
+      "text": "For Daily Legal Updates, Join us on :"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 920,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "tag": "a"
+    },
+    {
+      "alt": "WhatsApp",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 920,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 28,
+        "w": 28,
+        "x": 969,
+        "y": 2598
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://t.me/+0aVYORulp_UwNjI9",
+      "tag": "a"
+    },
+    {
+      "alt": "Telegram",
+      "box": {
+        "h": 28,
+        "w": 28,
+        "x": 969,
+        "y": 2598
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/image-telegram.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 1021,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://www.instagram.com/supremetoday.ai/",
+      "tag": "a"
+    },
+    {
+      "alt": "Instagram Icon",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1021,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/instagram-color.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 1070,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://x.com/SupremeTodayAI",
+      "tag": "a"
+    },
+    {
+      "alt": "X",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1070,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_x.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 1119,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "tag": "a"
+    },
+    {
+      "alt": "YouTube",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1119,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_youtube.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 1168,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://www.facebook.com/profile.php?id=61574411406140",
+      "tag": "a"
+    },
+    {
+      "alt": "Facebook",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1168,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_facebook.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 26,
+        "w": 25,
+        "x": 1217,
+        "y": 2599
+      },
+      "color": "#0d6efd",
+      "depth": 8,
+      "font": "14px 400",
+      "href": "https://in.linkedin.com/in/supremetodayai",
+      "tag": "a"
+    },
+    {
+      "alt": "LinkedIn",
+      "box": {
+        "h": 25,
+        "w": 25,
+        "x": 1217,
+        "y": 2600
+      },
+      "color": "#0d6efd",
+      "depth": 9,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_linkedin.svg",
+      "tag": "img"
+    },
+    {
+      "background": "#000000",
+      "box": {
+        "h": 403,
+        "w": 1425,
+        "x": 0,
+        "y": 2676
+      },
+      "class": "st-site-footer",
+      "color": "#ffffff",
+      "depth": 2,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "footer"
+    },
+    {
+      "box": {
+        "h": 137,
+        "w": 269,
+        "x": 140,
+        "y": 2765
+      },
+      "class": "m-0 p-0",
+      "color": "#ffffff",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "ul"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 40,
+        "x": 140,
+        "y": 2768
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/",
+      "tag": "a",
+      "text": "Home"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 145,
+        "x": 140,
+        "y": 2806
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/coverage",
+      "tag": "a",
+      "text": "Legal Data Coverage"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 48,
+        "x": 140,
+        "y": 2844
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/subscription",
+      "tag": "a",
+      "text": "Pricing"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 69,
+        "x": 140,
+        "y": 2882
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://web.supremetoday.ai/",
+      "tag": "a",
+      "text": "Subscribe"
+    },
+    {
+      "box": {
+        "h": 252,
+        "w": 269,
+        "x": 432,
+        "y": 2765
+      },
+      "class": "m-0 p-0",
+      "color": "#ffffff",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "ul"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 78,
+        "x": 432,
+        "y": 2768
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/contact-us",
+      "tag": "a",
+      "text": "Contact Us"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 64,
+        "x": 432,
+        "y": 2806
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/about",
+      "tag": "a",
+      "text": "About Us"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 59,
+        "x": 432,
+        "y": 2844
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://www.youtube.com/@supremetoday_ai",
+      "tag": "a",
+      "text": "Tutorials"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 87,
+        "x": 432,
+        "y": 2882
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/user-manual",
+      "tag": "a",
+      "text": "User Manual"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 63,
+        "x": 432,
+        "y": 2920
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/brochure",
+      "tag": "a",
+      "text": "Brochure"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 87,
+        "x": 432,
+        "y": 2959
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/presentation",
+      "tag": "a",
+      "text": "Presentation"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 91,
+        "x": 432,
+        "y": 2997
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/how-to-login",
+      "tag": "a",
+      "text": "How to Login"
+    },
+    {
+      "box": {
+        "h": 264,
+        "w": 269,
+        "x": 725,
+        "y": 2765
+      },
+      "class": "m-0 p-0",
+      "color": "#ffffff",
+      "depth": 7,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "ul"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 67,
+        "x": 725,
+        "y": 2768
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/subscription",
+      "tag": "a",
+      "text": "Packages"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 244,
+        "x": 725,
+        "y": 2806
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/refund",
+      "tag": "a",
+      "text": "Refund & Subscription Cancellation"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 96,
+        "x": 725,
+        "y": 2844
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/privacy-policy",
+      "tag": "a",
+      "text": "Privacy Policy"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 102,
+        "x": 725,
+        "y": 2882
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/editorial-policy",
+      "tag": "a",
+      "text": "Editorial Policy"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 81,
+        "x": 725,
+        "y": 2920
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/corrections",
+      "tag": "a",
+      "text": "Corrections"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 135,
+        "x": 725,
+        "y": 2959
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/terms",
+      "tag": "a",
+      "text": "Terms & Conditions"
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 35,
+        "w": 216,
+        "x": 725,
+        "y": 2994
+      },
+      "color": "#ffffff",
+      "depth": 9,
+      "font": "14px 600",
+      "href": "https://supremetoday.ai/case_removal",
+      "tag": "a",
+      "text": "Case Link Removal Request"
+    },
+    {
+      "alt": "Email",
+      "box": {
+        "h": 24,
+        "w": 24,
+        "x": 1017,
+        "y": 2765
+      },
+      "class": "st-footer-contact-icon",
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/email-icon.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 23,
+        "w": 154,
+        "x": 1057,
+        "y": 2765
+      },
+      "class": "mb-0",
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 500",
+      "tag": "p",
+      "text": "Email US"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 154,
+        "x": 1057,
+        "y": 2791
+      },
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 300",
+      "href": "mailto:info@supremetoday.ai",
+      "tag": "a",
+      "text": "info@supremetoday.ai"
+    },
+    {
+      "alt": "Phone",
+      "box": {
+        "h": 24,
+        "w": 24,
+        "x": 1017,
+        "y": 2827
+      },
+      "class": "st-footer-contact-icon",
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_phone_call.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 23,
+        "w": 114,
+        "x": 1057,
+        "y": 2827
+      },
+      "class": "mb-0",
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 500",
+      "tag": "p",
+      "text": "Contact Number"
+    },
+    {
+      "box": {
+        "h": 17,
+        "w": 97,
+        "x": 1057,
+        "y": 2853
+      },
+      "color": "#ffffff",
+      "depth": 10,
+      "font": "14px 300",
+      "href": "tel:011-47094841",
+      "id": "contact-number",
+      "tag": "a",
+      "text": "011-47094841"
+    },
+    {
+      "alt": "Location",
+      "box": {
+        "h": 24,
+        "w": 24,
+        "x": 1017,
+        "y": 2889
+      },
+      "class": "st-footer-contact-icon",
+      "color": "#ffffff",
+      "depth": 11,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/icon_location.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 23,
+        "w": 229,
+        "x": 1057,
+        "y": 2889
+      },
+      "class": "mb-0",
+      "color": "#ffffff",
+      "depth": 11,
+      "font": "14px 500",
+      "tag": "p",
+      "text": "India"
+    },
+    {
+      "alt": "India flag",
+      "box": {
+        "h": 16,
+        "w": 24,
+        "x": 1057,
+        "y": 2895
+      },
+      "class": "st-footer-country-flag me-2",
+      "color": "#ffffff",
+      "depth": 12,
+      "font": "14px 500",
+      "src": "https://cdn.supremetoday.ai/static/img/flag.svg",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 46,
+        "w": 229,
+        "x": 1057,
+        "y": 2913
+      },
+      "class": "mb-0 address-text",
+      "color": "#ffffff",
+      "depth": 11,
+      "font": "14px 300",
+      "tag": "p",
+      "text": "3A, BQ Market, Shalimar Bagh, Delhi - 110088, (India)"
+    },
+    {
+      "background": "#454545",
+      "box": {
+        "h": 32,
+        "w": 1425,
+        "x": 0,
+        "y": 3079
+      },
+      "class": "footer-bottom st-footer-bottom",
+      "color": "#ffffff",
+      "depth": 2,
+      "display": "block",
+      "font": "14px 400",
+      "tag": "section"
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 408,
+        "x": 508,
+        "y": 3085
+      },
+      "class": "mb-0",
+      "color": "#ffffff",
+      "depth": 7,
+      "font": "12px 400",
+      "tag": "p",
+      "text": "Copyright © 2023 Vikas Info Solutions Pvt Ltd. All Rights Reserved."
+    },
+    {
+      "box": {
+        "h": 45,
+        "w": 45,
+        "x": 1365,
+        "y": 1304
+      },
+      "class": "join-wp-button",
+      "color": "#0d6efd",
+      "depth": 2,
+      "font": "14px 400",
+      "href": "https://whatsapp.com/channel/0029Vak7arLLikg1ZSbaGE06",
+      "tag": "a"
+    },
+    {
+      "alt": "whatsapp-icon",
+      "box": {
+        "h": 45,
+        "w": 45,
+        "x": 1365,
+        "y": 1304
+      },
+      "color": "#0d6efd",
+      "depth": 3,
+      "font": "14px 400",
+      "src": "https://cdn.supremetoday.ai/static/img/phone-icon.svg",
+      "tag": "img"
+    },
+    {
+      "background": "#731818",
+      "box": {
+        "h": 40,
+        "w": 40,
+        "x": 1370,
+        "y": 1359
+      },
+      "class": "btn-lg back-to-top",
+      "color": "#0d6efd",
+      "depth": 2,
+      "font": "14px 400",
+      "href": "https://supremetoday.ai/user-manual#",
+      "id": "back-to-top",
+      "role": "button",
+      "tag": "a",
+      "text": "Back to top"
+    },
+    {
+      "box": {
+        "h": 48,
+        "w": 48,
+        "x": -971,
+        "y": -422
+      },
+      "color": "#000000",
+      "depth": 4,
+      "font": "14px 400",
+      "tag": "svg"
+    }
+  ],
+  "page": {
+    "h": 3111,
+    "w": 1425
+  },
+  "text": "Open the Web App Open Supreme Today AI Sign In Select Language Bengali Gujarati Hindi Kannada Malay Malayalam Marathi Punjabi (Gurmukhi) Tamil Telugu Urdu Powered by Home Legal Tools Latest Judgements Resources Coverage Pricing Contact User Manual Using Information & Analytics to Shape a More Just World Share Download PDF What's New? 1. Login Supreme Today AI 2. Traditional Search & Legal Research Quick Search Search Option Advanced Search Quick Search Citation Case Binder How To Begin - Quick Navigation Bar Search AI Search 3. Settings & History Home Page - Introduction Preferences - Settings & Theme Bookmarks & Search History Theme / Settings Search History User History For Bookmarks Search Result Document Logs Notifications 4. Data & Insights Legal Data Coverage Explorer Commentary & Short Commentary Circular & Notification Bare Act 5. Deep Legal Insights Judicial Analysis Judgment View - With AI Assistance Cited / Case Laws Detail View 6. AI Chat Ask A Question Write A Draft Upload To Analysis Write Using The Editor AI Legal Research Assistant AI Writing Assistant Supreme Today AI Introduction Welcome to Supreme Today AI, where the power of Artificial Intelligence enhances your Legal Research and Drafting. This user manual will guide you through the process of signing up and logging in to the SupremeToday.ai website and mobile application on both Android and Apple devices. 1. Accessing the Application Visit www.supremetoday.ai on your web browser Or, download the mobile app from the Apple App Store or Google Play Store. 2. Sign Up/ Log In 2.1 Creating an Account Visit the SupremeToday.ai application or website. Tap on \"Sign Up\" and fill in your details like name, email, and password. Review and accept the Terms of Service and Privacy Policy. Tap \"Sign Up\" to complete the process. Congratulations! Your SupremeToday.ai account is now ready. 2.2 Verifying Your Mobile Number After signing up, check your mobile for a verification OTP from SupremeToday.ai. Enter OTP to verify your mobile and access your account. 2.3 Logging In Open the application or visit the website. Enter your email, phone number, or password to log in. While logging in from multiple devices, an OTP (One-Time Password) will be sent for additional security. 2.4 Forgot Password: If you forget your password, tap on \"Reset Password\" on the login screen. Enter your email and follow the instructions sent to reset your password. 2.5 Security and Privacy We take your security seriously. Your personal information is encrypted for protection. Review our Privacy Policy for more details on data security. 2.6 Troubleshooting If you encounter any issues, refer to our troubleshooting guide on the website or contact our support team for assistance. 2.7 Support and Contact Information For further assistance, reach out to our support team: Email: info@supremetoday.ai Phone: 011-47094841 Visit our website for FAQs and additional contact options. Thank you for choosing SupremeToday.ai. We're here to ensure you have a seamless experience accessing valuable legal information and knowledge. An indispensable Tool for Legal Professionals, Endorsed by Various High Court and Judicial Officers Please visit our Training & Support Center or Contact Us for assistance India’s Legal research and Law Firm App, Download now! For Daily Legal Updates, Join us on : Quick Links Home Legal Data Coverage Pricing Subscribe Resources Contact Us About Us Tutorials User Manual Brochure Presentation How to Login Legal Packages Refund & Subscription Cancellation Privacy Policy Editorial Policy Corrections Terms & Conditions Case Link Removal Request Contact Us Email US info@supremetoday.ai Contact Number 011-47094841 India 3A, BQ Market, Shalimar Bagh, Delhi - 110088, (India) Copyright © 2023 Vikas Info Solutions Pvt Ltd. All Rights Reserved. Back to top",
+  "title": "User Manual - Supreme Today AI",
+  "unreadable_stylesheets": 5,
+  "url": "https://supremetoday.ai/user-manual",
+  "viewport": {
+    "h": 900,
+    "w": 1440
+  }
+}

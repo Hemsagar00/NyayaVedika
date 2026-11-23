@@ -1,0 +1,40 @@
+{
+  "name": "NyayaVedika",
+  "tagline": "India's Open Legal Intelligence, Judgment Repository & Advocate Diary",
+  "domain": "nyayavedika.in",
+  "legal_entity": "NyayaVedika Legal Tech",
+  "avoid": [
+    "Supreme Today",
+    "SupremeToday",
+    "Supreme Today AI",
+    "Court Diary",
+    "CourtDiary",
+    "courtdiary.app"
+  ],
+  "domains": [
+    "supremetoday.ai",
+    "courtdiary.app"
+  ],
+  "colors": {
+    "primary": "#0f172a",
+    "primary_dark": "#020617",
+    "accent_gold": "#c29d59",
+    "accent_gold_hover": "#b48c48",
+    "background_light": "#faf9f5",
+    "surface": "#ffffff",
+    "border": "#e2e8f0",
+    "text_main": "#0f172a",
+    "text_muted": "#64748b",
+    "success": "#059669"
+  },
+  "avoid_colors": [
+    "#731818",
+    "#7f181b",
+    "#991b1b"
+  ],
+  "fonts": {
+    "heading": "Cinzel, Playfair Display, serif",
+    "body": "Inter, -apple-system, sans-serif",
+    "mono": "JetBrains Mono, monospace"
+  }
+}

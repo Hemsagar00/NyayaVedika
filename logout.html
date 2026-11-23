@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logout | Nyaya Vedika</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <p>Logging out...</p>
+    <script>
+        const supabaseClient = supabase.createClient(
+            'https://eosrmuihgcinncaytxae.supabase.co',
+            'sb_publishable_fkDI6Nc7vWiHF-uXY5ctIg_r17nfEwB'
+        );
+
+        supabaseClient.auth.signOut().then(() => {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>

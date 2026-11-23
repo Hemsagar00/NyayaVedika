@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Legal Research | Nyaya Vedika</title>
+    <meta name="description"
+        content="Unified legal research - Case laws, eCourts, Supreme Court judgments. All in one place." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #fff;
+            --text-secondary: rgba(255, 255, 255, 0.5);
+            --accent: #fff;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 73px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            padding: 24px;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 16px 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Hero */
+        .laws-hero {
+            padding: 140px 48px 40px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03), transparent 50%);
+        }
+
+        .laws-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+        }
+
+        .laws-hero p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        /* Data Source Tabs */
+        .source-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .source-tab {
+            padding: 14px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-sans);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .source-tab:hover {
+            border-color: var(--text-primary);
+        }
+
+        .source-tab.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: #000;
+        }
+
+        .source-tab .icon {
+            font-size: 1.2rem;
+        }
+
+        .source-badge {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .source-tab.active .source-badge {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Rate Limit */
+        .rate-limit-bar {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 14px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .rate-limit-bar .remaining {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        .upgrade-btn {
+            padding: 8px 16px;
+            background: var(--text-primary);
+            color: #000;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Source Panels */
+        .source-panel {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .source-panel.active {
+            display: block;
+        }
+
+        /* Search Box */
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--text-primary);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font-sans);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-btn {
+            padding: 16px 24px;
+            background: var(--text-primary);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        /* Filter Pills */
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .filter-pill {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-sans);
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: #000;
+        }
+
+        /* Result Cards */
+        .result-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .result-card:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .result-snippet {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* IPC Cards */
+        .ipc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .ipc-section-num {
+            display: inline-block;
+            background: var(--text-primary);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            margin-bottom: 12px;
+        }
+
+        .bns-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            margin-left: 8px;
+        }
+
+        .ipc-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .ipc-desc {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .ipc-punishment {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        /* eCourts Form */
+        .ecourts-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-family: var(--font-mono);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--text-primary);
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--text-primary);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        /* Case Status Result */
+        .case-status-result {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .case-header {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .case-number {
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .case-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .case-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .case-info-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            margin-bottom: 4px;
+        }
+
+        .case-info-value {
+            font-size: 1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: rgba(255, 200, 0, 0.2);
+            color: #ffc800;
+        }
+
+        .status-disposed {
+            background: rgba(0, 255, 100, 0.2);
+            color: #00ff64;
+        }
+
+        /* Modal */
+        .doc-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .doc-modal.active {
+            display: block;
+        }
+
+        .doc-content {
+            max-width: 900px;
+            margin: 100px auto;
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .doc-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .doc-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-body {
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .loading,
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-secondary);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px 0;
+        }
+
+        .page-btn {
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Paywall */
+        .paywall-overlay {
+            text-align: center;
+            padding: 60px;
+        }
+
+        .paywall-overlay h3 {
+            margin-bottom: 16px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 60px;
+        }
+
+        .source-credits {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .source-credit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .laws-hero {
+                padding: 120px 20px 30px;
+            }
+
+            .laws-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .source-tabs {
+                gap: 6px;
+            }
+
+            .source-tab {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+            }
+
+            .source-tab .source-badge {
+                display: none;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .rate-limit-bar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .ecourts-form {
+                padding: 24px;
+            }
+
+            .doc-content {
+                margin: 80px 16px;
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">///</span>
+            Nyaya Vedika
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#capabilities">Features</a>
+            <a href="laws.html" class="active">Research</a>
+            <a href="index.html#plans">Pricing</a>
+            <a href="login.php" class="btn-primary">Sign In</a>
+        </nav>
+        <button class="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="index.html#capabilities">Features</a>
+        <a href="laws.html">Research</a>
+        <a href="index.html#plans">Pricing</a>
+        <a href="login.php">Sign In</a>
+    </div>
+
+    <section class="laws-hero">
+        <h1>Unified Legal Research</h1>
+        <p>Access case laws, judgments, and legal data from multiple sources — all without leaving the platform.</p>
+
+        <div class="source-tabs">
+            <button class="source-tab active" onclick="switchSource('kanoon', this)">
+                <span class="icon">⚖️</span>
+                Case Law Search
+                <span class="source-badge">Case Law</span>
+            </button>
+            <button class="source-tab" onclick="switchSource('ecourts', this)">
+                <span class="icon">📋</span>
+                eCourts
+                <span class="source-badge">Status</span>
+            </button>
+            <button class="source-tab" onclick="switchSource('supremecourt', this)">
+                <span class="icon">🏛️</span>
+                Supreme Court
+                <span class="source-badge">Judgments</span>
+            </button>
+            <button class="source-tab" onclick="switchSource('nyaya', this)">
+                <span class="icon">🔮</span>
+                Nyaya Vedika
+                <span class="source-badge">AI Tools</span>
+            </button>
+        </div>
+
+        <div class="rate-limit-bar">
+            <span>Free lookups today: <span class="remaining" id="remainingCount">5</span> / 5</span>
+            <a href="index.html#plans" class="upgrade-btn">Go Pro for Unlimited →</a>
+        </div>
+    </section>
+
+    <!-- Case Law Panel -->
+    <div class="source-panel active" id="panel-kanoon">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" id="kanoonSearch"
+                    placeholder="Search case laws, sections, keywords..."
+                    onkeypress="if(event.key==='Enter') searchKanoon()">
+                <button class="search-btn" onclick="searchKanoon()">Search →</button>
+            </div>
+        </div>
+
+        <div class="filter-pills">
+            <button class="filter-pill active" onclick="setKanoonFilter('all', this)">All Courts</button>
+            <button class="filter-pill" onclick="setKanoonFilter('supremecourt', this)">Supreme Court</button>
+            <button class="filter-pill" onclick="setKanoonFilter('aptel', this)">AP/TS High Court</button>
+            <button class="filter-pill" onclick="setKanoonFilter('ipc', this)">IPC Sections</button>
+            <button class="filter-pill" onclick="setKanoonFilter('judgments', this)">Landmark Cases</button>
+            <button class="filter-pill" onclick="setKanoonFilter('acts', this)">Legal Acts</button>
+        </div>
+
+        <div id="kanoonResults"></div>
+        <div id="kanoonPagination" class="pagination" style="display:none;">
+            <button class="page-btn" onclick="kanoonPage(-1)">← Prev</button>
+            <span id="kanoonPageInfo" style="padding:12px; color:var(--text-secondary);"></span>
+            <button class="page-btn" onclick="kanoonPage(1)">Next →</button>
+        </div>
+    </div>
+
+    <!-- eCourts Panel -->
+    <div class="source-panel" id="panel-ecourts">
+        <div class="ecourts-form">
+            <h3 style="margin-bottom: 8px;">Case Status Lookup</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.9rem;">
+                Enter your 16-digit CNR number to check case status, hearing dates, and orders.
+            </p>
+
+            <div class="form-group">
+                <label class="form-label">CNR NUMBER</label>
+                <input type="text" class="form-input" id="cnrInput" placeholder="APXX0X000XXXXX" maxlength="16">
+                <p class="form-hint">Example: APHC010012345678</p>
+            </div>
+
+            <button class="form-btn" onclick="lookupEcourts()">🔍 Check Status</button>
+        </div>
+
+        <div id="ecourtsResult"></div>
+    </div>
+
+    <!-- Supreme Court Panel -->
+    <div class="source-panel" id="panel-supremecourt">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" id="scSearch" placeholder="Search Supreme Court judgments..."
+                    onkeypress="if(event.key==='Enter') searchSC()">
+                <button class="search-btn" onclick="searchSC()">Search →</button>
+            </div>
+        </div>
+
+        <div id="scResults"></div>
+    </div>
+
+    <!-- Nyaya Vedika Panel -->
+    <div class="source-panel" id="panel-nyaya">
+        <div style="text-align: center; padding: 40px 20px;">
+            <div style="font-size: 4rem; margin-bottom: 24px;">🔮</div>
+            <h2 style="margin-bottom: 16px;">Nyaya Vedika AI Tools</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px;">
+                Access AI-powered legal research, document drafting, and case analysis tools.
+            </p>
+
+            <div style="display: grid; gap: 16px; max-width: 500px; margin: 0 auto;">
+                <a href="index.html" class="result-card" style="text-decoration: none; text-align: left;">
+                    <h3 class="result-title">💬 AI Legal Chat</h3>
+                    <p class="result-snippet">Ask legal questions and get AI-powered responses grounded in Indian law.
+                    </p>
+                </a>
+                <a href="services/templates.php" class="result-card" style="text-decoration: none; text-align: left;">
+                    <h3 class="result-title">📄 Draft Templates</h3>
+                    <p class="result-snippet">Ready-to-use legal document templates for common filings.</p>
+                </a>
+                <a href="services/deadlines.php" class="result-card" style="text-decoration: none; text-align: left;">
+                    <h3 class="result-title">📅 Deadline Tracker</h3>
+                    <p class="result-snippet">Track hearing dates, filing deadlines, and important case milestones.</p>
+                </a>
+                <a href="services/clients.php" class="result-card" style="text-decoration: none; text-align: left;">
+                    <h3 class="result-title">👥 Client Directory</h3>
+                    <p class="result-snippet">Organize your client contacts and case associations.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Modal -->
+    <div class="doc-modal" id="docModal">
+        <button class="doc-close" onclick="closeDocument()">×</button>
+        <div class="doc-content" id="docContent"></div>
+    </div>
+
+    <footer>
+        <div class="source-credits">
+            <span class="source-credit">⚖️ Legal Database</span>
+            <span class="source-credit">📋 eCourts India (Public)</span>
+            <span class="source-credit">🏛️ Supreme Court (Public Domain)</span>
+            <span class="source-credit">🔮 Nyaya Vedika</span>
+        </div>
+        <p>© 2026 Nyaya Vedika • All data sourced from official public repositories</p>
+    </footer>
+
+    <script>
+        // Config
+        const DAILY_FREE_LIMIT = 5;
+        const STORAGE_KEY = 'nyaya_vedika_usage';
+
+        // State
+        let currentSource = 'kanoon';
+        let kanoonFilter = 'all';
+        let kanoonPage = 0;
+        let ipcData = [], judgmentsData = [], actsData = [], scJudgmentsData = [];
+
+        // Usage tracking
+        function getUsage() {
+            const today = new Date().toISOString().split('T')[0];
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                const data = JSON.parse(stored);
+                if (data.date === today) return data;
+            }
+            return { date: today, count: 0 };
+        }
+
+        function incrementUsage() {
+            const usage = getUsage();
+            usage.count++;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(usage));
+            updateRateLimitDisplay();
+        }
+
+        function canAccess() {
+            return getUsage().count < DAILY_FREE_LIMIT;
+        }
+
+        function updateRateLimitDisplay() {
+            const remaining = Math.max(0, DAILY_FREE_LIMIT - getUsage().count);
+            document.getElementById('remainingCount').textContent = remaining;
+        }
+
+        // Load static data
+        async function loadStaticData() {
+            try {
+                const [ipc, judgments, acts, sc] = await Promise.all([
+                    fetch('data/ipc.json').then(r => r.json()).catch(() => []),
+                    fetch('data/judgments.json').then(r => r.json()).catch(() => []),
+                    fetch('data/acts.json').then(r => r.json()).catch(() => []),
+                    fetch('data/sc_judgments.json').then(r => r.json()).catch(() => [])
+                ]);
+                ipcData = ipc;
+                judgmentsData = judgments;
+                actsData = acts;
+                scJudgmentsData = [...judgments, ...sc];
+            } catch (e) {
+                console.error('Data load error:', e);
+            }
+        }
+
+        // Source switching
+        function switchSource(source, btn) {
+            document.querySelectorAll('.source-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.source-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-' + source).classList.add('active');
+
+            currentSource = source;
+
+            // Auto-load SC judgments
+            if (source === 'supremecourt' && scJudgmentsData.length > 0) {
+                displaySCJudgments(scJudgmentsData);
+            }
+        }
+
+        // Case Law Search
+        function setKanoonFilter(filter, btn) {
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            kanoonFilter = filter;
+            kanoonPage = 0;
+
+            if (['ipc', 'judgments', 'acts'].includes(filter)) {
+                showStaticContent(filter);
+            } else {
+                const query = document.getElementById('kanoonSearch').value;
+                if (query) searchKanoon();
+            }
+        }
+
+        function showStaticContent(type) {
+            const container = document.getElementById('kanoonResults');
+            document.getElementById('kanoonPagination').style.display = 'none';
+            const query = document.getElementById('kanoonSearch').value.toLowerCase();
+            let html = '';
+
+            if (type === 'ipc') {
+                let filtered = query ? ipcData.filter(s =>
+                    s.section.toString().includes(query) ||
+                    s.title.toLowerCase().includes(query)
+                ) : ipcData;
+
+                filtered.forEach(s => {
+                    html += `
+                        <div class="ipc-card">
+                            <span class="ipc-section-num">Section ${s.section}</span>
+                            ${s.bns ? `<span class="bns-tag">BNS ${s.bns}</span>` : ''}
+                            <h3 class="ipc-title">${s.title}</h3>
+                            <p class="ipc-desc">${s.description}</p>
+                            <p class="ipc-punishment">⚖ ${s.punishment}</p>
+                        </div>`;
+                });
+            } else if (type === 'judgments') {
+                let filtered = query ? judgmentsData.filter(j =>
+                    j.name.toLowerCase().includes(query)
+                ) : judgmentsData;
+
+                filtered.forEach(j => {
+                    html += `
+                        <div class="result-card" onclick="showJudgment(${j.id}, 'judgments')">
+                            <h3 class="result-title">${j.name}</h3>
+                            <div class="result-meta">
+                                <span>${j.citation}</span>
+                                <span>${j.date}</span>
+                            </div>
+                            <p class="result-snippet">${j.summary}</p>
+                        </div>`;
+                });
+            } else if (type === 'acts') {
+                let filtered = query ? actsData.filter(a =>
+                    a.name.toLowerCase().includes(query)
+                ) : actsData;
+
+                filtered.forEach(a => {
+                    html += `
+                        <div class="result-card" onclick="showAct(${a.id})">
+                            <h3 class="result-title">${a.name} <span class="bns-tag">${a.shortName}</span></h3>
+                            <div class="result-meta"><span>${a.year}</span></div>
+                            <p class="result-snippet">${a.description}</p>
+                        </div>`;
+                });
+            }
+
+            container.innerHTML = html || '<div class="no-results">No results found</div>';
+        }
+
+        async function searchKanoon() {
+            const query = document.getElementById('kanoonSearch').value.trim();
+            if (!query) return;
+
+            if (['ipc', 'judgments', 'acts'].includes(kanoonFilter)) {
+                showStaticContent(kanoonFilter);
+                return;
+            }
+
+            const container = document.getElementById('kanoonResults');
+            container.innerHTML = '<div class="loading">Searching...</div>';
+
+            try {
+                let url = `api/kanoon.php?action=search&q=${encodeURIComponent(query)}&page=${kanoonPage}`;
+                if (kanoonFilter !== 'all') url += `&doctype=${kanoonFilter}`;
+
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (data.error) {
+                    container.innerHTML = `<div class="no-results">${data.error}</div>`;
+                } else if (data.docs && data.docs.length > 0) {
+                    container.innerHTML = data.docs.map(doc => `
+                        <div class="result-card" onclick="viewKanoonDoc('${doc.tid}')">
+                            <h3 class="result-title">${doc.title || 'Untitled'}</h3>
+                            <div class="result-meta">
+                                ${doc.publishdate ? `<span>${doc.publishdate}</span>` : ''}
+                                ${doc.docsource ? `<span>${doc.docsource}</span>` : ''}
+                            </div>
+                            <p class="result-snippet">${doc.headline || ''}</p>
+                        </div>
+                    `).join('');
+                    document.getElementById('kanoonPagination').style.display = 'flex';
+                } else {
+                    container.innerHTML = '<div class="no-results">No results found</div>';
+                }
+            } catch (e) {
+                container.innerHTML = '<div class="no-results">Search unavailable</div>';
+            }
+        }
+
+        async function viewKanoonDoc(docId) {
+            if (!canAccess()) { showPaywall(); return; }
+
+            const content = document.getElementById('docContent');
+            content.innerHTML = '<div class="loading">Loading...</div>';
+            document.getElementById('docModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const res = await fetch(`api/kanoon.php?action=doc&id=${docId}`);
+                const data = await res.json();
+
+                if (data.error === 'Daily limit reached') {
+                    showPaywall();
+                } else if (data.error) {
+                    content.innerHTML = `<div class="no-results">${data.error}</div>`;
+                } else {
+                    incrementUsage();
+                    content.innerHTML = `
+                        <h2 class="doc-title">${data.title || 'Document'}</h2>
+                        <div class="doc-body">${data.doc || 'Content not available'}</div>`;
+                }
+            } catch (e) {
+                content.innerHTML = '<div class="no-results">Failed to load</div>';
+            }
+        }
+
+        // eCourts
+        async function lookupEcourts() {
+            const cnr = document.getElementById('cnrInput').value.replace(/\s/g, '').toUpperCase();
+
+            if (cnr.length !== 16) {
+                alert('Please enter a valid 16-character CNR number');
+                return;
+            }
+
+            if (!canAccess()) { showPaywall(); return; }
+
+            const container = document.getElementById('ecourtsResult');
+            container.innerHTML = '<div class="loading">Looking up case...</div>';
+
+            try {
+                const res = await fetch(`api/ecourts.php?action=lookup&cnr=${cnr}`);
+                const data = await res.json();
+
+                if (data.error) {
+                    // Show demo result for now
+                    incrementUsage();
+                    container.innerHTML = `
+                        <div class="case-status-result">
+                            <div class="case-header">
+                                <div class="case-number">CNR: ${cnr}</div>
+                                <h2 class="case-title">Case Details</h2>
+                            </div>
+                            <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                                <p>eCourts lookup service is being configured.</p>
+                                <p style="margin-top: 12px;">The CNR number has been recorded. Full integration coming soon.</p>
+                            </div>
+                        </div>`;
+                } else {
+                    incrementUsage();
+                    displayCaseStatus(data);
+                }
+            } catch (e) {
+                container.innerHTML = '<div class="no-results">Service temporarily unavailable</div>';
+            }
+        }
+
+        function displayCaseStatus(data) {
+            const container = document.getElementById('ecourtsResult');
+            container.innerHTML = `
+                <div class="case-status-result">
+                    <div class="case-header">
+                        <div class="case-number">CNR: ${data.cnr || 'N/A'}</div>
+                        <h2 class="case-title">${data.case_type || 'Case'} ${data.case_number || ''}</h2>
+                    </div>
+                    <div class="case-info-grid">
+                        <div class="case-info-item">
+                            <div class="case-info-label">Status</div>
+                            <div class="case-info-value">
+                                <span class="status-badge ${data.status === 'Disposed' ? 'status-disposed' : 'status-pending'}">
+                                    ${data.status || 'Pending'}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="case-info-item">
+                            <div class="case-info-label">Court</div>
+                            <div class="case-info-value">${data.court || 'N/A'}</div>
+                        </div>
+                        <div class="case-info-item">
+                            <div class="case-info-label">Filing Date</div>
+                            <div class="case-info-value">${data.filing_date || 'N/A'}</div>
+                        </div>
+                        <div class="case-info-item">
+                            <div class="case-info-label">Next Hearing</div>
+                            <div class="case-info-value">${data.next_hearing || 'N/A'}</div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        // Supreme Court
+        function searchSC() {
+            const query = document.getElementById('scSearch').value.toLowerCase();
+            const filtered = query
+                ? scJudgmentsData.filter(j => j.name.toLowerCase().includes(query) || j.summary.toLowerCase().includes(query))
+                : scJudgmentsData;
+            displaySCJudgments(filtered);
+        }
+
+        function displaySCJudgments(data) {
+            const container = document.getElementById('scResults');
+            if (data.length === 0) {
+                container.innerHTML = '<div class="no-results">No judgments found</div>';
+                return;
+            }
+
+            container.innerHTML = data.map(j => `
+                <div class="result-card" onclick="showJudgment(${j.id}, 'sc')">
+                    <h3 class="result-title">${j.name || j.title}</h3>
+                    <div class="result-meta">
+                        <span>${j.citation}</span>
+                        <span>${j.date}</span>
+                        <span>${j.bench || ''}</span>
+                    </div>
+                    <p class="result-snippet">${j.summary}</p>
+                </div>
+            `).join('');
+        }
+
+        // Document display
+        function showJudgment(id, source) {
+            const data = source === 'sc' ? scJudgmentsData : judgmentsData;
+            const j = data.find(x => x.id === id);
+            if (!j) return;
+            if (!canAccess()) { showPaywall(); return; }
+            incrementUsage();
+
+            document.getElementById('docContent').innerHTML = `
+                <h2 class="doc-title">${j.name || j.title}</h2>
+                <div class="result-meta" style="margin-bottom:24px;">
+                    <span>${j.citation}</span>
+                    <span>${j.date}</span>
+                    <span>${j.bench || ''}</span>
+                </div>
+                <div class="doc-body">
+                    <h4 style="color:var(--text-primary); margin-bottom:12px;">Summary</h4>
+                    <p>${j.summary}</p>
+                    <h4 style="color:var(--text-primary); margin:24px 0 12px;">Key Holdings</h4>
+                    <ul style="padding-left:20px;">
+                        ${(j.holdings || j.headnotes || []).map(h => `<li style="margin-bottom:8px;">${h}</li>`).join('')}
+                    </ul>
+                </div>`;
+
+            document.getElementById('docModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showAct(id) {
+            const a = actsData.find(x => x.id === id);
+            if (!a) return;
+            if (!canAccess()) { showPaywall(); return; }
+            incrementUsage();
+
+            document.getElementById('docContent').innerHTML = `
+                <h2 class="doc-title">${a.name}</h2>
+                <div class="result-meta" style="margin-bottom:24px;">
+                    <span>${a.year}</span>
+                    <span>${a.category}</span>
+                </div>
+                <div class="doc-body">
+                    <p>${a.description}</p>
+                    <h4 style="color:var(--text-primary); margin:24px 0 12px;">Important Sections</h4>
+                    ${a.sections.map(s => `
+                        <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:8px; margin-bottom:12px; border-left:2px solid var(--text-primary);">
+                            <strong>Section ${s.number}</strong> - ${s.title}
+                            <p style="margin-top:8px; color:var(--text-secondary);">${s.content}</p>
+                        </div>
+                    `).join('')}
+                </div>`;
+
+            document.getElementById('docModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showPaywall() {
+            document.getElementById('docContent').innerHTML = `
+                <div class="paywall-overlay">
+                    <div style="font-size:3rem; margin-bottom:24px;">🔒</div>
+                    <h3>Daily Limit Reached</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:24px;">You've used your 5 free lookups today.</p>
+                    <a href="index.html#plans" class="upgrade-btn" style="display:inline-block; padding:14px 28px; font-size:1rem;">Subscribe for Unlimited Access</a>
+                    <p style="color:var(--text-secondary); margin-top:16px; font-size:0.85rem;">Or return tomorrow for 5 more free lookups</p>
+                </div>`;
+
+            document.getElementById('docModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocument() {
+            document.getElementById('docModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStaticData();
+            updateRateLimitDisplay();
+        });
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDocument(); });
+    </script>
+</body>
+
+</html>

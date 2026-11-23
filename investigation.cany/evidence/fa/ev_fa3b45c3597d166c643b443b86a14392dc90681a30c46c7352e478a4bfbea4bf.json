@@ -1,0 +1,84 @@
+{
+  "id": "ev_fa3b45c3597d166c643b443b86a14392dc90681a30c46c7352e478a4bfbea4bf",
+  "subject": {
+    "kind": "website",
+    "name": "https://supremetoday.ai/"
+  },
+  "operation": "web_page_states_capture",
+  "params": {
+    "max_states": 4,
+    "width": 1440
+  },
+  "result": {
+    "folder": "D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\states",
+    "found": 4,
+    "states": [
+      {
+        "changed": [
+          "expanded"
+        ],
+        "file": "state-1.png",
+        "index": 0,
+        "kind": "menu",
+        "label": "Show app download link",
+        "sha256": "ffac2f2ad1a803ed709cc19466e75fe2fd4ec6bb81db6c11eba21ef03a3ef670"
+      },
+      {
+        "changed": [
+          "expanded"
+        ],
+        "file": "state-2.png",
+        "index": 1,
+        "kind": "menu",
+        "label": "Resources",
+        "sha256": "b4c325e784f3800e95af79c5297cc7aef78c0e2c892daeb6b2d8210a2f73c1bb"
+      },
+      {
+        "changed": [
+          "expanded"
+        ],
+        "file": "state-3.png",
+        "index": 2,
+        "kind": "menu",
+        "label": "More",
+        "sha256": "40036452d9f2a44fe6a3b7ee66222c2a48f38022895a1be541ab6d45b62cf227"
+      },
+      {
+        "changed": [],
+        "file": "state-4.png",
+        "index": 3,
+        "kind": "menu",
+        "label": "India 10.6M",
+        "sha256": "28883c18ab411c357d15290f699117a1396f4f7c8b28936215cd4866fff51214"
+      }
+    ],
+    "url": "https://supremetoday.ai/"
+  },
+  "summary": "Opened 4 of 4 control(s) on https://supremetoday.ai/; 4 pictured in D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\states.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "first_controls",
+      "message": "Only the first controls found are opened, one at a time; menus inside menus and hover-only menus are not."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 4,
+    "total": 4
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://supremetoday.ai/"
+    }
+  ],
+  "links": []
+}

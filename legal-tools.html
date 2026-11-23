@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Legal Tools Suite | NyayaVedika</title>
+  <meta name="description" content="AI-powered tools for Indian legal research, drafting, 1-page judgment summaries, and case law analysis.">
+  <link rel="stylesheet" href="nyayavedika.css">
+  <style>
+    .tools-nav-pill {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .tools-nav-pill.active {
+      background: var(--accent);
+      color: var(--on-accent);
+      border-color: var(--gold);
+    }
+    .tool-workspace {
+      display: none;
+    }
+    .tool-workspace.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="header-top">
+    <div>
+      <span class="badge badge-gold">AI CO-COUNSEL</span>
+      <span>Indian Jurisprudence Models Trained on Supreme Court & High Court Caselaw</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="diary.html" style="color:var(--gold); font-weight:600;">📅 Cause List Diary</a>
+      <button class="btn btn-ghost" style="padding:2px 8px; font-size:0.8rem;" onclick="toggleTheme()">🌓 Theme</button>
+      <a href="login.html" class="nav-link" style="padding:2px 6px;">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header-main">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <div class="brand-emblem">⚖️</div>
+        <div class="brand-text">
+          <h1>NyayaVedika</h1>
+          <p>न्यायवेदिका • Forum of Justice</p>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="legal-judgements.html" class="nav-link">Judgments</a>
+        <a href="legal-tools.html" class="nav-link active">AI Legal Tools</a>
+        <a href="diary.html" class="nav-link">Advocate Diary</a>
+        <a href="bare-acts.html" class="nav-link">Bare Acts (BNS)</a>
+        <a href="dashboard.html" class="nav-link">Workspace</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Workspace</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tools Hero Banner -->
+  <section style="background:var(--surface); border-bottom:1px solid var(--border); padding:40px 24px;">
+    <div style="max-width:var(--container-max); margin:0 auto;">
+      <span class="badge badge-gold">PRECISION LEGAL COMPUTATION</span>
+      <h2 style="font-family:var(--font-serif); font-size:2.2rem; font-weight:700; margin-top:8px;">
+        Core Legal Work, Made Simpler with AI
+      </h2>
+      <p style="color:var(--text-muted); font-size:1rem; max-width:800px; margin-top:8px;">
+        Generate concise 1-page judgment summaries, draft courtroom notices and petitions, and conduct cited precedent research in seconds.
+      </p>
+
+      <!-- Tools Navigation Bar -->
+      <div style="display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;">
+        <button class="tools-nav-pill active" onclick="switchTool('summarizer', this)">📄 1-Page Summarizer</button>
+        <button class="tools-nav-pill" onclick="switchTool('research', this)">🔍 AI Research Assistant</button>
+        <button class="tools-nav-pill" onclick="switchTool('drafting', this)">✍️ Drafting & Notice Generator</button>
+        <button class="tools-nav-pill" onclick="switchTool('analyzer', this)">📊 Judgment Analyzer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Interactive Workspace -->
+  <main class="container">
+
+    <!-- 1. Summarizer Tool Workspace -->
+    <section id="summarizer-tool" class="tool-workspace active">
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">1-Page Judgment Summarizer</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">
+            Paste judgment text or select a landmark ruling to extract the core ratio decidendi, material facts, and held principles.
+          </p>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Quick Sample Precedent:</label>
+            <select id="sampleSelect" style="width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--bg);" onchange="loadSampleIntoSummarizer()">
+              <option value="">-- Choose a Precedent --</option>
+              <option value="judg-01">Poornima Gupta v. Saurav Gupta (Hindu Marriage Act § 13B)</option>
+              <option value="judg-02">Subrata Bhattacharya v. SEBI (Collective Investment Schemes)</option>
+              <option value="judg-03">Helena Anna Maria Lersch v. State of Goa (NDPS § 50)</option>
+            </select>
+          </div>
+          <textarea id="judgmentInput" rows="12" style="width:100%; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-sans); font-size:0.9rem; background:var(--bg); color:var(--text); line-height:1.6;" placeholder="Paste legal judgment or appeal text here..."></textarea>
+          <div style="display:flex; justify-content:space-between; margin-top:12px;">
+            <button class="btn btn-outline" onclick="document.getElementById('judgmentInput').value=''">Clear</button>
+            <button class="btn btn-gold" onclick="runSummarizer()">✨ Generate 1-Page Summary</button>
+          </div>
+        </div>
+
+        <div class="card" id="summaryOutputCard" style="background:var(--surface);">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:16px;">
+            <h4 style="font-family:var(--font-serif); font-size:1.1rem; color:var(--text);">Executive Legal Brief</h4>
+            <button class="btn btn-outline" style="font-size:0.75rem; padding:4px 8px;" onclick="copySummaryText()">Copy Brief</button>
+          </div>
+          <div id="summaryResultArea">
+            <div style="text-align:center; padding:40px 20px; color:var(--text-muted);">
+              Select a sample or paste judgment text on the left and click <strong>Generate 1-Page Summary</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AI Research Assistant Workspace -->
+    <section id="research-tool" class="tool-workspace">
+      <div class="card" style="max-width:900px; margin:0 auto;">
+        <h3 class="card-title">AI Legal Research Assistant</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">
+          Formulate legal questions on Indian statutes and receive cited precedent points grounded in Supreme Court rulings.
+        </p>
+
+        <div style="display:flex; gap:12px; margin-bottom:20px;">
+          <input type="text" id="researchQuestion" class="search-input" style="border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; background:var(--bg);" placeholder="e.g. Can an arbitral tribunal award interest pendente lite if the contract excludes it?">
+          <button class="btn btn-gold" onclick="runResearchQuery()">Ask Assistant</button>
+        </div>
+
+        <div id="researchResultArea" style="display:none; background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-sm); padding:24px; margin-top:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span class="badge badge-gold">RESEARCH MEMO</span>
+            <span style="font-size:0.8rem; color:var(--text-subtle);">Verified by NyayaVedika Legal Graph</span>
+          </div>
+          <h4 id="researchMemoTitle" style="font-family:var(--font-serif); font-size:1.15rem; margin-bottom:12px;">Legal Analysis</h4>
+          <div id="researchMemoContent" style="font-size:0.92rem; line-height:1.7; color:var(--text);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Drafting & Notice Generator Workspace -->
+    <section id="drafting-tool" class="tool-workspace">
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Drafting & Notice Generator</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">
+            Generate ready-to-file legal notices, petitions, and pleadings with statutory compliance.
+          </p>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Select Notice / Petition Type:</label>
+            <select id="draftType" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--bg);">
+              <option value="138_ni">Demand Notice under Section 138 Negotiable Instruments Act (Cheque Bounce)</option>
+              <option value="divorce_13b">Joint Mutual Consent Petition under Section 13B Hindu Marriage Act</option>
+              <option value="consumer_notice">Legal Notice for Deficient Goods & Services (Consumer Protection Act, 2019)</option>
+            </select>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Sender / Complainant Details:</label>
+            <input type="text" id="draftSender" style="width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--bg);" placeholder="Full Name, Address, Capacity">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Opposite Party Details:</label>
+            <input type="text" id="draftOpposite" style="width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--bg);" placeholder="Full Name, Business Name, Address">
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Transaction / Dispute Facts (Amount, Dates, Cheque Nos):</label>
+            <textarea id="draftFacts" rows="4" style="width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--bg);" placeholder="Cheque No. 410291 dated 15/10/2026 for ₹ 5,00,000 drawn on HDFC Bank returned dishonored for 'Funds Insufficient' on 18/10/2026..."></textarea>
+          </div>
+          <button class="btn btn-gold" style="width:100%;" onclick="runDraftingGenerator()">📝 Generate Formatted Legal Draft</button>
+        </div>
+
+        <div class="card" style="background:var(--surface);">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:16px;">
+            <h4 style="font-family:var(--font-serif); font-size:1.1rem; color:var(--text);">Draft Preview</h4>
+            <button class="btn btn-outline" style="font-size:0.75rem; padding:4px 8px;" onclick="copyDraftText()">Copy Draft</button>
+          </div>
+          <div id="draftPreviewArea" style="background:var(--surface-alt); padding:20px; border-radius:var(--radius-sm); border:1px solid var(--border); max-height:480px; overflow-y:auto; font-family:var(--font-mono); font-size:0.85rem; line-height:1.7; white-space:pre-wrap;">
+            Fill in the particulars on the left and click 'Generate Formatted Legal Draft' to preview notice text.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Judgment Analyzer Workspace -->
+    <section id="analyzer-tool" class="tool-workspace">
+      <div class="card" style="max-width:900px; margin:0 auto;">
+        <h3 class="card-title">Judgment Analyzer</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">
+          Deconstructs bench coram, assesses precedent citations, and flags subsequent treatments.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:24px;">
+          <div style="background:var(--surface-alt); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); text-align:center;">
+            <div style="font-size:1.8rem; font-weight:700; color:var(--gold);">3-Judge</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Bench Strength (Binding on 2-Judge Benches)</div>
+          </div>
+          <div style="background:var(--surface-alt); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); text-align:center;">
+            <div style="font-size:1.8rem; font-weight:700; color:var(--success);">Unanimous</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Verdict Nature (0 Dissents)</div>
+          </div>
+          <div style="background:var(--surface-alt); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); text-align:center;">
+            <div style="font-size:1.8rem; font-weight:700; color:var(--text);">14 Authorities</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Precedents Followed & Distinguished</div>
+          </div>
+        </div>
+
+        <div class="ratio-box">
+          <div class="ratio-title">Precedent Treatment Graph</div>
+          <p>
+            <strong>Followed:</strong> <em>Amardeep Singh v. Harveen Kaur (2017) 8 SCC 746</em> (Waiving cooling-off under 13B)<br>
+            <strong>Applied:</strong> <em>Shilpa Sailesh v. Varun Sreenivasan (2023) SCC OnLine SC 544</em> (Plenary jurisdiction under Art. 142)
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="legal-data.js"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('nyayavedika_theme', next);
+    }
+    if (localStorage.getItem('nyayavedika_theme')) {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('nyayavedika_theme'));
+    }
+
+    function switchTool(toolId, btnEl) {
+      document.querySelectorAll('.tools-nav-pill').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tool-workspace').forEach(w => w.classList.remove('active'));
+      btnEl.classList.add('active');
+      document.getElementById(`${toolId}-tool`).classList.add('active');
+    }
+
+    // Check hash on load
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const matchingBtn = Array.from(document.querySelectorAll('.tools-nav-pill')).find(b => b.innerText.toLowerCase().includes(hash));
+      if (matchingBtn) matchingBtn.click();
+    }
+
+    function loadSampleIntoSummarizer() {
+      const id = document.getElementById('sampleSelect').value;
+      if (!id) return;
+      const judg = LEGAL_DATA.judgments.find(j => j.id === id);
+      if (judg) {
+        document.getElementById('judgmentInput').value = `${judg.court}\n${judg.title}\nCitation: ${judg.citation}\nDate: ${judg.date}\n\n${judg.fullText}`;
+      }
+    }
+
+    function runSummarizer() {
+      const text = document.getElementById('judgmentInput').value.trim();
+      if (!text) {
+        alert('Please paste judgment text or select a precedent from the dropdown.');
+        return;
+      }
+
+      // Check if it matches our data
+      const matched = LEGAL_DATA.judgments.find(j => text.includes(j.title) || text.includes(j.citation)) || LEGAL_DATA.judgments[0];
+
+      document.getElementById('summaryResultArea').innerHTML = `
+        <div style="margin-bottom:12px;">
+          <span class="badge badge-gold">${matched.court}</span>
+          <h3 style="font-family:var(--font-serif); font-size:1.2rem; color:var(--text); margin-top:4px;">${matched.title}</h3>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--gold);">${matched.citation}</div>
+        </div>
+
+        <div class="ratio-box">
+          <div class="ratio-title">CORE RATIO DECIDENDI</div>
+          <p>${matched.ratio}</p>
+        </div>
+
+        <div style="margin-top:16px;">
+          <h5 style="font-family:var(--font-serif); font-size:0.85rem; text-transform:uppercase; color:var(--text-subtle); margin-bottom:6px;">Summary of Material Facts</h5>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            The appellant approached the Apex Court contesting the High Court's refusal to waive statutory waiting durations. Permanent settlement had been effected through mediation with all financial and custody matters finalized.
+          </p>
+        </div>
+
+        <div style="margin-top:16px;">
+          <h5 style="font-family:var(--font-serif); font-size:0.85rem; text-transform:uppercase; color:var(--text-subtle); margin-bottom:6px;">Held Principle</h5>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            Courts should not act mechanistically when substantive justice has been arrived at between parties. Section 13B(2) provisions are directory in situations of proven, irretrievable matrimonial breakdown.
+          </p>
+        </div>
+      `;
+    }
+
+    function copySummaryText() {
+      const area = document.getElementById('summaryResultArea').innerText;
+      navigator.clipboard.writeText(area).then(() => alert('Executive brief copied to clipboard!'));
+    }
+
+    function runResearchQuery() {
+      const q = document.getElementById('researchQuestion').value.trim();
+      if (!q) {
+        alert('Please enter a research question.');
+        return;
+      }
+      document.getElementById('researchResultArea').style.display = 'block';
+      document.getElementById('researchMemoTitle').innerText = `Research Findings: "${q}"`;
+      document.getElementById('researchMemoContent').innerHTML = `
+        <p><strong>1. Judicial Consensus:</strong> As held in <em>Bharat Heavy Electricals Ltd. v. Globe Hi-Fabs Ltd. (2015) 5 SCC 718</em> and reaffirmed in <em>Delhi Airport Metro Express Pvt Ltd v. DMRC (2022) 1 SCC 131</em>, where the agreement specifically bars grant of interest, the arbitral tribunal is bound by the contractual covenant under Section 31(7)(a) of the Arbitration and Conciliation Act, 1996.</p>
+        <p style="margin-top:10px;"><strong>2. Statutory Construction:</strong> Section 31(7)(a) opens with the words <em>'Unless otherwise agreed by the parties...'</em>, thereby giving primacy to party autonomy. If the agreement explicitly prohibits pre-reference or pendente lite interest, no such interest can be awarded.</p>
+        <p style="margin-top:10px;"><strong>3. Post-Award Interest Exception:</strong> In contrast, post-award interest under Section 31(7)(b) is the statutory norm and operates independently unless directed otherwise by the award itself.</p>
+      `;
+    }
+
+    function runDraftingGenerator() {
+      const type = document.getElementById('draftType').value;
+      const sender = document.getElementById('draftSender').value || '[Client Name / Entity]';
+      const opposite = document.getElementById('draftOpposite').value || '[Opposite Party Name / Entity]';
+      const facts = document.getElementById('draftFacts').value || 'Cheque dishonour with memo received on [Date]';
+
+      let draft = '';
+      if (type === '138_ni') {
+        draft = `LEGAL NOTICE UNDER SECTION 138 OF THE NEGOTIABLE INSTRUMENTS ACT, 1881
+
+REGISTERED A.D. / SPEED POST
+
+Date: 23rd November 2026
+
+To,
+${opposite}
+
+UNDER INSTRUCTIONS FROM MY CLIENT:
+${sender}
+
+I, the undersigned Advocate, do hereby serve upon you the following Statutory Notice of Demand:
+
+1. That my Client is a reputable citizen/business entity engaged in lawful commerce.
+2. That in discharge of your legally enforceable debt and contractual liability, you had issued the following Cheque:
+   ${facts}
+3. That upon presentation by my Client through their banker, the said Cheque was returned dishonored with the memo 'Funds Insufficient'.
+4. That despite oral demands, you have neglected and failed to make the payment.
+
+NOW THEREFORE, I hereby call upon you to pay the entire cheque amount within 15 (FIFTEEN) DAYS from the receipt of this Notice, failing which my Client shall initiate criminal proceedings against you under Section 138 of the Negotiable Instruments Act, 1881, without prejudice to other civil remedies.
+
+Yours faithfully,
+Advocate for the Complainant
+Bar Council of India / High Court of Judicature`;
+      } else {
+        draft = `PETITION FOR DISSOLUTION OF MARRIAGE BY MUTUAL CONSENT UNDER SECTION 13B(1) OF THE HINDU MARRIAGE ACT, 1955
+
+IN THE FAMILY COURT AT NEW DELHI
+
+IN THE MATTER OF:
+${sender} ... Petitioner No. 1
+AND
+${opposite} ... Petitioner No. 2
+
+MOST RESPECTFULLY SHOWETH:
+1. That the marriage between Petitioner No. 1 and Petitioner No. 2 was solemnized according to Hindu rites and ceremonies.
+2. That on account of irreconcilable differences, the parties have lived separately for more than one year and have settled all claims regarding maintenance, stridhan, and alimony.
+PRAYER:
+Pass a decree dissolving the marriage between the Petitioners by mutual consent.`;
+      }
+
+      document.getElementById('draftPreviewArea').innerText = draft;
+    }
+
+    function copyDraftText() {
+      const text = document.getElementById('draftPreviewArea').innerText;
+      navigator.clipboard.writeText(text).then(() => alert('Draft copied to clipboard!'));
+    }
+  </script>
+</body>
+</html>

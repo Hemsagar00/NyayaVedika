@@ -1,0 +1,24 @@
+feature,area,priority,original,clone,notes
+Search judgments by citation,research,must,yes,yes,Implemented on index.html and legal-judgements.html
+Full-text legal semantic search,research,must,yes,yes,Query filter across title ratio and acts in legal-judgements.html
+Filter judgments by court and bench,research,must,yes,yes,Filter by SC Bombay HC Delhi HC NCLAT
+Filter judgments by year and disposition,research,must,yes,yes,Filter by year and Allowed/Dismissed disposition
+Judgment case summary view,research,must,yes,yes,Ratio decidendi cards and headnotes
+Read full judgment text with paragraph numbering,research,must,yes,yes,Interactive modal viewer with numbered paragraphs
+Bare acts browser and section search,research,must,yes,yes,bare-acts.html with BNS BNSS BSA and IPC mapping
+Legal news feed by court categories,news,must,yes,yes,Categorized news feed on index.html with court filters
+Daily case cause list tracker,diary,must,yes,yes,diary.html with court hall item number and listing date
+Case diary and hearing notes,diary,must,yes,yes,Advocate diary with stage client contact and advocate notes
+AI Legal Research Assistant,ai_tools,must,yes,yes,legal-tools.html interactive legal research assistant
+AI Judgment Summarizer,ai_tools,must,yes,yes,legal-tools.html 1-page summary generator with ratio extraction
+AI Legal Drafting Assistant,ai_tools,should,yes,yes,legal-tools.html Section 138 NI Act notices and 13B petitions
+AI Judgment Analyzer & Ratio extractor,ai_tools,should,yes,yes,legal-tools.html bench strength and precedent graph
+Document comparison & redlining,ai_tools,should,yes,partial,Contract clause comparator preview
+Regional language legal translation,localization,should,yes,partial,Hindi/vernacular navigation strings prepared
+User authentication with Google and Email,auth,must,yes,yes,Clerk Auth login.html integration
+Bookmark judgments and save research folders,workspace,must,yes,yes,dashboard.html workspace integration
+Export judgment to PDF and Word,export,should,yes,partial,Formatted print and CSV cause list export
+Advocate client management CRM,diary,should,yes,yes,Client contact details and notes in diary.html
+Offline reading mode,mobile,could,yes,partial,Client-side LocalStorage cache and responsive layout
+SMS and WhatsApp hearing alerts,notifications,could,yes,no,Scheduled webhook integration planned
+Third party ad network tracking,monetization,could,yes,skip,NyayaVedika is clean and ad-free

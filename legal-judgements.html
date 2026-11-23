@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Judgements & Precedents Repository | NyayaVedika</title>
+  <meta name="description" content="Search millions of Supreme Court and High Court judgments by citation, party, bench, and subject area. Read extracted ratio decidendi and copy verified legal citations.">
+  <link rel="stylesheet" href="nyayavedika.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="header-top">
+    <div>
+      <span class="badge badge-gold">PRECEDENTS SEARCH</span>
+      <span>Supreme Court of India, 25 High Courts, NCLAT & Special Tribunals</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="diary.html" style="color:var(--gold); font-weight:600;">📅 Cause List Diary</a>
+      <button class="btn btn-ghost" style="padding:2px 8px; font-size:0.8rem;" onclick="toggleTheme()">🌓 Theme</button>
+      <a href="login.html" class="nav-link" style="padding:2px 6px;">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header-main">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <div class="brand-emblem">⚖️</div>
+        <div class="brand-text">
+          <h1>NyayaVedika</h1>
+          <p>न्यायवेदिका • Forum of Justice</p>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="legal-judgements.html" class="nav-link active">Judgments</a>
+        <a href="legal-tools.html" class="nav-link">AI Legal Tools</a>
+        <a href="diary.html" class="nav-link">Advocate Diary</a>
+        <a href="bare-acts.html" class="nav-link">Bare Acts (BNS)</a>
+        <a href="dashboard.html" class="nav-link">Workspace</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Workspace</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter & Search Section -->
+  <section style="background:var(--surface); border-bottom:1px solid var(--border); padding:32px 24px;">
+    <div style="max-width:var(--container-max); margin:0 auto;">
+      <div style="margin-bottom:20px;">
+        <h2 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--text);">
+          Indian Court Judgments & Precedents
+        </h2>
+        <p style="color:var(--text-muted); font-size:0.95rem;">
+          Verified citations, bench coram, headnotes, and AI-extracted ratio decidendi.
+        </p>
+      </div>
+
+      <!-- Search Inputs Grid -->
+      <div style="display:grid; grid-template-columns: 2fr 1fr 1fr auto; gap:12px; align-items:center;">
+        <input type="text" id="queryInput" class="search-input" style="border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; background:var(--bg);" placeholder="Search citation (e.g. 2026 INSC 142), party name, or act..." onkeyup="if(event.key==='Enter') applyFilters()">
+        
+        <select id="courtSelect" style="padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text);" onchange="applyFilters()">
+          <option value="ALL">All Jurisdictions</option>
+          <option value="SC">Supreme Court of India</option>
+          <option value="BOMBAY_HC">High Court of Bombay</option>
+          <option value="DELHI_HC">Delhi High Court</option>
+          <option value="NCLAT">NCLAT / NCLT</option>
+        </select>
+
+        <select id="yearSelect" style="padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text);" onchange="applyFilters()">
+          <option value="ALL">All Years</option>
+          <option value="2026">2026 (Latest)</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="LANDMARK">Landmark Precedents</option>
+        </select>
+
+        <button class="btn btn-gold" style="height:44px; padding:0 24px;" onclick="applyFilters()">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Judgments Content Area -->
+  <main class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <div id="resultsCount" style="font-size:0.92rem; color:var(--text-muted); font-weight:500;">
+        Showing verified judgments
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-outline" style="font-size:0.8rem; padding:4px 10px;" onclick="resetFilters()">Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Judgments List -->
+    <div id="judgmentsList" style="display:flex; flex-direction:column; gap:20px;">
+      <!-- Populated by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Full Judgment Modal (Screen S04) -->
+  <div id="judgmentModal" class="modal-overlay" onclick="if(event.target.id==='judgmentModal') closeJudgmentModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span id="modalCourtBadge" class="badge badge-gold">Supreme Court</span>
+          <h3 id="modalTitle" style="font-family:var(--font-serif); font-size:1.3rem; margin-top:4px; color:var(--text);">Case Title</h3>
+          <p id="modalCitation" style="font-size:0.85rem; font-family:var(--font-mono); color:var(--gold);">Citation</p>
+        </div>
+        <button class="btn btn-ghost" onclick="closeJudgmentModal()" style="font-size:1.2rem;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            <strong>Coram/Bench:</strong> <span id="modalBench">-</span> | <strong>Date:</strong> <span id="modalDate">-</span>
+          </div>
+          <button class="btn btn-outline" style="font-size:0.8rem; padding:4px 10px;" onclick="copyCitation()">📋 Copy Citation</button>
+        </div>
+
+        <div class="ratio-box">
+          <div class="ratio-title">RATIO DECIDENDI</div>
+          <p id="modalRatio">Ratio text...</p>
+        </div>
+
+        <div style="margin:20px 0;">
+          <h4 style="font-family:var(--font-serif); font-size:0.85rem; text-transform:uppercase; color:var(--text-subtle); margin-bottom:8px;">Acts & Sections Cited</h4>
+          <div id="modalActs" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h4 style="font-family:var(--font-serif); font-size:1rem; margin-bottom:12px;">Full Text of Judgment</h4>
+          <div id="modalFullText" style="white-space:pre-line; line-height:1.8; font-size:0.95rem; color:var(--text); background:var(--surface-alt); padding:20px; border-radius:var(--radius-sm); border:1px solid var(--border);">
+            Judgment text...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="brand" style="margin-bottom:12px;">
+          <div class="brand-emblem">⚖️</div>
+          <div class="brand-text">
+            <h1>NyayaVedika</h1>
+            <p>न्यायवेदिका • Forum of Justice</p>
+          </div>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted); max-width:320px; line-height:1.6;">
+          Free and open access to Indian judicial rulings, citations, and legal knowledge.
+        </p>
+      </div>
+      <div>
+        <h5 style="font-family:var(--font-serif); font-size:0.95rem; margin-bottom:16px; color:var(--text);">Shortcuts</h5>
+        <ul style="list-style:none; font-size:0.88rem; color:var(--text-muted); display:flex; flex-direction:column; gap:8px;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="legal-tools.html">AI Legal Tools</a></li>
+          <li><a href="diary.html">Cause List Diary</a></li>
+          <li><a href="bare-acts.html">Bare Acts</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="legal-data.js"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('nyayavedika_theme', next);
+    }
+    if (localStorage.getItem('nyayavedika_theme')) {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('nyayavedika_theme'));
+    }
+
+    // Check query params on load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('q')) {
+      document.getElementById('queryInput').value = urlParams.get('q');
+    }
+    if (urlParams.get('court')) {
+      document.getElementById('courtSelect').value = urlParams.get('court');
+    }
+
+    function renderJudgments(items) {
+      const list = document.getElementById('judgmentsList');
+      list.innerHTML = '';
+      document.getElementById('resultsCount').innerText = `Showing ${items.length} verified precedent(s)`;
+
+      if (items.length === 0) {
+        list.innerHTML = `
+          <div style="text-align:center; padding:60px 20px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);">
+            <div style="font-size:2.5rem; margin-bottom:12px;">📂</div>
+            <h3 style="font-family:var(--font-serif); font-size:1.2rem; color:var(--text);">No judgments matched your search query</h3>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-top:6px;">Try searching by citation (e.g. 2026 INSC 142) or a general keyword.</p>
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(j => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.gap = '12px';
+
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                <span class="badge badge-gold">${j.court}</span>
+                <span style="font-family:var(--font-mono); font-size:0.8rem; color:var(--gold); font-weight:600;">${j.citation}</span>
+                <span style="font-size:0.75rem; color:var(--text-subtle);">• Neutral: ${j.neutralCitation}</span>
+              </div>
+              <h3 style="font-family:var(--font-serif); font-size:1.35rem; color:var(--text); font-weight:700;">${j.title}</h3>
+            </div>
+            <div style="text-align:right;">
+              <span class="badge ${j.disposition === 'Allowed' ? 'badge-success' : 'badge-court'}">${j.disposition}</span>
+              <div style="font-size:0.75rem; color:var(--text-subtle); margin-top:4px;">${j.date}</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            <strong>Coram / Bench:</strong> ${j.bench.join(', ')}
+          </div>
+
+          <div class="ratio-box" style="margin:6px 0;">
+            <div class="ratio-title">Ratio Decidendi</div>
+            <p>${j.ratio}</p>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:12px; margin-top:6px; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              ${j.keyActs.map(a => `<span class="badge badge-court" style="font-size:0.72rem;">${a}</span>`).join('')}
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-outline" style="font-size:0.8rem; padding:6px 12px;" onclick="copyJudgCitation('${j.citation}')">📋 Copy Citation</button>
+              <button class="btn btn-primary" style="font-size:0.8rem; padding:6px 14px;" onclick="showModalById('${j.id}')">Read Full Judgment →</button>
+            </div>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('queryInput').value.toLowerCase().trim();
+      const court = document.getElementById('courtSelect').value;
+      const year = document.getElementById('yearSelect').value;
+
+      let res = LEGAL_DATA.judgments;
+
+      if (court !== 'ALL') {
+        res = res.filter(j => j.courtCode === court);
+      }
+      if (year !== 'ALL' && year !== 'LANDMARK') {
+        res = res.filter(j => j.date.includes(year));
+      }
+      if (q) {
+        res = res.filter(j => 
+          j.title.toLowerCase().includes(q) ||
+          j.citation.toLowerCase().includes(q) ||
+          j.neutralCitation.toLowerCase().includes(q) ||
+          j.ratio.toLowerCase().includes(q) ||
+          j.keyActs.some(a => a.toLowerCase().includes(q))
+        );
+      }
+
+      renderJudgments(res);
+    }
+
+    function resetFilters() {
+      document.getElementById('queryInput').value = '';
+      document.getElementById('courtSelect').value = 'ALL';
+      document.getElementById('yearSelect').value = 'ALL';
+      renderJudgments(LEGAL_DATA.judgments);
+    }
+
+    function showModalById(id) {
+      const j = LEGAL_DATA.judgments.find(item => item.id === id);
+      if (!j) return;
+      document.getElementById('modalTitle').innerText = j.title;
+      document.getElementById('modalCitation').innerText = `${j.citation} | Neutral: ${j.neutralCitation}`;
+      document.getElementById('modalBench').innerText = j.bench.join(', ');
+      document.getElementById('modalDate').innerText = j.date;
+      document.getElementById('modalRatio').innerText = j.ratio;
+      document.getElementById('modalCourtBadge').innerText = j.court;
+      document.getElementById('modalFullText').innerText = j.fullText;
+      document.getElementById('modalActs').innerHTML = j.keyActs.map(a => `<span class="badge badge-gold">${a}</span>`).join('');
+      document.getElementById('judgmentModal').classList.add('active');
+    }
+
+    function closeJudgmentModal() {
+      document.getElementById('judgmentModal').classList.remove('active');
+    }
+
+    function copyCitation() {
+      const cit = document.getElementById('modalCitation').innerText;
+      navigator.clipboard.writeText(cit).then(() => alert('Citation copied!'));
+    }
+
+    function copyJudgCitation(cit) {
+      navigator.clipboard.writeText(cit).then(() => alert('Citation ' + cit + ' copied!'));
+    }
+
+    // Initial render with query param filter if present
+    applyFilters();
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{
+  "id": "ev_9d6f3f131b89bf7c5dfaf80e732954d35b84f9684ae4b68f54c0bc89b30dceb4",
+  "subject": {
+    "kind": "website",
+    "name": "https://supremetoday.ai/"
+  },
+  "operation": "web_site_open",
+  "params": {
+    "height": 900,
+    "url": "https://supremetoday.ai/",
+    "width": 1440
+  },
+  "result": {
+    "browser": "Chrome/157.0.8103.79",
+    "facts": {
+      "elements": 1866,
+      "forms": 1,
+      "height": 9430,
+      "images": 196,
+      "lang": "en",
+      "links": 255,
+      "ready": "complete",
+      "title": "Indian Legal News & Court Updates | Supreme Today AI",
+      "url": "https://supremetoday.ai/",
+      "width": 1425
+    },
+    "health": {
+      "errors": [
+        {
+          "kind": "log",
+          "text": "Access to fetch at 'https://s3.ap-southeast-1.wasabisys.com/static-images/landscape-banner.png' from origin 'https://supremetoday.ai' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "url": "https://supremetoday.ai/"
+        }
+      ],
+      "failed_requests": [
+        {
+          "error": "net::ERR_BLOCKED_BY_ORB",
+          "type": "Image",
+          "url": "https://supremetoday-s3.b-cdn.net/supreme-today-landscape-ad/home-landscape-ad.gif"
+        },
+        {
+          "error": "net::ERR_FAILED",
+          "type": "Fetch",
+          "url": "https://s3.ap-southeast-1.wasabisys.com/static-images/landscape-banner.png"
+        }
+      ]
+    },
+    "title": "Indian Legal News & Court Updates | Supreme Today AI",
+    "url": "https://supremetoday.ai/"
+  },
+  "summary": "Opened https://supremetoday.ai/: \"Indian Legal News & Court Updates | Supreme Today AI\". While loading: 1 error(s), 2 failed request(s).",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "private_profile",
+      "message": "A fresh private browser: pages behind a login show their signed-out state."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://supremetoday.ai/"
+    }
+  ],
+  "links": []
+}

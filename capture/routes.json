@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/legal-tools",
+    "slug": "legal-tools",
+    "url": "https://supremetoday.ai/legal-tools"
+  },
+  {
+    "path": "/legal-judgements",
+    "slug": "legal-judgements",
+    "url": "https://supremetoday.ai/legal-judgements"
+  },
+  {
+    "path": "/about",
+    "slug": "about",
+    "url": "https://supremetoday.ai/about"
+  },
+  {
+    "path": "/user-manual",
+    "slug": "user-manual",
+    "url": "https://supremetoday.ai/user-manual"
+  }
+]

@@ -1,0 +1,404 @@
+{
+  "id": "ev_5b11c2cf5b726027a2618d1e41e3a703a6c12226d63655587d043e980fb3e5e4",
+  "subject": {
+    "kind": "website",
+    "name": "https://supremetoday.ai/user-manual"
+  },
+  "operation": "web_site_capture",
+  "params": {
+    "include_html": false,
+    "max_height": 12000,
+    "noise_pass": true,
+    "visitor_view": false,
+    "widths": [
+      1440,
+      768,
+      390
+    ]
+  },
+  "result": {
+    "counts": {
+      "forms": 1,
+      "headings": 120,
+      "images": 130,
+      "links": 131,
+      "outline": 189
+    },
+    "design": {
+      "backgrounds": [
+        {
+          "count": 12,
+          "value": "#ffffff"
+        },
+        {
+          "count": 6,
+          "value": "#731818"
+        },
+        {
+          "count": 2,
+          "value": "#000000"
+        },
+        {
+          "count": 1,
+          "value": "#f3e6e6"
+        },
+        {
+          "count": 1,
+          "value": "#8a1416"
+        },
+        {
+          "count": 1,
+          "value": "#454545"
+        }
+      ],
+      "css_variables": {},
+      "font_faces": [
+        {
+          "family": "K11",
+          "status": "unloaded",
+          "style": "normal",
+          "weight": "normal"
+        },
+        {
+          "family": "Gloock",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Gloock",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "status": "loaded",
+          "style": "normal",
+          "weight": "400"
+        }
+      ],
+      "font_sizes": [
+        {
+          "count": 44,
+          "value": "14px"
+        },
+        {
+          "count": 31,
+          "value": "13.5px"
+        },
+        {
+          "count": 27,
+          "value": "16.64px"
+        },
+        {
+          "count": 7,
+          "value": "16px"
+        },
+        {
+          "count": 7,
+          "value": "18.24px"
+        },
+        {
+          "count": 5,
+          "value": "24px"
+        },
+        {
+          "count": 1,
+          "value": "0px"
+        },
+        {
+          "count": 1,
+          "value": "18px"
+        },
+        {
+          "count": 1,
+          "value": "12px"
+        }
+      ],
+      "font_weights": [
+        {
+          "count": 84,
+          "value": "400"
+        },
+        {
+          "count": 24,
+          "value": "500"
+        },
+        {
+          "count": 7,
+          "value": "600"
+        },
+        {
+          "count": 6,
+          "value": "700"
+        },
+        {
+          "count": 3,
+          "value": "300"
+        }
+      ],
+      "fonts": [
+        {
+          "count": 111,
+          "value": "Inter, Arial, sans-serif"
+        },
+        {
+          "count": 12,
+          "value": "Gloock, Georgia, serif"
+        },
+        {
+          "count": 1,
+          "value": "arial"
+        }
+      ],
+      "max_widths": [
+        {
+          "count": 5,
+          "value": "1170px"
+        },
+        {
+          "count": 1,
+          "value": "745px"
+        }
+      ],
+      "radii": [
+        {
+          "count": 38,
+          "value": "8px"
+        },
+        {
+          "count": 6,
+          "value": "12px"
+        },
+        {
+          "count": 5,
+          "value": "10px"
+        },
+        {
+          "count": 5,
+          "value": "6px"
+        },
+        {
+          "count": 2,
+          "value": "50%"
+        },
+        {
+          "count": 1,
+          "value": "12px 0px 0px 12px"
+        },
+        {
+          "count": 1,
+          "value": "11px 0px 0px 11px"
+        },
+        {
+          "count": 1,
+          "value": "3px"
+        },
+        {
+          "count": 1,
+          "value": "14px"
+        }
+      ],
+      "shadows": [
+        {
+          "count": 1,
+          "value": "rgba(0, 0, 0, 0.2) 0px 3px 12px 0px"
+        },
+        {
+          "count": 1,
+          "value": "rgba(0, 0, 0, 0.5) 0px -6px 10px 5px"
+        },
+        {
+          "count": 1,
+          "value": "rgba(50, 50, 93, 0.25) 0px 6px 5px -1px, rgba(0, 0, 0, 0.2) 0px 4px 3px -1px"
+        }
+      ],
+      "spacing": [
+        {
+          "count": 92,
+          "value": "8px"
+        },
+        {
+          "count": 86,
+          "value": "5px"
+        },
+        {
+          "count": 49,
+          "value": "6px"
+        },
+        {
+          "count": 46,
+          "value": "10px"
+        },
+        {
+          "count": 35,
+          "value": "12px"
+        },
+        {
+          "count": 35,
+          "value": "16px"
+        },
+        {
+          "count": 23,
+          "value": "2px"
+        },
+        {
+          "count": 22,
+          "value": "1px"
+        },
+        {
+          "count": 20,
+          "value": "4px"
+        },
+        {
+          "count": 15,
+          "value": "15px"
+        },
+        {
+          "count": 7,
+          "value": "24px"
+        },
+        {
+          "count": 6,
+          "value": "32px"
+        },
+        {
+          "count": 4,
+          "value": "50px"
+        },
+        {
+          "count": 3,
+          "value": "20px"
+        },
+        {
+          "count": 2,
+          "value": "18px"
+        },
+        {
+          "count": 2,
+          "value": "-1px"
+        },
+        {
+          "count": 1,
+          "value": "28px"
+        },
+        {
+          "count": 1,
+          "value": "30px"
+        }
+      ],
+      "text_colors": [
+        {
+          "count": 39,
+          "value": "#ffffff"
+        },
+        {
+          "count": 36,
+          "value": "#212121"
+        },
+        {
+          "count": 30,
+          "value": "#000000"
+        },
+        {
+          "count": 11,
+          "value": "#8a1416"
+        },
+        {
+          "count": 6,
+          "value": "#0d6efd"
+        },
+        {
+          "count": 1,
+          "value": "#666666"
+        },
+        {
+          "count": 1,
+          "value": "#731818"
+        }
+      ]
+    },
+    "files": [
+      "README.md",
+      "capture.json"
+    ],
+    "html_bytes": 0,
+    "output_directory": "D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\user-manual",
+    "screenshots": [
+      {
+        "css_width": 1440,
+        "cut": false,
+        "file": "screenshot-1440.png",
+        "height": 3111,
+        "noise_file": "noise-1440.png",
+        "noise_tiles": 986,
+        "sha256": "94a654b6fd12d0d9f46aa8ce05392e5118facdce5195a7fe2c2afdc2b2bebbfc",
+        "width": 1440
+      },
+      {
+        "css_width": 768,
+        "cut": false,
+        "file": "screenshot-768.png",
+        "height": 5303,
+        "noise_file": "noise-768.png",
+        "noise_tiles": 81,
+        "sha256": "728f94b5183d7e0ea98aad7b50b00bbf6d142a2bc48eff2db8fe9309943fc230",
+        "width": 768
+      },
+      {
+        "css_width": 390,
+        "cut": false,
+        "file": "screenshot-390.png",
+        "height": 5251,
+        "noise_file": "noise-390.png",
+        "noise_tiles": 162,
+        "sha256": "2ee80feb9d538d9311b8f37e01a5d875559d8f539188b7b219c4822804b60082",
+        "width": 390
+      }
+    ],
+    "title": "User Manual - Supreme Today AI",
+    "url": "https://supremetoday.ai/user-manual"
+  },
+  "summary": "Captured https://supremetoday.ai/user-manual: 3 screenshot(s), 189 outline items, 120 headings, 130 images, 131 links, 1 forms → D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\user-manual.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "one_state",
+      "message": "One state of the page: menus, dialogs and content behind interactions are not opened."
+    },
+    {
+      "code": "cross_origin_css",
+      "message": "CSS custom properties and breakpoints from cross-origin stylesheets can't be read."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 3,
+    "total": 3
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://supremetoday.ai/user-manual"
+    },
+    {
+      "kind": "path",
+      "value": "D:\\Friday\\Websites\\supremetoday-ai-2\\capture\\routes\\user-manual"
+    }
+  ],
+  "links": []
+}

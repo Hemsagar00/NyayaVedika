@@ -1,0 +1,44 @@
+{
+  "states": [
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-1.png",
+      "index": 0,
+      "kind": "menu",
+      "label": "Show app download link",
+      "sha256": "ffac2f2ad1a803ed709cc19466e75fe2fd4ec6bb81db6c11eba21ef03a3ef670"
+    },
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-2.png",
+      "index": 1,
+      "kind": "menu",
+      "label": "Resources",
+      "sha256": "b4c325e784f3800e95af79c5297cc7aef78c0e2c892daeb6b2d8210a2f73c1bb"
+    },
+    {
+      "changed": [
+        "expanded"
+      ],
+      "file": "state-3.png",
+      "index": 2,
+      "kind": "menu",
+      "label": "More",
+      "sha256": "40036452d9f2a44fe6a3b7ee66222c2a48f38022895a1be541ab6d45b62cf227"
+    },
+    {
+      "changed": [],
+      "file": "state-4.png",
+      "index": 3,
+      "kind": "menu",
+      "label": "India 10.6M",
+      "sha256": "28883c18ab411c357d15290f699117a1396f4f7c8b28936215cd4866fff51214"
+    }
+  ],
+  "url": "https://supremetoday.ai/",
+  "width": 1440
+}
